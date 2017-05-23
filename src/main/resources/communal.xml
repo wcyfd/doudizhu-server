@@ -9,7 +9,7 @@
 
 	<bean id="databaseInitialization" class="com.randioo.randioo_server_base.utils.db.DatabaseInitialization">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="databaseName" value="shanghaimajiang_server"></property>
+		<property name="databaseName" value="doudizhu_server"></property>
 		<property name="sqls">
 			<list>
 				<value>
@@ -17,6 +17,7 @@
 					`roleId` int(11) DEFAULT NULL COMMENT '玩家id',
 					`account` varchar(255) DEFAULT NULL COMMENT '帐号',
 					`name` varchar(255) DEFAULT NULL COMMENT '名称',
+					`money` int(11) DEFAULT NULL COMMENT '游戏币（欢乐豆）',
 					`gameId` int(11) DEFAULT NULL COMMENT '游戏id',
 					`sex` int(2) DEFAULT NULL COMMENT '性别',
 					`loginTimeStr` varchar(255) DEFAULT NULL COMMENT '登陆时间',

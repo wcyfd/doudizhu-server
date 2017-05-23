@@ -20,7 +20,7 @@
 
 	<!-- 利用注解进行bean的生成，并进行自动连锁 -->
 	<!-- sihao_server -->
-	<context:component-scan base-package="com.randioo.shanghaimajiang_server" />
+	<context:component-scan base-package="com.randioo.doudizhu_server" />
 	<!-- randioo-server-base -->
 	<context:component-scan base-package="com.randioo.randioo_server_base" />
 
@@ -59,7 +59,7 @@
 	<!-- 自动扫包进行持久层生成 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="basePackage" value="com.randioo.shanghaimajiang_server.dao" />
+		<property name="basePackage" value="com.randioo.doudizhu_server.dao" />
 		<property name="annotationClass"
 			value="com.randioo.randioo_server_base.annotation.MyBatisGameDaoAnnotation" />
 	</bean>
