@@ -1,0 +1,41 @@
+package com.randioo.doudizhu_server.protocol;
+
+message LoginRequest{
+	optional string userName = 1;
+	optional string PWD = 2;
+	optional string headImgUrl = 3;
+	optional int32 sex = 4[default = 0];
+} 
+
+message GetBattleRequest{
+
+}
+
+message PlayerRejoinRequest{
+	
+}
+
+message NewGameRequest{
+	message GameConfig{
+		optional int32 round = 1;
+		optional bool bySelfy = 2;
+		optional bool laizi = 3;
+		optional bool useDouble = 4;
+		optional int32 targetRound = 5;
+		optional int32 gameType = 6;
+		optional bool lezi = 7;
+		optional bool huangfan = 8;
+		optional int32 di = 9;
+		optional bool fly = 10;
+	}
+	optional GameConfig gameconfig = 1;
+}
+
+message JoinGameRequest{
+	optional int32 gameid = 1;
+}
+
+message TalkRequest{
+	optional string msg = 1;
+}
+

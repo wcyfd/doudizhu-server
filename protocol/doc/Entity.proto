@@ -1,0 +1,135 @@
+package com.randioo.doudizhu_server.protocol;
+
+message RoleData{
+	optional int32 roleId = 1;
+	optional string name =2;
+}
+
+message NewGameConfigData{
+	optional int32 round = 1;
+	optional int32 targetRound = 2;
+	optional GameType gameType = 3;
+	optional int32 leizi = 4;
+	optional bool huangfan = 5;
+	optional int32 di = 6;
+	optional int32 hua = 7;
+	optional bool fly = 8;
+	optional int32 createId = 9;
+}
+
+enum GameType{
+	GAME_TYPE_YINSANZUI = 0;
+	GAME_TYPE_KOUDIAN = 1;
+	GAME_TYPE_QIAOMA = 2;
+	GAME_TYPE_QINGHUNPENG = 3;
+}
+message GameRoleData{
+	optional int32 roleId = 1;
+	optional string playerName = 2;
+	optional string headImgUrl = 3;
+	optional int32 seated = 4;//座位号
+	optional int32 sex = 5;
+	
+}
+
+message PlayerData{	
+	optional int32 id = 2;	
+	optional string playerName = 3;		
+	optional int32 play = 4;
+	optional int32 seated = 5;	
+	optional int32 huNum = 6;	
+	optional int32 zimoNum = 7;
+	optional int32 zhuahuNum = 8;
+	optional int32 chuchongNum =9;	
+	optional int32 money = 10;
+	optional bool zhuang = 11;
+	optional int32 earnings = 12;
+	optional bool ready = 13;
+	optional int32 sunEarnings = 14;
+	optional bool tingPai = 15;
+	optional bool gangKai = 16;
+	optional string parLabel = 17;
+	optional bool online = 18;
+	optional string headImgUrl = 19;
+	optional int32 sex = 20;
+	optional int32 overTimer = 21;
+	optional string IP = 22;
+	optional bool tingflag = 23;
+		
+	repeated int32 par = 50;	
+	repeated int32 mingGang = 51;
+	repeated int32 anGang = 52;		
+	repeated int32 peng = 53;
+	repeated int32 chi = 54;
+	repeated int32 hua = 55;
+	repeated int32 beginningHua = 56;	
+	optional int32 huaNum = 57;	
+	repeated int32 putOutPais = 58;	
+	repeated int32 huwhich = 59;
+	message pointerMap{
+		required int32 key = 1;
+		required int32 value = 2;
+	}
+	repeated pointerMap map = 60;
+}
+message InitGameData{
+	optional int32 id = 1;
+	optional int32 MAX = 2[default = 4];
+	optional string lable = 3;	
+	optional int32 type = 4[default = 1];
+	optional int32 myPoint = 5;
+}
+message GameData{
+	optional int32 round = 2[default = 1];	
+	repeated int32 ShaiZi = 3;	
+	optional int32 thisRound = 4;		
+	optional int32 MAX = 5[default = 4];	
+	optional int32 id = 6;
+	optional bool start = 7;
+	optional int32 zhuangPoint = 8;
+	optional string lable = 9;
+	optional bool agreeLeave = 10;
+	optional int32 type = 11[default = 1];
+	optional bool rejoin = 12;
+	optional int32 createID =13;
+	optional int32 huangfanNum = 14;
+	optional int32 myPoint = 15;
+	repeated PlayerData players = 16;	
+}
+
+message Chi{
+	optional int32 paiId = 1;
+}
+
+message Mo{}
+
+message Gang{
+	optional int32 paiId = 1;
+	optional int32 targetRoleId = 2;
+}
+
+message Peng{
+	optional int32 targetRoleId =1;
+}
+
+message Guo{}
+
+message Ting{}
+
+message Hu{}
+
+message Hua{
+	optional int32 paiId = 1;
+}
+
+message GameActionData{
+	optional Chi chi = 1;
+	optional Mo mo = 2;
+	optional Gang gang = 3;
+	optional Peng peng = 4;
+	optional Guo guo = 5;
+	optional Ting ting = 6;
+	optional Hu hu = 7;
+	optional Hua hua = 8;
+}
+

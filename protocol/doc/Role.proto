@@ -1,0 +1,9 @@
+package com.randioo.doudizhu_server.protocol;
+
+message RoleRenameRequest{	
+	optional string name =1;
+}
+
+message RoleRenameResponse{
+	optional int32 errorCode = 1 [default =1];
+}

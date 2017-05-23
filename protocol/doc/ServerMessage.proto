@@ -1,0 +1,12 @@
+package com.randioo.doudizhu_server.protocol;
+import "Login.proto";
+import "Role.proto";
+
+message SC{
+	optional LoginCheckAccountResponse LoginCheckAccountResponse = 1;
+	optional LoginCreateRoleResponse LoginCreateRoleResponse = 2;
+	optional LoginGetRoleDataResponse LoginGetRoleDataResponse = 3;
+
+	optional RoleRenameResponse RoleRenameResponse = 4;
+
+} // 4

@@ -1,0 +1,13 @@
+package com.randioo.doudizhu_server.protocol;
+import "Login.proto";
+import "Role.proto";
+
+
+message CS{
+	optional LoginCheckAccountRequest LoginCheckAccountRequest = 1;
+	optional LoginCreateRoleRequest LoginCreateRoleRequest = 2;
+	optional LoginGetRoleDataRequest LoginGetRoleDataRequest = 3;
+
+	optional RoleRenameRequest RoleRenameRequest = 4;
+
+} // 4
