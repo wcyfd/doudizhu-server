@@ -38,7 +38,7 @@ public class ServerHandler extends IoHandlerAdapter {
 	}
 
 	@Override
-	public void sessionOpened(IoSession session) throws Exception {
+	public void sessionOpened(IoSession session) throws Exception {				
 		System.out.println("roleId:" + session.getAttribute("roleId") + " sessionOpened");
 	}
 

@@ -2,8 +2,31 @@ package com.randioo.doudizhu_server.protocol;
 
 message RoleData{
 	optional int32 roleId = 1;
-	optional string name =2;
+	optional string name = 2;
+	optional int32 money = 3;
+	optional int32 volume = 4;
+	optional int32 musicVolume = 5;
 }
 
+message GameConfig{
+	
+}
 
+enum GameType{
+	GAME_TYPE_MATCH = 1;
+	GAME_TYPE_FRIEND = 2;
+}
 
+message GameRoleData{
+	optional string gameRoleId = 1;
+	optional string name = 2;
+	optional int32 seated = 3;
+	optional bool ready = 4;
+	optional int32 seatIndex = 5;
+}
+
+enum GameState{
+	GAME_STATE_PREPARE = 1;
+	GAME_START_START = 2;
+	GAME_START_END = 3;
+}

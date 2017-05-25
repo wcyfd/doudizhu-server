@@ -15,6 +15,10 @@ public interface RoleDao extends BaseDao<Role> {
 	List<String> getAllAccounts();
 
 	List<String> getAllNames();
+	
+	String getMoneyExchangeTime(@Param("account") String account, @Param("roleId") int id);
+	
+	Integer moneyExchangeNum(@Param("account") String account, @Param("roleId") int id);
 
 	public Integer getMaxRoleId();
 }

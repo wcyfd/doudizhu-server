@@ -1,7 +1,8 @@
 package com.randioo.doudizhu_server.protocol;
 import "Login.proto";
 import "Role.proto";
-
+import "Match.proto";
+import "Fight.proto";
 
 message CS{
 	optional LoginCheckAccountRequest LoginCheckAccountRequest = 1;
@@ -10,4 +11,10 @@ message CS{
 
 	optional RoleRenameRequest RoleRenameRequest = 4;
 
-} // 4
+	optional MatchCreateGameRequest MatchCreateGameRequest = 5;
+	optional MatchJoinGameRequest MatchJoinGameRequest = 6;
+
+	optional FightReadyRequest FightReadyRequest = 7;
+	optional FightExitGameRequest FightExitGameRequest = 8;
+	optional FightAgreeExitGameRequest FightAgreeExitGameRequest = 9;
+} // 9

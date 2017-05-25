@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.randioo.shanghaimajiang_server.dao.RoleDao">
+<mapper namespace="com.randioo.doudizhu_server.dao.RoleDao">
 	<!-- insert -->
 	<insert id="insert">
 		insert into role(
@@ -11,6 +11,8 @@
 			money,
 			gameId,
 			sex,
+			volume,
+			musicVolume,
 			loginTimeStr,
 			offlineTimeStr,
 			createTimeStr,
@@ -22,6 +24,8 @@
 			#{money},
 			#{gameId},
 			#{sex},
+			#{volume},
+			#{musicVolume},
 			#{loginTimeStr},
 			#{offlineTimeStr},
 			#{createTimeStr},
@@ -32,6 +36,30 @@
 	<!-- select -->
 	<select id="get" resultType="Role">
 		select * from role
+		<where>
+			<if test="roleId != 0 ">
+				roleId=#{roleId}
+			</if>
+			<if test="account != null">
+				AND account=#{account}
+			</if>
+		</where>
+	</select>
+	<!-- select -->
+	<select id="getMoneyExchangeTime" resultType="string">
+		select moneyExchangeTimeStr from role
+		<where>
+			<if test="roleId != 0 ">
+				roleId=#{roleId}
+			</if>
+			<if test="account != null">
+				AND account=#{account}
+			</if>
+		</where>
+	</select>
+	<!-- select -->
+	<select id="getMoneyExchangeNum" resultType="int">
+		select moneyExchangeNum from role
 		<where>
 			<if test="roleId != 0 ">
 				roleId=#{roleId}

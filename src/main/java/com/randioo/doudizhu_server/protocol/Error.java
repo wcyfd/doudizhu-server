@@ -27,6 +27,10 @@ public final class Error {
     GAME_CREATE_ERROR(14, 15),
     GAME_JOIN_ERROR(15, 16),
     ROUND_ERROR(16, 17),
+    MONEY_NUM_ERROR(17, 18),
+    MATCH_ERROR_LOCK(18, 19),
+    MATCH_MAX_ROLE_COUNT(19, 20),
+    GAME_NOT_EXIST(20, 21),
     ;
     
     
@@ -51,6 +55,10 @@ public final class Error {
         case 15: return GAME_CREATE_ERROR;
         case 16: return GAME_JOIN_ERROR;
         case 17: return ROUND_ERROR;
+        case 18: return MONEY_NUM_ERROR;
+        case 19: return MATCH_ERROR_LOCK;
+        case 20: return MATCH_MAX_ROLE_COUNT;
+        case 21: return GAME_NOT_EXIST;
         default: return null;
       }
     }
@@ -81,7 +89,7 @@ public final class Error {
     }
     
     private static final ErrorCode[] VALUES = {
-      OK, NO_STRING, NO_ROLE_ACCOUNT, EXIST_ROLE, CREATE_FAILED, REJECT_LOGIN, ACCOUNT_ILLEGEL, IN_LOGIN, NAME_SENSITIVE, NO_ROLE_DATA, NAME_REPEATED, NAME_TOO_LONG, NAME_SPECIAL_CHAR, NO_MONEY, GAME_CREATE_ERROR, GAME_JOIN_ERROR, ROUND_ERROR, 
+      OK, NO_STRING, NO_ROLE_ACCOUNT, EXIST_ROLE, CREATE_FAILED, REJECT_LOGIN, ACCOUNT_ILLEGEL, IN_LOGIN, NAME_SENSITIVE, NO_ROLE_DATA, NAME_REPEATED, NAME_TOO_LONG, NAME_SPECIAL_CHAR, NO_MONEY, GAME_CREATE_ERROR, GAME_JOIN_ERROR, ROUND_ERROR, MONEY_NUM_ERROR, MATCH_ERROR_LOCK, MATCH_MAX_ROLE_COUNT, GAME_NOT_EXIST, 
     };
     public static ErrorCode valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -115,7 +123,7 @@ public final class Error {
   static {
     java.lang.String[] descriptorData = {
       "\n\013Error.proto\022$com.randioo.doudizhu_serv" +
-      "er.protocol*\275\002\n\tErrorCode\022\006\n\002OK\020\001\022\r\n\tNO_" +
+      "er.protocol*\226\003\n\tErrorCode\022\006\n\002OK\020\001\022\r\n\tNO_" +
       "STRING\020\002\022\023\n\017NO_ROLE_ACCOUNT\020\003\022\016\n\nEXIST_R" +
       "OLE\020\004\022\021\n\rCREATE_FAILED\020\005\022\020\n\014REJECT_LOGIN" +
       "\020\006\022\023\n\017ACCOUNT_ILLEGEL\020\007\022\014\n\010IN_LOGIN\020\010\022\022\n" +
@@ -123,7 +131,9 @@ public final class Error {
       "AME_REPEATED\020\013\022\021\n\rNAME_TOO_LONG\020\014\022\025\n\021NAM" +
       "E_SPECIAL_CHAR\020\r\022\014\n\010NO_MONEY\020\016\022\025\n\021GAME_C" +
       "REATE_ERROR\020\017\022\023\n\017GAME_JOIN_ERROR\020\020\022\017\n\013RO" +
-      "UND_ERROR\020\021"
+      "UND_ERROR\020\021\022\023\n\017MONEY_NUM_ERROR\020\022\022\024\n\020MATC",
+      "H_ERROR_LOCK\020\023\022\030\n\024MATCH_MAX_ROLE_COUNT\020\024" +
+      "\022\022\n\016GAME_NOT_EXIST\020\025"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

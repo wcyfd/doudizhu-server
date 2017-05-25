@@ -31,4 +31,9 @@ enum ErrorCode{
 	GAME_CREATE_ERROR = 15;//创建游戏失败
 	GAME_JOIN_ERROR = 16;//加入游戏失败
 	ROUND_ERROR = 17;//操作错误
-} // 17
+	MONEY_NUM_ERROR = 18;//兑换数量错误
+	MATCH_ERROR_LOCK = 19;//房间号错误
+	MATCH_MAX_ROLE_COUNT = 20;//房间已经满了
+
+	GAME_NOT_EXIST = 21;//游戏不存在
+} // 21

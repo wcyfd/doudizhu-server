@@ -20,10 +20,14 @@
 					`money` int(11) DEFAULT NULL COMMENT '游戏币（欢乐豆）',
 					`gameId` int(11) DEFAULT NULL COMMENT '游戏id',
 					`sex` int(2) DEFAULT NULL COMMENT '性别',
+					`moneyExchangeNum` int(11) DEFAULT NULL COMMENT '游戏币（欢乐豆）兑换数量',
+					`volume` int(4) DEFAULT NULL COMMENT '音效音量',
+					`musicVolume` int(4) DEFAULT NULL COMMENT '音乐音量',
 					`loginTimeStr` varchar(255) DEFAULT NULL COMMENT '登陆时间',
 					`offlineTimeStr` varchar(255) DEFAULT NULL COMMENT '离线时间',
 					`createTimeStr` varchar(255) DEFAULT NULL COMMENT '创建时间',
 					`loadTimeStr` varchar(255) DEFAULT NULL COMMENT '加载时间',
+					`moneyExchangeTimeStr` varchar(255) DEFAULT NULL COMMENT '游戏币兑换时间',
 					PRIMARY KEY (`roleId`)
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 				</value>

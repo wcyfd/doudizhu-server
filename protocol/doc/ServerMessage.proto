@@ -1,6 +1,8 @@
 package com.randioo.doudizhu_server.protocol;
 import "Login.proto";
 import "Role.proto";
+import "Match.proto";
+import "Fight.proto";
 
 message SC{
 	optional LoginCheckAccountResponse LoginCheckAccountResponse = 1;
@@ -9,4 +11,18 @@ message SC{
 
 	optional RoleRenameResponse RoleRenameResponse = 4;
 
-} // 4
+	optional MatchCreateGameResponse MatchCreateGameResponse = 5;
+	optional MatchJoinGameResponse MatchJoinGameResponse = 6;
+	optional SCMatchJoinGame SCMatchJoinGame = 7;
+
+	optional FightReadyResponse FightReadyResponse = 8;//准备(只有好友对战用)
+	optional SCFightReady SCFightReady = 9;//某玩家进行准备
+	optional SCFightStart SCFightStart = 10;//游戏开始
+	optional FightExitGameResponse FightExitGameResponse = 11;//游戏退出
+	optional SCFightExitGame SCFightExitGame = 12;//某玩家游戏退出
+	optional SCFightApplyExitGame SCFightApplyExitGame = 13;//某玩家申请游戏退出
+	optional FightAgreeExitGameResponse FightAgreeExitGameResponse = 14;//同意游戏退出
+	optional SCFightGameDismiss SCFightGameDismiss = 15;//游戏解散
+	optional SCFightLoadResource SCFightLoadResource = 16;//游戏资源加载(用于匹配)
+
+} // 16

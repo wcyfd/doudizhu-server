@@ -300,170 +300,13 @@ public class Tool {
 		return _list;
 	}
 	
-	/**根据硬三嘴的规则剪掉  风字儿  （123） 组合
-	 * */
-	public static int [] remove123WithZui3(int [] _list)
-	{
-		int [] tmp = _list.clone();
-		for (int i = 0; i < tmp.length ; )
-		{
-			int num0 = tmp[i] ;
-			if (num0 < 400)
-			{
-				i++;
-				continue;
-			}
-			int num1 = Tool.indexOf(tmp, num0 +1);
-			int num2 = Tool.indexOf(tmp, num0 +2);
-			int num3 = Tool.indexOf(tmp, num0 +3);
-			if (num1 == -1 &&  num3 == -1 || num1 == -1 && num2 == -1 ||   num3==-1 && num2 == -1)
-			{
-				return tmp;
-			}
-			if (num1==-1)
-			{
-				num1 = tmp[num2];
-				num2 = tmp[num3];
-			}else if (num2 == -1)
-			{
-				num1 = tmp[num1];
-				num2 = tmp[num3];
-			}else
-			{
-				num1 = tmp[num1];
-				num2 = tmp[num2];
-			}
-			tmp = Tool.removeItem(tmp, num0);
-			tmp = Tool.removeItem(tmp, num1);
-			tmp = Tool.removeItem(tmp, num2);
-		}
-		return tmp;
-	}
-	public static boolean sameType(int [] $list)
-	{
-		if ($list.length == 0)return true;
-		int len = $list.length;
-		int type = $list[0]/100;
-		for (int i=1; i <len;i++ )
-		{
-			if($list[i] /100 != type )return false;
-		}
-		return true;
-	}
 	
-	/**缺其中一个*/
-	public static boolean lastOnefo(int []$list)
-	{
-		if ($list.length != 2)return false;
-		int num0 = $list[0];
-		/** 101 102  左边，中间 ，右边   相同*/
-		int  [] inctace = {num0 - 1 ,num0 +1 , $list[1]+  1 , num0};
-		
-		for (int i  = 0 ; i < 4; i ++)
-		{
-			int tmpNum = inctace[i];
-			int tUnit = tmpNum %100;
-			if (tUnit == 0 || tUnit == 10)
-			{
-				continue;
-			}
-			int[] tPaiList = Tool.addItemToList($list, tmpNum);
-			tPaiList = Tool.remove123(tPaiList);
-			tPaiList = Tool.removeBase3(tPaiList);
-			if (tPaiList.length == 0)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
 	
-	/**缺其中一个  根据硬三嘴的规则 判断是否 3缺一*/
-	public static boolean lastOnefoWithZui3(int []$list)
-	{
-		boolean baseL = lastOnefo($list);
-		if (baseL) return true;
-		//if ($list.length != 2)return false;
-		
-		int num0 = $list[0];
-		if ( num0<400 || num0 >500)return false;
-		/** 401 402 403 404  左边，中间 ，右边   相同 都可以*/
-		return true;
-	}
+
+
 	
-	public static int [] remove123456789(int $list[])
-	{
-		if ($list.length <9)return $list;
-		int [] cList = $list.clone();
-		int tType = $list[0] / 100;
-		int type = tType;
-		int num = $list[0];
-		int comperCout = 1;
-		$list = removeItem($list, num);
-		for (int  j = 0 ;  j < $list.length;)
-		{
-			if($list[j] > 400){ j++; continue;};
-			tType = $list[j] / 100;
-			int tNum = $list[j];
-			if ( tType == type &&num +1 == tNum)
-			{
-				$list = removeItem($list, tNum);
-				num = tNum;
-				j = 0;
-				comperCout++;
-				continue;
-			}
-			j++;
-			//return $list;
-		}
-		if( comperCout < 9 )return cList;
-		return $list;
-	}
-	/**获取列表中 数字的数量*/
-	public static int  getNumberCount(int [] $list)
-	{
-		if ($list.length <=0)return 0;
-		int tType = $list[0] / 100;
-		int type = tType;
-		int num = $list[0];
-		int count = 0;
-		for (int i = 0; i < $list.length;i++)
-		{
-			int tNum = $list[i];
-			if (tNum > 400)return count ;
-			if (type != tNum /100)return 0;
-			count++;
-		}
-		return count;
-	}
-	/**获取类别中 字的数量*/
-	public static int getZiCount(int [] $list)
-	{
-		if ($list.length <=0)return 0;
-		int count = 0;
-		for (int i = 0; i < $list.length;i++)
-		{
-			int tNum = $list[i];
-			if (tNum < 400)continue ;
-			count++;
-		}
-		return count;
-	}
-	/*public static int[] sublist(int[] $list,int formindex, int enIndex)
-	{
-		/*int[] tmp = new int[enIndex - formindex];
-		int len = $list.length;
-		int index = 0
-		for (int i = formindex ; i < enIndex; i++)
-		{
-			if ()
-			{
-				tmp[index] = $list[i];
-				index++;
-			}
-		}
-		return tmp;
-	}*/
+	
+	
 	
 	public static int [] removeLlist(int [] list ,int[] delete)
 	{
@@ -480,11 +323,7 @@ public class Tool {
 	}
 	
 
-	/**
-	 * int杞琤yte鏁扮粍
-	 * @param i
-	 * @return
-	 */
+
 	public static byte[] intToByteArray1(int i) {   
 		byte[] result = new byte[4];   
 		result[0] = (byte)((i >> 24) & 0xFF);

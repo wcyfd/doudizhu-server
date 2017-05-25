@@ -1,0 +1,52 @@
+package com.randioo.doudizhu_server.protocol;
+
+import "Entity.proto";
+
+message FightReadyRequest{
+	optional GameConfig gameConfig = 1;
+}
+
+message FightReadyResponse{
+	optional int32 errorCode = 1[default = 1];
+}
+
+message SCFightReady{
+	optional string gamrRoleId=1;
+}
+
+message SCFightStart{
+	
+}
+
+message FightExitGameRequest{
+	
+}
+
+message FightExitGameResponse{
+	optional int32 errorCode = 1 [default = 1];
+}
+
+
+message SCFightExitGame{
+	optional string gameRoleId = 1;
+}
+
+message SCFightApplyExitGame{
+	optional string gameRoleId = 1;
+}
+
+message FightAgreeExitGameRequest{
+	optional string gameRoleId = 1;
+}
+
+message FightAgreeExitGameResponse{
+	
+}
+
+message SCFightGameDismiss{
+	
+}
+
+message SCFightLoadResource{
+	
+}

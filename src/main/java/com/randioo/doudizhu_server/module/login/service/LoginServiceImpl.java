@@ -103,11 +103,6 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 		}
 
 		@Override
-		public RoleInterface getRoleInterface(LoginInfo loginInfo) {
-			return getRoleByAccount(loginInfo.getAccount());
-		}
-
-		@Override
 		public boolean canSynLogin() {
 			return false;
 		}
@@ -143,8 +138,11 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 
 		if (roleInterface != null) {
 			Role role = (Role) roleInterface;
-			SC sc = SC.newBuilder().setLoginGetRoleDataResponse(LoginGetRoleDataResponse.newBuilder()
-					.setServerTime(TimeUtils.getNowTime()).setRoleData(getRoleData(role))).build();
+			SC sc = SC
+					.newBuilder()
+					.setLoginGetRoleDataResponse(
+							LoginGetRoleDataResponse.newBuilder().setServerTime(TimeUtils.getNowTime())
+									.setRoleData(getRoleData(role))).build();
 			return sc;
 		}
 
@@ -160,7 +158,7 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 		SC sc = SC.newBuilder()
 				.setLoginGetRoleDataResponse(LoginGetRoleDataResponse.newBuilder().setErrorCode(errorEnum.getNumber()))
 				.build();
-		
+
 		return sc;
 	}
 
@@ -204,7 +202,8 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 		LoginInfo info = new LoginInfo();
 		info.setAccount(account);
 		if (!GlobleConfig.Boolean(GlobleEnum.LOGIN)) {
-			return SC.newBuilder()
+			return SC
+					.newBuilder()
 					.setLoginCheckAccountResponse(
 							LoginCheckAccountResponse.newBuilder().setErrorCode(ErrorCode.REJECT_LOGIN.getNumber()))
 					.build();
@@ -212,14 +211,17 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 
 		boolean isNewAccount = loginModelService.login(info);
 
-		return SC.newBuilder()
-				.setLoginCheckAccountResponse(LoginCheckAccountResponse.newBuilder()
-						.setErrorCode(isNewAccount ? ErrorCode.NO_ROLE_ACCOUNT.getNumber() : ErrorCode.OK.getNumber()))
+		return SC
+				.newBuilder()
+				.setLoginCheckAccountResponse(
+						LoginCheckAccountResponse.newBuilder().setErrorCode(
+								isNewAccount ? ErrorCode.NO_ROLE_ACCOUNT.getNumber() : ErrorCode.OK.getNumber()))
 				.build();
 	}
 
 	private RoleData getRoleData(Role role) {
-		RoleData.Builder roleDataBuilder = RoleData.newBuilder().setRoleId(role.getRoleId()).setName(role.getName());
+		RoleData.Builder roleDataBuilder = RoleData.newBuilder().setRoleId(role.getRoleId()).setName(role.getName())
+				.setMoney(role.getMoney()).setMusicVolume(role.getMusicVolume()).setVolume(role.getVolume());
 
 		return roleDataBuilder.build();
 	}

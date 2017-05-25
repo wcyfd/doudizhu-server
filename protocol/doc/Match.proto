@@ -1,0 +1,25 @@
+package com.randioo.doudizhu_server.protocol;
+
+import "Entity.proto";
+
+message MatchCreateGameRequest{
+	optional GameConfig gameConfig = 1;
+}
+
+message MatchCreateGameResponse{
+	optional int32 errorCode = 1[default = 1];
+}
+
+
+message MatchJoinGameRequest{
+	optional string lockString = 1;
+}
+
+message MatchJoinGameResponse{
+	optional int32 errorCode = 1[default = 1];
+	repeated GameRoleData gameRoleData = 2;
+}
+
+message SCMatchJoinGame{
+	optional GameRoleData gameRoleData = 1;
+}
