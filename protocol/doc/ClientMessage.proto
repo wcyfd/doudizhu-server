@@ -3,6 +3,9 @@ import "Login.proto";
 import "Role.proto";
 import "Match.proto";
 import "Fight.proto";
+import "MoneyExchange.proto";
+import "Settings.proto";
+
 
 message CS{
 	optional LoginCheckAccountRequest LoginCheckAccountRequest = 1;
@@ -17,4 +20,6 @@ message CS{
 	optional FightReadyRequest FightReadyRequest = 7;
 	optional FightExitGameRequest FightExitGameRequest = 8;
 	optional FightAgreeExitGameRequest FightAgreeExitGameRequest = 9;
-} // 9
+	optional MoneyExchangeRequest MoneyExchangeRequest = 10;
+	optional SettingsRequest SettingsRequest = 11;
+} // 11

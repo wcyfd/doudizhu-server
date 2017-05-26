@@ -21,8 +21,8 @@ public class LoginGetRoleDataAction implements IActionSupport {
 	@Override
 	public void execute(Object data, IoSession session) {
 		LoginGetRoleDataRequest request = (LoginGetRoleDataRequest) data;
-		GeneratedMessage sc = loginService.getRoleData(request.getAccount(), session);
-
+		String account = request.getAccount();
+		GeneratedMessage sc = loginService.getRoleData(account, session);
 		SessionUtils.sc(session, sc);
 	}
 

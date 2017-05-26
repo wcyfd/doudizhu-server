@@ -3,6 +3,8 @@ import "Login.proto";
 import "Role.proto";
 import "Match.proto";
 import "Fight.proto";
+import "MoneyExchange.proto";
+import "Settings.proto";
 
 message SC{
 	optional LoginCheckAccountResponse LoginCheckAccountResponse = 1;
@@ -24,5 +26,7 @@ message SC{
 	optional FightAgreeExitGameResponse FightAgreeExitGameResponse = 14;//同意游戏退出
 	optional SCFightGameDismiss SCFightGameDismiss = 15;//游戏解散
 	optional SCFightLoadResource SCFightLoadResource = 16;//游戏资源加载(用于匹配)
+	optional MoneyExchangeResponse MoneyExchangeResponse = 17;//燃点币游戏币（欢乐豆）互换
+	optional SettingsResponse SettingsResponse = 18;//设置
 
-} // 16
+} // 18

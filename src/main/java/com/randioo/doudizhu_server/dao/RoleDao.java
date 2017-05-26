@@ -21,4 +21,8 @@ public interface RoleDao extends BaseDao<Role> {
 	Integer moneyExchangeNum(@Param("account") String account, @Param("roleId") int id);
 
 	public Integer getMaxRoleId();
+	
+	void updateLimit(@Param("moneyExchangeNum") int moneyExchangeNum, @Param("moneyExchangeTimeStr") String moneyExchangeTimeStr, @Param("roleId") int id);
+	
+	void updateVolume(@Param("volume") int volume, @Param("musicVolume") int musicVolume, @Param("roleId") int id);
 }

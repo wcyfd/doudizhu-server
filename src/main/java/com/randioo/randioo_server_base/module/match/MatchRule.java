@@ -8,6 +8,7 @@ public class MatchRule {
 	private int waitTime;
 	private String id;
 	private MatchState state;
+	private int maxMatchCount;
 
 	public int getWaitTime() {
 		return waitTime;
@@ -29,7 +30,15 @@ public class MatchRule {
 		return state;
 	}
 
-	public void setState(MatchState state) {
+	protected void setState(MatchState state) {
 		this.state = state;
+	}
+
+	public int getMaxMatchCount() {
+		return maxMatchCount;
+	}
+
+	public void setMaxMatchCount(int maxMatchCount) {
+		this.maxMatchCount = maxMatchCount;
 	}
 }

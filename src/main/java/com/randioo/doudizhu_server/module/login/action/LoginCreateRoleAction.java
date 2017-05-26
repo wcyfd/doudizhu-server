@@ -21,7 +21,8 @@ public class LoginCreateRoleAction implements IActionSupport {
 	@Override
 	public void execute(Object data, IoSession session) {
 		LoginCreateRoleRequest request = (LoginCreateRoleRequest) data;
-		GeneratedMessage sc = loginService.creatRole(request.getAccount());
+		String account = request.getAccount();
+		GeneratedMessage sc = loginService.creatRole(account);
 		
 		SessionUtils.sc(session, sc);
 

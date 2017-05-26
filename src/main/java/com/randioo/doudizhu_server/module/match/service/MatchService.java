@@ -1,11 +1,9 @@
 package com.randioo.doudizhu_server.module.match.service;
 
-import java.util.Set;
-
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.entity.bo.Role;
+import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
 import com.randioo.randioo_server_base.utils.service.ObserveBaseServiceInterface;
-import com.randioo.randioo_server_base.utils.template.Function;
 
 public interface MatchService extends ObserveBaseServiceInterface {
 	/**
@@ -15,7 +13,7 @@ public interface MatchService extends ObserveBaseServiceInterface {
 	 * @return
 	 * @author wcy 2017年5月25日
 	 */
-	public GeneratedMessage createGame(Role role);
+	public GeneratedMessage createRoom(Role role, GameConfig gameConfig);
 
 	/**
 	 * 加入游戏
@@ -36,5 +34,9 @@ public interface MatchService extends ObserveBaseServiceInterface {
 	 * @author wcy 2017年5月25日
 	 */
 	String getGameRoleId(int gameId, int roleId);
+
+	GeneratedMessage match(Role role);
+
+	GeneratedMessage matchAI(Role role);
 
 }

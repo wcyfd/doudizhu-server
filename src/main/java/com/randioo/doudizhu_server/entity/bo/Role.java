@@ -14,6 +14,24 @@ public class Role extends RoleInterfaceImpl {
 	private String offlineTimeStr;
 	private String createTimeStr;
 	private String loadTimeStr;
+	private String headImgUrl;
+	private int randiooMoney;
+
+	public int getRandiooMoney() {
+		return randiooMoney;
+	}
+
+	public void setRandiooMoney(int randiooMoney) {
+		this.randiooMoney = randiooMoney;
+	}
+
+	public String getHeadImgUrl() {
+		return headImgUrl;
+	}
+
+	public void setHeadImgUrl(String headImgUrl) {
+		this.headImgUrl = headImgUrl;
+	}
 
 	@Override
 	public void setRoleId(int roleId) {

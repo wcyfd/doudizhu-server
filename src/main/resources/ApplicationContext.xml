@@ -1,7 +1,4 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
-	xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation=" 
        http://www.springframework.org/schema/beans 
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
@@ -15,8 +12,7 @@
        http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
 	<!-- 加载配置属性文件 -->
-	<context:property-placeholder
-		ignore-unresolvable="true" location="classpath:application.properties" />
+	<context:property-placeholder ignore-unresolvable="true" location="classpath:application.properties" />
 
 	<!-- 利用注解进行bean的生成，并进行自动连锁 -->
 	<!-- sihao_server -->
@@ -29,8 +25,7 @@
 
 
 	<!-- BoneCP configuration(Game) -->
-	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
-		destroy-method="close">
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
 		<property name="driverClass" value="${jdbc.driver}" />
 		<property name="jdbcUrl" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
@@ -49,8 +44,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage" value="com.randioo" />
-		<property name="typeAliasesSuperType"
-			value="com.randioo.randioo_server_base.utils.db.Saveable" />
+		<property name="typeAliasesSuperType" value="com.randioo.randioo_server_base.utils.db.Saveable" />
 		<property name="mapperLocations" value="classpath:/db/**/*.xml" />
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
@@ -60,8 +54,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<property name="basePackage" value="com.randioo.doudizhu_server.dao" />
-		<property name="annotationClass"
-			value="com.randioo.randioo_server_base.annotation.MyBatisGameDaoAnnotation" />
+		<property name="annotationClass" value="com.randioo.randioo_server_base.annotation.MyBatisGameDaoAnnotation" />
 	</bean>
 
 	<import resource="communal.xml" />

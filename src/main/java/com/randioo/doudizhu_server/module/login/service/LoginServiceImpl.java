@@ -18,6 +18,7 @@ import com.randioo.doudizhu_server.protocol.Login.LoginCheckAccountResponse;
 import com.randioo.doudizhu_server.protocol.Login.LoginCreateRoleResponse;
 import com.randioo.doudizhu_server.protocol.Login.LoginGetRoleDataResponse;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
+import com.randioo.doudizhu_server.util.Tool;
 import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.db.DBRunnable;
 import com.randioo.randioo_server_base.db.GameDB;
@@ -77,7 +78,7 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 
 			return true;
 		}
-
+		
 		@Override
 		public RoleInterface createRole(LoginCreateInfo loginCreateInfo) {
 			String account = loginCreateInfo.getAccount();
@@ -135,15 +136,15 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 		Ref<Integer> errorCode = new Ref<>();
 
 		RoleInterface roleInterface = loginModelService.getRoleData(loginInfo, errorCode, ioSession);
-
+		
 		if (roleInterface != null) {
 			Role role = (Role) roleInterface;
-			SC sc = SC
+			
+			return  SC
 					.newBuilder()
 					.setLoginGetRoleDataResponse(
 							LoginGetRoleDataResponse.newBuilder().setServerTime(TimeUtils.getNowTime())
 									.setRoleData(getRoleData(role))).build();
-			return sc;
 		}
 
 		ErrorCode errorEnum = null;
@@ -164,11 +165,10 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 
 	@Override
 	public GeneratedMessage creatRole(String account) {
-		LoginCreateInfo loginInfo = new LoginCreateInfo();
-		loginInfo.setAccount(account);
-
+		LoginCreateInfo loginCreateInfo = new LoginCreateInfo();
+		loginCreateInfo.setAccount(account);
 		Ref<Integer> errorCode = new Ref<>();
-		boolean result = loginModelService.createRole(loginInfo, errorCode);
+		boolean result = loginModelService.createRole(loginCreateInfo, errorCode);
 		if (result) {
 			return SC.newBuilder().setLoginCreateRoleResponse(LoginCreateRoleResponse.newBuilder()).build();
 		}
@@ -220,8 +220,9 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 	}
 
 	private RoleData getRoleData(Role role) {
-		RoleData.Builder roleDataBuilder = RoleData.newBuilder().setRoleId(role.getRoleId()).setName(role.getName())
-				.setMoney(role.getMoney()).setMusicVolume(role.getMusicVolume()).setVolume(role.getVolume());
+		roleService.roleInit(role);
+		RoleData.Builder roleDataBuilder = RoleData.newBuilder().setRoleId((Tool.regExpression(role.getAccount(), "[0-9]*")?Integer.parseInt(role.getAccount()):role.getRoleId())).setName(role.getName())
+				.setMoney(role.getMoney()).setMusicVolume(role.getMusicVolume()).setVolume(role.getVolume()).setRandiooMoney(role.getRandiooMoney()).setHeadImgUrl(role.getHeadImgUrl());
 
 		return roleDataBuilder.build();
 	}

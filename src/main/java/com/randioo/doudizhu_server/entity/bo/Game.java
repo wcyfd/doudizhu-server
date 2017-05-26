@@ -22,6 +22,44 @@ public class Game {
 	// 游戏类型
 	private GameType gameType;
 
+	private int round = 0;
+	private int di = 0;
+
+	private boolean moguai = false;
+	private boolean mingpai = false;
+
+	public int getRound() {
+		return round;
+	}
+
+	public void setRound(int round) {
+		this.round = round;
+	}
+
+	public int getDi() {
+		return di;
+	}
+
+	public void setDi(int di) {
+		this.di = di;
+	}
+
+	public boolean isMoguai() {
+		return moguai;
+	}
+
+	public void setMoguai(boolean moguai) {
+		this.moguai = moguai;
+	}
+
+	public boolean isMingpai() {
+		return mingpai;
+	}
+
+	public void setMingpai(boolean mingpai) {
+		this.mingpai = mingpai;
+	}
+
 	public void setGameId(int gameId) {
 		this.gameId = gameId;
 	}

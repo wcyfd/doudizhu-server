@@ -25,15 +25,16 @@ enum ErrorCode{
 	
 	//玩家
 	NO_MONEY = 14;//没有钱
+	CONNECT_ERROR = 15;//服务器链接失败
 
 
 	//匹配
-	GAME_CREATE_ERROR = 15;//创建游戏失败
-	GAME_JOIN_ERROR = 16;//加入游戏失败
-	ROUND_ERROR = 17;//操作错误
-	MONEY_NUM_ERROR = 18;//兑换数量错误
-	MATCH_ERROR_LOCK = 19;//房间号错误
-	MATCH_MAX_ROLE_COUNT = 20;//房间已经满了
+	GAME_CREATE_ERROR = 16;//创建游戏失败
+	GAME_JOIN_ERROR = 17;//加入游戏失败
+	ROUND_ERROR = 18;//操作错误
+	MONEY_NUM_ERROR = 19;//兑换数量错误
+	MATCH_ERROR_LOCK = 20;//房间号错误
+	MATCH_MAX_ROLE_COUNT = 21;//房间已经满了
 
-	GAME_NOT_EXIST = 21;//游戏不存在
-} // 21
+	GAME_NOT_EXIST = 22;//游戏不存在
+} // 22

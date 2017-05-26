@@ -7,5 +7,5 @@ public interface MatchModelService extends BaseServiceInterface {
 
 	public void matchRole(MatchRule matchRule);
 
-	public void cancelMatch(int ruleId);
+	public void cancelMatch(String ruleId);
 }

@@ -58,7 +58,7 @@
 		</where>
 	</select>
 	<!-- select -->
-	<select id="getMoneyExchangeNum" resultType="int">
+	<select id="moneyExchangeNum" resultType="int">
 		select moneyExchangeNum from role
 		<where>
 			<if test="roleId != 0 ">
@@ -84,6 +84,25 @@
 			offlineTimeStr=#{offlineTimeStr},
 			createTimeStr=#{createTimeStr},
 			loadTimeStr=#{loadTimeStr}
+		where
+			roleId=#{roleId}
+	</update>
+	<!-- update -->
+	<update id="updateLimit">
+		update 
+			role 
+		set
+			moneyExchangeNum=#{moneyExchangeNum}, 
+			moneyExchangeTimeStr=#{moneyExchangeTimeStr}
+		where
+			roleId=#{roleId}
+	</update>
+	<update id="updateVolume">
+		update 
+			role 
+		set
+			volume=#{volume}, 
+			musicVolume=#{musicVolume}
 		where
 			roleId=#{roleId}
 	</update>

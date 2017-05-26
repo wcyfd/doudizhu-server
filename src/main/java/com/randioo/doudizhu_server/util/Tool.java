@@ -5,12 +5,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 
 public class Tool {
 	
-	
+	public static boolean regExpression(String str, String rule){
+        Pattern pattern = Pattern.compile(rule);
+        Matcher isNum = pattern.matcher(str);
+        if( !isNum.matches() ){
+            return false;
+        }
+        return true;
+	}
 	public static Method getFunction(@SuppressWarnings("rawtypes") Class $class , String funcname)
 	{
 	    Method method = null;

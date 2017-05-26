@@ -33,11 +33,12 @@
 				</value>
 			</list>
 		</property>
-	</bean>	
+	</bean>
 
 	<bean id="schedulerManager" class="com.randioo.randioo_server_base.utils.scheduler.SchedulerManager">
 		<property name="schedulers">
 			<list>
+				<ref bean="eventScheduler" />
 			</list>
 		</property>
 	</bean>
@@ -48,7 +49,19 @@
 				<ref bean="loginService" />
 				<ref bean="gmService" />
 				<ref bean="roleService" />
+				<ref bean="moneyExchangeService" />
+				<ref bean="settingService" />
+				<ref bean="matchService" />
 			</list>
 		</property>
 	</bean>
+
+	<!-- 双缓冲时间定时器 -->
+	<bean id="eventScheduler" class="com.randioo.randioo_server_base.utils.scheduler.EventScheduler">
+		<property name="slowTime" value="15"></property>
+		<property name="quickTime" value="1"></property>
+	</bean>
+
+	<!-- 匹配模块 -->
+	<bean id="matchModelService" class="com.randioo.randioo_server_base.module.match.MatchModelServiceImpl"></bean>
 </beans>
