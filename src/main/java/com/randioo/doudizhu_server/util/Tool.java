@@ -264,7 +264,6 @@ public class Tool {
 		{
 			return _list;
 		}
-		int len = _list.length;
 		int maxIndex = _list.length -2;
 		for (int i = 0; i< maxIndex ;)
 		{
@@ -291,7 +290,6 @@ public class Tool {
 		{
 			return _list;
 		}
-		int len = _list.length;
 		int maxIndex = _list.length -1;
 		for (int i = 0; i< maxIndex ;)
 		{

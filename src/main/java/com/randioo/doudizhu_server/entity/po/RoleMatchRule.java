@@ -6,6 +6,7 @@ public class RoleMatchRule extends MatchRule implements Comparable<RoleMatchRule
 	private int roleId;
 	private int matchTime;
 	private boolean ai;
+	private int maxCount;
 
 	public int getRoleId() {
 		return roleId;
@@ -25,6 +26,14 @@ public class RoleMatchRule extends MatchRule implements Comparable<RoleMatchRule
 
 	public void setMatchTime(int matchTime) {
 		this.matchTime = matchTime;
+	}
+
+	public int getMaxCount() {
+		return maxCount;
+	}
+
+	public void setMaxCount(int maxCount) {
+		this.maxCount = maxCount;
 	}
 
 	@Override

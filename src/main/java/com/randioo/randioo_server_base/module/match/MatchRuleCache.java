@@ -17,18 +17,25 @@ public class MatchRuleCache {
 	public static Set<String> cancelMatchRuleIdSet = new HashSet<>();
 
 	public static Set<String> getDeleteMatchRuleIdSet() {
+		System.out.println("DeleteMatchRuleIdSet"+cancelMatchRuleIdSet);
 		return cancelMatchRuleIdSet;
 	}
 
-	public static Map<Integer, Map<String, MatchRule>> matchTempMap = new HashMap<>();
+	public static Map<String, MatchRule> matchTempMap = new HashMap<>();
 
-	public static Map<Integer, Map<String, MatchRule>> getMatchTempMap() {
+	public static Map<String, MatchRule> getMatchTempMap() {
 		return matchTempMap;
 	}
 
-	public static Map<Integer, Set<Lock>> locksTempMap = new HashMap<>();
+	public static Set<Lock> locksTempMap = new HashSet<>();
 
-	public static Map<Integer, Set<Lock>> getLocksTempMap() {
+	public static Set<Lock> getLocksTempMap() {
 		return locksTempMap;
+	}
+
+	public static Set<String> needDeleteIdTempSet = new HashSet<>();
+
+	public static Set<String> getNeedDeleteIdTempSet() {
+		return needDeleteIdTempSet;
 	}
 }

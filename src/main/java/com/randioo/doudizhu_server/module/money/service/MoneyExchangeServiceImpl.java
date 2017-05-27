@@ -30,6 +30,7 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
 	public GeneratedMessage moneyExchange(Role role, boolean add, int num) {
 		System.out.println("@@@"+role.getAccount());
 		Integer max = roleDao.moneyExchangeNum(role.getAccount(), role.getRoleId());
+		int randiooMoney = num;
 		if(max == null){
 			max = 0;
 		}
@@ -71,9 +72,11 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
 			
 		}
 		if(exchangeMoney(role, num, add)){
+			role.setMoney(role.getMoney()+(add?1:-1)*randiooMoney);
 			if(!add){
 				roleDao.updateLimit(max, TimeUtils.getDetailTimeStr(), role.getRoleId());
 			}
+			roleDao.update(role);
 			RoleCache.putNewRole(role);
     		return SC.newBuilder().setMoneyExchangeResponse(MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.OK.getNumber())).build();
     	}else{

@@ -11,7 +11,10 @@ import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.dao.RoleDao;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.doudizhu_server.module.login.LoginConstant;
+import com.randioo.doudizhu_server.module.login.service.LoginService;
+import com.randioo.doudizhu_server.protocol.Entity.RoleData;
 import com.randioo.doudizhu_server.protocol.Error.ErrorCode;
+import com.randioo.doudizhu_server.protocol.Role.GetRoleDataResponse;
 import com.randioo.doudizhu_server.protocol.Role.RoleRenameResponse;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.HttpConnection;
@@ -38,6 +41,9 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 
 	@Autowired
 	private RoleModelService roleModelService;
+
+	@Autowired
+	private LoginService loginService;
 
 	@Override
 	public void init() {
@@ -135,8 +141,8 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 		String name = "";
 		String headImgUrl = "";
 		HttpConnection connection = new HttpConnection(
-				/* "http://manager.app.randioo.com/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=" */
-				"http://10.0.51.6/APPadmin/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=",
+		/* "http://manager.app.randioo.com/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=" */
+		"http://10.0.51.6/APPadmin/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=",
 				role.getAccount());
 		connection.connect();
 		String result = connection.result;
@@ -147,10 +153,10 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 		try {
 			JSONObject obj = new JSONObject(result);
 			money = obj.getInt("randioo_money");
-			if(money != -1){
+			if (money != -1) {
 				name = obj.getString("nickname");
 				headImgUrl = obj.getString("headimgurl");
-				if(headImgUrl.equals("null")){
+				if (headImgUrl.equals("null")) {
 					headImgUrl = null;
 				}
 			}
@@ -165,11 +171,18 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 		if (money == -1)
 			money = 100;
 
-		role.setName(StringUtils.isNullOrEmpty(name)?"guest" + role.getRoleId():name);
-		System.out.println("@@@"+headImgUrl+(headImgUrl == null));
-		role.setHeadImgUrl(StringUtils.isNullOrEmpty(headImgUrl)?"ui://h24q1ml0x7tz13m":headImgUrl);
+		role.setName(StringUtils.isNullOrEmpty(name) ? "guest" + role.getRoleId() : name);
+		System.out.println("@@@" + headImgUrl + (headImgUrl == null));
+		role.setHeadImgUrl(StringUtils.isNullOrEmpty(headImgUrl) ? "ui://h24q1ml0x7tz13m" : headImgUrl);
 		role.setRandiooMoney(money);
 
 	}
 
+	@Override
+	public GeneratedMessage getRoleData(String account) {
+		Role role = loginService.getRoleByAccount(account);
+		RoleData roleData = loginService.getRoleData(role);
+
+		return SC.newBuilder().setGetRoleDataResponse(GetRoleDataResponse.newBuilder().setRoleData(roleData)).build();
+	}
 }

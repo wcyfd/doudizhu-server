@@ -78,7 +78,7 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 
 			return true;
 		}
-		
+
 		@Override
 		public RoleInterface createRole(LoginCreateInfo loginCreateInfo) {
 			String account = loginCreateInfo.getAccount();
@@ -136,11 +136,11 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 		Ref<Integer> errorCode = new Ref<>();
 
 		RoleInterface roleInterface = loginModelService.getRoleData(loginInfo, errorCode, ioSession);
-		
+
 		if (roleInterface != null) {
 			Role role = (Role) roleInterface;
-			
-			return  SC
+
+			return SC
 					.newBuilder()
 					.setLoginGetRoleDataResponse(
 							LoginGetRoleDataResponse.newBuilder().setServerTime(TimeUtils.getNowTime())
@@ -219,10 +219,16 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 				.build();
 	}
 
-	private RoleData getRoleData(Role role) {
+	@Override
+	public RoleData getRoleData(Role role) {
 		roleService.roleInit(role);
-		RoleData.Builder roleDataBuilder = RoleData.newBuilder().setRoleId((Tool.regExpression(role.getAccount(), "[0-9]*")?Integer.parseInt(role.getAccount()):role.getRoleId())).setName(role.getName())
-				.setMoney(role.getMoney()).setMusicVolume(role.getMusicVolume()).setVolume(role.getVolume()).setRandiooMoney(role.getRandiooMoney()).setHeadImgUrl(role.getHeadImgUrl());
+		RoleData.Builder roleDataBuilder = RoleData
+				.newBuilder()
+				.setRoleId(
+						(Tool.regExpression(role.getAccount(), "[0-9]*") ? Integer.parseInt(role.getAccount()) : role
+								.getRoleId())).setName(role.getName()).setMoney(role.getMoney())
+				.setMusicVolume(role.getMusicVolume()).setVolume(role.getVolume())
+				.setRandiooMoney(role.getRandiooMoney()).setHeadImgUrl(role.getHeadImgUrl());
 
 		return roleDataBuilder.build();
 	}

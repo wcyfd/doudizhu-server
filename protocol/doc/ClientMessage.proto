@@ -22,4 +22,5 @@ message CS{
 	optional FightAgreeExitGameRequest FightAgreeExitGameRequest = 9;
 	optional MoneyExchangeRequest MoneyExchangeRequest = 10;
 	optional SettingsRequest SettingsRequest = 11;
-} // 11
+	optional GetRoleDataRequest GetRoleDataRequest = 12;
+} // 12

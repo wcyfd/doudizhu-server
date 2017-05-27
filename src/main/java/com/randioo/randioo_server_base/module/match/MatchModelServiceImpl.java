@@ -20,6 +20,7 @@ import com.randioo.randioo_server_base.utils.scheduler.EventScheduler;
 public class MatchModelServiceImpl extends BaseService implements MatchModelService {
 
 	private ExecutorService executor = null;
+	private ExecutorService matchSuccessExecutor = null;
 
 	@Autowired
 	private EventScheduler eventScheduler;
@@ -29,6 +30,7 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 	@Override
 	public void initService() {
 		executor = Executors.newSingleThreadScheduledExecutor();
+		matchSuccessExecutor = Executors.newCachedThreadPool();
 	}
 
 	@Override
@@ -46,7 +48,6 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 
 			@Override
 			public void run(MatchRule entity) {
-				int maxCount = entity.getMaxMatchCount();
 				try {
 					// 由于异步加入，所以加入之前先检查一次是否可以删除
 					Lock lock = getLock(entity.getId());
@@ -58,9 +59,7 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 					} finally {
 						lock.unlock();
 					}
-
-					Map<String, MatchRule> tempMap = getTempMapByCount(maxCount);
-					tempMap.put(entity.getId(), entity);
+					MatchRuleCache.getMatchTempMap().put(entity.getId(), entity);
 
 					Set<String> matchRuleIdSet = new HashSet<>(MatchRuleCache.getMatchRuleMap().keySet());
 
@@ -68,13 +67,13 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 					for (String id : matchRuleIdSet) {
 						MatchRule matchRule = MatchRuleCache.getMatchRuleMap().get(id);
 						// 不能匹配自己
-						if (matchRule.getId().equals(entity.getId()))
-							continue;
-
-						// 先检查规则，通过了在考虑同步问题
-						if (!checkMatch(entity, matchRule)) {
+						if (matchRule.getId().equals(entity.getId())) {
 							continue;
 						}
+
+						// 先检查规则，通过了在考虑同步问题
+						if (!matchHandler.checkMatchRule(entity, matchRule))
+							continue;
 
 						// 检查是否要删除,检查第二次,主要还是为了提高锁同步的必要性,由于检查匹配规则的耗时可能非常的长,但是玩家可以随取消匹配的
 						// 只检查自己是否取消匹配，如果取消匹配了，则下面的人不可能匹配上，直接下一个人
@@ -82,39 +81,59 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 							break;
 
 						// 规则匹配没有问题则加入到缓存
-						tempMap.put(matchRule.getId(), matchRule);
+						MatchRuleCache.getMatchTempMap().put(matchRule.getId(), matchRule);
 
-						Set<Lock> locks = new HashSet<>(getLocks(maxCount));
+						// 匹配到的人的集合与当前人的规则进行比较
+						if (!matchHandler.checkArriveMaxCount(entity, MatchRuleCache.getMatchTempMap()))
+							continue;
+
+						initLocks();
 						try {
-							lockSet_Lock(locks);
+							lockSet_Lock();
 
-							// 如果人数到了,检查所有选中的人
-							if (tempMap.size() < maxCount) {
-								continue;
-							}
-
-							boolean needDelete = false;
-							for (MatchRule rule : tempMap.values()) {
-								needDelete = checkDelete(rule);
-								tempMap.remove(rule.getId());
+							for (MatchRule rule : MatchRuleCache.getMatchTempMap().values()) {
+								if (checkDelete(rule))
+									MatchRuleCache.getNeedDeleteIdTempSet().add(rule.getId());
 							}
 
 							// 如果有要删除的则再找下一个人
-							if (needDelete)
+							if (MatchRuleCache.getNeedDeleteIdTempSet().size() > 0) {
+								for (String deleteId : MatchRuleCache.getNeedDeleteIdTempSet())
+									MatchRuleCache.getMatchTempMap().remove(deleteId);
 								continue;
+							}
 
 							// 匹配成功
-							for (MatchRule rule : tempMap.values())
+							for (MatchRule rule : MatchRuleCache.getMatchTempMap().values())
 								rule.setState(MatchState.MATCH_SUCCESS);
 
+							matchSuccess = true;
 							break;
 
+						} catch (Exception e) {
+							e.printStackTrace();
 						} finally {
-							lockSet_Unlock(locks);
+							lockSet_Unlock();
+							MatchRuleCache.getLocksTempMap().clear();
+							MatchRuleCache.getNeedDeleteIdTempSet().clear();
 						}
 					}
-					if (matchSuccess)
-						matchHandler.matchSuccess(new HashMap<>(tempMap));
+					if (matchSuccess) {
+						MatchRuleCache.getDeleteMatchRuleIdSet().addAll(MatchRuleCache.getMatchTempMap().keySet());
+						Map<String, MatchRule> copyTempMap = new HashMap<>(MatchRuleCache.getMatchTempMap());
+						try {
+							matchSuccessExecutor.submit(new DBRunnable<Map<String, MatchRule>>(copyTempMap) {
+
+								@Override
+								public void run(Map<String, MatchRule> entity) {
+									matchHandler.matchSuccess(entity);
+								}
+
+							});
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -123,8 +142,8 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 					for (String ruleId : MatchRuleCache.getDeleteMatchRuleIdSet())
 						MatchRuleCache.getMatchRuleMap().remove(ruleId);
 
-					getTempMapByCount(maxCount).clear();
-					getTempLocks(maxCount).clear();
+					MatchRuleCache.getMatchTempMap().clear();
+					MatchRuleCache.getDeleteMatchRuleIdSet().clear();
 				}
 			}
 		});
@@ -137,7 +156,21 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 
 			@Override
 			public void outOfTime(MatchRule matchRule) {
-				matchHandler.outOfTime(matchRule);
+				if (checkDelete(matchRule))
+					return;
+
+				Lock lock = getLock(matchRule.getId());
+				try {
+					lock.lock();
+					if (checkDelete(matchRule))
+						return;
+
+					matchHandler.outOfTime(matchRule);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					lock.unlock();
+				}
 			}
 		};
 
@@ -187,34 +220,6 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 	}
 
 	/**
-	 * 获得临时的匹配表
-	 * 
-	 * @param matchCount
-	 * @return
-	 * @author wcy 2017年5月26日
-	 */
-	private Map<String, MatchRule> getTempMapByCount(int matchCount) {
-		Map<Integer, Map<String, MatchRule>> matchTempMap = MatchRuleCache.getMatchTempMap();
-		Map<String, MatchRule> matchRuleMap = matchTempMap.get(matchCount);
-		if (matchRuleMap == null) {
-			matchRuleMap = new HashMap<>();
-			matchTempMap.put(matchCount, matchRuleMap);
-		}
-		return matchRuleMap;
-	}
-
-	private Set<Lock> getTempLocks(int matchCount) {
-		Map<Integer, Set<Lock>> tempLocksMap = MatchRuleCache.getLocksTempMap();
-		Set<Lock> lockSet = tempLocksMap.get(matchCount);
-		if (lockSet == null) {
-			lockSet = new HashSet<>();
-			tempLocksMap.put(matchCount, lockSet);
-		}
-
-		return lockSet;
-	}
-
-	/**
 	 * 获得锁
 	 * 
 	 * @param id
@@ -225,33 +230,22 @@ public class MatchModelServiceImpl extends BaseService implements MatchModelServ
 		return CacheLockUtil.getLock(MatchRule.class, id);
 	}
 
-	private Set<Lock> getLocks(int maxCount) {
-		Map<String, MatchRule> map = getTempMapByCount(maxCount);
-		Set<Lock> set = this.getTempLocks(maxCount);
-		for (MatchRule matchRule : map.values()) {
-			Lock lock = getLock(matchRule.getId());
-			set.add(lock);
-		}
-		return set;
+	private void initLocks() {
+		Map<String, MatchRule> map = MatchRuleCache.getMatchTempMap();
+		for (MatchRule matchRule : map.values())
+			MatchRuleCache.getLocksTempMap().add(getLock(matchRule.getId()));
 	}
 
-	private void lockSet_Lock(Set<Lock> locks) {
-		for (Lock lock : locks)
+	private void lockSet_Lock() {
+		for (Lock lock : MatchRuleCache.getLocksTempMap())
 			lock.lock();
 
 	}
 
-	private void lockSet_Unlock(Set<Lock> locks) {
-		for (Lock lock : locks) {
+	private void lockSet_Unlock() {
+		for (Lock lock : MatchRuleCache.getLocksTempMap()) {
 			lock.unlock();
 		}
-	}
-
-	private boolean checkMatch(MatchRule rule1, MatchRule rule2) {
-		if (rule1.getMaxMatchCount() != rule2.getMaxMatchCount()) {
-			return false;
-		}
-		return matchHandler.checkMatch(rule1, rule2);
 	}
 
 }

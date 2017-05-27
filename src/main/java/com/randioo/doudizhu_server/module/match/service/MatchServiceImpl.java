@@ -89,9 +89,18 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 			}
 
 			@Override
-			public boolean checkMatch(MatchRule rule1, MatchRule rule2) {
+			public boolean checkMatchRule(MatchRule rule1, MatchRule rule2) {
+				RoleMatchRule roleRule1 = (RoleMatchRule) rule1;
+				RoleMatchRule roleRule2 = (RoleMatchRule) rule2;
 
-				return true;
+				return roleRule1.getMaxCount() == roleRule2.getMaxCount();
+			}
+
+			@Override
+			public boolean checkArriveMaxCount(MatchRule rule, Map<String, MatchRule> matchRuleMap) {
+				RoleMatchRule roleRule = (RoleMatchRule) rule;
+
+				return matchRuleMap.size() == roleRule.getMaxCount();
 			}
 		});
 
