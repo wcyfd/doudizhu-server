@@ -21,6 +21,7 @@ import com.randioo.doudizhu_server.protocol.Fight.SCFightReady;
 import com.randioo.doudizhu_server.protocol.Fight.SCFightStart;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.SessionUtils;
+import com.randioo.randioo_server_base.cache.SessionCache;
 import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
 
 @Service("fightService")
@@ -55,9 +56,12 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 			SessionUtils.sc(info.roleId, scFightReady);
 
 		// 检查是否全部都准备完毕,全部准备完毕开始游戏
-		boolean allReady = false;
+		boolean allReady = true;
 		for (RoleGameInfo info : game.getRoleIdMap().values()) {
-			allReady = info.ready;
+			if(!info.ready){
+				allReady = false;
+				break;
+			}			
 		}
 		if (allReady) {
 			game.setGameState(GameState.GAME_START_START);
@@ -106,22 +110,64 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		}
 		// 如果游戏已经开始,则要申请退出
 		else if (gameState == GameState.GAME_START_START) {
+			if(game.getOnlineRoleCount() != 0){
+				//TODO 　申请退出ing
+				System.out.println(role.getRoleId()+"申请退出ing");
+				return null;
+			}
 			SC scApplyExit = SC.newBuilder()
 					.setSCFightApplyExitGame(SCFightApplyExitGame.newBuilder().setGameRoleId(gameRoleId)).build();
-			for (RoleGameInfo info : game.getRoleIdMap().values())
+			for (RoleGameInfo info : game.getRoleIdMap().values()){
+				if(SessionCache.getSessionById(info.roleId).isConnected()){
+					game.setOnlineRoleCount(game.getOnlineRoleCount()+1);
+				}
+				info.agreeLeave = null;
 				SessionUtils.sc(info.roleId, scApplyExit);
+			}
+			agreeExit(role, true);
 		}
-
+		
 		return SC.newBuilder().setFightExitGameResponse(FightExitGameResponse.newBuilder()).build();
 	}
 
-	public GeneratedMessage agreeExit(Role role, String gameRoleId) {
+	@Override
+	public GeneratedMessage agreeExit(Role role, boolean agree) {
+		System.out.println(role.getRoleId()+""+agree);
 		Game game = GameCache.getGameMap().get(role.getGameId());
 		if (game == null) {
 			return null;
-
 		}
+		else{
+			String roleInfoStr =matchService.getGameRoleId(game.getGameId(), role.getRoleId());
+			RoleGameInfo roleInfo = game.getRoleIdMap().get(roleInfoStr);
+			roleInfo.agreeLeave = agree;
+			game.getRoleIdMap().put(roleInfoStr, roleInfo);
+			int flag = 0;
+			for (RoleGameInfo info : game.getRoleIdMap().values()){
+				if(info.agreeLeave != null && info.agreeLeave == false){
+					game.setOnlineRoleCount(0);
+					//TODO 申请结束
+					return null;
+				}
+				if(info.agreeLeave != null && info.agreeLeave){
+					flag += 1;
+				}
+			}
+			if(flag == game.getOnlineRoleCount()){
+				game.setGameState(GameState.GAME_START_END);
+
+				SC scDismiss = SC.newBuilder().setSCFightGameDismiss(SCFightGameDismiss.newBuilder()).build();
+				for (RoleGameInfo info : game.getRoleIdMap().values())
+					SessionUtils.sc(info.roleId, scDismiss);
+
+				// 将游戏从缓存池中移除
+				GameCache.getGameMap().remove(game.getGameId());
+			}
+		}
+			
 		return SC.newBuilder().setFightAgreeExitGameResponse(FightAgreeExitGameResponse.newBuilder()).build();
 	}
+	
+	
 
 }

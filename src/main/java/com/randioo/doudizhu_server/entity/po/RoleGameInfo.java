@@ -5,4 +5,5 @@ public class RoleGameInfo {
 	public int roleId;
 	public boolean ready;
 	public int seatIndex;
+	public Boolean agreeLeave;
 }

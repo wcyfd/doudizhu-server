@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.cache.local.GameCache;
+import com.randioo.doudizhu_server.dao.RoleDao;
 import com.randioo.doudizhu_server.entity.bo.Game;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.doudizhu_server.entity.po.RoleGameInfo;
@@ -27,6 +28,7 @@ import com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGame;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.SessionUtils;
 import com.randioo.doudizhu_server.util.Tool;
+import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.module.match.MatchHandler;
 import com.randioo.randioo_server_base.module.match.MatchModelService;
 import com.randioo.randioo_server_base.module.match.MatchRule;
@@ -49,6 +51,9 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 	@Autowired
 	private MoneyExchangeService moneyExchangeService;
 
+	@Autowired
+	private RoleDao roleDao;
+	
 	@Override
 	public void initService() {
 		matchModelService.setMatchHandler(new MatchHandler() {
@@ -117,12 +122,15 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 					.build();
 		}
 		if (!moneyExchangeService.exchangeMoney(role, gameConfig.getRound() / 6 * 20, true)) {
+			if(role.getRandiooMoney() - gameConfig.getRound() / 6 * 20 < 0){
 			return SC
 					.newBuilder()
 					.setMatchCreateGameResponse(
 							MatchCreateGameResponse.newBuilder().setErrorCode(ErrorCode.NO_MONEY.getNumber())).build();
+			}
 		}
-
+		roleDao.update(role);
+		RoleCache.putNewRole(role);
 		Game game = this.createGame(role.getRoleId(), gameConfig);
 
 		return SC.newBuilder().setMatchCreateGameResponse(MatchCreateGameResponse.newBuilder()).build();
@@ -187,6 +195,9 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 	private void addRole(Game game, int roleId, String gameRoleId) {
 		RoleGameInfo roleGameInfo = this.createRoleGameInfo(roleId, gameRoleId);
 		roleGameInfo.seatIndex = game.getRoleIdMap().size();
+		Role role = (Role) RoleCache.getRoleById(roleId);
+		role.setGameId(game.getGameId());
+		RoleCache.putNewRole(role);
 		game.getRoleIdMap().put(roleGameInfo.gameRoleId, roleGameInfo);
 	}
 
@@ -329,7 +340,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 	}
 
 	private String getLockString() {
-		return "1980";
+		return /*"1980"*/"111111";
 	}
 
 	public boolean checkConfig(GameConfig gameConfig) {

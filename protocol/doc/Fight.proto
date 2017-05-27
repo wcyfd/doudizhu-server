@@ -3,7 +3,6 @@ package com.randioo.doudizhu_server.protocol;
 import "Entity.proto";
 
 message FightReadyRequest{
-	optional GameConfig gameConfig = 1;
 }
 
 message FightReadyResponse{

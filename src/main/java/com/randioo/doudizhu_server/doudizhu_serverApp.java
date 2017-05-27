@@ -22,7 +22,8 @@ public class doudizhu_serverApp {
 
 		((GameServerInit) SpringContext.getBean("gameServerInit")).setHandler(new ServerHandler()).start();
 		GlobleConfig.set(GlobleEnum.LOGIN, true);
-
+		
+		//test.test();
 	}
 
 }

@@ -44,24 +44,29 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
 			String today = TimeUtils.getCurrentTimeStr();
 			Date date;
 			Date todayDate;
-			String time = roleDao.getMoneyExchangeTime(role.getAccount(), role.getRoleId());
+			String time = roleDao.getMoneyExchangeTime(role.getAccount(), role.getRoleId());			
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			try {
-				date = df.parse(time);
-				SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
-				date = df2.parse(df2.format(date));
-				todayDate = df2.parse(today);
-				if(todayDate.compareTo(date) == 0){
-					if(max + num > 50000){
-						return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
+				if(time == null){
+					max = num;
+				}else{
+					date = df.parse(time);
+					SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+					date = df2.parse(df2.format(date));
+					todayDate = df2.parse(today);
+					if(todayDate.compareTo(date) == 0){
+						if(max + num > 50000){
+							return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
+						}
+						else{
+							max += num;
+						}
 					}
 					else{
-						max += num;
+						max = num;
 					}
 				}
-				else{
-					max = num;
-				}
+				
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

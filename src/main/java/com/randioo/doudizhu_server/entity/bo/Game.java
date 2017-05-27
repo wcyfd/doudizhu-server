@@ -27,6 +27,17 @@ public class Game {
 
 	private boolean moguai = false;
 	private boolean mingpai = false;
+	
+	// 在线玩家数量
+	private int onlineRoleCount;
+
+	public int getOnlineRoleCount() {
+		return onlineRoleCount;
+	}
+
+	public void setOnlineRoleCount(int onlineRoleCount) {
+		this.onlineRoleCount = onlineRoleCount;
+	}
 
 	public int getRound() {
 		return round;

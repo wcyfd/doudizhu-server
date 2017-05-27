@@ -8,4 +8,6 @@ public interface FightService extends ObserveBaseServiceInterface{
 	public void readyGame(Role role);
 
 	GeneratedMessage exitGame(Role role);
+
+	GeneratedMessage agreeExit(Role role, boolean agree);
 }

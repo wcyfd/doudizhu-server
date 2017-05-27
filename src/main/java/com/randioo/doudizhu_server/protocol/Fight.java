@@ -35,15 +35,7 @@ public final class Fight {
       return com.randioo.doudizhu_server.protocol.Fight.internal_static_com_randioo_doudizhu_server_protocol_FightReadyRequest_fieldAccessorTable;
     }
     
-    // optional .com.randioo.doudizhu_server.protocol.GameConfig gameConfig = 1;
-    public static final int GAMECONFIG_FIELD_NUMBER = 1;
-    private boolean hasGameConfig;
-    private com.randioo.doudizhu_server.protocol.Entity.GameConfig gameConfig_;
-    public boolean hasGameConfig() { return hasGameConfig; }
-    public com.randioo.doudizhu_server.protocol.Entity.GameConfig getGameConfig() { return gameConfig_; }
-    
     private void initFields() {
-      gameConfig_ = com.randioo.doudizhu_server.protocol.Entity.GameConfig.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -52,9 +44,6 @@ public final class Fight {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasGameConfig()) {
-        output.writeMessage(1, getGameConfig());
-      }
       getUnknownFields().writeTo(output);
     }
     
@@ -64,10 +53,6 @@ public final class Fight {
       if (size != -1) return size;
     
       size = 0;
-      if (hasGameConfig()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getGameConfig());
-      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -226,9 +211,6 @@ public final class Fight {
       
       public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest other) {
         if (other == com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.getDefaultInstance()) return this;
-        if (other.hasGameConfig()) {
-          mergeGameConfig(other.getGameConfig());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -254,56 +236,10 @@ public final class Fight {
               }
               break;
             }
-            case 10: {
-              com.randioo.doudizhu_server.protocol.Entity.GameConfig.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.GameConfig.newBuilder();
-              if (hasGameConfig()) {
-                subBuilder.mergeFrom(getGameConfig());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setGameConfig(subBuilder.buildPartial());
-              break;
-            }
           }
         }
       }
       
-      
-      // optional .com.randioo.doudizhu_server.protocol.GameConfig gameConfig = 1;
-      public boolean hasGameConfig() {
-        return result.hasGameConfig();
-      }
-      public com.randioo.doudizhu_server.protocol.Entity.GameConfig getGameConfig() {
-        return result.getGameConfig();
-      }
-      public Builder setGameConfig(com.randioo.doudizhu_server.protocol.Entity.GameConfig value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasGameConfig = true;
-        result.gameConfig_ = value;
-        return this;
-      }
-      public Builder setGameConfig(com.randioo.doudizhu_server.protocol.Entity.GameConfig.Builder builderForValue) {
-        result.hasGameConfig = true;
-        result.gameConfig_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeGameConfig(com.randioo.doudizhu_server.protocol.Entity.GameConfig value) {
-        if (result.hasGameConfig() &&
-            result.gameConfig_ != com.randioo.doudizhu_server.protocol.Entity.GameConfig.getDefaultInstance()) {
-          result.gameConfig_ =
-            com.randioo.doudizhu_server.protocol.Entity.GameConfig.newBuilder(result.gameConfig_).mergeFrom(value).buildPartial();
-        } else {
-          result.gameConfig_ = value;
-        }
-        result.hasGameConfig = true;
-        return this;
-      }
-      public Builder clearGameConfig() {
-        result.hasGameConfig = false;
-        result.gameConfig_ = com.randioo.doudizhu_server.protocol.Entity.GameConfig.getDefaultInstance();
-        return this;
-      }
       
       // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.FightReadyRequest)
     }
@@ -3328,19 +3264,17 @@ public final class Fight {
   static {
     java.lang.String[] descriptorData = {
       "\n\013Fight.proto\022$com.randioo.doudizhu_serv" +
-      "er.protocol\032\014Entity.proto\"Y\n\021FightReadyR" +
-      "equest\022D\n\ngameConfig\030\001 \001(\01320.com.randioo" +
-      ".doudizhu_server.protocol.GameConfig\"*\n\022" +
-      "FightReadyResponse\022\024\n\terrorCode\030\001 \001(\005:\0011" +
-      "\"\"\n\014SCFightReady\022\022\n\ngamrRoleId\030\001 \001(\t\"\016\n\014" +
-      "SCFightStart\"\026\n\024FightExitGameRequest\"-\n\025" +
-      "FightExitGameResponse\022\024\n\terrorCode\030\001 \001(\005" +
-      ":\0011\"%\n\017SCFightExitGame\022\022\n\ngameRoleId\030\001 \001" +
-      "(\t\"*\n\024SCFightApplyExitGame\022\022\n\ngameRoleId",
-      "\030\001 \001(\t\"/\n\031FightAgreeExitGameRequest\022\022\n\ng" +
-      "ameRoleId\030\001 \001(\t\"\034\n\032FightAgreeExitGameRes" +
-      "ponse\"\024\n\022SCFightGameDismiss\"\025\n\023SCFightLo" +
-      "adResource"
+      "er.protocol\032\014Entity.proto\"\023\n\021FightReadyR" +
+      "equest\"*\n\022FightReadyResponse\022\024\n\terrorCod" +
+      "e\030\001 \001(\005:\0011\"\"\n\014SCFightReady\022\022\n\ngamrRoleId" +
+      "\030\001 \001(\t\"\016\n\014SCFightStart\"\026\n\024FightExitGameR" +
+      "equest\"-\n\025FightExitGameResponse\022\024\n\terror" +
+      "Code\030\001 \001(\005:\0011\"%\n\017SCFightExitGame\022\022\n\ngame" +
+      "RoleId\030\001 \001(\t\"*\n\024SCFightApplyExitGame\022\022\n\n" +
+      "gameRoleId\030\001 \001(\t\"/\n\031FightAgreeExitGameRe" +
+      "quest\022\022\n\ngameRoleId\030\001 \001(\t\"\034\n\032FightAgreeE",
+      "xitGameResponse\"\024\n\022SCFightGameDismiss\"\025\n" +
+      "\023SCFightLoadResource"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3352,7 +3286,7 @@ public final class Fight {
           internal_static_com_randioo_doudizhu_server_protocol_FightReadyRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_FightReadyRequest_descriptor,
-              new java.lang.String[] { "GameConfig", },
+              new java.lang.String[] { },
               com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.class,
               com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_FightReadyResponse_descriptor =
