@@ -1,9 +1,12 @@
 package com.randioo.doudizhu_server.entity.po.cardlist;
 
-public class CardList {
-	protected AbstractCardListModel model;
+import java.util.List;
 
-	protected void setModel(AbstractCardListModel model) {
-		this.model = model;
-	}
+import com.randioo.doudizhu_server.entity.po.CardSort;
+import com.randioo.doudizhu_server.error.CardListPatternException;
+
+public abstract class CardList implements Comparable<CardList> {
+
+	public abstract CardList pattern(CardSort cardSort, List<Integer> arr) throws CardListPatternException;
+
 }

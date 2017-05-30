@@ -7,31 +7,35 @@ import com.randioo.doudizhu_server.entity.po.CardSort;
 import com.randioo.doudizhu_server.error.CardListPatternException;
 import com.randioo.doudizhu_server.error.CardTypeComparableException;
 
-public class A2 extends A1 {
-	@Override
-	public int compareTo(CardList arg0) {
-		if (arg0.getClass() == A4.class || arg0.getClass() == KQ.class)
-			return -1;
+public class A3N2 extends A3N1 {
 
-		if (getClass() != arg0.getClass())
+	@Override
+	public int compareTo(CardList o) {
+		if (o.getClass() == A4.class || o.getClass() == KQ.class)
+			return -1;
+		if (o.getClass() != getClass())
 			throw new CardTypeComparableException();
 
-		return getNum() - ((A2) arg0).getNum();
+		return getNum() - ((A3N2) o).getNum();
 	}
 
 	@Override
 	public CardList pattern(CardSort cardSort, List<Integer> arr) throws CardListPatternException {
-		if (arr.size() != 2)
+		if (arr.size() != 5)
 			throw new CardListPatternException();
 		Set<Integer> set = cardSort.getCardSort().get(1);
-		if (set.size() == 0)
-			throw new CardListPatternException();
+		Set<Integer> set2 = cardSort.getCardSort().get(2);
+		if (set.size() == 2 && set2.size() == 1) {
+			A3N2 a = new A3N2();
+			a.setNum(set2.iterator().next());
+			for (int i : set)
+				if (i != a.getNum())
+					a.setAddNum(i);
 
-		int num = set.iterator().next();
+			return a;
+		}
 
-		A2 a = new A2();
-		a.setNum(num);
-		return a;
-
+		throw new CardListPatternException();
 	}
+
 }

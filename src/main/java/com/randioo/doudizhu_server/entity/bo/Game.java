@@ -1,16 +1,20 @@
 package com.randioo.doudizhu_server.entity.bo;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.randioo.doudizhu_server.entity.po.RoleGameInfo;
+import com.randioo.doudizhu_server.entity.po.cardlist.CardList;
+import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
 import com.randioo.doudizhu_server.protocol.Entity.GameState;
 import com.randioo.doudizhu_server.protocol.Entity.GameType;
 
 public class Game {
 	private int gameId;
 	// 玩家id集合
-	private Map<String, RoleGameInfo> roleIdMap = new HashMap<>();
+	private Map<String, RoleGameInfo> roleIdMap = new LinkedHashMap<>();
 	// 房主id
 	private int masterRoleId;
 	// 房间锁
@@ -21,15 +25,22 @@ public class Game {
 	private GameState gameState;
 	// 游戏类型
 	private GameType gameType;
-
-	private int round = 0;
-	private int di = 0;
-
-	private boolean moguai = false;
-	private boolean mingpai = false;
-	
+	// 游戏配置
+	private GameConfig gameConfig;
+	// 地主牌
+	private List<Integer> landlordCards = new ArrayList<>();
 	// 在线玩家数量
 	private int onlineRoleCount;
+	// 玩家id列表，用于换人
+	private List<String> roleIdList = new ArrayList<>();
+	// 当前玩家id
+	private int currentRoleIdIndex;
+	// 出牌的类型
+	private CardList lastCardList;
+	// 不要
+	private int passCount;
+	// 地主的玩家id
+	private String landlordGameRoleId;
 
 	public int getOnlineRoleCount() {
 		return onlineRoleCount;
@@ -37,38 +48,6 @@ public class Game {
 
 	public void setOnlineRoleCount(int onlineRoleCount) {
 		this.onlineRoleCount = onlineRoleCount;
-	}
-
-	public int getRound() {
-		return round;
-	}
-
-	public void setRound(int round) {
-		this.round = round;
-	}
-
-	public int getDi() {
-		return di;
-	}
-
-	public void setDi(int di) {
-		this.di = di;
-	}
-
-	public boolean isMoguai() {
-		return moguai;
-	}
-
-	public void setMoguai(boolean moguai) {
-		this.moguai = moguai;
-	}
-
-	public boolean isMingpai() {
-		return mingpai;
-	}
-
-	public void setMingpai(boolean mingpai) {
-		this.mingpai = mingpai;
 	}
 
 	public void setGameId(int gameId) {
@@ -121,6 +100,46 @@ public class Game {
 
 	public void setGameState(GameState gameState) {
 		this.gameState = gameState;
+	}
+
+	public GameConfig getGameConfig() {
+		return gameConfig;
+	}
+
+	public void setGameConfig(GameConfig gameConfig) {
+		this.gameConfig = gameConfig;
+	}
+
+	public List<Integer> getLandlordCards() {
+		return landlordCards;
+	}
+
+	public List<String> getRoleIdList() {
+		return roleIdList;
+	}
+
+	public int getCurrentRoleIdIndex() {
+		return currentRoleIdIndex;
+	}
+
+	public void setCurrentRoleIdIndex(int currentRoleIdIndex) {
+		this.currentRoleIdIndex = currentRoleIdIndex;
+	}
+
+	public CardList getLastCardList() {
+		return lastCardList;
+	}
+
+	public void setLastCardList(CardList lastCardList) {
+		this.lastCardList = lastCardList;
+	}
+
+	public int getPassCount() {
+		return passCount;
+	}
+
+	public void setPassCount(int passCount) {
+		this.passCount = passCount;
 	}
 
 }

@@ -5,33 +5,32 @@ import java.util.Set;
 
 import com.randioo.doudizhu_server.entity.po.CardSort;
 import com.randioo.doudizhu_server.error.CardListPatternException;
-import com.randioo.doudizhu_server.error.CardTypeComparableException;
 
-public class A2 extends A1 {
+public class A4 extends A1 {
 	@Override
 	public int compareTo(CardList arg0) {
-		if (arg0.getClass() == A4.class || arg0.getClass() == KQ.class)
+		if (arg0.getClass() == KQ.class)
 			return -1;
 
 		if (getClass() != arg0.getClass())
-			throw new CardTypeComparableException();
+			return 1;
 
-		return getNum() - ((A2) arg0).getNum();
+		return getNum() - ((A4) arg0).getNum();
 	}
 
 	@Override
 	public CardList pattern(CardSort cardSort, List<Integer> arr) throws CardListPatternException {
-		if (arr.size() != 2)
+		if (arr.size() != 4)
 			throw new CardListPatternException();
-		Set<Integer> set = cardSort.getCardSort().get(1);
+		Set<Integer> set = cardSort.getCardSort().get(3);
 		if (set.size() == 0)
 			throw new CardListPatternException();
 
 		int num = set.iterator().next();
 
-		A2 a = new A2();
+		A4 a = new A4();
 		a.setNum(num);
 		return a;
-
 	}
+
 }
