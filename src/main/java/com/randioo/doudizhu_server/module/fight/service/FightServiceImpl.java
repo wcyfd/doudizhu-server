@@ -251,19 +251,20 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		}
 	}
 
-	public void send(Role role, List<Integer> paiList) {
+	@Override
+	public void sendCard(Role role, List<Integer> paiList) {
 		int gameId = role.getGameId();
 		Game game = GameCache.getGameMap().get(gameId);
 
+		String gameRoleId = game.getRoleIdList().get(game.getCurrentRoleIdIndex());
+
+		this.gameRoleIdSendCard(paiList, gameId, gameRoleId);
+	}
+
+	private void gameRoleIdSendCard(List<Integer> paiList, int gameId, String gameRoleId) {
+		Game game = GameCache.getGameMap().get(gameId);
+
 		CardList lastCardList = game.getLastCardList();
-
-		int index = game.getCurrentRoleIdIndex();
-		String gameRoleId = game.getRoleIdList().get(index);
-
-		// 检查是否应该是这个人出牌
-		if (role.getRoleId() != game.getRoleIdMap().get(gameRoleId).roleId)
-			return;
-
 		CardList sendCardList = null;
 		// 如果长度是0，说明不出牌，则要检查是否允许不出牌
 		if (paiList.size() == 0) {
@@ -298,19 +299,25 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		}
 		// 设置最后一个人的牌型
 		game.setLastCardList(sendCardList);
-		// 将索引换到下一个人
-		game.setCurrentRoleIdIndex((index + 1) >= game.getRoleIdList().size() ? 0 : index + 1);
+
 		// 如果出牌了，则放弃出牌的计数器重置
 		if (sendCardList != null)
 			game.setPassCount(0);
 
 		/**
-		 * 通知出牌
+		 * 通知已经出牌
 		 */
 		notifyObservers(FightConstant.SEND_CARD, gameId, gameRoleId, sendCardList);
 
 		// 检查游戏是否结束
-		this.checkGameOver(gameId);
+		if (!this.checkGameOver(gameId)) {
+			// 如果没有结束，则请求下一个人出牌
+			// 将索引换到下一个人
+			int index = game.getCurrentRoleIdIndex();
+			game.setCurrentRoleIdIndex((index + 1) >= game.getRoleIdList().size() ? 0 : index + 1);
+			
+			notifyObservers(FightConstant.NEXT_GAME_ROLE_SEND_CARD, gameId);
+		}
 	}
 
 	/**
@@ -374,7 +381,7 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 	 * 
 	 * @param gameId
 	 */
-	public void checkGameOver(int gameId) {
+	public boolean checkGameOver(int gameId) {
 		Game game = GameCache.getGameMap().get(gameId);
 		for (RoleGameInfo info : game.getRoleIdMap().values()) {
 			if (info.cards.size() == 0) {
@@ -383,6 +390,8 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 				break;
 			}
 		}
+
+		return false;
 	}
 
 	/**

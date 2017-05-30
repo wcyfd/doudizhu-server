@@ -191,7 +191,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 	private void addRole(Game game, int roleId, String gameRoleId) {
 		RoleGameInfo roleGameInfo = this.createRoleGameInfo(roleId, gameRoleId);
 		roleGameInfo.seatIndex = game.getRoleIdMap().size();
-		if (roleId == 0) {
+		if (roleId != 0) {
 			Role role = (Role) RoleCache.getRoleById(roleId);
 			role.setGameId(game.getGameId());
 		}

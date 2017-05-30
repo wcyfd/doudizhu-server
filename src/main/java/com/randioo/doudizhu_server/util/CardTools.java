@@ -22,15 +22,6 @@ public class CardTools {
 	public static final int C_QUEUE = 14;
 	public static final int C_KING = 15;
 
-	public static int[] toNums(int[] pai) {
-		int[] temp = new int[pai.length];
-		int i = 0;
-		for (int t : pai) {
-			temp[i++] = toNum(t);
-		}
-		return temp;
-	}
-
 	/**
 	 * 去掉花色
 	 * 
