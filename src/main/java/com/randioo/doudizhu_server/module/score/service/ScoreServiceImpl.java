@@ -3,6 +3,8 @@ package com.randioo.doudizhu_server.module.score.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.randioo.doudizhu_server.cache.local.GameCache;
+import com.randioo.doudizhu_server.entity.bo.Game;
 import com.randioo.doudizhu_server.entity.po.cardlist.CardList;
 import com.randioo.doudizhu_server.module.fight.FightConstant;
 import com.randioo.doudizhu_server.module.fight.service.FightService;
@@ -27,11 +29,13 @@ public class ScoreServiceImpl extends ObserveBaseService implements ScoreService
 			String gameRoleId = (String) args[1];
 			CardList sendCardList = (CardList) args[2];
 
-			this.sendCard(gameId, gameRoleId, sendCardList);
+			this.updateScore(gameId, gameRoleId, sendCardList);
 		}
 	}
 
-	private void sendCard(int gameId, String gameRoleId, CardList sendCardList) {
+	private void updateScore(int gameId, String gameRoleId, CardList sendCardList) {
 		// 每次出牌后,计算分数
+		Game game = GameCache.getGameMap().get(gameId);
+		
 	}
 }

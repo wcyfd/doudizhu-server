@@ -10,4 +10,6 @@ public interface MoneyExchangeService extends ObserveBaseServiceInterface {
 	
 	public  boolean exchangeMoney(Role role, int money, boolean add);
 
+	void newRoleInit(Role role);
+
 }

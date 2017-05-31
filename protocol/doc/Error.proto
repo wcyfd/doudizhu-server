@@ -37,4 +37,5 @@ enum ErrorCode{
 	MATCH_MAX_ROLE_COUNT = 21;//房间已经满了
 
 	GAME_NOT_EXIST = 22;//游戏不存在
-} // 22
+	GAME_EXITING = 23;//其他人正申请退出
+} // 23

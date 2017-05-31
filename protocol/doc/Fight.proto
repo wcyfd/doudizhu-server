@@ -32,6 +32,7 @@ message SCFightExitGame{
 
 message SCFightApplyExitGame{
 	optional string gameRoleId = 1;
+	optional int32 countDown = 2;
 }
 
 message FightAgreeExitGameRequest{

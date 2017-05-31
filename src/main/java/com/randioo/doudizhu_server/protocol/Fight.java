@@ -1919,6 +1919,13 @@ public final class Fight {
     public boolean hasGameRoleId() { return hasGameRoleId; }
     public java.lang.String getGameRoleId() { return gameRoleId_; }
     
+    // optional int32 countDown = 2;
+    public static final int COUNTDOWN_FIELD_NUMBER = 2;
+    private boolean hasCountDown;
+    private int countDown_ = 0;
+    public boolean hasCountDown() { return hasCountDown; }
+    public int getCountDown() { return countDown_; }
+    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -1930,6 +1937,9 @@ public final class Fight {
       getSerializedSize();
       if (hasGameRoleId()) {
         output.writeString(1, getGameRoleId());
+      }
+      if (hasCountDown()) {
+        output.writeInt32(2, getCountDown());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1943,6 +1953,10 @@ public final class Fight {
       if (hasGameRoleId()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(1, getGameRoleId());
+      }
+      if (hasCountDown()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, getCountDown());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2105,6 +2119,9 @@ public final class Fight {
         if (other.hasGameRoleId()) {
           setGameRoleId(other.getGameRoleId());
         }
+        if (other.hasCountDown()) {
+          setCountDown(other.getCountDown());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -2134,6 +2151,10 @@ public final class Fight {
               setGameRoleId(input.readString());
               break;
             }
+            case 16: {
+              setCountDown(input.readInt32());
+              break;
+            }
           }
         }
       }
@@ -2157,6 +2178,24 @@ public final class Fight {
       public Builder clearGameRoleId() {
         result.hasGameRoleId = false;
         result.gameRoleId_ = getDefaultInstance().getGameRoleId();
+        return this;
+      }
+      
+      // optional int32 countDown = 2;
+      public boolean hasCountDown() {
+        return result.hasCountDown();
+      }
+      public int getCountDown() {
+        return result.getCountDown();
+      }
+      public Builder setCountDown(int value) {
+        result.hasCountDown = true;
+        result.countDown_ = value;
+        return this;
+      }
+      public Builder clearCountDown() {
+        result.hasCountDown = false;
+        result.countDown_ = 0;
         return this;
       }
       
@@ -3270,11 +3309,11 @@ public final class Fight {
       "\030\001 \001(\t\"\016\n\014SCFightStart\"\026\n\024FightExitGameR" +
       "equest\"-\n\025FightExitGameResponse\022\024\n\terror" +
       "Code\030\001 \001(\005:\0011\"%\n\017SCFightExitGame\022\022\n\ngame" +
-      "RoleId\030\001 \001(\t\"*\n\024SCFightApplyExitGame\022\022\n\n" +
-      "gameRoleId\030\001 \001(\t\"/\n\031FightAgreeExitGameRe" +
-      "quest\022\022\n\ngameRoleId\030\001 \001(\t\"\034\n\032FightAgreeE",
-      "xitGameResponse\"\024\n\022SCFightGameDismiss\"\025\n" +
-      "\023SCFightLoadResource"
+      "RoleId\030\001 \001(\t\"=\n\024SCFightApplyExitGame\022\022\n\n" +
+      "gameRoleId\030\001 \001(\t\022\021\n\tcountDown\030\002 \001(\005\"/\n\031F" +
+      "ightAgreeExitGameRequest\022\022\n\ngameRoleId\030\001",
+      " \001(\t\"\034\n\032FightAgreeExitGameResponse\"\024\n\022SC" +
+      "FightGameDismiss\"\025\n\023SCFightLoadResource"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3342,7 +3381,7 @@ public final class Fight {
           internal_static_com_randioo_doudizhu_server_protocol_SCFightApplyExitGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_SCFightApplyExitGame_descriptor,
-              new java.lang.String[] { "GameRoleId", },
+              new java.lang.String[] { "GameRoleId", "CountDown", },
               com.randioo.doudizhu_server.protocol.Fight.SCFightApplyExitGame.class,
               com.randioo.doudizhu_server.protocol.Fight.SCFightApplyExitGame.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_FightAgreeExitGameRequest_descriptor =

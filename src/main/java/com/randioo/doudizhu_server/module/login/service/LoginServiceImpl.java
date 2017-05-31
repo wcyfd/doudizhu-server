@@ -11,6 +11,7 @@ import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.dao.RoleDao;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.doudizhu_server.module.login.LoginConstant;
+import com.randioo.doudizhu_server.module.money.service.MoneyExchangeService;
 import com.randioo.doudizhu_server.module.role.service.RoleService;
 import com.randioo.doudizhu_server.protocol.Entity.RoleData;
 import com.randioo.doudizhu_server.protocol.Error.ErrorCode;
@@ -45,7 +46,10 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 	private LoginModelService loginModelService;
 
 	@Autowired
-	private RoleService roleService;
+	private RoleService roleService;	
+	
+	@Autowired
+	private MoneyExchangeService moneyExchangeService ;
 
 	@Autowired
 	private GameDB gameDB;
@@ -88,6 +92,7 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 			role.setAccount(account);
 
 			roleService.newRoleInit(role);
+			moneyExchangeService.newRoleInit(role);
 
 			gameDB.getInsertPool().submit(new DBRunnable<Role>(role) {
 

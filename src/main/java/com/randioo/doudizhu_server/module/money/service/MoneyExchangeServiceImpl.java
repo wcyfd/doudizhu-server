@@ -1,75 +1,64 @@
 package com.randioo.doudizhu_server.module.money.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.protobuf.GeneratedMessage;
-import com.randioo.doudizhu_server.dao.RoleDao;
 import com.randioo.doudizhu_server.entity.bo.Role;
+import com.randioo.doudizhu_server.module.login.service.LoginService;
 import com.randioo.doudizhu_server.protocol.Error.ErrorCode;
 import com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeResponse;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.HttpConnection;
-import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.utils.TimeUtils;
 import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
 
 @Service("moneyExchangeService")
 public class MoneyExchangeServiceImpl extends ObserveBaseService implements MoneyExchangeService {
 
+	
 	@Autowired
-	private RoleDao roleDao;
+	private LoginService loginService;
 
-
+	@Override
+	public void newRoleInit(Role role) {
+		role.setMoneyExchangeTimeStr(TimeUtils.getCurrentTimeStr());
+	}
 
 	@Override
 	public GeneratedMessage moneyExchange(Role role, boolean add, int num) {
 		System.out.println("@@@"+role.getAccount());
-		Integer max = roleDao.moneyExchangeNum(role.getAccount(), role.getRoleId());
+		int max = role.getMoneyExchangeNum();
+		String today = TimeUtils.getCurrentTimeStr();
+		String time = role.getMoneyExchangeTimeStr();
 		int randiooMoney = num;
-		if(max == null){
-			max = 0;
-		}
 		if(num % 1000 != 0 || num * 0.001 < 1){
 			return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
 		}
+		
 		if(add){			
 			num *= 0.1;
 		}else{
 			//TODO 每天5W
-			String today = TimeUtils.getCurrentTimeStr();
-			Date date;
-			Date todayDate;
-			String time = roleDao.getMoneyExchangeTime(role.getAccount(), role.getRoleId());			
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			try {
-				if(time == null){
-					max = num;
-				}else{
-					date = df.parse(time);
-					SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
-					date = df2.parse(df2.format(date));
-					todayDate = df2.parse(today);
-					if(todayDate.compareTo(date) == 0){
-						if(max + num > 50000){
-							return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
-						}
-						else{
-							max += num;
-						}
+			
+			if(time == null){
+				max = num;
+			}else{
+				time = time.substring(0, 10);				
+				if(today.equals(time)){
+					if(max + num > 50000){
+						return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
 					}
 					else{
-						max = num;
+						max += num;
 					}
 				}
-				
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				else{
+					max = num;
+					if(num > 50000){
+						return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
+					}
+				}
 			}
 			
 			
@@ -79,11 +68,10 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
 		if(exchangeMoney(role, num, add)){
 			role.setMoney(role.getMoney()+(add?1:-1)*randiooMoney);
 			if(!add){
-				roleDao.updateLimit(max, TimeUtils.getDetailTimeStr(), role.getRoleId());
+				role.setMoneyExchangeTimeStr(time);
+				role.setMoneyExchangeNum(max);
 			}
-			roleDao.update(role);
-			RoleCache.putNewRole(role);
-    		return SC.newBuilder().setMoneyExchangeResponse(MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.OK.getNumber())).build();
+    		return SC.newBuilder().setMoneyExchangeResponse(MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.OK.getNumber()).setRoleData(loginService.getRoleData(role))).build();
     	}else{
     		return SC.newBuilder().setMoneyExchangeResponse(MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.NO_MONEY.getNumber())).build();
     	}

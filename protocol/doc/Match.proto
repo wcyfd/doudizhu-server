@@ -8,6 +8,8 @@ message MatchCreateGameRequest{
 
 message MatchCreateGameResponse{
 	optional int32 errorCode = 1[default = 1];
+	optional string id = 2;
+	optional bool moguai = 3;
 }
 
 

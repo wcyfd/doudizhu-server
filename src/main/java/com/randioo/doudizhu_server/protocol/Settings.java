@@ -615,6 +615,613 @@ public final class Settings {
     // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.SettingsResponse)
   }
   
+  public static final class GetSettingsRequest extends
+      com.google.protobuf.GeneratedMessage {
+    // Use GetSettingsRequest.newBuilder() to construct.
+    private GetSettingsRequest() {
+      initFields();
+    }
+    private GetSettingsRequest(boolean noInit) {}
+    
+    private static final GetSettingsRequest defaultInstance;
+    public static GetSettingsRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public GetSettingsRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Settings.internal_static_com_randioo_doudizhu_server_protocol_GetSettingsRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Settings.internal_static_com_randioo_doudizhu_server_protocol_GetSettingsRequest_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest other) {
+        if (other == com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.GetSettingsRequest)
+    }
+    
+    static {
+      defaultInstance = new GetSettingsRequest(true);
+      com.randioo.doudizhu_server.protocol.Settings.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.GetSettingsRequest)
+  }
+  
+  public static final class GetSettingsResponse extends
+      com.google.protobuf.GeneratedMessage {
+    // Use GetSettingsResponse.newBuilder() to construct.
+    private GetSettingsResponse() {
+      initFields();
+    }
+    private GetSettingsResponse(boolean noInit) {}
+    
+    private static final GetSettingsResponse defaultInstance;
+    public static GetSettingsResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public GetSettingsResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Settings.internal_static_com_randioo_doudizhu_server_protocol_GetSettingsResponse_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Settings.internal_static_com_randioo_doudizhu_server_protocol_GetSettingsResponse_fieldAccessorTable;
+    }
+    
+    // optional int32 errorCode = 1 [default = 1];
+    public static final int ERRORCODE_FIELD_NUMBER = 1;
+    private boolean hasErrorCode;
+    private int errorCode_ = 1;
+    public boolean hasErrorCode() { return hasErrorCode; }
+    public int getErrorCode() { return errorCode_; }
+    
+    // optional int32 volume = 2 [default = 50];
+    public static final int VOLUME_FIELD_NUMBER = 2;
+    private boolean hasVolume;
+    private int volume_ = 50;
+    public boolean hasVolume() { return hasVolume; }
+    public int getVolume() { return volume_; }
+    
+    // optional int32 musicVolume = 3 [default = 50];
+    public static final int MUSICVOLUME_FIELD_NUMBER = 3;
+    private boolean hasMusicVolume;
+    private int musicVolume_ = 50;
+    public boolean hasMusicVolume() { return hasMusicVolume; }
+    public int getMusicVolume() { return musicVolume_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasErrorCode()) {
+        output.writeInt32(1, getErrorCode());
+      }
+      if (hasVolume()) {
+        output.writeInt32(2, getVolume());
+      }
+      if (hasMusicVolume()) {
+        output.writeInt32(3, getMusicVolume());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasErrorCode()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, getErrorCode());
+      }
+      if (hasVolume()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, getVolume());
+      }
+      if (hasMusicVolume()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, getMusicVolume());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse other) {
+        if (other == com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.getDefaultInstance()) return this;
+        if (other.hasErrorCode()) {
+          setErrorCode(other.getErrorCode());
+        }
+        if (other.hasVolume()) {
+          setVolume(other.getVolume());
+        }
+        if (other.hasMusicVolume()) {
+          setMusicVolume(other.getMusicVolume());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              setErrorCode(input.readInt32());
+              break;
+            }
+            case 16: {
+              setVolume(input.readInt32());
+              break;
+            }
+            case 24: {
+              setMusicVolume(input.readInt32());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional int32 errorCode = 1 [default = 1];
+      public boolean hasErrorCode() {
+        return result.hasErrorCode();
+      }
+      public int getErrorCode() {
+        return result.getErrorCode();
+      }
+      public Builder setErrorCode(int value) {
+        result.hasErrorCode = true;
+        result.errorCode_ = value;
+        return this;
+      }
+      public Builder clearErrorCode() {
+        result.hasErrorCode = false;
+        result.errorCode_ = 1;
+        return this;
+      }
+      
+      // optional int32 volume = 2 [default = 50];
+      public boolean hasVolume() {
+        return result.hasVolume();
+      }
+      public int getVolume() {
+        return result.getVolume();
+      }
+      public Builder setVolume(int value) {
+        result.hasVolume = true;
+        result.volume_ = value;
+        return this;
+      }
+      public Builder clearVolume() {
+        result.hasVolume = false;
+        result.volume_ = 50;
+        return this;
+      }
+      
+      // optional int32 musicVolume = 3 [default = 50];
+      public boolean hasMusicVolume() {
+        return result.hasMusicVolume();
+      }
+      public int getMusicVolume() {
+        return result.getMusicVolume();
+      }
+      public Builder setMusicVolume(int value) {
+        result.hasMusicVolume = true;
+        result.musicVolume_ = value;
+        return this;
+      }
+      public Builder clearMusicVolume() {
+        result.hasMusicVolume = false;
+        result.musicVolume_ = 50;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.GetSettingsResponse)
+    }
+    
+    static {
+      defaultInstance = new GetSettingsResponse(true);
+      com.randioo.doudizhu_server.protocol.Settings.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.GetSettingsResponse)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_randioo_doudizhu_server_protocol_SettingsRequest_descriptor;
   private static
@@ -625,6 +1232,16 @@ public final class Settings {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_doudizhu_server_protocol_SettingsResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_GetSettingsRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_GetSettingsRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_GetSettingsResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_GetSettingsResponse_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -637,7 +1254,10 @@ public final class Settings {
       "\n\016Settings.proto\022$com.randioo.doudizhu_s" +
       "erver.protocol\">\n\017SettingsRequest\022\022\n\006vol" +
       "ume\030\001 \001(\005:\00250\022\027\n\013musicVolume\030\002 \001(\005:\00250\"(" +
-      "\n\020SettingsResponse\022\024\n\terrorCode\030\001 \001(\005:\0011"
+      "\n\020SettingsResponse\022\024\n\terrorCode\030\001 \001(\005:\0011" +
+      "\"\024\n\022GetSettingsRequest\"X\n\023GetSettingsRes" +
+      "ponse\022\024\n\terrorCode\030\001 \001(\005:\0011\022\022\n\006volume\030\002 " +
+      "\001(\005:\00250\022\027\n\013musicVolume\030\003 \001(\005:\00250"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -660,6 +1280,22 @@ public final class Settings {
               new java.lang.String[] { "ErrorCode", },
               com.randioo.doudizhu_server.protocol.Settings.SettingsResponse.class,
               com.randioo.doudizhu_server.protocol.Settings.SettingsResponse.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_GetSettingsRequest_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_com_randioo_doudizhu_server_protocol_GetSettingsRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_GetSettingsRequest_descriptor,
+              new java.lang.String[] { },
+              com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.class,
+              com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_GetSettingsResponse_descriptor =
+            getDescriptor().getMessageTypes().get(3);
+          internal_static_com_randioo_doudizhu_server_protocol_GetSettingsResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_GetSettingsResponse_descriptor,
+              new java.lang.String[] { "ErrorCode", "Volume", "MusicVolume", },
+              com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.class,
+              com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.Builder.class);
           return null;
         }
       };

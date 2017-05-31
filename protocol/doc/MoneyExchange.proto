@@ -1,4 +1,6 @@
 package com.randioo.doudizhu_server.protocol;
+import "Entity.proto";
+
 
 message MoneyExchangeRequest{	
 	optional int32 num = 1;
@@ -7,4 +9,5 @@ message MoneyExchangeRequest{
 
 message MoneyExchangeResponse{
 	optional int32 errorCode = 1 [default =1];
+	optional RoleData roleData = 2;
 }

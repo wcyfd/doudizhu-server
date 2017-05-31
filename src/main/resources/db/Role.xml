@@ -16,7 +16,9 @@
 			loginTimeStr,
 			offlineTimeStr,
 			createTimeStr,
-			loadTimeStr
+			loadTimeStr,
+			moneyExchangeNum, 
+			moneyExchangeTimeStr
 		) values(
 			#{roleId},
 			#{account},
@@ -29,7 +31,9 @@
 			#{loginTimeStr},
 			#{offlineTimeStr},
 			#{createTimeStr},
-			#{loadTimeStr}
+			#{loadTimeStr},
+			#{moneyExchangeNum}, 
+			#{moneyExchangeTimeStr}
 		)
 	</insert>
 
@@ -45,30 +49,7 @@
 			</if>
 		</where>
 	</select>
-	<!-- select -->
-	<select id="getMoneyExchangeTime" resultType="string">
-		select moneyExchangeTimeStr from role
-		<where>
-			<if test="roleId != 0 ">
-				roleId=#{roleId}
-			</if>
-			<if test="account != null">
-				AND account=#{account}
-			</if>
-		</where>
-	</select>
-	<!-- select -->
-	<select id="moneyExchangeNum" resultType="int">
-		select moneyExchangeNum from role
-		<where>
-			<if test="roleId != 0 ">
-				roleId=#{roleId}
-			</if>
-			<if test="account != null">
-				AND account=#{account}
-			</if>
-		</where>
-	</select>
+	
 
 	<!-- update -->
 	<update id="update">

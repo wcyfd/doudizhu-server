@@ -365,7 +365,15 @@ public final class MoneyExchange {
     public boolean hasErrorCode() { return hasErrorCode; }
     public int getErrorCode() { return errorCode_; }
     
+    // optional .com.randioo.doudizhu_server.protocol.RoleData roleData = 2;
+    public static final int ROLEDATA_FIELD_NUMBER = 2;
+    private boolean hasRoleData;
+    private com.randioo.doudizhu_server.protocol.Entity.RoleData roleData_;
+    public boolean hasRoleData() { return hasRoleData; }
+    public com.randioo.doudizhu_server.protocol.Entity.RoleData getRoleData() { return roleData_; }
+    
     private void initFields() {
+      roleData_ = com.randioo.doudizhu_server.protocol.Entity.RoleData.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -376,6 +384,9 @@ public final class MoneyExchange {
       getSerializedSize();
       if (hasErrorCode()) {
         output.writeInt32(1, getErrorCode());
+      }
+      if (hasRoleData()) {
+        output.writeMessage(2, getRoleData());
       }
       getUnknownFields().writeTo(output);
     }
@@ -389,6 +400,10 @@ public final class MoneyExchange {
       if (hasErrorCode()) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, getErrorCode());
+      }
+      if (hasRoleData()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRoleData());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -551,6 +566,9 @@ public final class MoneyExchange {
         if (other.hasErrorCode()) {
           setErrorCode(other.getErrorCode());
         }
+        if (other.hasRoleData()) {
+          mergeRoleData(other.getRoleData());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -580,6 +598,15 @@ public final class MoneyExchange {
               setErrorCode(input.readInt32());
               break;
             }
+            case 18: {
+              com.randioo.doudizhu_server.protocol.Entity.RoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.RoleData.newBuilder();
+              if (hasRoleData()) {
+                subBuilder.mergeFrom(getRoleData());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setRoleData(subBuilder.buildPartial());
+              break;
+            }
           }
         }
       }
@@ -600,6 +627,43 @@ public final class MoneyExchange {
       public Builder clearErrorCode() {
         result.hasErrorCode = false;
         result.errorCode_ = 1;
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.RoleData roleData = 2;
+      public boolean hasRoleData() {
+        return result.hasRoleData();
+      }
+      public com.randioo.doudizhu_server.protocol.Entity.RoleData getRoleData() {
+        return result.getRoleData();
+      }
+      public Builder setRoleData(com.randioo.doudizhu_server.protocol.Entity.RoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasRoleData = true;
+        result.roleData_ = value;
+        return this;
+      }
+      public Builder setRoleData(com.randioo.doudizhu_server.protocol.Entity.RoleData.Builder builderForValue) {
+        result.hasRoleData = true;
+        result.roleData_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeRoleData(com.randioo.doudizhu_server.protocol.Entity.RoleData value) {
+        if (result.hasRoleData() &&
+            result.roleData_ != com.randioo.doudizhu_server.protocol.Entity.RoleData.getDefaultInstance()) {
+          result.roleData_ =
+            com.randioo.doudizhu_server.protocol.Entity.RoleData.newBuilder(result.roleData_).mergeFrom(value).buildPartial();
+        } else {
+          result.roleData_ = value;
+        }
+        result.hasRoleData = true;
+        return this;
+      }
+      public Builder clearRoleData() {
+        result.hasRoleData = false;
+        result.roleData_ = com.randioo.doudizhu_server.protocol.Entity.RoleData.getDefaultInstance();
         return this;
       }
       
@@ -635,9 +699,11 @@ public final class MoneyExchange {
   static {
     java.lang.String[] descriptorData = {
       "\n\023MoneyExchange.proto\022$com.randioo.doudi" +
-      "zhu_server.protocol\"0\n\024MoneyExchangeRequ" +
-      "est\022\013\n\003num\030\001 \001(\005\022\013\n\003add\030\002 \001(\010\"-\n\025MoneyEx" +
-      "changeResponse\022\024\n\terrorCode\030\001 \001(\005:\0011"
+      "zhu_server.protocol\032\014Entity.proto\"0\n\024Mon" +
+      "eyExchangeRequest\022\013\n\003num\030\001 \001(\005\022\013\n\003add\030\002 " +
+      "\001(\010\"o\n\025MoneyExchangeResponse\022\024\n\terrorCod" +
+      "e\030\001 \001(\005:\0011\022@\n\010roleData\030\002 \001(\0132..com.randi" +
+      "oo.doudizhu_server.protocol.RoleData"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -657,7 +723,7 @@ public final class MoneyExchange {
           internal_static_com_randioo_doudizhu_server_protocol_MoneyExchangeResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MoneyExchangeResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", },
+              new java.lang.String[] { "ErrorCode", "RoleData", },
               com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeResponse.class,
               com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeResponse.Builder.class);
           return null;
@@ -666,6 +732,7 @@ public final class MoneyExchange {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.randioo.doudizhu_server.protocol.Entity.getDescriptor(),
         }, assigner);
   }
   

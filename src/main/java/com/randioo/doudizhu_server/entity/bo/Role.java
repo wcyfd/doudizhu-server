@@ -13,9 +13,11 @@ public class Role extends RoleInterfaceImpl {
 	private String loginTimeStr;
 	private String offlineTimeStr;
 	private String createTimeStr;
+	private String moneyExchangeTimeStr;
 	private String loadTimeStr;
 	private String headImgUrl;
 	private int randiooMoney;
+	private int moneyExchangeNum;
 
 	public int getRandiooMoney() {
 		return randiooMoney;
@@ -143,6 +145,22 @@ public class Role extends RoleInterfaceImpl {
 
 	public void setSex(int sex) {
 		this.sex = sex;
+	}
+
+	public String getMoneyExchangeTimeStr() {
+		return moneyExchangeTimeStr;
+	}
+
+	public void setMoneyExchangeTimeStr(String moneyExchangeTimeStr) {
+		this.moneyExchangeTimeStr = moneyExchangeTimeStr;
+	}
+
+	public int getMoneyExchangeNum() {
+		return moneyExchangeNum;
+	}
+
+	public void setMoneyExchangeNum(int moneyExchangeNum) {
+		this.moneyExchangeNum = moneyExchangeNum;
 	}
 
 }

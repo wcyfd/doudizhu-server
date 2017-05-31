@@ -23,4 +23,5 @@ message CS{
 	optional MoneyExchangeRequest MoneyExchangeRequest = 10;
 	optional SettingsRequest SettingsRequest = 11;
 	optional GetRoleDataRequest GetRoleDataRequest = 12;
-} // 12
+	optional GetSettingsRequest GetSettingsRequest = 13;
+} // 13

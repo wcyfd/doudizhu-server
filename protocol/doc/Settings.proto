@@ -8,3 +8,13 @@ message SettingsRequest{
 message SettingsResponse{
 	optional int32 errorCode = 1 [default =1];
 }
+
+message GetSettingsRequest{	
+
+}
+
+message GetSettingsResponse{
+	optional int32 errorCode = 1 [default =1];
+	optional int32 volume = 2[default = 50];
+	optional int32 musicVolume = 3[default = 50];
+}

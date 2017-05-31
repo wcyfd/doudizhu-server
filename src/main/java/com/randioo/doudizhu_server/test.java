@@ -8,8 +8,8 @@ import com.randioo.doudizhu_server.module.fight.service.FightService;
 import com.randioo.doudizhu_server.protocol.Entity.GameState;
 import com.randioo.doudizhu_server.protocol.Entity.GameType;
 import com.randioo.randioo_server_base.cache.RoleCache;
-import com.randioo.randioo_server_base.module.match.MatchModelService;
 import com.randioo.randioo_server_base.net.SpringContext;
+import com.randioo.randioo_server_base.utils.RandomUtils;
 
 public class test {
 	public static void test(){
@@ -62,14 +62,18 @@ public class test {
 		game.getRoleIdMap().put(roleGameInfo.gameRoleId, roleGameInfo);
 		
 		game.setGameState(GameState.GAME_START_START);
-
+		if (game.getRoleIdList().size() == 0) {
+			game.getRoleIdList().addAll(game.getRoleIdMap().keySet());
+		}
 
 		
 		GameCache.getGameMap().put(game.getGameId(), game);
+		fightService.dispatchCard(game.getGameId());
 		//GameCache.getGameLockStringMap().put(game.getLockString(), game.getGameId());
 		final Role testhost = host;
 		final Role test2 = role2;
 		final Role test3 = role3;
+		final Game testGame = game;
 
 		new Thread(new Runnable(){
 
@@ -86,14 +90,22 @@ public class test {
 				}
 				
 				if(i == 10){
-					fightService.exitGame(test2);
+					/*fightService.exitGame(test2);
 					Game game = GameCache.getGameMap().get(test2.getGameId());
 					System.out.println(game == null?"null":"not null");
 					if(game != null){
 						System.out.println(game.getRoleIdMap().keySet());
+					}*/
+					for (RoleGameInfo roleGameInfo : testGame.getRoleIdMap().values()) {
+						for(int i : roleGameInfo.cards)
+							System.out.print(Integer.toHexString(i)+",");
+						System.out.println("");
 					}
+					for(int i : testGame.getLandlordCards())
+						System.out.print(Integer.toHexString(i)+",");
+					System.out.println("");
 				}
-				if(i == 25){
+				/*if(i == 25){
 					fightService.exitGame(test2);
 					Game game = GameCache.getGameMap().get(test2.getGameId());
 					System.out.println(game == null?"null":"not null");
@@ -116,7 +128,7 @@ public class test {
 					if(game != null){
 						System.out.println(game.getRoleIdMap().keySet());
 					}
-				}
+				}*/
 				i++;
 				}
 				

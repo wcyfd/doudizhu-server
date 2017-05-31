@@ -168,6 +168,13 @@ public final class ServerMessage {
     public boolean hasGetRoleDataResponse() { return hasGetRoleDataResponse; }
     public com.randioo.doudizhu_server.protocol.Role.GetRoleDataResponse getGetRoleDataResponse() { return getRoleDataResponse_; }
     
+    // optional .com.randioo.doudizhu_server.protocol.GetSettingsResponse GetSettingsResponse = 20;
+    public static final int GETSETTINGSRESPONSE_FIELD_NUMBER = 20;
+    private boolean hasGetSettingsResponse;
+    private com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse getSettingsResponse_;
+    public boolean hasGetSettingsResponse() { return hasGetSettingsResponse; }
+    public com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse getGetSettingsResponse() { return getSettingsResponse_; }
+    
     private void initFields() {
       loginCheckAccountResponse_ = com.randioo.doudizhu_server.protocol.Login.LoginCheckAccountResponse.getDefaultInstance();
       loginCreateRoleResponse_ = com.randioo.doudizhu_server.protocol.Login.LoginCreateRoleResponse.getDefaultInstance();
@@ -188,6 +195,7 @@ public final class ServerMessage {
       moneyExchangeResponse_ = com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeResponse.getDefaultInstance();
       settingsResponse_ = com.randioo.doudizhu_server.protocol.Settings.SettingsResponse.getDefaultInstance();
       getRoleDataResponse_ = com.randioo.doudizhu_server.protocol.Role.GetRoleDataResponse.getDefaultInstance();
+      getSettingsResponse_ = com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -252,6 +260,9 @@ public final class ServerMessage {
       }
       if (hasGetRoleDataResponse()) {
         output.writeMessage(19, getGetRoleDataResponse());
+      }
+      if (hasGetSettingsResponse()) {
+        output.writeMessage(20, getGetSettingsResponse());
       }
       getUnknownFields().writeTo(output);
     }
@@ -337,6 +348,10 @@ public final class ServerMessage {
       if (hasGetRoleDataResponse()) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(19, getGetRoleDataResponse());
+      }
+      if (hasGetSettingsResponse()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, getGetSettingsResponse());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -553,6 +568,9 @@ public final class ServerMessage {
         if (other.hasGetRoleDataResponse()) {
           mergeGetRoleDataResponse(other.getGetRoleDataResponse());
         }
+        if (other.hasGetSettingsResponse()) {
+          mergeGetSettingsResponse(other.getGetSettingsResponse());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -747,6 +765,15 @@ public final class ServerMessage {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setGetRoleDataResponse(subBuilder.buildPartial());
+              break;
+            }
+            case 162: {
+              com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.Builder subBuilder = com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.newBuilder();
+              if (hasGetSettingsResponse()) {
+                subBuilder.mergeFrom(getGetSettingsResponse());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setGetSettingsResponse(subBuilder.buildPartial());
               break;
             }
           }
@@ -1457,6 +1484,43 @@ public final class ServerMessage {
         return this;
       }
       
+      // optional .com.randioo.doudizhu_server.protocol.GetSettingsResponse GetSettingsResponse = 20;
+      public boolean hasGetSettingsResponse() {
+        return result.hasGetSettingsResponse();
+      }
+      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse getGetSettingsResponse() {
+        return result.getGetSettingsResponse();
+      }
+      public Builder setGetSettingsResponse(com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasGetSettingsResponse = true;
+        result.getSettingsResponse_ = value;
+        return this;
+      }
+      public Builder setGetSettingsResponse(com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.Builder builderForValue) {
+        result.hasGetSettingsResponse = true;
+        result.getSettingsResponse_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeGetSettingsResponse(com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse value) {
+        if (result.hasGetSettingsResponse() &&
+            result.getSettingsResponse_ != com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.getDefaultInstance()) {
+          result.getSettingsResponse_ =
+            com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.newBuilder(result.getSettingsResponse_).mergeFrom(value).buildPartial();
+        } else {
+          result.getSettingsResponse_ = value;
+        }
+        result.hasGetSettingsResponse = true;
+        return this;
+      }
+      public Builder clearGetSettingsResponse() {
+        result.hasGetSettingsResponse = false;
+        result.getSettingsResponse_ = com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse.getDefaultInstance();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.SC)
     }
     
@@ -1486,7 +1550,7 @@ public final class ServerMessage {
       "\n\023ServerMessage.proto\022$com.randioo.doudi" +
       "zhu_server.protocol\032\013Login.proto\032\nRole.p" +
       "roto\032\013Match.proto\032\013Fight.proto\032\023MoneyExc" +
-      "hange.proto\032\016Settings.proto\"\226\r\n\002SC\022b\n\031Lo" +
+      "hange.proto\032\016Settings.proto\"\356\r\n\002SC\022b\n\031Lo" +
       "ginCheckAccountResponse\030\001 \001(\0132?.com.rand" +
       "ioo.doudizhu_server.protocol.LoginCheckA" +
       "ccountResponse\022^\n\027LoginCreateRoleRespons" +
@@ -1528,7 +1592,10 @@ public final class ServerMessage {
       "sponse\030\022 \001(\01326.com.randioo.doudizhu_serv" +
       "er.protocol.SettingsResponse\022V\n\023GetRoleD" +
       "ataResponse\030\023 \001(\01329.com.randioo.doudizhu" +
-      "_server.protocol.GetRoleDataResponse"
+      "_server.protocol.GetRoleDataResponse\022V\n\023" +
+      "GetSettingsResponse\030\024 \001(\01329.com.randioo." +
+      "doudizhu_server.protocol.GetSettingsResp" +
+      "onse"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1540,7 +1607,7 @@ public final class ServerMessage {
           internal_static_com_randioo_doudizhu_server_protocol_SC_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_SC_descriptor,
-              new java.lang.String[] { "LoginCheckAccountResponse", "LoginCreateRoleResponse", "LoginGetRoleDataResponse", "RoleRenameResponse", "MatchCreateGameResponse", "MatchJoinGameResponse", "SCMatchJoinGame", "FightReadyResponse", "SCFightReady", "SCFightStart", "FightExitGameResponse", "SCFightExitGame", "SCFightApplyExitGame", "FightAgreeExitGameResponse", "SCFightGameDismiss", "SCFightLoadResource", "MoneyExchangeResponse", "SettingsResponse", "GetRoleDataResponse", },
+              new java.lang.String[] { "LoginCheckAccountResponse", "LoginCreateRoleResponse", "LoginGetRoleDataResponse", "RoleRenameResponse", "MatchCreateGameResponse", "MatchJoinGameResponse", "SCMatchJoinGame", "FightReadyResponse", "SCFightReady", "SCFightStart", "FightExitGameResponse", "SCFightExitGame", "SCFightApplyExitGame", "FightAgreeExitGameResponse", "SCFightGameDismiss", "SCFightLoadResource", "MoneyExchangeResponse", "SettingsResponse", "GetRoleDataResponse", "GetSettingsResponse", },
               com.randioo.doudizhu_server.protocol.ServerMessage.SC.class,
               com.randioo.doudizhu_server.protocol.ServerMessage.SC.Builder.class);
           return null;

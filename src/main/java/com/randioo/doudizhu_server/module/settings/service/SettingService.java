@@ -7,5 +7,7 @@ import com.randioo.randioo_server_base.utils.service.ObserveBaseServiceInterface
 public interface SettingService extends ObserveBaseServiceInterface {
 
 	GeneratedMessage saveSettings(Role role, int volume, int musicVolume);
+	
+	GeneratedMessage getSettings(Role role);
 
 }

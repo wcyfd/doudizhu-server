@@ -351,6 +351,20 @@ public final class Match {
     public boolean hasErrorCode() { return hasErrorCode; }
     public int getErrorCode() { return errorCode_; }
     
+    // optional string id = 2;
+    public static final int ID_FIELD_NUMBER = 2;
+    private boolean hasId;
+    private java.lang.String id_ = "";
+    public boolean hasId() { return hasId; }
+    public java.lang.String getId() { return id_; }
+    
+    // optional bool moguai = 3;
+    public static final int MOGUAI_FIELD_NUMBER = 3;
+    private boolean hasMoguai;
+    private boolean moguai_ = false;
+    public boolean hasMoguai() { return hasMoguai; }
+    public boolean getMoguai() { return moguai_; }
+    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -362,6 +376,12 @@ public final class Match {
       getSerializedSize();
       if (hasErrorCode()) {
         output.writeInt32(1, getErrorCode());
+      }
+      if (hasId()) {
+        output.writeString(2, getId());
+      }
+      if (hasMoguai()) {
+        output.writeBool(3, getMoguai());
       }
       getUnknownFields().writeTo(output);
     }
@@ -375,6 +395,14 @@ public final class Match {
       if (hasErrorCode()) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, getErrorCode());
+      }
+      if (hasId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getId());
+      }
+      if (hasMoguai()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, getMoguai());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -537,6 +565,12 @@ public final class Match {
         if (other.hasErrorCode()) {
           setErrorCode(other.getErrorCode());
         }
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasMoguai()) {
+          setMoguai(other.getMoguai());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -566,6 +600,14 @@ public final class Match {
               setErrorCode(input.readInt32());
               break;
             }
+            case 18: {
+              setId(input.readString());
+              break;
+            }
+            case 24: {
+              setMoguai(input.readBool());
+              break;
+            }
           }
         }
       }
@@ -586,6 +628,45 @@ public final class Match {
       public Builder clearErrorCode() {
         result.hasErrorCode = false;
         result.errorCode_ = 1;
+        return this;
+      }
+      
+      // optional string id = 2;
+      public boolean hasId() {
+        return result.hasId();
+      }
+      public java.lang.String getId() {
+        return result.getId();
+      }
+      public Builder setId(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasId = true;
+        result.id_ = value;
+        return this;
+      }
+      public Builder clearId() {
+        result.hasId = false;
+        result.id_ = getDefaultInstance().getId();
+        return this;
+      }
+      
+      // optional bool moguai = 3;
+      public boolean hasMoguai() {
+        return result.hasMoguai();
+      }
+      public boolean getMoguai() {
+        return result.getMoguai();
+      }
+      public Builder setMoguai(boolean value) {
+        result.hasMoguai = true;
+        result.moguai_ = value;
+        return this;
+      }
+      public Builder clearMoguai() {
+        result.hasMoguai = false;
+        result.moguai_ = false;
         return this;
       }
       
@@ -1605,14 +1686,15 @@ public final class Match {
       "er.protocol\032\014Entity.proto\"^\n\026MatchCreate" +
       "GameRequest\022D\n\ngameConfig\030\001 \001(\01320.com.ra" +
       "ndioo.doudizhu_server.protocol.GameConfi" +
-      "g\"/\n\027MatchCreateGameResponse\022\024\n\terrorCod" +
-      "e\030\001 \001(\005:\0011\"*\n\024MatchJoinGameRequest\022\022\n\nlo" +
-      "ckString\030\001 \001(\t\"w\n\025MatchJoinGameResponse\022" +
-      "\024\n\terrorCode\030\001 \001(\005:\0011\022H\n\014gameRoleData\030\002 " +
-      "\003(\01322.com.randioo.doudizhu_server.protoc" +
-      "ol.GameRoleData\"[\n\017SCMatchJoinGame\022H\n\014ga",
-      "meRoleData\030\001 \001(\01322.com.randioo.doudizhu_" +
-      "server.protocol.GameRoleData"
+      "g\"K\n\027MatchCreateGameResponse\022\024\n\terrorCod" +
+      "e\030\001 \001(\005:\0011\022\n\n\002id\030\002 \001(\t\022\016\n\006moguai\030\003 \001(\010\"*" +
+      "\n\024MatchJoinGameRequest\022\022\n\nlockString\030\001 \001" +
+      "(\t\"w\n\025MatchJoinGameResponse\022\024\n\terrorCode" +
+      "\030\001 \001(\005:\0011\022H\n\014gameRoleData\030\002 \003(\01322.com.ra" +
+      "ndioo.doudizhu_server.protocol.GameRoleD",
+      "ata\"[\n\017SCMatchJoinGame\022H\n\014gameRoleData\030\001" +
+      " \001(\01322.com.randioo.doudizhu_server.proto" +
+      "col.GameRoleData"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1632,7 +1714,7 @@ public final class Match {
           internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", },
+              new java.lang.String[] { "ErrorCode", "Id", "Moguai", },
               com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.class,
               com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameRequest_descriptor =

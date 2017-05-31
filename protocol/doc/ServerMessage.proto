@@ -29,5 +29,6 @@ message SC{
 	optional MoneyExchangeResponse MoneyExchangeResponse = 17;//燃点币游戏币（欢乐豆）互换
 	optional SettingsResponse SettingsResponse = 18;//设置
 	optional GetRoleDataResponse GetRoleDataResponse = 19;
+	optional GetSettingsResponse GetSettingsResponse = 20;//设置
 
-} // 19
+} // 20

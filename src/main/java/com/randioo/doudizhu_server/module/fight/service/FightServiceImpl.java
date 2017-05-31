@@ -1,7 +1,9 @@
 package com.randioo.doudizhu_server.module.fight.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -50,6 +52,7 @@ import com.randioo.doudizhu_server.util.CardTools;
 import com.randioo.doudizhu_server.util.SessionUtils;
 import com.randioo.randioo_server_base.cache.SessionCache;
 import com.randioo.randioo_server_base.utils.RandomUtils;
+import com.randioo.randioo_server_base.utils.ReflectUtils;
 import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
 
 @Service("fightService")
@@ -64,18 +67,23 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 	@Override
 	public void init() {
 		Map<Class<? extends CardList>, CardList> cardLists = GameCache.getCardLists();
-		cardLists.put(A1.class, new A1());
-		cardLists.put(A2.class, new A2());
-		cardLists.put(A3.class, new A3());
-		cardLists.put(A4.class, new A4());
-		cardLists.put(A3N1.class, new A3N1());
-		cardLists.put(A3N2.class, new A3N2());
-		cardLists.put(A3B3.class, new A3B3());
-		cardLists.put(KQ.class, new KQ());
-		cardLists.put(ABCDE.class, new ABCDE());
-		cardLists.put(A2B2C2.class, new A2B2C2());
-		cardLists.put(A3B3CD.class, new A3B3CD());
-		cardLists.put(A4BC.class, new A4BC());
+		List<Class<? extends CardList>> classes = new ArrayList<>();
+
+		classes.add(A1.class);
+		classes.add(A2.class);
+		classes.add(A3.class);
+		classes.add(A4.class);
+		classes.add(A3N1.class);
+		classes.add(A3N2.class);
+		classes.add(A3B3.class);
+		classes.add(KQ.class);
+		classes.add(ABCDE.class);
+		classes.add(A2B2C2.class);
+		classes.add(A3B3CD.class);
+		classes.add(A4BC.class);
+
+		for (Class<? extends CardList> clazz : classes)
+			cardLists.put(clazz, ReflectUtils.newInstance(clazz));
 
 		GameCache.getSendCardSeqCheckerList().add(GameCache.getCardLists().get(A4.class));
 		GameCache.getSendCardSeqCheckerList().add(GameCache.getCardLists().get(KQ.class));
@@ -85,7 +93,8 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 	public void readyGame(Role role) {
 		Game game = GameCache.getGameMap().get(role.getGameId());
 		if (game == null) {
-			SessionUtils.sc(role.getRoleId(),
+			SessionUtils.sc(
+					role.getRoleId(),
 					SC.newBuilder()
 							.setFightReadyResponse(
 									FightReadyResponse.newBuilder().setErrorCode(ErrorCode.GAME_NOT_EXIST.getNumber()))
@@ -97,8 +106,8 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		RoleGameInfo roleGameInfo = game.getRoleIdMap().get(gameRoleId);
 
 		// 游戏准备
-		SessionUtils.sc(roleGameInfo.roleId,
-				SC.newBuilder().setFightReadyResponse(FightReadyResponse.newBuilder()).build());
+		SessionUtils.sc(roleGameInfo.roleId, SC.newBuilder().setFightReadyResponse(FightReadyResponse.newBuilder())
+				.build());
 
 		roleGameInfo.ready = true;
 		SC scFightReady = SC.newBuilder().setSCFightReady(SCFightReady.newBuilder().setGamrRoleId(gameRoleId)).build();
@@ -106,15 +115,10 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 			SessionUtils.sc(info.roleId, scFightReady);
 
 		// 检查是否全部都准备完毕,全部准备完毕开始游戏
-		boolean allReady = true;
-		for (RoleGameInfo info : game.getRoleIdMap().values()) {
-			if (!info.ready) {
-				allReady = false;
-				break;
-			}
-		}
-		if (allReady) {
+		if (this.checkAllReady(role.getGameId())) {
 			game.setGameState(GameState.GAME_START_START);
+			// 游戏初始化
+			this.gameInit(game.getGameId());
 
 			SC scFightStart = SC.newBuilder().setSCFightStart(SCFightStart.newBuilder()).build();
 			for (RoleGameInfo info : game.getRoleIdMap().values())
@@ -122,11 +126,54 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		}
 	}
 
+	/**
+	 * 检查全部准备完毕
+	 * 
+	 * @param gameId
+	 * @return
+	 * @author wcy 2017年5月31日
+	 */
+	private boolean checkAllReady(int gameId) {
+		Game game = GameCache.getGameMap().get(gameId);
+		if(game.getRoleIdMap().size()<game.getMaxRoleCount())
+			return false;		
+		
+		for (RoleGameInfo info : game.getRoleIdMap().values()) {
+			if (!info.ready)
+				return false;
+		}
+		return true;
+	}
+
+	/**
+	 * 游戏初始化
+	 * 
+	 * @param gameId
+	 * @author wcy 2017年5月31日
+	 */
+	private void gameInit(int gameId) {
+		Game game = GameCache.getGameMap().get(gameId);
+
+		// 初始化玩家位置信息
+		if (game.getRoleIdList().size() == 0) {
+			game.getRoleIdList().addAll(game.getRoleIdMap().keySet());
+		}
+
+		// 初始化玩家叫地主
+		for (RoleGameInfo info : game.getRoleIdMap().values()) {
+			game.getCallLandlordMap().put(info.gameRoleId, 0);
+		}
+
+		game.setCallLandlordRound(0);
+
+	}
+
 	@Override
 	public GeneratedMessage exitGame(Role role) {
 		Game game = GameCache.getGameMap().get(role.getGameId());
 		if (game == null) {
-			return SC.newBuilder()
+			return SC
+					.newBuilder()
 					.setFightExitGameResponse(
 							FightExitGameResponse.newBuilder().setErrorCode(ErrorCode.GAME_NOT_EXIST.getNumber()))
 					.build();
@@ -160,18 +207,18 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		// 如果游戏已经开始,则要申请退出
 		else if (gameState == GameState.GAME_START_START) {
 			if (game.getOnlineRoleCount() != 0) {
-				// TODO 申请退出ing
-				System.out.println(role.getRoleId() + "申请退出ing");
-				return null;
+				SC.newBuilder().setFightExitGameResponse(FightExitGameResponse.newBuilder().setErrorCode(ErrorCode.GAME_EXITING.getNumber())).build();
 			}
 			SC scApplyExit = SC.newBuilder()
-					.setSCFightApplyExitGame(SCFightApplyExitGame.newBuilder().setGameRoleId(gameRoleId)).build();
+					.setSCFightApplyExitGame(SCFightApplyExitGame.newBuilder().setGameRoleId(gameRoleId).setCountDown(9)).build();
 			for (RoleGameInfo info : game.getRoleIdMap().values()) {
 				if (SessionCache.getSessionById(info.roleId).isConnected()) {
 					game.setOnlineRoleCount(game.getOnlineRoleCount() + 1);
 				}
 				info.agreeLeave = null;
-				SessionUtils.sc(info.roleId, scApplyExit);
+				if(info.roleId != role.getRoleId()){
+					SessionUtils.sc(info.roleId, scApplyExit);
+				}				
 			}
 			agreeExit(role, true);
 		}
@@ -216,16 +263,17 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		return SC.newBuilder().setFightAgreeExitGameResponse(FightAgreeExitGameResponse.newBuilder()).build();
 	}
 
-	private void dispatchCard(int gameId) {
+	@Override
+	public void dispatchCard(int gameId) {
 		Game game = GameCache.getGameMap().get(gameId);
 		for (RoleGameInfo info : game.getRoleIdMap().values())
 			info.cards.clear();
 
-		game.getRoleIdList().addAll(game.getRoleIdMap().keySet());
-
 		int maxCount = game.getMaxRoleCount();
 		int needCard = 1;
 		int totalCardCount = (FightConstant.CARDS.length - maxCount) / maxCount;
+		int landlordCardBoxIndex = RandomUtils.getRandomNum(needCard);
+		int landlordCardIndex = RandomUtils.getRandomNum(FightConstant.CARDS.length);
 		for (int j = 0; j < needCard; j++) {
 			// 先添加所有的牌,然后逐一随机拿走
 			List<Integer> list = new ArrayList<>(FightConstant.CARDS.length);
@@ -238,6 +286,18 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 					int value = list.get(index);
 					list.remove(index);
 
+					// 如果符合条件,就从这个人开始叫地主
+					if (landlordCardBoxIndex == j && landlordCardIndex == index) {
+						// 如果明牌是大小王，则要翻倍
+						game.setMultiple(game.getMultiple()
+								* (value == CardTools.C_KING || value == CardTools.C_QUEUE ? 2 : 1));
+
+						// 设置开始叫地主的人的索引
+						game.setCurrentRoleIdIndex(game.getRoleIdList().indexOf(roleGameInfo.gameRoleId));
+						// 设置开始叫地主的人的索引
+						game.setCallLandlordStartIndex(game.getCurrentRoleIdIndex());
+					}
+
 					roleGameInfo.cards.add(value);
 				}
 			}
@@ -248,6 +308,40 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 
 			// 剩下的牌是地主牌
 			game.getLandlordCards().addAll(list);
+		}
+	}
+
+	@Override
+	public void callLandlord(Role role, boolean landlord) {
+		Game game = GameCache.getGameMap().get(role.getGameId());
+		String gameRoleId = matchService.getGameRoleId(game.getGameId(), role.getRoleId());
+		int index = game.getRoleIdList().indexOf(gameRoleId);
+		// 第一轮叫地主
+		if (game.getCallLandlordRound() == 0) {
+			Map<String, Integer> callLandlordMap = game.getCallLandlordMap();
+			callLandlordMap.put(gameRoleId, landlord ? 0 : 1);
+			// 如果索引值回到了第一个则进入第二轮叫地主
+			if (index == game.getCallLandlordStartIndex()) {
+
+			}
+
+			// 检查是否已经有了地主,如果没有地主则重新发牌
+			int callLandlordCount = 0;
+			for (Map.Entry<String, Integer> entrySet : callLandlordMap.entrySet()) {
+				String key = entrySet.getKey();
+				Integer value = entrySet.getValue();
+
+				if (value == 1)
+					callLandlordCount++;
+			}
+
+			if (callLandlordCount == 1) {
+
+			}
+
+			game.setCallLandlordRound(game.getCallLandlordRound() + 1);
+		} else {// 第二轮抢地主
+
 		}
 	}
 
@@ -281,20 +375,22 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 			CardTools.fillCardSort(cardSort, paiList);
 
 			// 如果没有先前的牌型，则为主动出牌,直接判断牌型<br>否则通过使用上一轮牌型判断
-			sendCardList = lastCardList == null ? initiativeSend(cardSort, paiList)
-					: passiveSend(lastCardList.getClass(), cardSort, paiList);
+			sendCardList = lastCardList == null ? initiativeSend(cardSort, paiList) : passiveSend(
+					lastCardList.getClass(), cardSort, paiList);
 
 			// 匹配牌型失败
 			if (sendCardList == null)
 				return;
 
 			// 比较大小
-			try {
-				boolean bigger = sendCardListBiggerThanLastCardList(sendCardList, lastCardList);
-				if (!bigger)
+			if (lastCardList != null) {
+				try {
+					boolean bigger = sendCardListBiggerThanLastCardList(sendCardList, lastCardList);
+					if (!bigger)
+						return;
+				} catch (CardTypeComparableException e) {
 					return;
-			} catch (CardTypeComparableException e) {
-				return;
+				}
 			}
 		}
 		// 设置最后一个人的牌型
@@ -313,11 +409,35 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		if (!this.checkGameOver(gameId)) {
 			// 如果没有结束，则请求下一个人出牌
 			// 将索引换到下一个人
-			int index = game.getCurrentRoleIdIndex();
-			game.setCurrentRoleIdIndex((index + 1) >= game.getRoleIdList().size() ? 0 : index + 1);
-			
+			getNextIndex(gameId);
+
 			notifyObservers(FightConstant.NEXT_GAME_ROLE_SEND_CARD, gameId);
 		}
+	}
+
+	private int getNextIndex(int gameId) {
+		Game game = GameCache.getGameMap().get(gameId);
+		int index = game.getCurrentRoleIdIndex();
+		game.setCurrentRoleIdIndex((index + 1) >= game.getRoleIdList().size() ? 0 : index + 1);
+		return game.getCurrentRoleIdIndex();
+	}
+
+	@Override
+	public void getBestCardList(Role role) {
+		int gameId = role.getGameId();
+		Game game = GameCache.getGameMap().get(gameId);
+
+		// 获得上一次的出牌
+		CardList lastCardList = game.getLastCardList();
+
+		// 获得该玩家信息
+		String gameRoleId = matchService.getGameRoleId(gameId, role.getRoleId());
+		RoleGameInfo roleGameInfo = game.getRoleIdMap().get(gameRoleId);
+
+		// 获得玩家卡牌
+		CardSort cardSort = new CardSort();
+		CardTools.fillCardSort(cardSort, roleGameInfo.cards);
+
 	}
 
 	/**
@@ -412,16 +532,7 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 
 	public static void main(String[] args) {
 		// test_dispatchCard();
-		test_linkedMap();
-
-		Map<Integer, Integer> map = new HashMap<>();
-		map.put(1, 1);
-		map.put(2, 2);
-		map.put(3, 3);
-		Set<Integer> set = map.keySet();
-		Set<Integer> set2 = map.keySet();
-		map.remove(1);
-		System.out.println(set);
+		// test_linkedMap();
 	}
 
 	private static void test_linkedMap() {
@@ -470,4 +581,14 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 
 	}
 
+	private static void test_map() {
+		Map<Integer, Integer> map = new HashMap<>();
+		map.put(1, 1);
+		map.put(2, 2);
+		map.put(3, 3);
+		Set<Integer> set = map.keySet();
+		Set<Integer> set2 = map.keySet();
+		map.remove(1);
+		System.out.println(set);
+	}
 }

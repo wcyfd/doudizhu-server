@@ -1,6 +1,7 @@
 package com.randioo.doudizhu_server.entity.bo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,14 @@ public class Game {
 	private int passCount;
 	// 地主的玩家id
 	private String landlordGameRoleId;
+	// 叫地主
+	private Map<String, Integer> callLandlordMap = new HashMap<>();
+	// 游戏倍数
+	private int multiple;
+	// 叫地主的轮数
+	private int callLandlordRound;
+	// 开始叫地主的索引
+	private int callLandlordStartIndex;
 
 	public int getOnlineRoleCount() {
 		return onlineRoleCount;
@@ -140,6 +149,42 @@ public class Game {
 
 	public void setPassCount(int passCount) {
 		this.passCount = passCount;
+	}
+
+	public void setLandlordGameRoleId(String landlordGameRoleId) {
+		this.landlordGameRoleId = landlordGameRoleId;
+	}
+
+	public String getLandlordGameRoleId() {
+		return landlordGameRoleId;
+	}
+
+	public Map<String, Integer> getCallLandlordMap() {
+		return callLandlordMap;
+	}
+
+	public int getMultiple() {
+		return multiple;
+	}
+
+	public void setMultiple(int multiple) {
+		this.multiple = multiple;
+	}
+
+	public int getCallLandlordRound() {
+		return callLandlordRound;
+	}
+
+	public void setCallLandlordRound(int callLandlordRound) {
+		this.callLandlordRound = callLandlordRound;
+	}
+
+	public int getCallLandlordStartIndex() {
+		return callLandlordStartIndex;
+	}
+
+	public void setCallLandlordStartIndex(int callLandlordStartIndex) {
+		this.callLandlordStartIndex = callLandlordStartIndex;
 	}
 
 }

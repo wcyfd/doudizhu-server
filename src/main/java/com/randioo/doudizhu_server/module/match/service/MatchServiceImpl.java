@@ -129,10 +129,9 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 			}
 		}
 		roleDao.update(role);
-		RoleCache.putNewRole(role);
 		Game game = this.createGame(role.getRoleId(), gameConfig);
 
-		return SC.newBuilder().setMatchCreateGameResponse(MatchCreateGameResponse.newBuilder()).build();
+		return SC.newBuilder().setMatchCreateGameResponse(MatchCreateGameResponse.newBuilder().setId(game.getLockString()).setMoguai(game.getGameConfig().getMoguai())).build();
 	}
 
 	/**
