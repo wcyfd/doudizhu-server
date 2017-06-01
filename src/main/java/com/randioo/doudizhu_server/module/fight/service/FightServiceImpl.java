@@ -35,6 +35,7 @@ import com.randioo.doudizhu_server.error.CardListPatternException;
 import com.randioo.doudizhu_server.error.CardTypeComparableException;
 import com.randioo.doudizhu_server.module.fight.FightConstant;
 import com.randioo.doudizhu_server.module.match.service.MatchService;
+import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
 import com.randioo.doudizhu_server.protocol.Entity.GameState;
 import com.randioo.doudizhu_server.protocol.Entity.PaiNum;
 import com.randioo.doudizhu_server.protocol.Error.ErrorCode;
@@ -92,8 +93,7 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 	public void readyGame(Role role) {
 		Game game = GameCache.getGameMap().get(role.getGameId());
 		if (game == null) {
-			SessionUtils.sc(
-					role.getRoleId(),
+			SessionUtils.sc(role.getRoleId(),
 					SC.newBuilder()
 							.setFightReadyResponse(
 									FightReadyResponse.newBuilder().setErrorCode(ErrorCode.GAME_NOT_EXIST.getNumber()))
@@ -105,12 +105,11 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		RoleGameInfo roleGameInfo = game.getRoleIdMap().get(gameRoleId);
 
 		// 游戏准备
-		SessionUtils.sc(roleGameInfo.roleId, SC.newBuilder().setFightReadyResponse(FightReadyResponse.newBuilder())
-				.build());
+		SessionUtils.sc(roleGameInfo.roleId,
+				SC.newBuilder().setFightReadyResponse(FightReadyResponse.newBuilder()).build());
 
 		roleGameInfo.ready = true;
-		SC scFightReady = SC
-				.newBuilder()
+		SC scFightReady = SC.newBuilder()
 				.setSCFightReady(
 						SCFightReady.newBuilder().setSeated(game.getRoleIdList().indexOf(roleGameInfo.gameRoleId)))
 				.build();
@@ -122,18 +121,14 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 			game.setGameState(GameState.GAME_START_START);
 			// 游戏初始化
 			this.gameInit(game.getGameId());
-			SCFightStart scFightStart = SCFightStart
-					.newBuilder()
-					.setTimes(game.getMultiple())
-					.addPaiNum(
-							PaiNum.newBuilder().setSeated(0)
-									.setNum(game.getRoleIdMap().get(game.getRoleIdList().get(0)).cards.size()))
-					.addPaiNum(
-							PaiNum.newBuilder().setSeated(1)
-									.setNum(game.getRoleIdMap().get(game.getRoleIdList().get(1)).cards.size()))
-					.addPaiNum(
-							PaiNum.newBuilder().setSeated(2)
-									.setNum(game.getRoleIdMap().get(game.getRoleIdList().get(2)).cards.size())).build();
+			SCFightStart scFightStart = SCFightStart.newBuilder().setTimes(game.getMultiple())
+					.addPaiNum(PaiNum.newBuilder().setSeated(0)
+							.setNum(game.getRoleIdMap().get(game.getRoleIdList().get(0)).cards.size()))
+					.addPaiNum(PaiNum.newBuilder().setSeated(1)
+							.setNum(game.getRoleIdMap().get(game.getRoleIdList().get(1)).cards.size()))
+					.addPaiNum(PaiNum.newBuilder().setSeated(2)
+							.setNum(game.getRoleIdMap().get(game.getRoleIdList().get(2)).cards.size()))
+					.build();
 			for (RoleGameInfo info : game.getRoleIdMap().values()) {
 				System.out.println("~~~" + info.roleId);
 				SessionUtils.sc(info.roleId,
@@ -170,10 +165,9 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 	private void gameInit(int gameId) {
 		Game game = GameCache.getGameMap().get(gameId);
 		game.setMultiple(1);
-		game.setCallLandlordCount(0);
-		game.getCallLandlordList().clear();
 		game.getLandlordCards().clear();
-
+		game.setCallLandlordCount(0);
+		game.setCallLandlordScore(0);
 		// 卡牌初始化
 		for (RoleGameInfo info : game.getRoleIdMap().values()) {
 			info.cards.clear();
@@ -187,8 +181,7 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 	public GeneratedMessage exitGame(Role role) {
 		Game game = GameCache.getGameMap().get(role.getGameId());
 		if (game == null) {
-			return SC
-					.newBuilder()
+			return SC.newBuilder()
 					.setFightExitGameResponse(
 							FightExitGameResponse.newBuilder().setErrorCode(ErrorCode.GAME_NOT_EXIST.getNumber()))
 					.build();
@@ -227,10 +220,8 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 								FightExitGameResponse.newBuilder().setErrorCode(ErrorCode.GAME_EXITING.getNumber()))
 						.build();
 			}
-			SC scApplyExit = SC
-					.newBuilder()
-					.setSCFightApplyExitGame(
-							SCFightApplyExitGame.newBuilder().setGameRoleId(gameRoleId).setCountDown(9)).build();
+			SC scApplyExit = SC.newBuilder().setSCFightApplyExitGame(
+					SCFightApplyExitGame.newBuilder().setGameRoleId(gameRoleId).setCountDown(9)).build();
 			for (RoleGameInfo info : game.getRoleIdMap().values()) {
 				if (SessionCache.getSessionById(info.roleId).isConnected()) {
 					game.setOnlineRoleCount(game.getOnlineRoleCount() + 1);
@@ -310,8 +301,8 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 					if (landlordCardBoxIndex == j && landlordCardIndex == index) {
 						// 如果明牌是大小王，则要翻倍
 
-						game.setMultiple(game.getMultiple()
-								+ (value == CardTools.C_KING || value == CardTools.C_QUEUE ? 1 : 0));
+						game.setMultiple(
+								game.getMultiple() + (value == CardTools.C_KING || value == CardTools.C_QUEUE ? 1 : 0));
 
 						// 设置开始叫地主的人的索引
 						game.setCurrentRoleIdIndex(game.getRoleIdList().indexOf(roleGameInfo.gameRoleId));
@@ -340,58 +331,75 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 		this.callLandlord(gameId, gameRoleId, fen);
 	}
 
-	private void callLandlord(int gameId, String gameRoleId, int fen) {
+	private void callLandlord(int gameId, String gameRoleId, int callScore) {
 		Game game = GameCache.getGameMap().get(gameId);
 		System.out.print(gameRoleId + ":");
 
-		List<String> roleIdList = game.getRoleIdList();
-		List<String> callLandlordList = game.getCallLandlordList();
-		int callCount = game.getCallLandlordCount();
-
-		// 当某位玩家叫完地主后，按照秩序由地主下家开始，每位玩家均有且只有一次“抢地主”的机会
-		if (callCount < game.getMaxRoleCount()) {
+		// 检查是否是该人叫分
+		int index = game.getRoleIdList().indexOf(gameRoleId);
+		if (index != game.getCurrentRoleIdIndex() || game.getCallLandlordCount() == game.getMaxRoleCount()
+				|| game.getCallLandlordScore() == FightConstant.SCORE_3) {
 			// 安全检查
-			if (!roleIdList.get(game.getCurrentRoleIdIndex()).equals(gameRoleId)) {
-				System.out.println("不是你");
-				return;
-			}
-			callCount++;
-			game.setCallLandlordCount(callCount);
-			if (fen == game.getGameConfig().getDi() * 3) {
-				// TODO 地主(通知)
-				game.setLandlordGameRoleId(gameRoleId);
-				giveLandlordCards(game.getGameId());
-				return;
-
-			} else if (fen == game.getGameConfig().getDi() || fen == game.getGameConfig().getDi() * 2) {
-				// TODO 等其他玩家
-
-			} else if (fen == 0) {
-				// TODO 不叫
-				System.out.println("不叫");
-			}
-
-			if (callCount < game.getMaxRoleCount()) {
-				// TODO 通知下一个人进行叫地主
-				int nextIndex = this.getNextIndex(gameId);
-				String nextGameRoleId = roleIdList.get(nextIndex);
-				int roleId = game.getRoleIdMap().get(nextGameRoleId).roleId;
-				SessionUtils.sc(roleId, null);
-				System.out.println("通知下一个人" + nextGameRoleId);
-			} else {// TODO 如果第一轮全部叫完,检查是否得出地主
-				int size = roleIdList.size();
-				if (size == 1) {
-					// 确定地主
-					game.setLandlordGameRoleId(gameRoleId);
-					this.giveLandlordCards(gameId);
-					System.out.println("地主是" + gameRoleId);
-				} else if (size == 0) {
-					// TODO 重新发牌,数据初始化
-					System.out.println("重新发牌");
-				}
-				System.out.println("第一轮叫完");
-			}
+			System.out.println("error");
+			return;
 		}
+		int score = game.getCallLandlordScore();
+		// 是否叫分
+		boolean call = callScore != 0;
+		if (call) {
+			// 叫的分数不能比上一次低
+			if (callScore < score) {
+				System.out.println("叫分必须比上一个人高");
+				return;
+			}
+			System.out.println("叫分:" + callScore);
+
+			// 设置叫的分数
+			game.setCallLandlordScore(callScore);
+			game.setLandlordGameRoleId(gameRoleId);
+
+			// 检查是不是叫了3分,如果叫了三分就是地主,加牌开始比赛
+			if (game.getCallLandlordScore() == FightConstant.SCORE_3) {
+				System.out.println("地主是:" + gameRoleId);
+				this.giveLandlordCards(gameId);
+				// 开始比赛
+				return;
+			}
+
+		} else {
+			System.out.println("不叫");
+
+		}
+
+		// 叫地主计数器加1
+		int callCount = game.getCallLandlordCount();
+		callCount++;
+		game.setCallLandlordCount(callCount);
+		// 检查是否每个人都叫过了
+		if (callCount >= game.getMaxRoleCount()) {
+			// 如果人数到了,则那最后一个人的叫分,如果没有人叫分,则重新发牌
+			int resultScore = game.getCallLandlordScore();
+			if (resultScore == 0) {
+				// 说明没有人叫分，重新发牌
+				gameInit(gameId);
+				System.out.println("没人叫地主，重新发牌");
+				dispatchCard(gameId);
+				return;
+			} else {
+				// 看叫分最高的是谁
+				System.out.println("地主是:" + game.getLandlordGameRoleId());
+				this.giveLandlordCards(gameId);
+			}
+		} else {
+			// 如果人数没有到,则通知下一个人
+			int nextIndex = this.getNextIndex(gameId);
+			String nextRoleGameId = game.getRoleIdList().get(nextIndex);
+			RoleGameInfo roleGameInfo = game.getRoleIdMap().get(nextRoleGameId);
+			System.out.println("通知下一个人:" + nextRoleGameId);
+
+			// SessionUtils.sc(roleGameInfo.roleId, null);
+		}
+
 	}
 
 	/**
@@ -437,8 +445,8 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 			CardTools.fillCardSort(cardSort, paiList);
 
 			// 如果没有先前的牌型，则为主动出牌,直接判断牌型<br>否则通过使用上一轮牌型判断
-			sendCardList = lastCardList == null ? initiativeSend(cardSort, paiList) : passiveSend(
-					lastCardList.getClass(), cardSort, paiList);
+			sendCardList = lastCardList == null ? initiativeSend(cardSort, paiList)
+					: passiveSend(lastCardList.getClass(), cardSort, paiList);
 
 			// 匹配牌型失败
 			if (sendCardList == null)
@@ -602,7 +610,7 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 	public static void main(String[] args) {
 		// test_dispatchCard();
 		// test_linkedMap();
-		// test_call_landlord();
+		test_call_landlord();
 	}
 
 	private static void test_linkedMap() {
@@ -676,6 +684,7 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 			info.gameRoleId = i + "";
 			info.roleId = i;
 			game.getRoleIdMap().put(info.gameRoleId, info);
+			game.getRoleIdList().add(info.gameRoleId);
 		}
 
 		impl.gameInit(1);
@@ -692,21 +701,19 @@ public class FightServiceImpl extends ObserveBaseService implements FightService
 
 		game.setCurrentRoleIdIndex(0);
 		System.out.println();
-		// impl.callLandlord(1, 0 + "", true);
-		System.out.println(game.getCallLandlordList());
-		System.out.println("mul=" + game.getMultiple());
-		// impl.callLandlord(1, 1 + "", true);
-		System.out.println(game.getCallLandlordList());
-		System.out.println("mul=" + game.getMultiple());
-		// impl.callLandlord(1, 2 + "", true);
-		System.out.println(game.getCallLandlordList());
-		System.out.println("mul=" + game.getMultiple());
-		// impl.callLandlord(1, 0 + "", false);
-		System.out.println(game.getCallLandlordList());
-		System.out.println("mul=" + game.getMultiple());
-		// impl.callLandlord(1, 1 + "", false);
-		System.out.println(game.getCallLandlordList());
-		System.out.println("mul=" + game.getMultiple());
+		impl.callLandlord(1, 0 + "", 0);
+		System.out.println("mul=" + game.getMultiple() + " score=" + game.getCallLandlordScore());
+		impl.callLandlord(1, 1 + "", 0);
+		System.out.println("mul=" + game.getMultiple() + " score=" + game.getCallLandlordScore());
+		impl.callLandlord(1, 2 + "", 0);
+		System.out.println("mul=" + game.getMultiple() + " score=" + game.getCallLandlordScore());
+		game.setCurrentRoleIdIndex(0);
+		impl.callLandlord(1, 0 + "", 1);
+		System.out.println("mul=" + game.getMultiple() + " score=" + game.getCallLandlordScore());
+		impl.callLandlord(1, 1 + "", 3);
+		System.out.println("mul=" + game.getMultiple() + " score=" + game.getCallLandlordScore());
+		impl.callLandlord(1, 2 + "", 2);
+		System.out.println("mul=" + game.getMultiple() + " score=" + game.getCallLandlordScore());
 
 	}
 }

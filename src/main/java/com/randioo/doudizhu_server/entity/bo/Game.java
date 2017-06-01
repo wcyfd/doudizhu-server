@@ -2,10 +2,8 @@ package com.randioo.doudizhu_server.entity.bo;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import com.randioo.doudizhu_server.entity.po.RoleGameInfo;
 import com.randioo.doudizhu_server.entity.po.cardlist.CardList;
@@ -45,12 +43,10 @@ public class Game {
 	private String landlordGameRoleId;
 	// 游戏倍数
 	private int multiple;
-
-	private List<String> callLandlordList = new ArrayList<>();
-
-	private int callLandlordCount;
-	
+	// 叫地主的分数
 	private int callLandlordScore;
+	// 叫分的次数
+	private int callLandlordCount;
 
 	public int getOnlineRoleCount() {
 		return onlineRoleCount;
@@ -168,8 +164,12 @@ public class Game {
 		this.multiple = multiple;
 	}
 
-	public List<String> getCallLandlordList() {
-		return callLandlordList;
+	public int getCallLandlordScore() {
+		return callLandlordScore;
+	}
+
+	public void setCallLandlordScore(int callLandlordScore) {
+		this.callLandlordScore = callLandlordScore;
 	}
 
 	public int getCallLandlordCount() {
@@ -178,14 +178,6 @@ public class Game {
 
 	public void setCallLandlordCount(int callLandlordCount) {
 		this.callLandlordCount = callLandlordCount;
-	}
-
-	public int getCallLandlordScore() {
-		return callLandlordScore;
-	}
-
-	public void setCallLandlordScore(int callLandlordScore) {
-		this.callLandlordScore = callLandlordScore;
 	}
 
 }
