@@ -10,10 +10,13 @@ message FightReadyResponse{
 }
 
 message SCFightReady{
-	optional string gamrRoleId=1;
+	optional int32 seated = 1;
 }
 
 message SCFightStart{
+	repeated int32 pai = 1;
+	optional int32 times = 2;	
+	repeated PaiNum PaiNum = 4; 
 	
 }
 

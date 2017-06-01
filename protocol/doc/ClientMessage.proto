@@ -24,4 +24,5 @@ message CS{
 	optional SettingsRequest SettingsRequest = 11;
 	optional GetRoleDataRequest GetRoleDataRequest = 12;
 	optional GetSettingsRequest GetSettingsRequest = 13;
-} // 13
+	optional MatchAIRequest MatchAIRequest = 14;
+} // 14

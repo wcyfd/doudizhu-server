@@ -14,4 +14,9 @@ public class FightConstant {
 	public final static String SEND_CARD = "fight_send_card";
 
 	public static final String NEXT_GAME_ROLE_SEND_CARD = "next_game_role_send_card";
+	
+	public static final int SCORE_1 = 1;
+	public static final int SCORE_2 = 2;
+	public static final int SCORE_3 = 3;
+	
 }

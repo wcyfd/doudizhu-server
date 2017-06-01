@@ -33,16 +33,28 @@ public class A3N1 extends A1 {
 	public CardList pattern(CardSort cardSort, List<Integer> arr) throws CardListPatternException {
 		if (arr.size() != 4)
 			throw new CardListPatternException();
-		Set<Integer> set = cardSort.getCardSort().get(2);
-		Set<Integer> set2 = cardSort.getCardSort().get(3);
-		if (set.size() == 1 && set2.size() == 0) {
+
+		Set<Integer> set0 = cardSort.getCardSort().get(0);
+		Set<Integer> set2 = cardSort.getCardSort().get(2);
+
+		if (set0.size() == 2 && set2.size() == 1) {
+			int num = set2.iterator().next();
+			int addNum = addNum(cardSort, num);
 			A3N1 a = new A3N1();
-			a.setNum(set.iterator().next());
-			a.setAddNum(set2.iterator().next());
-			return a;
+			a.setNum(num);
+			a.setAddNum(addNum);
 		}
 
 		throw new CardListPatternException();
+	}
+
+	private int addNum(CardSort cardSort, int value) {
+		for (int n : cardSort.getCardSort().get(0)) {
+			if (n != value) {
+				return n;
+			}
+		}
+		return 0;
 	}
 
 }

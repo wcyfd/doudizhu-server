@@ -44,5 +44,5 @@ public interface FightService extends ObserveBaseServiceInterface {
 	 * @param landlord
 	 * @author wcy 2017年5月31日
 	 */
-	void callLandlord(Role role, boolean landlord);
+	void callLandlord(Role role, int fen);
 }

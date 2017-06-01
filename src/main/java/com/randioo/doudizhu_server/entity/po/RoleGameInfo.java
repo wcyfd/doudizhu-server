@@ -7,7 +7,7 @@ public class RoleGameInfo {
 	public String gameRoleId;
 	public int roleId;
 	public boolean ready;
-	public int seatIndex;
+	//public int seatIndex;
 	public Boolean agreeLeave;
 	public List<Integer> cards = new ArrayList<>();
 }

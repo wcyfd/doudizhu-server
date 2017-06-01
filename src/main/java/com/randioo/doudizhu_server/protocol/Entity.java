@@ -1069,6 +1069,329 @@ public final class Entity {
     // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.GameConfig)
   }
   
+  public static final class PaiNum extends
+      com.google.protobuf.GeneratedMessage {
+    // Use PaiNum.newBuilder() to construct.
+    private PaiNum() {
+      initFields();
+    }
+    private PaiNum(boolean noInit) {}
+    
+    private static final PaiNum defaultInstance;
+    public static PaiNum getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public PaiNum getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Entity.internal_static_com_randioo_doudizhu_server_protocol_PaiNum_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Entity.internal_static_com_randioo_doudizhu_server_protocol_PaiNum_fieldAccessorTable;
+    }
+    
+    // optional int32 seated = 1;
+    public static final int SEATED_FIELD_NUMBER = 1;
+    private boolean hasSeated;
+    private int seated_ = 0;
+    public boolean hasSeated() { return hasSeated; }
+    public int getSeated() { return seated_; }
+    
+    // optional int32 num = 3;
+    public static final int NUM_FIELD_NUMBER = 3;
+    private boolean hasNum;
+    private int num_ = 0;
+    public boolean hasNum() { return hasNum; }
+    public int getNum() { return num_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasSeated()) {
+        output.writeInt32(1, getSeated());
+      }
+      if (hasNum()) {
+        output.writeInt32(3, getNum());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasSeated()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, getSeated());
+      }
+      if (hasNum()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, getNum());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Entity.PaiNum parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Entity.PaiNum prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Entity.PaiNum result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Entity.PaiNum.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Entity.PaiNum();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Entity.PaiNum internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Entity.PaiNum();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Entity.PaiNum.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Entity.PaiNum getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Entity.PaiNum.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Entity.PaiNum build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Entity.PaiNum buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Entity.PaiNum buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Entity.PaiNum returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Entity.PaiNum) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Entity.PaiNum)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Entity.PaiNum other) {
+        if (other == com.randioo.doudizhu_server.protocol.Entity.PaiNum.getDefaultInstance()) return this;
+        if (other.hasSeated()) {
+          setSeated(other.getSeated());
+        }
+        if (other.hasNum()) {
+          setNum(other.getNum());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              setSeated(input.readInt32());
+              break;
+            }
+            case 24: {
+              setNum(input.readInt32());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional int32 seated = 1;
+      public boolean hasSeated() {
+        return result.hasSeated();
+      }
+      public int getSeated() {
+        return result.getSeated();
+      }
+      public Builder setSeated(int value) {
+        result.hasSeated = true;
+        result.seated_ = value;
+        return this;
+      }
+      public Builder clearSeated() {
+        result.hasSeated = false;
+        result.seated_ = 0;
+        return this;
+      }
+      
+      // optional int32 num = 3;
+      public boolean hasNum() {
+        return result.hasNum();
+      }
+      public int getNum() {
+        return result.getNum();
+      }
+      public Builder setNum(int value) {
+        result.hasNum = true;
+        result.num_ = value;
+        return this;
+      }
+      public Builder clearNum() {
+        result.hasNum = false;
+        result.num_ = 0;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.PaiNum)
+    }
+    
+    static {
+      defaultInstance = new PaiNum(true);
+      com.randioo.doudizhu_server.protocol.Entity.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.PaiNum)
+  }
+  
   public static final class GameRoleData extends
       com.google.protobuf.GeneratedMessage {
     // Use GameRoleData.newBuilder() to construct.
@@ -1131,6 +1454,20 @@ public final class Entity {
     public boolean hasSeatIndex() { return hasSeatIndex; }
     public int getSeatIndex() { return seatIndex_; }
     
+    // optional string headImgUrl = 6;
+    public static final int HEADIMGURL_FIELD_NUMBER = 6;
+    private boolean hasHeadImgUrl;
+    private java.lang.String headImgUrl_ = "";
+    public boolean hasHeadImgUrl() { return hasHeadImgUrl; }
+    public java.lang.String getHeadImgUrl() { return headImgUrl_; }
+    
+    // optional int32 money = 7;
+    public static final int MONEY_FIELD_NUMBER = 7;
+    private boolean hasMoney;
+    private int money_ = 0;
+    public boolean hasMoney() { return hasMoney; }
+    public int getMoney() { return money_; }
+    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -1154,6 +1491,12 @@ public final class Entity {
       }
       if (hasSeatIndex()) {
         output.writeInt32(5, getSeatIndex());
+      }
+      if (hasHeadImgUrl()) {
+        output.writeString(6, getHeadImgUrl());
+      }
+      if (hasMoney()) {
+        output.writeInt32(7, getMoney());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1183,6 +1526,14 @@ public final class Entity {
       if (hasSeatIndex()) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, getSeatIndex());
+      }
+      if (hasHeadImgUrl()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(6, getHeadImgUrl());
+      }
+      if (hasMoney()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, getMoney());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1357,6 +1708,12 @@ public final class Entity {
         if (other.hasSeatIndex()) {
           setSeatIndex(other.getSeatIndex());
         }
+        if (other.hasHeadImgUrl()) {
+          setHeadImgUrl(other.getHeadImgUrl());
+        }
+        if (other.hasMoney()) {
+          setMoney(other.getMoney());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1400,6 +1757,14 @@ public final class Entity {
             }
             case 40: {
               setSeatIndex(input.readInt32());
+              break;
+            }
+            case 50: {
+              setHeadImgUrl(input.readString());
+              break;
+            }
+            case 56: {
+              setMoney(input.readInt32());
               break;
             }
           }
@@ -1503,6 +1868,45 @@ public final class Entity {
         return this;
       }
       
+      // optional string headImgUrl = 6;
+      public boolean hasHeadImgUrl() {
+        return result.hasHeadImgUrl();
+      }
+      public java.lang.String getHeadImgUrl() {
+        return result.getHeadImgUrl();
+      }
+      public Builder setHeadImgUrl(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasHeadImgUrl = true;
+        result.headImgUrl_ = value;
+        return this;
+      }
+      public Builder clearHeadImgUrl() {
+        result.hasHeadImgUrl = false;
+        result.headImgUrl_ = getDefaultInstance().getHeadImgUrl();
+        return this;
+      }
+      
+      // optional int32 money = 7;
+      public boolean hasMoney() {
+        return result.hasMoney();
+      }
+      public int getMoney() {
+        return result.getMoney();
+      }
+      public Builder setMoney(int value) {
+        result.hasMoney = true;
+        result.money_ = value;
+        return this;
+      }
+      public Builder clearMoney() {
+        result.hasMoney = false;
+        result.money_ = 0;
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.GameRoleData)
     }
     
@@ -1526,6 +1930,11 @@ public final class Entity {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_doudizhu_server_protocol_GameConfig_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_PaiNum_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_PaiNum_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_randioo_doudizhu_server_protocol_GameRoleData_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -1545,13 +1954,15 @@ public final class Entity {
       "\030\004 \001(\005\022\023\n\013musicVolume\030\005 \001(\005\022\022\n\nheadImgUr" +
       "l\030\006 \001(\t\022\024\n\014randiooMoney\030\007 \001(\005\"H\n\nGameCon" +
       "fig\022\r\n\005round\030\001 \001(\005\022\n\n\002di\030\002 \001(\005\022\016\n\006moguai" +
-      "\030\003 \001(\010\022\017\n\007mingpai\030\004 \001(\010\"b\n\014GameRoleData\022" +
+      "\030\003 \001(\010\022\017\n\007mingpai\030\004 \001(\010\"%\n\006PaiNum\022\016\n\006sea" +
+      "ted\030\001 \001(\005\022\013\n\003num\030\003 \001(\005\"\205\001\n\014GameRoleData\022" +
       "\022\n\ngameRoleId\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006sea" +
-      "ted\030\003 \001(\005\022\r\n\005ready\030\004 \001(\010\022\021\n\tseatIndex\030\005 " +
-      "\001(\005*5\n\010GameType\022\023\n\017GAME_TYPE_MATCH\020\001\022\024\n\020",
-      "GAME_TYPE_FRIEND\020\002*M\n\tGameState\022\026\n\022GAME_" +
-      "STATE_PREPARE\020\001\022\024\n\020GAME_START_START\020\002\022\022\n" +
-      "\016GAME_START_END\020\003"
+      "ted\030\003 \001(\005\022\r\n\005ready\030\004 \001(\010\022\021\n\tseatIndex\030\005 ",
+      "\001(\005\022\022\n\nheadImgUrl\030\006 \001(\t\022\r\n\005money\030\007 \001(\005*5" +
+      "\n\010GameType\022\023\n\017GAME_TYPE_MATCH\020\001\022\024\n\020GAME_" +
+      "TYPE_FRIEND\020\002*M\n\tGameState\022\026\n\022GAME_STATE" +
+      "_PREPARE\020\001\022\024\n\020GAME_START_START\020\002\022\022\n\016GAME" +
+      "_START_END\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1574,12 +1985,20 @@ public final class Entity {
               new java.lang.String[] { "Round", "Di", "Moguai", "Mingpai", },
               com.randioo.doudizhu_server.protocol.Entity.GameConfig.class,
               com.randioo.doudizhu_server.protocol.Entity.GameConfig.Builder.class);
-          internal_static_com_randioo_doudizhu_server_protocol_GameRoleData_descriptor =
+          internal_static_com_randioo_doudizhu_server_protocol_PaiNum_descriptor =
             getDescriptor().getMessageTypes().get(2);
+          internal_static_com_randioo_doudizhu_server_protocol_PaiNum_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_PaiNum_descriptor,
+              new java.lang.String[] { "Seated", "Num", },
+              com.randioo.doudizhu_server.protocol.Entity.PaiNum.class,
+              com.randioo.doudizhu_server.protocol.Entity.PaiNum.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_GameRoleData_descriptor =
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_randioo_doudizhu_server_protocol_GameRoleData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_GameRoleData_descriptor,
-              new java.lang.String[] { "GameRoleId", "Name", "Seated", "Ready", "SeatIndex", },
+              new java.lang.String[] { "GameRoleId", "Name", "Seated", "Ready", "SeatIndex", "HeadImgUrl", "Money", },
               com.randioo.doudizhu_server.protocol.Entity.GameRoleData.class,
               com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder.class);
           return null;

@@ -564,12 +564,12 @@ public final class Fight {
       return com.randioo.doudizhu_server.protocol.Fight.internal_static_com_randioo_doudizhu_server_protocol_SCFightReady_fieldAccessorTable;
     }
     
-    // optional string gamrRoleId = 1;
-    public static final int GAMRROLEID_FIELD_NUMBER = 1;
-    private boolean hasGamrRoleId;
-    private java.lang.String gamrRoleId_ = "";
-    public boolean hasGamrRoleId() { return hasGamrRoleId; }
-    public java.lang.String getGamrRoleId() { return gamrRoleId_; }
+    // optional int32 seated = 1;
+    public static final int SEATED_FIELD_NUMBER = 1;
+    private boolean hasSeated;
+    private int seated_ = 0;
+    public boolean hasSeated() { return hasSeated; }
+    public int getSeated() { return seated_; }
     
     private void initFields() {
     }
@@ -580,8 +580,8 @@ public final class Fight {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasGamrRoleId()) {
-        output.writeString(1, getGamrRoleId());
+      if (hasSeated()) {
+        output.writeInt32(1, getSeated());
       }
       getUnknownFields().writeTo(output);
     }
@@ -592,9 +592,9 @@ public final class Fight {
       if (size != -1) return size;
     
       size = 0;
-      if (hasGamrRoleId()) {
+      if (hasSeated()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(1, getGamrRoleId());
+          .computeInt32Size(1, getSeated());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -754,8 +754,8 @@ public final class Fight {
       
       public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Fight.SCFightReady other) {
         if (other == com.randioo.doudizhu_server.protocol.Fight.SCFightReady.getDefaultInstance()) return this;
-        if (other.hasGamrRoleId()) {
-          setGamrRoleId(other.getGamrRoleId());
+        if (other.hasSeated()) {
+          setSeated(other.getSeated());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -782,8 +782,8 @@ public final class Fight {
               }
               break;
             }
-            case 10: {
-              setGamrRoleId(input.readString());
+            case 8: {
+              setSeated(input.readInt32());
               break;
             }
           }
@@ -791,24 +791,21 @@ public final class Fight {
       }
       
       
-      // optional string gamrRoleId = 1;
-      public boolean hasGamrRoleId() {
-        return result.hasGamrRoleId();
+      // optional int32 seated = 1;
+      public boolean hasSeated() {
+        return result.hasSeated();
       }
-      public java.lang.String getGamrRoleId() {
-        return result.getGamrRoleId();
+      public int getSeated() {
+        return result.getSeated();
       }
-      public Builder setGamrRoleId(java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  result.hasGamrRoleId = true;
-        result.gamrRoleId_ = value;
+      public Builder setSeated(int value) {
+        result.hasSeated = true;
+        result.seated_ = value;
         return this;
       }
-      public Builder clearGamrRoleId() {
-        result.hasGamrRoleId = false;
-        result.gamrRoleId_ = getDefaultInstance().getGamrRoleId();
+      public Builder clearSeated() {
+        result.hasSeated = false;
+        result.seated_ = 0;
         return this;
       }
       
@@ -851,6 +848,37 @@ public final class Fight {
       return com.randioo.doudizhu_server.protocol.Fight.internal_static_com_randioo_doudizhu_server_protocol_SCFightStart_fieldAccessorTable;
     }
     
+    // repeated int32 pai = 1;
+    public static final int PAI_FIELD_NUMBER = 1;
+    private java.util.List<java.lang.Integer> pai_ =
+      java.util.Collections.emptyList();
+    public java.util.List<java.lang.Integer> getPaiList() {
+      return pai_;
+    }
+    public int getPaiCount() { return pai_.size(); }
+    public int getPai(int index) {
+      return pai_.get(index);
+    }
+    
+    // optional int32 times = 2;
+    public static final int TIMES_FIELD_NUMBER = 2;
+    private boolean hasTimes;
+    private int times_ = 0;
+    public boolean hasTimes() { return hasTimes; }
+    public int getTimes() { return times_; }
+    
+    // repeated .com.randioo.doudizhu_server.protocol.PaiNum PaiNum = 4;
+    public static final int PAINUM_FIELD_NUMBER = 4;
+    private java.util.List<com.randioo.doudizhu_server.protocol.Entity.PaiNum> paiNum_ =
+      java.util.Collections.emptyList();
+    public java.util.List<com.randioo.doudizhu_server.protocol.Entity.PaiNum> getPaiNumList() {
+      return paiNum_;
+    }
+    public int getPaiNumCount() { return paiNum_.size(); }
+    public com.randioo.doudizhu_server.protocol.Entity.PaiNum getPaiNum(int index) {
+      return paiNum_.get(index);
+    }
+    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -860,6 +888,15 @@ public final class Fight {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      for (int element : getPaiList()) {
+        output.writeInt32(1, element);
+      }
+      if (hasTimes()) {
+        output.writeInt32(2, getTimes());
+      }
+      for (com.randioo.doudizhu_server.protocol.Entity.PaiNum element : getPaiNumList()) {
+        output.writeMessage(4, element);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -869,6 +906,23 @@ public final class Fight {
       if (size != -1) return size;
     
       size = 0;
+      {
+        int dataSize = 0;
+        for (int element : getPaiList()) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(element);
+        }
+        size += dataSize;
+        size += 1 * getPaiList().size();
+      }
+      if (hasTimes()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, getTimes());
+      }
+      for (com.randioo.doudizhu_server.protocol.Entity.PaiNum element : getPaiNumList()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, element);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -1011,6 +1065,14 @@ public final class Fight {
           throw new IllegalStateException(
             "build() has already been called on this Builder.");
         }
+        if (result.pai_ != java.util.Collections.EMPTY_LIST) {
+          result.pai_ =
+            java.util.Collections.unmodifiableList(result.pai_);
+        }
+        if (result.paiNum_ != java.util.Collections.EMPTY_LIST) {
+          result.paiNum_ =
+            java.util.Collections.unmodifiableList(result.paiNum_);
+        }
         com.randioo.doudizhu_server.protocol.Fight.SCFightStart returnMe = result;
         result = null;
         return returnMe;
@@ -1027,6 +1089,21 @@ public final class Fight {
       
       public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Fight.SCFightStart other) {
         if (other == com.randioo.doudizhu_server.protocol.Fight.SCFightStart.getDefaultInstance()) return this;
+        if (!other.pai_.isEmpty()) {
+          if (result.pai_.isEmpty()) {
+            result.pai_ = new java.util.ArrayList<java.lang.Integer>();
+          }
+          result.pai_.addAll(other.pai_);
+        }
+        if (other.hasTimes()) {
+          setTimes(other.getTimes());
+        }
+        if (!other.paiNum_.isEmpty()) {
+          if (result.paiNum_.isEmpty()) {
+            result.paiNum_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.PaiNum>();
+          }
+          result.paiNum_.addAll(other.paiNum_);
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1052,10 +1129,136 @@ public final class Fight {
               }
               break;
             }
+            case 8: {
+              addPai(input.readInt32());
+              break;
+            }
+            case 10: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addPai(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 16: {
+              setTimes(input.readInt32());
+              break;
+            }
+            case 34: {
+              com.randioo.doudizhu_server.protocol.Entity.PaiNum.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.PaiNum.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addPaiNum(subBuilder.buildPartial());
+              break;
+            }
           }
         }
       }
       
+      
+      // repeated int32 pai = 1;
+      public java.util.List<java.lang.Integer> getPaiList() {
+        return java.util.Collections.unmodifiableList(result.pai_);
+      }
+      public int getPaiCount() {
+        return result.getPaiCount();
+      }
+      public int getPai(int index) {
+        return result.getPai(index);
+      }
+      public Builder setPai(int index, int value) {
+        result.pai_.set(index, value);
+        return this;
+      }
+      public Builder addPai(int value) {
+        if (result.pai_.isEmpty()) {
+          result.pai_ = new java.util.ArrayList<java.lang.Integer>();
+        }
+        result.pai_.add(value);
+        return this;
+      }
+      public Builder addAllPai(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        if (result.pai_.isEmpty()) {
+          result.pai_ = new java.util.ArrayList<java.lang.Integer>();
+        }
+        super.addAll(values, result.pai_);
+        return this;
+      }
+      public Builder clearPai() {
+        result.pai_ = java.util.Collections.emptyList();
+        return this;
+      }
+      
+      // optional int32 times = 2;
+      public boolean hasTimes() {
+        return result.hasTimes();
+      }
+      public int getTimes() {
+        return result.getTimes();
+      }
+      public Builder setTimes(int value) {
+        result.hasTimes = true;
+        result.times_ = value;
+        return this;
+      }
+      public Builder clearTimes() {
+        result.hasTimes = false;
+        result.times_ = 0;
+        return this;
+      }
+      
+      // repeated .com.randioo.doudizhu_server.protocol.PaiNum PaiNum = 4;
+      public java.util.List<com.randioo.doudizhu_server.protocol.Entity.PaiNum> getPaiNumList() {
+        return java.util.Collections.unmodifiableList(result.paiNum_);
+      }
+      public int getPaiNumCount() {
+        return result.getPaiNumCount();
+      }
+      public com.randioo.doudizhu_server.protocol.Entity.PaiNum getPaiNum(int index) {
+        return result.getPaiNum(index);
+      }
+      public Builder setPaiNum(int index, com.randioo.doudizhu_server.protocol.Entity.PaiNum value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.paiNum_.set(index, value);
+        return this;
+      }
+      public Builder setPaiNum(int index, com.randioo.doudizhu_server.protocol.Entity.PaiNum.Builder builderForValue) {
+        result.paiNum_.set(index, builderForValue.build());
+        return this;
+      }
+      public Builder addPaiNum(com.randioo.doudizhu_server.protocol.Entity.PaiNum value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        if (result.paiNum_.isEmpty()) {
+          result.paiNum_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.PaiNum>();
+        }
+        result.paiNum_.add(value);
+        return this;
+      }
+      public Builder addPaiNum(com.randioo.doudizhu_server.protocol.Entity.PaiNum.Builder builderForValue) {
+        if (result.paiNum_.isEmpty()) {
+          result.paiNum_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.PaiNum>();
+        }
+        result.paiNum_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addAllPaiNum(
+          java.lang.Iterable<? extends com.randioo.doudizhu_server.protocol.Entity.PaiNum> values) {
+        if (result.paiNum_.isEmpty()) {
+          result.paiNum_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.PaiNum>();
+        }
+        super.addAll(values, result.paiNum_);
+        return this;
+      }
+      public Builder clearPaiNum() {
+        result.paiNum_ = java.util.Collections.emptyList();
+        return this;
+      }
       
       // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.SCFightStart)
     }
@@ -3305,15 +3508,18 @@ public final class Fight {
       "\n\013Fight.proto\022$com.randioo.doudizhu_serv" +
       "er.protocol\032\014Entity.proto\"\023\n\021FightReadyR" +
       "equest\"*\n\022FightReadyResponse\022\024\n\terrorCod" +
-      "e\030\001 \001(\005:\0011\"\"\n\014SCFightReady\022\022\n\ngamrRoleId" +
-      "\030\001 \001(\t\"\016\n\014SCFightStart\"\026\n\024FightExitGameR" +
-      "equest\"-\n\025FightExitGameResponse\022\024\n\terror" +
-      "Code\030\001 \001(\005:\0011\"%\n\017SCFightExitGame\022\022\n\ngame" +
-      "RoleId\030\001 \001(\t\"=\n\024SCFightApplyExitGame\022\022\n\n" +
-      "gameRoleId\030\001 \001(\t\022\021\n\tcountDown\030\002 \001(\005\"/\n\031F" +
-      "ightAgreeExitGameRequest\022\022\n\ngameRoleId\030\001",
-      " \001(\t\"\034\n\032FightAgreeExitGameResponse\"\024\n\022SC" +
-      "FightGameDismiss\"\025\n\023SCFightLoadResource"
+      "e\030\001 \001(\005:\0011\"\036\n\014SCFightReady\022\016\n\006seated\030\001 \001" +
+      "(\005\"h\n\014SCFightStart\022\013\n\003pai\030\001 \003(\005\022\r\n\005times" +
+      "\030\002 \001(\005\022<\n\006PaiNum\030\004 \003(\0132,.com.randioo.dou" +
+      "dizhu_server.protocol.PaiNum\"\026\n\024FightExi" +
+      "tGameRequest\"-\n\025FightExitGameResponse\022\024\n" +
+      "\terrorCode\030\001 \001(\005:\0011\"%\n\017SCFightExitGame\022\022" +
+      "\n\ngameRoleId\030\001 \001(\t\"=\n\024SCFightApplyExitGa",
+      "me\022\022\n\ngameRoleId\030\001 \001(\t\022\021\n\tcountDown\030\002 \001(" +
+      "\005\"/\n\031FightAgreeExitGameRequest\022\022\n\ngameRo" +
+      "leId\030\001 \001(\t\"\034\n\032FightAgreeExitGameResponse" +
+      "\"\024\n\022SCFightGameDismiss\"\025\n\023SCFightLoadRes" +
+      "ource"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3341,7 +3547,7 @@ public final class Fight {
           internal_static_com_randioo_doudizhu_server_protocol_SCFightReady_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_SCFightReady_descriptor,
-              new java.lang.String[] { "GamrRoleId", },
+              new java.lang.String[] { "Seated", },
               com.randioo.doudizhu_server.protocol.Fight.SCFightReady.class,
               com.randioo.doudizhu_server.protocol.Fight.SCFightReady.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_SCFightStart_descriptor =
@@ -3349,7 +3555,7 @@ public final class Fight {
           internal_static_com_randioo_doudizhu_server_protocol_SCFightStart_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_SCFightStart_descriptor,
-              new java.lang.String[] { },
+              new java.lang.String[] { "Pai", "Times", "PaiNum", },
               com.randioo.doudizhu_server.protocol.Fight.SCFightStart.class,
               com.randioo.doudizhu_server.protocol.Fight.SCFightStart.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_FightExitGameRequest_descriptor =

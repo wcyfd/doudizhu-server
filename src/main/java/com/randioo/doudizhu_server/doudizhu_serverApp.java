@@ -24,6 +24,7 @@ public class doudizhu_serverApp {
 		GlobleConfig.set(GlobleEnum.LOGIN, true);
 		
 		//test.test();
+		
 	}
 
 }

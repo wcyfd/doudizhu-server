@@ -130,6 +130,7 @@ public class ServerHandler extends IoHandlerAdapter {
 	public void messageSent(IoSession session, Object message) throws Exception {
 		if (!message.toString().contains("scFightKeyFrame") && !message.toString().contains("PingResponse")) {
 
+			System.out.println(message);
 			final IoSession _session = session;
 			final Object _message = message;
 

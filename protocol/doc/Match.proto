@@ -6,10 +6,14 @@ message MatchCreateGameRequest{
 	optional GameConfig gameConfig = 1;
 }
 
+message MatchAIRequest{
+}
+
 message MatchCreateGameResponse{
 	optional int32 errorCode = 1[default = 1];
 	optional string id = 2;
 	optional bool moguai = 3;
+	optional GameRoleData gameRoleData = 4;
 }
 
 
@@ -20,6 +24,8 @@ message MatchJoinGameRequest{
 message MatchJoinGameResponse{
 	optional int32 errorCode = 1[default = 1];
 	repeated GameRoleData gameRoleData = 2;
+	optional string id = 3;
+	optional bool moguai = 4;
 }
 
 message SCMatchJoinGame{

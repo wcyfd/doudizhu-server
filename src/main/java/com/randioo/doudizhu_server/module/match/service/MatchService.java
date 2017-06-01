@@ -37,6 +37,6 @@ public interface MatchService extends ObserveBaseServiceInterface {
 
 	GeneratedMessage match(Role role);
 
-	GeneratedMessage matchAI(Role role);
+	void matchAI(Role role);
 
 }
