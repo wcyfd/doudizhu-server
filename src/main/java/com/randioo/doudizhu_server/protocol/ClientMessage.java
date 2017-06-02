@@ -133,6 +133,13 @@ public final class ClientMessage {
     public boolean hasMatchAIRequest() { return hasMatchAIRequest; }
     public com.randioo.doudizhu_server.protocol.Match.MatchAIRequest getMatchAIRequest() { return matchAIRequest_; }
     
+    // optional .com.randioo.doudizhu_server.protocol.FightCallLandLordRequest FightCallLandLordRequest = 15;
+    public static final int FIGHTCALLLANDLORDREQUEST_FIELD_NUMBER = 15;
+    private boolean hasFightCallLandLordRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest fightCallLandLordRequest_;
+    public boolean hasFightCallLandLordRequest() { return hasFightCallLandLordRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest getFightCallLandLordRequest() { return fightCallLandLordRequest_; }
+    
     private void initFields() {
       loginCheckAccountRequest_ = com.randioo.doudizhu_server.protocol.Login.LoginCheckAccountRequest.getDefaultInstance();
       loginCreateRoleRequest_ = com.randioo.doudizhu_server.protocol.Login.LoginCreateRoleRequest.getDefaultInstance();
@@ -148,6 +155,7 @@ public final class ClientMessage {
       getRoleDataRequest_ = com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.getDefaultInstance();
       getSettingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance();
       matchAIRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchAIRequest.getDefaultInstance();
+      fightCallLandLordRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -197,6 +205,9 @@ public final class ClientMessage {
       }
       if (hasMatchAIRequest()) {
         output.writeMessage(14, getMatchAIRequest());
+      }
+      if (hasFightCallLandLordRequest()) {
+        output.writeMessage(15, getFightCallLandLordRequest());
       }
       getUnknownFields().writeTo(output);
     }
@@ -262,6 +273,10 @@ public final class ClientMessage {
       if (hasMatchAIRequest()) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, getMatchAIRequest());
+      }
+      if (hasFightCallLandLordRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, getFightCallLandLordRequest());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -463,6 +478,9 @@ public final class ClientMessage {
         if (other.hasMatchAIRequest()) {
           mergeMatchAIRequest(other.getMatchAIRequest());
         }
+        if (other.hasFightCallLandLordRequest()) {
+          mergeFightCallLandLordRequest(other.getFightCallLandLordRequest());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -612,6 +630,15 @@ public final class ClientMessage {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setMatchAIRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 122: {
+              com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.newBuilder();
+              if (hasFightCallLandLordRequest()) {
+                subBuilder.mergeFrom(getFightCallLandLordRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightCallLandLordRequest(subBuilder.buildPartial());
               break;
             }
           }
@@ -1137,6 +1164,43 @@ public final class ClientMessage {
         return this;
       }
       
+      // optional .com.randioo.doudizhu_server.protocol.FightCallLandLordRequest FightCallLandLordRequest = 15;
+      public boolean hasFightCallLandLordRequest() {
+        return result.hasFightCallLandLordRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest getFightCallLandLordRequest() {
+        return result.getFightCallLandLordRequest();
+      }
+      public Builder setFightCallLandLordRequest(com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightCallLandLordRequest = true;
+        result.fightCallLandLordRequest_ = value;
+        return this;
+      }
+      public Builder setFightCallLandLordRequest(com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.Builder builderForValue) {
+        result.hasFightCallLandLordRequest = true;
+        result.fightCallLandLordRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightCallLandLordRequest(com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest value) {
+        if (result.hasFightCallLandLordRequest() &&
+            result.fightCallLandLordRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.getDefaultInstance()) {
+          result.fightCallLandLordRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.newBuilder(result.fightCallLandLordRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightCallLandLordRequest_ = value;
+        }
+        result.hasFightCallLandLordRequest = true;
+        return this;
+      }
+      public Builder clearFightCallLandLordRequest() {
+        result.hasFightCallLandLordRequest = false;
+        result.fightCallLandLordRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.getDefaultInstance();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.CS)
     }
     
@@ -1166,7 +1230,7 @@ public final class ClientMessage {
       "\n\023ClientMessage.proto\022$com.randioo.doudi" +
       "zhu_server.protocol\032\013Login.proto\032\nRole.p" +
       "roto\032\013Match.proto\032\013Fight.proto\032\023MoneyExc" +
-      "hange.proto\032\016Settings.proto\"\346\t\n\002CS\022`\n\030Lo" +
+      "hange.proto\032\016Settings.proto\"\310\n\n\002CS\022`\n\030Lo" +
       "ginCheckAccountRequest\030\001 \001(\0132>.com.randi" +
       "oo.doudizhu_server.protocol.LoginCheckAc" +
       "countRequest\022\\\n\026LoginCreateRoleRequest\030\002" +
@@ -1198,7 +1262,9 @@ public final class ClientMessage {
       "oo.doudizhu_server.protocol.GetSettingsR" +
       "equest\022L\n\016MatchAIRequest\030\016 \001(\01324.com.ran" +
       "dioo.doudizhu_server.protocol.MatchAIReq" +
-      "uest"
+      "uest\022`\n\030FightCallLandLordRequest\030\017 \001(\0132>" +
+      ".com.randioo.doudizhu_server.protocol.Fi" +
+      "ghtCallLandLordRequest"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1210,7 +1276,7 @@ public final class ClientMessage {
           internal_static_com_randioo_doudizhu_server_protocol_CS_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_CS_descriptor,
-              new java.lang.String[] { "LoginCheckAccountRequest", "LoginCreateRoleRequest", "LoginGetRoleDataRequest", "RoleRenameRequest", "MatchCreateGameRequest", "MatchJoinGameRequest", "FightReadyRequest", "FightExitGameRequest", "FightAgreeExitGameRequest", "MoneyExchangeRequest", "SettingsRequest", "GetRoleDataRequest", "GetSettingsRequest", "MatchAIRequest", },
+              new java.lang.String[] { "LoginCheckAccountRequest", "LoginCreateRoleRequest", "LoginGetRoleDataRequest", "RoleRenameRequest", "MatchCreateGameRequest", "MatchJoinGameRequest", "FightReadyRequest", "FightExitGameRequest", "FightAgreeExitGameRequest", "MoneyExchangeRequest", "SettingsRequest", "GetRoleDataRequest", "GetSettingsRequest", "MatchAIRequest", "FightCallLandLordRequest", },
               com.randioo.doudizhu_server.protocol.ClientMessage.CS.class,
               com.randioo.doudizhu_server.protocol.ClientMessage.CS.Builder.class);
           return null;

@@ -30,5 +30,9 @@ message SC{
 	optional SettingsResponse SettingsResponse = 18;//设置
 	optional GetRoleDataResponse GetRoleDataResponse = 19;
 	optional GetSettingsResponse GetSettingsResponse = 20;//设置
+	optional SCFightCallLandLord SCFightCallLandLord = 21;//通知叫地主
+	optional SCFightPutOut SCFightPutOut = 22;//通知出牌
+	optional SCFightLandLord SCFightLandLord = 23;//通知地主牌
+	optional FightCallLandLordResponse FightCallLandLordResponse = 24;//叫地主
 
-} // 20
+} // 24

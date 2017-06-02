@@ -26,6 +26,7 @@ message MatchJoinGameResponse{
 	repeated GameRoleData gameRoleData = 2;
 	optional string id = 3;
 	optional bool moguai = 4;
+	optional int32 seated = 5;
 }
 
 message SCMatchJoinGame{

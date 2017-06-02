@@ -47,6 +47,10 @@ public class Game {
 	private int callLandlordScore;
 	// 叫分的次数
 	private int callLandlordCount;
+	// 出牌计数
+	private int sendCardCount;
+	// 出牌的时间戳
+	private int sendCardTime;
 
 	public int getOnlineRoleCount() {
 		return onlineRoleCount;
@@ -178,6 +182,22 @@ public class Game {
 
 	public void setCallLandlordCount(int callLandlordCount) {
 		this.callLandlordCount = callLandlordCount;
+	}
+
+	public int getSendCardCount() {
+		return sendCardCount;
+	}
+
+	public void setSendCardCount(int sendCardCount) {
+		this.sendCardCount = sendCardCount;
+	}
+
+	public int getSendCardTime() {
+		return sendCardTime;
+	}
+
+	public void setSendCardTime(int sendCardTime) {
+		this.sendCardTime = sendCardTime;
 	}
 
 }

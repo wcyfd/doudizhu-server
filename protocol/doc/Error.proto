@@ -38,4 +38,5 @@ enum ErrorCode{
 
 	GAME_NOT_EXIST = 22;//游戏不存在
 	GAME_EXITING = 23;//其他人正申请退出
-} // 23
+	APPLY_REJECT = 24;//拒绝解散房间
+} // 24

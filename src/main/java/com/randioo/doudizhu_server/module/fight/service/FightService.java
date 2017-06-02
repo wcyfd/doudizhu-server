@@ -45,4 +45,6 @@ public interface FightService extends ObserveBaseServiceInterface {
 	 * @author wcy 2017年5月31日
 	 */
 	void callLandlord(Role role, int fen);
+
+	void recommandCardList(Role role);
 }

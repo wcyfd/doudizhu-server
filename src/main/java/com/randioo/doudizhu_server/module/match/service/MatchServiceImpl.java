@@ -221,6 +221,17 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 
 		return roleGameInfo;
 	}
+	@Override
+	public Role getRoleFromRoleGameInfo(RoleGameInfo info) {
+		int roleId = info.roleId;
+		if(roleId == 0){
+			Role role = new Role();
+
+			role.setName("ROBOT"+info.roleId);
+			return role;
+		}
+		return (Role) RoleCache.getRoleById(roleId);
+	}
 
 	@Override
 	public GeneratedMessage joinGame(Role role, String lockString) {
@@ -277,7 +288,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 			gameRoleDataList.add(gameRoleData);
 		}
 		return SC.newBuilder().setMatchJoinGameResponse(MatchJoinGameResponse.newBuilder()
-				.addAllGameRoleData(gameRoleDataList).setId(lockString).setMoguai(game.getGameConfig().getMoguai()))
+				.addAllGameRoleData(gameRoleDataList).setSeated(myGameRoleData.getSeated()).setId(lockString).setMoguai(game.getGameConfig().getMoguai()))
 				.build();
 	}
 

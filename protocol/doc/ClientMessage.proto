@@ -25,4 +25,5 @@ message CS{
 	optional GetRoleDataRequest GetRoleDataRequest = 12;
 	optional GetSettingsRequest GetSettingsRequest = 13;
 	optional MatchAIRequest MatchAIRequest = 14;
-} // 14
+	optional FightCallLandLordRequest FightCallLandLordRequest = 15;
+} // 15

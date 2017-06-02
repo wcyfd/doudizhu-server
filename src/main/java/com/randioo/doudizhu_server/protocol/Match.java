@@ -1338,6 +1338,13 @@ public final class Match {
     public boolean hasMoguai() { return hasMoguai; }
     public boolean getMoguai() { return moguai_; }
     
+    // optional int32 seated = 5;
+    public static final int SEATED_FIELD_NUMBER = 5;
+    private boolean hasSeated;
+    private int seated_ = 0;
+    public boolean hasSeated() { return hasSeated; }
+    public int getSeated() { return seated_; }
+    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -1358,6 +1365,9 @@ public final class Match {
       }
       if (hasMoguai()) {
         output.writeBool(4, getMoguai());
+      }
+      if (hasSeated()) {
+        output.writeInt32(5, getSeated());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1383,6 +1393,10 @@ public final class Match {
       if (hasMoguai()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(4, getMoguai());
+      }
+      if (hasSeated()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, getSeated());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1561,6 +1575,9 @@ public final class Match {
         if (other.hasMoguai()) {
           setMoguai(other.getMoguai());
         }
+        if (other.hasSeated()) {
+          setSeated(other.getSeated());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1602,6 +1619,10 @@ public final class Match {
             }
             case 32: {
               setMoguai(input.readBool());
+              break;
+            }
+            case 40: {
+              setSeated(input.readInt32());
               break;
             }
           }
@@ -1714,6 +1735,24 @@ public final class Match {
       public Builder clearMoguai() {
         result.hasMoguai = false;
         result.moguai_ = false;
+        return this;
+      }
+      
+      // optional int32 seated = 5;
+      public boolean hasSeated() {
+        return result.hasSeated();
+      }
+      public int getSeated() {
+        return result.getSeated();
+      }
+      public Builder setSeated(int value) {
+        result.hasSeated = true;
+        result.seated_ = value;
+        return this;
+      }
+      public Builder clearSeated() {
+        result.hasSeated = false;
+        result.seated_ = 0;
         return this;
       }
       
@@ -2086,13 +2125,13 @@ public final class Match {
       "\t\022\016\n\006moguai\030\003 \001(\010\022H\n\014gameRoleData\030\004 \001(\0132" +
       "2.com.randioo.doudizhu_server.protocol.G" +
       "ameRoleData\"*\n\024MatchJoinGameRequest\022\022\n\nl" +
-      "ockString\030\001 \001(\t\"\223\001\n\025MatchJoinGameRespons",
+      "ockString\030\001 \001(\t\"\243\001\n\025MatchJoinGameRespons",
       "e\022\024\n\terrorCode\030\001 \001(\005:\0011\022H\n\014gameRoleData\030" +
       "\002 \003(\01322.com.randioo.doudizhu_server.prot" +
       "ocol.GameRoleData\022\n\n\002id\030\003 \001(\t\022\016\n\006moguai\030" +
-      "\004 \001(\010\"[\n\017SCMatchJoinGame\022H\n\014gameRoleData" +
-      "\030\001 \001(\01322.com.randioo.doudizhu_server.pro" +
-      "tocol.GameRoleData"
+      "\004 \001(\010\022\016\n\006seated\030\005 \001(\005\"[\n\017SCMatchJoinGame" +
+      "\022H\n\014gameRoleData\030\001 \001(\01322.com.randioo.dou" +
+      "dizhu_server.protocol.GameRoleData"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2136,7 +2175,7 @@ public final class Match {
           internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", "GameRoleData", "Id", "Moguai", },
+              new java.lang.String[] { "ErrorCode", "GameRoleData", "Id", "Moguai", "Seated", },
               com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse.class,
               com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGame_descriptor =

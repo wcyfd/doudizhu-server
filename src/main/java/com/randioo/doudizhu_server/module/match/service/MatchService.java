@@ -2,6 +2,7 @@ package com.randioo.doudizhu_server.module.match.service;
 
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.entity.bo.Role;
+import com.randioo.doudizhu_server.entity.po.RoleGameInfo;
 import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
 import com.randioo.randioo_server_base.utils.service.ObserveBaseServiceInterface;
 
@@ -38,5 +39,7 @@ public interface MatchService extends ObserveBaseServiceInterface {
 	GeneratedMessage match(Role role);
 
 	void matchAI(Role role);
+
+	Role getRoleFromRoleGameInfo(RoleGameInfo info);
 
 }

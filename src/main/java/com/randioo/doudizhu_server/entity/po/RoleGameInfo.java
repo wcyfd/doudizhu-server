@@ -10,4 +10,5 @@ public class RoleGameInfo {
 	//public int seatIndex;
 	public Boolean agreeLeave;
 	public List<Integer> cards = new ArrayList<>();
+	public int auto;
 }

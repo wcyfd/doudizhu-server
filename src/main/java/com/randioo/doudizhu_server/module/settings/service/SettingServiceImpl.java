@@ -17,20 +17,18 @@ public class SettingServiceImpl extends ObserveBaseService implements SettingSer
 	public GeneratedMessage saveSettings(Role role, int volume, int musicVolume) {
 		role.setVolume(volume);
 		role.setMusicVolume(musicVolume);
-		return SC.newBuilder().setSettingsResponse(SettingsResponse.newBuilder().setErrorCode(ErrorCode.OK.getNumber())).build();
+		return SC.newBuilder().setSettingsResponse(SettingsResponse.newBuilder()).build();
 	}
 
 	@Override
 	public GeneratedMessage getSettings(Role role) {
-		GetSettingsResponse.Builder GSRBuilder = GetSettingsResponse.newBuilder();
 		if(role == null){
-			GSRBuilder.setErrorCode(ErrorCode.NO_ROLE_DATA.getNumber());
+			return SC.newBuilder().setGetSettingsResponse(GetSettingsResponse.newBuilder()
+																			 .setErrorCode(ErrorCode.NO_ROLE_DATA.getNumber())).build();
 		}
-		else{
-			GSRBuilder.setMusicVolume(role.getMusicVolume());
-			GSRBuilder.setVolume(role.getVolume());
-		}
-		return SC.newBuilder().setGetSettingsResponse(GSRBuilder).build();
+		return SC.newBuilder().setGetSettingsResponse(GetSettingsResponse.newBuilder()
+																		 .setMusicVolume(role.getMusicVolume())
+																		 .setVolume(role.getVolume())).build();
 	}
 
 

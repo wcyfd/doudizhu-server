@@ -33,6 +33,7 @@ public final class Error {
     MATCH_MAX_ROLE_COUNT(20, 21),
     GAME_NOT_EXIST(21, 22),
     GAME_EXITING(22, 23),
+    APPLY_REJECT(23, 24),
     ;
     
     
@@ -63,6 +64,7 @@ public final class Error {
         case 21: return MATCH_MAX_ROLE_COUNT;
         case 22: return GAME_NOT_EXIST;
         case 23: return GAME_EXITING;
+        case 24: return APPLY_REJECT;
         default: return null;
       }
     }
@@ -93,7 +95,7 @@ public final class Error {
     }
     
     private static final ErrorCode[] VALUES = {
-      OK, NO_STRING, NO_ROLE_ACCOUNT, EXIST_ROLE, CREATE_FAILED, REJECT_LOGIN, ACCOUNT_ILLEGEL, IN_LOGIN, NAME_SENSITIVE, NO_ROLE_DATA, NAME_REPEATED, NAME_TOO_LONG, NAME_SPECIAL_CHAR, NO_MONEY, CONNECT_ERROR, GAME_CREATE_ERROR, GAME_JOIN_ERROR, ROUND_ERROR, MONEY_NUM_ERROR, MATCH_ERROR_LOCK, MATCH_MAX_ROLE_COUNT, GAME_NOT_EXIST, GAME_EXITING, 
+      OK, NO_STRING, NO_ROLE_ACCOUNT, EXIST_ROLE, CREATE_FAILED, REJECT_LOGIN, ACCOUNT_ILLEGEL, IN_LOGIN, NAME_SENSITIVE, NO_ROLE_DATA, NAME_REPEATED, NAME_TOO_LONG, NAME_SPECIAL_CHAR, NO_MONEY, CONNECT_ERROR, GAME_CREATE_ERROR, GAME_JOIN_ERROR, ROUND_ERROR, MONEY_NUM_ERROR, MATCH_ERROR_LOCK, MATCH_MAX_ROLE_COUNT, GAME_NOT_EXIST, GAME_EXITING, APPLY_REJECT, 
     };
     public static ErrorCode valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -127,7 +129,7 @@ public final class Error {
   static {
     java.lang.String[] descriptorData = {
       "\n\013Error.proto\022$com.randioo.doudizhu_serv" +
-      "er.protocol*\273\003\n\tErrorCode\022\006\n\002OK\020\001\022\r\n\tNO_" +
+      "er.protocol*\315\003\n\tErrorCode\022\006\n\002OK\020\001\022\r\n\tNO_" +
       "STRING\020\002\022\023\n\017NO_ROLE_ACCOUNT\020\003\022\016\n\nEXIST_R" +
       "OLE\020\004\022\021\n\rCREATE_FAILED\020\005\022\020\n\014REJECT_LOGIN" +
       "\020\006\022\023\n\017ACCOUNT_ILLEGEL\020\007\022\014\n\010IN_LOGIN\020\010\022\022\n" +
@@ -138,7 +140,7 @@ public final class Error {
       "_JOIN_ERROR\020\021\022\017\n\013ROUND_ERROR\020\022\022\023\n\017MONEY_",
       "NUM_ERROR\020\023\022\024\n\020MATCH_ERROR_LOCK\020\024\022\030\n\024MAT" +
       "CH_MAX_ROLE_COUNT\020\025\022\022\n\016GAME_NOT_EXIST\020\026\022" +
-      "\020\n\014GAME_EXITING\020\027"
+      "\020\n\014GAME_EXITING\020\027\022\020\n\014APPLY_REJECT\020\030"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
