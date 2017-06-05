@@ -53,15 +53,31 @@ public class CardTools {
 			fillCardSort(cardSort, pai);
 	}
 
-	public static void rmValue(CardSort cardSort, int[] arr) {
+	public static void rmValues(CardSort cardSort, List<Integer> arr) {
 		for (int value : arr) {
-			for (int i = cardSort.getCardSort().size() - 1; i >= 0; i--) {
-				Set<Integer> set = cardSort.getCardSort().get(i);
-				if (set.contains(value)) {
-					set.remove(value);
-					break;
-				}
+			rmValue(cardSort, value);
+		}
+	}
+
+	public static void rmValue(CardSort cardSort, int value) {
+		for (int i = cardSort.getCardSort().size() - 1; i >= 0; i--) {
+			Set<Integer> set = cardSort.getCardSort().get(i);
+			if (set.contains(value)) {
+				set.remove(value);
 			}
+		}
+	}
+
+	public static void rmAllValues(CardSort cardSort, List<Integer> values) {
+		for (int value : values) {
+			rmAllValue(cardSort, value);
+		}
+	}
+
+	public static void rmAllValue(CardSort cardSort, int value) {
+		for (int i = 0; i < cardSort.getCardSort().size(); i++) {
+			Set<Integer> set = cardSort.getCardSort().get(i);
+			set.remove(value);
 		}
 	}
 
@@ -77,49 +93,49 @@ public class CardTools {
 			num--;
 		}
 	}
-	
-	public static void recommandNumCommonTemplate(List<List<Integer>> recommandList,CardSort cardSort,CardList lastCardList,List<Integer> arr,int lineIndex){
+
+	public static void recommandNumCommonTemplate(List<List<Integer>> recommandList, CardSort cardSort,
+			CardList lastCardList, int lineIndex, Class<? extends A1> targetClass) {
 		cardSort = cardSort.clone();
+		// 从第三行往前查找，因为第四行表示炸弹，所以第四行不查
 		if (lastCardList == null) {
 			// 主动出牌
-			for (int i = 2; i >= 2; i--) {
+			for (int i = 2; i >= lineIndex; i--) {
 				Set<Integer> set = cardSort.getCardSort().get(i);
 				List<List<Integer>> lists = new ArrayList<>();
 				for (int pai : set) {
-					List<Integer> list = new ArrayList<>(3);
-					for (int j = 0; j < 2; j++)
+					List<Integer> list = new ArrayList<>(lineIndex + 1);
+					for (int j = 0; j < lineIndex + 1; j++)
 						list.add(pai);
 					lists.add(list);
 				}
 				List<Integer> temp = new ArrayList<>(set);
-				for (int pai : temp) {
-					CardTools.rmValue(cardSort, pai, i + 1);
-				}
+				CardTools.rmAllValues(cardSort, temp);
 				recommandList.addAll(0, lists);
 			}
 		} else {
 			// 被动出牌
-			if (lastCardList.getClass() == A3.class) {
-				A1 a1 = (A1) lastCardList;
-				int num = a1.getNum();
+			if (lastCardList.getClass() != targetClass) {
+				return;
+			}
+			A1 a1 = (A1) lastCardList;
+			int num = a1.getNum();
 
-				for (int i = cardSort.getCardSort().size() - 1; i >= 2; i--) {
-					Set<Integer> set = cardSort.getCardSort().get(i);
-					List<List<Integer>> lists = new ArrayList<>();
-					for (int pai = num + 1; pai <= CardTools.C_2; pai++) {
-						if (set.contains(pai)) {
-							List<Integer> list = new ArrayList<>(3);
-							for (int j = 0; j < 2; j++)
-								list.add(pai);
-							lists.add(list);
-						}
+			for (int i = 2; i >= lineIndex; i--) {
+				Set<Integer> set = cardSort.getCardSort().get(i);
+				List<Integer> temp = new ArrayList<>(set);
+
+				List<List<Integer>> lists = new ArrayList<>();
+				for (int pai = num + 1; pai <= temp.get(temp.size() - 1); pai++) {
+					if (set.contains(pai)) {
+						List<Integer> list = new ArrayList<>(lineIndex + 1);
+						for (int j = 0; j < lineIndex + 1; j++)
+							list.add(pai);
+						lists.add(list);
 					}
-					List<Integer> temp = new ArrayList<>(set);
-					for (int pai : temp) {
-						CardTools.rmValue(cardSort, pai, i + 1);
-					}
-					recommandList.addAll(0, lists);
 				}
+				CardTools.rmAllValues(cardSort, temp);
+				recommandList.addAll(0, lists);
 			}
 		}
 	}

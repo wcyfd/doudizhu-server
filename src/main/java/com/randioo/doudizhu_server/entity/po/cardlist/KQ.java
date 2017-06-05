@@ -28,7 +28,6 @@ public class KQ extends CardList {
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
 			List<Integer> arr) {
 		// TODO Auto-generated method stub
-		
 	}
 
 
