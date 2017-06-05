@@ -8,7 +8,7 @@ import com.randioo.doudizhu_server.protocol.Error.ErrorCode;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.protocol.Settings.GetSettingsResponse;
 import com.randioo.doudizhu_server.protocol.Settings.SettingsResponse;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
+import com.randioo.randioo_server_base.service.ObserveBaseService;
 
 @Service("settingService")
 public class SettingServiceImpl extends ObserveBaseService implements SettingService {

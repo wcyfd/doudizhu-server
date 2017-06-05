@@ -1,20 +1,15 @@
 package com.randioo.doudizhu_server.entity.bo;
 
-public class Role extends RoleInterfaceImpl {
+import com.randioo.randioo_server_base.entity.DefaultRole;
+
+public class Role extends DefaultRole {
 
 	private int money;
 	private int gameId;
 	private int sex;
 	private int volume = 0;
 	private int musicVolume = 0;
-	private String account;
-	private int roleId;
-	private String name;
-	private String loginTimeStr;
-	private String offlineTimeStr;
-	private String createTimeStr;
 	private String moneyExchangeTimeStr;
-	private String loadTimeStr;
 	private String headImgUrl;
 	private int randiooMoney;
 	private int moneyExchangeNum;
@@ -33,77 +28,6 @@ public class Role extends RoleInterfaceImpl {
 
 	public void setHeadImgUrl(String headImgUrl) {
 		this.headImgUrl = headImgUrl;
-	}
-
-	@Override
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
-	}
-
-	@Override
-	public int getRoleId() {
-		return this.roleId;
-	}
-
-	@Override
-	public String getAccount() {
-		return this.account;
-	}
-
-	@Override
-	public void setAccount(String account) {
-		this.account = account;
-	}
-
-	@Override
-	public String getName() {
-		return this.name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public void setLoginTimeStr(String loginTimeStr) {
-		this.loginTimeStr = loginTimeStr;
-	}
-
-	@Override
-	public String getLoginTimeStr() {
-		return this.loginTimeStr;
-	}
-
-	@Override
-	public void setOfflineTimeStr(String offlineTimeStr) {
-		this.offlineTimeStr = offlineTimeStr;
-	}
-
-	@Override
-	public String getOfflineTimeStr() {
-		return this.offlineTimeStr;
-	}
-
-	@Override
-	public void setCreateTimeStr(String createTimeStr) {
-		this.createTimeStr = createTimeStr;
-	}
-
-	@Override
-	public String getCreateTimeStr() {
-		return this.createTimeStr;
-	}
-
-	@Override
-	public void setLoadTimeStr(String loadTimeStr) {
-		
-		this.loadTimeStr = loadTimeStr;
-	}
-
-	@Override
-	public String getLoadTimeStr() {
-		return this.loadTimeStr;
 	}
 
 	public int getVolume() {

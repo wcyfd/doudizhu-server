@@ -9,7 +9,7 @@ import com.randioo.doudizhu_server.module.login.service.LoginService;
 import com.randioo.doudizhu_server.protocol.Login.LoginCreateRoleRequest;
 import com.randioo.doudizhu_server.util.SessionUtils;
 import com.randioo.randioo_server_base.annotation.PTAnnotation;
-import com.randioo.randioo_server_base.net.IActionSupport;
+import com.randioo.randioo_server_base.template.IActionSupport;
 
 @Controller
 @PTAnnotation(LoginCreateRoleRequest.class)

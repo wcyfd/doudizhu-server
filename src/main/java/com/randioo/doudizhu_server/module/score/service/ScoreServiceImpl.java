@@ -8,8 +8,8 @@ import com.randioo.doudizhu_server.entity.bo.Game;
 import com.randioo.doudizhu_server.entity.po.cardlist.CardList;
 import com.randioo.doudizhu_server.module.fight.FightConstant;
 import com.randioo.doudizhu_server.module.fight.service.FightService;
-import com.randioo.randioo_server_base.utils.Observer;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
+import com.randioo.randioo_server_base.service.ObserveBaseService;
+import com.randioo.randioo_server_base.template.Observer;
 
 @Service("scoreService")
 public class ScoreServiceImpl extends ObserveBaseService implements ScoreService {

@@ -11,7 +11,7 @@ import com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest;
 import com.randioo.doudizhu_server.util.SessionUtils;
 import com.randioo.randioo_server_base.annotation.PTAnnotation;
 import com.randioo.randioo_server_base.cache.RoleCache;
-import com.randioo.randioo_server_base.net.IActionSupport;
+import com.randioo.randioo_server_base.template.IActionSupport;
 
 @Controller
 @PTAnnotation(GetSettingsRequest.class)

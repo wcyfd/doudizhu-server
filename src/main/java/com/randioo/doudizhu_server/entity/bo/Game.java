@@ -51,6 +51,8 @@ public class Game {
 	private int sendCardCount;
 	// 出牌的时间戳
 	private int sendCardTime;
+	
+	private boolean mingPaiState;
 
 	public int getOnlineRoleCount() {
 		return onlineRoleCount;
@@ -199,5 +201,14 @@ public class Game {
 	public void setSendCardTime(int sendCardTime) {
 		this.sendCardTime = sendCardTime;
 	}
+
+	public boolean isMingPaiState() {
+		return mingPaiState;
+	}
+
+	public void setMingPaiState(boolean mingPaiState) {
+		this.mingPaiState = mingPaiState;
+	}
+	
 
 }

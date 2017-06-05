@@ -24,4 +24,12 @@ public class KQ extends CardList {
 		return 1;
 	}
 
+	@Override
+	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
+			List<Integer> arr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

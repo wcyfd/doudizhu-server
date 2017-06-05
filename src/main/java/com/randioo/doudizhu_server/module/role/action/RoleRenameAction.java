@@ -10,7 +10,7 @@ import com.randioo.doudizhu_server.module.role.service.RoleService;
 import com.randioo.doudizhu_server.protocol.Role.RoleRenameRequest;
 import com.randioo.randioo_server_base.annotation.PTAnnotation;
 import com.randioo.randioo_server_base.cache.RoleCache;
-import com.randioo.randioo_server_base.net.IActionSupport;
+import com.randioo.randioo_server_base.template.IActionSupport;
 
 @Controller
 @PTAnnotation(RoleRenameRequest.class)

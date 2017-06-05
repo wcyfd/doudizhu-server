@@ -38,4 +38,11 @@ public class A3N2 extends A3N1 {
 		throw new CardListPatternException();
 	}
 
+	@Override
+	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
+			List<Integer> arr) {
+		// TODO Auto-generated method stub
+		super.recommand(recommandList, cardSort, lastCardList, arr);
+	}
+
 }

@@ -3,7 +3,7 @@ package com.randioo.doudizhu_server;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.doudizhu_server.module.match.service.MatchService;
 import com.randioo.randioo_server_base.cache.RoleCache;
-import com.randioo.randioo_server_base.net.SpringContext;
+import com.randioo.randioo_server_base.utils.SpringContext;
 
 public class MatchAITest {
 	public static void test(){

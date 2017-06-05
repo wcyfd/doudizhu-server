@@ -19,16 +19,16 @@ import com.randioo.doudizhu_server.protocol.Role.RoleRenameResponse;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.HttpConnection;
 import com.randioo.randioo_server_base.cache.RoleCache;
+import com.randioo.randioo_server_base.config.GlobleConfig;
+import com.randioo.randioo_server_base.config.GlobleConfig.GlobleEnum;
+import com.randioo.randioo_server_base.db.IdClassCreator;
 import com.randioo.randioo_server_base.error.HttpConnectException;
 import com.randioo.randioo_server_base.module.role.RoleHandler;
 import com.randioo.randioo_server_base.module.role.RoleModelService;
+import com.randioo.randioo_server_base.sensitive.SensitiveWordDictionary;
+import com.randioo.randioo_server_base.service.ObserveBaseService;
+import com.randioo.randioo_server_base.template.Ref;
 import com.randioo.randioo_server_base.utils.StringUtils;
-import com.randioo.randioo_server_base.utils.game.IdClassCreator;
-import com.randioo.randioo_server_base.utils.sensitive.SensitiveWordDictionary;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
-import com.randioo.randioo_server_base.utils.system.GlobleConfig;
-import com.randioo.randioo_server_base.utils.system.GlobleConfig.GlobleEnum;
-import com.randioo.randioo_server_base.utils.template.Ref;
 
 @Service("roleService")
 public class RoleServiceImpl extends ObserveBaseService implements RoleService {
@@ -182,6 +182,7 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 	public GeneratedMessage getRoleData(String account) {
 		Role role = loginService.getRoleByAccount(account);
 		RoleData roleData = loginService.getRoleData(role);
+		
 
 		return SC.newBuilder().setGetRoleDataResponse(GetRoleDataResponse.newBuilder().setRoleData(roleData)).build();
 	}

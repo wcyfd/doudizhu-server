@@ -1,10 +1,12 @@
 package com.randioo.doudizhu_server.entity.po.cardlist;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import com.randioo.doudizhu_server.entity.po.CardSort;
 import com.randioo.doudizhu_server.error.CardListPatternException;
+import com.randioo.doudizhu_server.util.CardTools;
 
 public class A4 extends A1 {
 	@Override
@@ -31,6 +33,41 @@ public class A4 extends A1 {
 		A4 a = new A4();
 		a.setNum(num);
 		return a;
+	}
+
+	@Override
+	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList, List<Integer> arr) {
+		if (arr.size() < 4 || cardSort.getCardSort().get(3).size() < 1)
+			return;
+
+		Set<Integer> set = cardSort.getCardSort().get(3);
+		if (lastCardList == null) {
+			// 主动出牌
+			for (int pai : set) {
+				List<Integer> list = new ArrayList<>(3);
+				for (int i = 0; i < 4; i++) {
+					list.add(pai);
+				}
+				recommandList.add(list);
+			}
+		} else {
+			// 被动出牌
+			if (lastCardList.getClass() == A4.class) {
+				A4 a1 = (A4) lastCardList;
+				int num = a1.getNum();
+
+				for (int pai = num + 1; pai <= CardTools.C_2; pai++) {
+					if (!set.contains(pai))
+						continue;
+
+					List<Integer> list = new ArrayList<>(3);
+					for (int i = 0; i < 4; i++) {
+						list.add(pai);
+					}
+					recommandList.add(list);
+				}
+			}
+		}
 	}
 
 }

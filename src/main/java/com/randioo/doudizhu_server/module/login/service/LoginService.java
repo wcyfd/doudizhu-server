@@ -5,7 +5,7 @@ import org.apache.mina.core.session.IoSession;
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.doudizhu_server.protocol.Entity.RoleData;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseServiceInterface;
+import com.randioo.randioo_server_base.service.ObserveBaseServiceInterface;
 
 public interface LoginService extends ObserveBaseServiceInterface {
 

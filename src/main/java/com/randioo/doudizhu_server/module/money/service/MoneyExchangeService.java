@@ -2,7 +2,7 @@ package com.randioo.doudizhu_server.module.money.service;
 
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.entity.bo.Role;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseServiceInterface;
+import com.randioo.randioo_server_base.service.ObserveBaseServiceInterface;
 
 public interface MoneyExchangeService extends ObserveBaseServiceInterface {
 

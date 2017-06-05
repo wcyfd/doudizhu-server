@@ -3,7 +3,6 @@ package com.randioo.doudizhu_server;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.randioo.doudizhu_server.cache.local.GameCache;
@@ -15,7 +14,7 @@ import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
 import com.randioo.doudizhu_server.protocol.Entity.GameState;
 import com.randioo.doudizhu_server.protocol.Entity.GameType;
 import com.randioo.randioo_server_base.cache.RoleCache;
-import com.randioo.randioo_server_base.net.SpringContext;
+import com.randioo.randioo_server_base.utils.SpringContext;
 
 public class test {
 	public static void test(){
@@ -142,11 +141,11 @@ public class test {
 					list.add(card.get(0));
 					list.add(card.get(1));
 					list.add(card.get(2));
-					list.add(card.get(6));
 					list.add(card.get(4));
 					list.add(card.get(5));
-					//list.add(card.get(12));
-					//list.add(card.get(13));
+					list.add(card.get(6));
+					list.add(card.get(3));
+					list.add(card.get(8));
 					fightService.sendCard(testhost, list);
 					Class<?> clazz =  GameCache.getGameMap().get(testhost.getGameId()).getLastCardList().getClass();
 					try {
@@ -192,6 +191,7 @@ public class test {
 					list.add(card.get(11));
 					//list.add(card.get(18));
 					//list.add(card.get(19));
+					System.out.println(test3.getGameId()+"_"+test3.getRoleId()+list);
 					fightService.sendCard(test3, list);
 					clazz =  GameCache.getGameMap().get(test3.getGameId()).getLastCardList().getClass();
 					try {

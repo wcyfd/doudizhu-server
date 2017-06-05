@@ -29,13 +29,12 @@ import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.SessionUtils;
 import com.randioo.doudizhu_server.util.Tool;
 import com.randioo.randioo_server_base.cache.RoleCache;
+import com.randioo.randioo_server_base.db.IdClassCreator;
 import com.randioo.randioo_server_base.module.match.MatchHandler;
 import com.randioo.randioo_server_base.module.match.MatchModelService;
 import com.randioo.randioo_server_base.module.match.MatchRule;
-import com.randioo.randioo_server_base.net.SpringContext;
+import com.randioo.randioo_server_base.service.ObserveBaseService;
 import com.randioo.randioo_server_base.utils.TimeUtils;
-import com.randioo.randioo_server_base.utils.game.IdClassCreator;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
 
 @Service("matchService")
 public class MatchServiceImpl extends ObserveBaseService implements MatchService {
@@ -82,7 +81,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 					list.add((RoleMatchRule) matchRule);
 
 				Collections.sort(list);
-				GameConfig config = GameConfig.newBuilder().setDi(1).setMingpai(true).setMoguai(true).setRound(1)
+				GameConfig config = GameConfig.newBuilder().setDi(3).setMingpai(true).setMoguai(true).setRound(1)
 						.build();
 				Game game = createGame(list.get(0).getRoleId(), config);
 
@@ -296,8 +295,8 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 	public GeneratedMessage match(Role role) {
 		RoleMatchRule matchRule = new RoleMatchRule();
 		matchRule.setId(idClassCreator.getId(RoleMatchRule.class) + "_" + role.getRoleId());
-		matchRule.setWaitTime(50);
-		matchRule.setAi(true);
+		matchRule.setWaitTime(60);
+		matchRule.setAi(false);
 		matchRule.setMatchTime(TimeUtils.getNowTime());
 		matchModelService.matchRole(matchRule);
 		return null;

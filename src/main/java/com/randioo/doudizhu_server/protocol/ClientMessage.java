@@ -140,6 +140,20 @@ public final class ClientMessage {
     public boolean hasFightCallLandLordRequest() { return hasFightCallLandLordRequest; }
     public com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest getFightCallLandLordRequest() { return fightCallLandLordRequest_; }
     
+    // optional .com.randioo.doudizhu_server.protocol.FightSendCardRequest FightSendCardRequest = 16;
+    public static final int FIGHTSENDCARDREQUEST_FIELD_NUMBER = 16;
+    private boolean hasFightSendCardRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest fightSendCardRequest_;
+    public boolean hasFightSendCardRequest() { return hasFightSendCardRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest getFightSendCardRequest() { return fightSendCardRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.FightMingPaiRequest FightMingPaiRequest = 17;
+    public static final int FIGHTMINGPAIREQUEST_FIELD_NUMBER = 17;
+    private boolean hasFightMingPaiRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest fightMingPaiRequest_;
+    public boolean hasFightMingPaiRequest() { return hasFightMingPaiRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest getFightMingPaiRequest() { return fightMingPaiRequest_; }
+    
     private void initFields() {
       loginCheckAccountRequest_ = com.randioo.doudizhu_server.protocol.Login.LoginCheckAccountRequest.getDefaultInstance();
       loginCreateRoleRequest_ = com.randioo.doudizhu_server.protocol.Login.LoginCreateRoleRequest.getDefaultInstance();
@@ -156,6 +170,8 @@ public final class ClientMessage {
       getSettingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance();
       matchAIRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchAIRequest.getDefaultInstance();
       fightCallLandLordRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.getDefaultInstance();
+      fightSendCardRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.getDefaultInstance();
+      fightMingPaiRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -208,6 +224,12 @@ public final class ClientMessage {
       }
       if (hasFightCallLandLordRequest()) {
         output.writeMessage(15, getFightCallLandLordRequest());
+      }
+      if (hasFightSendCardRequest()) {
+        output.writeMessage(16, getFightSendCardRequest());
+      }
+      if (hasFightMingPaiRequest()) {
+        output.writeMessage(17, getFightMingPaiRequest());
       }
       getUnknownFields().writeTo(output);
     }
@@ -277,6 +299,14 @@ public final class ClientMessage {
       if (hasFightCallLandLordRequest()) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(15, getFightCallLandLordRequest());
+      }
+      if (hasFightSendCardRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getFightSendCardRequest());
+      }
+      if (hasFightMingPaiRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, getFightMingPaiRequest());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -481,6 +511,12 @@ public final class ClientMessage {
         if (other.hasFightCallLandLordRequest()) {
           mergeFightCallLandLordRequest(other.getFightCallLandLordRequest());
         }
+        if (other.hasFightSendCardRequest()) {
+          mergeFightSendCardRequest(other.getFightSendCardRequest());
+        }
+        if (other.hasFightMingPaiRequest()) {
+          mergeFightMingPaiRequest(other.getFightMingPaiRequest());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -639,6 +675,24 @@ public final class ClientMessage {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setFightCallLandLordRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 130: {
+              com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.newBuilder();
+              if (hasFightSendCardRequest()) {
+                subBuilder.mergeFrom(getFightSendCardRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightSendCardRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 138: {
+              com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.newBuilder();
+              if (hasFightMingPaiRequest()) {
+                subBuilder.mergeFrom(getFightMingPaiRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightMingPaiRequest(subBuilder.buildPartial());
               break;
             }
           }
@@ -1201,6 +1255,80 @@ public final class ClientMessage {
         return this;
       }
       
+      // optional .com.randioo.doudizhu_server.protocol.FightSendCardRequest FightSendCardRequest = 16;
+      public boolean hasFightSendCardRequest() {
+        return result.hasFightSendCardRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest getFightSendCardRequest() {
+        return result.getFightSendCardRequest();
+      }
+      public Builder setFightSendCardRequest(com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightSendCardRequest = true;
+        result.fightSendCardRequest_ = value;
+        return this;
+      }
+      public Builder setFightSendCardRequest(com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.Builder builderForValue) {
+        result.hasFightSendCardRequest = true;
+        result.fightSendCardRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightSendCardRequest(com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest value) {
+        if (result.hasFightSendCardRequest() &&
+            result.fightSendCardRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.getDefaultInstance()) {
+          result.fightSendCardRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.newBuilder(result.fightSendCardRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightSendCardRequest_ = value;
+        }
+        result.hasFightSendCardRequest = true;
+        return this;
+      }
+      public Builder clearFightSendCardRequest() {
+        result.hasFightSendCardRequest = false;
+        result.fightSendCardRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.FightMingPaiRequest FightMingPaiRequest = 17;
+      public boolean hasFightMingPaiRequest() {
+        return result.hasFightMingPaiRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest getFightMingPaiRequest() {
+        return result.getFightMingPaiRequest();
+      }
+      public Builder setFightMingPaiRequest(com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightMingPaiRequest = true;
+        result.fightMingPaiRequest_ = value;
+        return this;
+      }
+      public Builder setFightMingPaiRequest(com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.Builder builderForValue) {
+        result.hasFightMingPaiRequest = true;
+        result.fightMingPaiRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightMingPaiRequest(com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest value) {
+        if (result.hasFightMingPaiRequest() &&
+            result.fightMingPaiRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.getDefaultInstance()) {
+          result.fightMingPaiRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.newBuilder(result.fightMingPaiRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightMingPaiRequest_ = value;
+        }
+        result.hasFightMingPaiRequest = true;
+        return this;
+      }
+      public Builder clearFightMingPaiRequest() {
+        result.hasFightMingPaiRequest = false;
+        result.fightMingPaiRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.getDefaultInstance();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.CS)
     }
     
@@ -1230,7 +1358,7 @@ public final class ClientMessage {
       "\n\023ClientMessage.proto\022$com.randioo.doudi" +
       "zhu_server.protocol\032\013Login.proto\032\nRole.p" +
       "roto\032\013Match.proto\032\013Fight.proto\032\023MoneyExc" +
-      "hange.proto\032\016Settings.proto\"\310\n\n\002CS\022`\n\030Lo" +
+      "hange.proto\032\016Settings.proto\"\372\013\n\002CS\022`\n\030Lo" +
       "ginCheckAccountRequest\030\001 \001(\0132>.com.randi" +
       "oo.doudizhu_server.protocol.LoginCheckAc" +
       "countRequest\022\\\n\026LoginCreateRoleRequest\030\002" +
@@ -1264,7 +1392,11 @@ public final class ClientMessage {
       "dioo.doudizhu_server.protocol.MatchAIReq" +
       "uest\022`\n\030FightCallLandLordRequest\030\017 \001(\0132>" +
       ".com.randioo.doudizhu_server.protocol.Fi" +
-      "ghtCallLandLordRequest"
+      "ghtCallLandLordRequest\022X\n\024FightSendCardR" +
+      "equest\030\020 \001(\0132:.com.randioo.doudizhu_serv" +
+      "er.protocol.FightSendCardRequest\022V\n\023Figh",
+      "tMingPaiRequest\030\021 \001(\01329.com.randioo.doud" +
+      "izhu_server.protocol.FightMingPaiRequest"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1276,7 +1408,7 @@ public final class ClientMessage {
           internal_static_com_randioo_doudizhu_server_protocol_CS_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_CS_descriptor,
-              new java.lang.String[] { "LoginCheckAccountRequest", "LoginCreateRoleRequest", "LoginGetRoleDataRequest", "RoleRenameRequest", "MatchCreateGameRequest", "MatchJoinGameRequest", "FightReadyRequest", "FightExitGameRequest", "FightAgreeExitGameRequest", "MoneyExchangeRequest", "SettingsRequest", "GetRoleDataRequest", "GetSettingsRequest", "MatchAIRequest", "FightCallLandLordRequest", },
+              new java.lang.String[] { "LoginCheckAccountRequest", "LoginCreateRoleRequest", "LoginGetRoleDataRequest", "RoleRenameRequest", "MatchCreateGameRequest", "MatchJoinGameRequest", "FightReadyRequest", "FightExitGameRequest", "FightAgreeExitGameRequest", "MoneyExchangeRequest", "SettingsRequest", "GetRoleDataRequest", "GetSettingsRequest", "MatchAIRequest", "FightCallLandLordRequest", "FightSendCardRequest", "FightMingPaiRequest", },
               com.randioo.doudizhu_server.protocol.ClientMessage.CS.class,
               com.randioo.doudizhu_server.protocol.ClientMessage.CS.Builder.class);
           return null;

@@ -1,28 +1,28 @@
-package com.randioo.doudizhu_server.module.match.action;
+package com.randioo.doudizhu_server.module.fight.action;
 
 import org.apache.mina.core.session.IoSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.randioo.doudizhu_server.entity.bo.Role;
-import com.randioo.doudizhu_server.module.match.service.MatchService;
-import com.randioo.doudizhu_server.protocol.Match.MatchAIRequest;
+import com.randioo.doudizhu_server.module.fight.service.FightService;
+import com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest;
 import com.randioo.randioo_server_base.annotation.PTAnnotation;
 import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.template.IActionSupport;
 
 @Controller
-@PTAnnotation(MatchAIRequest.class)
-public class MatchAIAction implements IActionSupport {
+@PTAnnotation(FightSendCardRequest.class)
+public class FightSendCardAction implements IActionSupport {
 
 	@Autowired
-	private MatchService matchService;
+	private FightService fightService;
 
 	@Override
 	public void execute(Object data, IoSession session) {
-		MatchAIRequest request = (MatchAIRequest) data;
+		FightSendCardRequest request = (FightSendCardRequest) data;
 		Role role = (Role) RoleCache.getRoleBySession(session);
-		matchService.matchAI(role);
+		fightService.sendCard(role, request.getPaiList());
 	}
 
 }

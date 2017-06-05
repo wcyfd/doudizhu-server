@@ -15,18 +15,18 @@ import com.randioo.doudizhu_server.SessionCloseHandler;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.cache.SessionCache;
-import com.randioo.randioo_server_base.db.DBRunnable;
+import com.randioo.randioo_server_base.config.GlobleConfig;
+import com.randioo.randioo_server_base.config.GlobleConfig.GlobleEnum;
 import com.randioo.randioo_server_base.db.GameDB;
 import com.randioo.randioo_server_base.entity.RoleInterface;
+import com.randioo.randioo_server_base.platform.Platform;
+import com.randioo.randioo_server_base.platform.Platform.OS;
+import com.randioo.randioo_server_base.platform.SignalTrigger;
+import com.randioo.randioo_server_base.scheduler.SchedulerManager;
+import com.randioo.randioo_server_base.service.ObserveBaseService;
+import com.randioo.randioo_server_base.template.EntityRunnable;
+import com.randioo.randioo_server_base.template.Function;
 import com.randioo.randioo_server_base.utils.StringUtils;
-import com.randioo.randioo_server_base.utils.scheduler.SchedulerManager;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
-import com.randioo.randioo_server_base.utils.system.GlobleConfig;
-import com.randioo.randioo_server_base.utils.system.GlobleConfig.GlobleEnum;
-import com.randioo.randioo_server_base.utils.system.Platform;
-import com.randioo.randioo_server_base.utils.system.Platform.OS;
-import com.randioo.randioo_server_base.utils.system.SignalTrigger;
-import com.randioo.randioo_server_base.utils.template.Function;
 
 @Service("gmService")
 public class GmServiceImpl extends ObserveBaseService implements GmService {
@@ -105,7 +105,7 @@ public class GmServiceImpl extends ObserveBaseService implements GmService {
 		}
 
 		if (Platform.getOS() == OS.WIN) {
-			new Thread(new DBRunnable<Function>(function) {
+			new Thread(new EntityRunnable<Function>(function) {
 
 				private Scanner in = new Scanner(System.in);
 
@@ -162,7 +162,7 @@ public class GmServiceImpl extends ObserveBaseService implements GmService {
 		}
 		for (RoleInterface roleInterface : RoleCache.getRoleMap().values()) {
 			if (executorService != null) {
-				executorService.submit(new DBRunnable<RoleInterface>(roleInterface) {
+				executorService.submit(new EntityRunnable<RoleInterface>(roleInterface) {
 
 					@Override
 					public void run(RoleInterface roleInterface) {

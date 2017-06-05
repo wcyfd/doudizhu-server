@@ -9,7 +9,7 @@ import com.randioo.doudizhu_server.error.CardListPatternException;
 import com.randioo.doudizhu_server.error.CardTypeComparableException;
 import com.randioo.doudizhu_server.util.CardTools;
 
-public class A3B3CD extends A3B3 {
+public class A3B3C2D2 extends A3B3 {
 
 	private List<Integer> addNumList = new ArrayList<>();
 
@@ -20,6 +20,7 @@ public class A3B3CD extends A3B3 {
 	public void setAddNumList(List<Integer> addNumList) {
 		this.addNumList = addNumList;
 	}
+
 	@Override
 	public int compareTo(CardList arg0) {
 		if (arg0.getClass() == A4.class || arg0.getClass() == KQ.class)
@@ -28,16 +29,16 @@ public class A3B3CD extends A3B3 {
 		if (getClass() != arg0.getClass())
 			throw new CardTypeComparableException();
 
-		A3B3CD a3b3cd = (A3B3CD) arg0;
-		if (getLength() != a3b3cd.getLength())
+		A3B3C2D2 a3b3c2d2 = (A3B3C2D2) arg0;
+		if (getLength() != a3b3c2d2.getLength())
 			throw new CardTypeComparableException();
 
-		return getNum() - ((A3B3CD) arg0).getNum();
+		return getNum() - ((A3B3C2D2) arg0).getNum();
 	}
 
 	@Override
 	public CardList pattern(CardSort cardSort, List<Integer> arr) throws CardListPatternException {
-		if (((arr.size() >= 8) && (arr.size() - 8) % 4 != 0) )
+		if ((arr.size() >= 10) && (arr.size() - 10) % 5 != 0)
 			throw new CardListPatternException();
 
 		Set<Integer> set2 = cardSort.getCardSort().get(2);
@@ -74,11 +75,13 @@ public class A3B3CD extends A3B3 {
 			CardTools.rmValue(cardSort, n, 3);
 
 
-		if (set0.size() + set3.size() + set1.size() != len) {
+
+		if (set0.size()  == len && set1.size() == len) {
+		} else {
 			throw new CardListPatternException();
 		}
 
-		A3B3CD a = new A3B3CD();
+		A3B3C2D2 a = new A3B3C2D2();
 		a.setNum(first);
 		a.setLength(set2.size());
 		a.getAddNumList().addAll(set0);

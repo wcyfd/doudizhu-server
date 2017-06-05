@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.entity.bo.Role;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseServiceInterface;
+import com.randioo.randioo_server_base.service.ObserveBaseServiceInterface;
 
 public interface FightService extends ObserveBaseServiceInterface {
 	public void readyGame(Role role);
@@ -47,4 +47,6 @@ public interface FightService extends ObserveBaseServiceInterface {
 	void callLandlord(Role role, int fen);
 
 	void recommandCardList(Role role);
+	
+	void mingPai(Role role);
 }

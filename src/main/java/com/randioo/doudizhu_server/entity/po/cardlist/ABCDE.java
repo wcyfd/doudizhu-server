@@ -1,5 +1,6 @@
 package com.randioo.doudizhu_server.entity.po.cardlist;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -60,4 +61,13 @@ public class ABCDE extends A1 {
 		return abcde;
 	}
 
+	@Override
+	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList, List<Integer> arr) {
+		if (arr.size() < 5 || cardSort.getCardSort().get(0).size() < 5)
+			return;
+
+		if (lastCardList != null) {
+			CardTools.recommandStartNumAndLenCommonTemplate(recommandList, cardSort, lastCardList, arr, 0, 1);
+		}
+	}
 }

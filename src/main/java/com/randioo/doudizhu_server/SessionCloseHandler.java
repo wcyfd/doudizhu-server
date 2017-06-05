@@ -2,9 +2,9 @@ package com.randioo.doudizhu_server;
 
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.randioo_server_base.cache.SessionCache;
-import com.randioo.randioo_server_base.db.DBRunnable;
 import com.randioo.randioo_server_base.db.GameDB;
-import com.randioo.randioo_server_base.net.SpringContext;
+import com.randioo.randioo_server_base.template.EntityRunnable;
+import com.randioo.randioo_server_base.utils.SpringContext;
 import com.randioo.randioo_server_base.utils.TimeUtils;
 
 /**
@@ -26,7 +26,7 @@ public class SessionCloseHandler {
 
 		GameDB gameDB = SpringContext.getBean("gameDB");
 		if (!gameDB.isUpdatePoolClose()) {
-			gameDB.getUpdatePool().submit(new DBRunnable<Role>(role) {
+			gameDB.getUpdatePool().submit(new EntityRunnable<Role>(role) {
 				@Override
 				public void run(Role role) {
 					roleDataCache2DB(role, true);

@@ -57,4 +57,12 @@ public class A3N1 extends A1 {
 		return 0;
 	}
 
+	@Override
+	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
+			List<Integer> arr) {
+		// TODO Auto-generated method stub
+		super.recommand(recommandList, cardSort, lastCardList, arr);
+	}
+
+
 }

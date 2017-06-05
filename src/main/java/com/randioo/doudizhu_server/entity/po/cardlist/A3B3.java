@@ -1,11 +1,13 @@
 package com.randioo.doudizhu_server.entity.po.cardlist;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import com.randioo.doudizhu_server.entity.po.CardSort;
 import com.randioo.doudizhu_server.error.CardListPatternException;
 import com.randioo.doudizhu_server.error.CardTypeComparableException;
+import com.randioo.doudizhu_server.util.CardTools;
 
 public class A3B3 extends ABCDE {
 	@Override
@@ -52,4 +54,16 @@ public class A3B3 extends ABCDE {
 		return a;
 	}
 
+	@Override
+	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList, List<Integer> arr) {
+
+		if (arr.size() < 6 || cardSort.getCardSort().get(2).size() < 2)
+			return;
+
+		if (lastCardList != null) {
+			if (lastCardList != null) {
+				CardTools.recommandStartNumAndLenCommonTemplate(recommandList, cardSort, lastCardList, arr, 1, 3);
+			}
+		}
+	}
 }

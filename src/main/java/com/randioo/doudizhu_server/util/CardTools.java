@@ -1,9 +1,14 @@
 package com.randioo.doudizhu_server.util;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import com.randioo.doudizhu_server.entity.po.CardSort;
+import com.randioo.doudizhu_server.entity.po.cardlist.A1;
+import com.randioo.doudizhu_server.entity.po.cardlist.A3;
+import com.randioo.doudizhu_server.entity.po.cardlist.ABCDE;
+import com.randioo.doudizhu_server.entity.po.cardlist.CardList;
 
 public class CardTools {
 	public static final int C_3 = 1;
@@ -70,6 +75,81 @@ public class CardTools {
 				break;
 			set.remove(value);
 			num--;
+		}
+	}
+	
+	public static void recommandNumCommonTemplate(List<List<Integer>> recommandList,CardSort cardSort,CardList lastCardList,List<Integer> arr,int lineIndex){
+		cardSort = cardSort.clone();
+		if (lastCardList == null) {
+			// 主动出牌
+			for (int i = 2; i >= 2; i--) {
+				Set<Integer> set = cardSort.getCardSort().get(i);
+				List<List<Integer>> lists = new ArrayList<>();
+				for (int pai : set) {
+					List<Integer> list = new ArrayList<>(3);
+					for (int j = 0; j < 2; j++)
+						list.add(pai);
+					lists.add(list);
+				}
+				List<Integer> temp = new ArrayList<>(set);
+				for (int pai : temp) {
+					CardTools.rmValue(cardSort, pai, i + 1);
+				}
+				recommandList.addAll(0, lists);
+			}
+		} else {
+			// 被动出牌
+			if (lastCardList.getClass() == A3.class) {
+				A1 a1 = (A1) lastCardList;
+				int num = a1.getNum();
+
+				for (int i = cardSort.getCardSort().size() - 1; i >= 2; i--) {
+					Set<Integer> set = cardSort.getCardSort().get(i);
+					List<List<Integer>> lists = new ArrayList<>();
+					for (int pai = num + 1; pai <= CardTools.C_2; pai++) {
+						if (set.contains(pai)) {
+							List<Integer> list = new ArrayList<>(3);
+							for (int j = 0; j < 2; j++)
+								list.add(pai);
+							lists.add(list);
+						}
+					}
+					List<Integer> temp = new ArrayList<>(set);
+					for (int pai : temp) {
+						CardTools.rmValue(cardSort, pai, i + 1);
+					}
+					recommandList.addAll(0, lists);
+				}
+			}
+		}
+	}
+
+	public static void recommandStartNumAndLenCommonTemplate(List<List<Integer>> recommandList, CardSort cardSort,
+			CardList lastCardList, List<Integer> arr, int lineIndex, int loopAddCount) {
+		if (lastCardList != null) {
+			ABCDE abcde = (ABCDE) lastCardList;
+
+			Set<Integer> set = cardSort.getCardSort().get(lineIndex);
+			// 如果理论的最后一个值大于A则返回
+			for (int startNum = abcde.getNum() + 1; /* 起始值 */(startNum < (startNum + abcde.getLength()))
+					&& (startNum + abcde.getLength()) < CardTools.C_A; startNum++) {
+				if (!set.contains(startNum))
+					continue;
+
+				NOT_HAVE: {
+					List<Integer> list = new ArrayList<>();
+					// 获得起始值
+					for (int value = startNum; value < abcde.getNum() + abcde.getLength(); value++) {
+						if (!set.contains(value))
+							break NOT_HAVE;
+
+						for (int loop = 0; loop < loopAddCount; loop++)
+							list.add(value);
+					}
+					recommandList.add(list);
+				}
+			}
+
 		}
 	}
 

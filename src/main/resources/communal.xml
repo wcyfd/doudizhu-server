@@ -7,7 +7,7 @@
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd 
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean id="databaseInitialization" class="com.randioo.randioo_server_base.utils.db.DatabaseInitialization">
+	<bean id="databaseInitialization" class="com.randioo.randioo_server_base.db.DatabaseInitialization">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="databaseName" value="doudizhu_server"></property>
 		<property name="sqls">
@@ -35,7 +35,7 @@
 		</property>
 	</bean>
 
-	<bean id="schedulerManager" class="com.randioo.randioo_server_base.utils.scheduler.SchedulerManager">
+	<bean id="schedulerManager" class="com.randioo.randioo_server_base.scheduler.SchedulerManager">
 		<property name="schedulers">
 			<list>
 				<ref bean="eventScheduler" />
@@ -43,7 +43,7 @@
 		</property>
 	</bean>
 
-	<bean id="serviceManager" class="com.randioo.randioo_server_base.utils.service.ServiceManager">
+	<bean id="serviceManager" class="com.randioo.randioo_server_base.service.ServiceManager">
 		<property name="services">
 			<list>
 				<ref bean="loginService" />
@@ -58,7 +58,7 @@
 	</bean>
 
 	<!-- 双缓冲时间定时器 -->
-	<bean id="eventScheduler" class="com.randioo.randioo_server_base.utils.scheduler.EventScheduler">
+	<bean id="eventScheduler" class="com.randioo.randioo_server_base.scheduler.EventScheduler">
 		<property name="slowTime" value="15"></property>
 		<property name="quickTime" value="1"></property>
 	</bean>

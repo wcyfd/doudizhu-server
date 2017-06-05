@@ -21,7 +21,8 @@ import com.randioo.doudizhu_server.protocol.Login.LoginGetRoleDataResponse;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.Tool;
 import com.randioo.randioo_server_base.cache.RoleCache;
-import com.randioo.randioo_server_base.db.DBRunnable;
+import com.randioo.randioo_server_base.config.GlobleConfig;
+import com.randioo.randioo_server_base.config.GlobleConfig.GlobleEnum;
 import com.randioo.randioo_server_base.db.GameDB;
 import com.randioo.randioo_server_base.entity.RoleInterface;
 import com.randioo.randioo_server_base.module.login.LoginCreateInfo;
@@ -29,12 +30,11 @@ import com.randioo.randioo_server_base.module.login.LoginHandler;
 import com.randioo.randioo_server_base.module.login.LoginInfo;
 import com.randioo.randioo_server_base.module.login.LoginModelConstant;
 import com.randioo.randioo_server_base.module.login.LoginModelService;
+import com.randioo.randioo_server_base.service.ObserveBaseService;
+import com.randioo.randioo_server_base.template.EntityRunnable;
+import com.randioo.randioo_server_base.template.Ref;
 import com.randioo.randioo_server_base.utils.StringUtils;
 import com.randioo.randioo_server_base.utils.TimeUtils;
-import com.randioo.randioo_server_base.utils.service.ObserveBaseService;
-import com.randioo.randioo_server_base.utils.system.GlobleConfig;
-import com.randioo.randioo_server_base.utils.system.GlobleConfig.GlobleEnum;
-import com.randioo.randioo_server_base.utils.template.Ref;
 
 @Service("loginService")
 public class LoginServiceImpl extends ObserveBaseService implements LoginService {
@@ -94,7 +94,7 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 			roleService.newRoleInit(role);
 			moneyExchangeService.newRoleInit(role);
 
-			gameDB.getInsertPool().submit(new DBRunnable<Role>(role) {
+			gameDB.getInsertPool().submit(new EntityRunnable<Role>(role) {
 
 				@Override
 				public void run(Role entity) {

@@ -38,12 +38,14 @@ public class CardSort {
 	}
 
 	public CardSort clone() {
-		CardSort cardSort = new CardSort(this.cardSort.size());
+		CardSort cardSort = new CardSort(this.cardSort.size() / 4);
+		for (int i = 0; i < this.cardSort.size(); i++) {
+			Set<Integer> set = this.cardSort.get(i);
+			Set<Integer> set2 = cardSort.cardSort.get(i);
+			set2.addAll(set);
 
-		for (Set<Integer> set : this.cardSort)
-			for (Set<Integer> set2 : cardSort.getCardSort())
-				set.addAll(set2);
-
+		}
 		return cardSort;
 	}
+
 }
