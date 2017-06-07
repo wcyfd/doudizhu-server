@@ -8,7 +8,8 @@ message MatchCreateGameRequest{
 
 message MatchAIRequest{
 }
-
+message MatchRoleRequest{
+}
 message MatchCreateGameResponse{
 	optional int32 errorCode = 1[default = 1];
 	optional string id = 2;

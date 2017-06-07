@@ -7,8 +7,10 @@ import java.util.Set;
 import com.randioo.doudizhu_server.entity.po.CardSort;
 import com.randioo.doudizhu_server.entity.po.cardlist.A1;
 import com.randioo.doudizhu_server.entity.po.cardlist.A3;
+import com.randioo.doudizhu_server.entity.po.cardlist.A4;
 import com.randioo.doudizhu_server.entity.po.cardlist.ABCDE;
 import com.randioo.doudizhu_server.entity.po.cardlist.CardList;
+import com.randioo.doudizhu_server.entity.po.cardlist.KQ;
 
 public class CardTools {
 	public static final int C_3 = 1;
@@ -100,19 +102,37 @@ public class CardTools {
 		// 从第三行往前查找，因为第四行表示炸弹，所以第四行不查
 		if (lastCardList == null) {
 			// 主动出牌
-			for (int i = 2; i >= lineIndex; i--) {
-				Set<Integer> set = cardSort.getCardSort().get(i);
-				List<List<Integer>> lists = new ArrayList<>();
-				for (int pai : set) {
+			List<List<Integer>> lists = new ArrayList<>();
+			Set<Integer> tset = null;
+			for(int i = 2 ; i >= lineIndex ; i-- ){
+				CardSort tcardSort = cardSort.clone();
+				for(int j = 2 ; j > lineIndex+(2-i) ; j-- ){
+					
+					Set<Integer> set = tcardSort.getCardSort().get(j);				
+					List<Integer> temp = new ArrayList<>(set);
+					CardTools.rmAllValues(tcardSort, temp);
+				}
+				
+				tset = tcardSort.getCardSort().get(lineIndex);
+				
+				
+				for(int pai : tset){
 					List<Integer> list = new ArrayList<>(lineIndex + 1);
-					for (int j = 0; j < lineIndex + 1; j++)
+					for (int k = 0; k < lineIndex + 1; k++)
 						list.add(pai);
 					lists.add(list);
 				}
-				List<Integer> temp = new ArrayList<>(set);
-				CardTools.rmAllValues(cardSort, temp);
-				recommandList.addAll(0, lists);
+				
+				
+				if(tset != null){
+					//tcardSort = cardSort.clone();
+					CardTools.rmAllValues(cardSort, new ArrayList<Integer>(tset));
+				}
+				
 			}
+			recommandList.addAll(recommandList.size(), lists);
+			
+			
 		} else {
 			// 被动出牌
 			if (lastCardList.getClass() != targetClass) {
@@ -121,22 +141,37 @@ public class CardTools {
 			A1 a1 = (A1) lastCardList;
 			int num = a1.getNum();
 
-			for (int i = 2; i >= lineIndex; i--) {
-				Set<Integer> set = cardSort.getCardSort().get(i);
-				List<Integer> temp = new ArrayList<>(set);
-
-				List<List<Integer>> lists = new ArrayList<>();
-				for (int pai = num + 1; pai <= temp.get(temp.size() - 1); pai++) {
-					if (set.contains(pai)) {
+			List<List<Integer>> lists = new ArrayList<>();
+			Set<Integer> tset = null;
+			for(int i = 2 ; i >= lineIndex ; i-- ){
+				CardSort tcardSort = cardSort.clone();
+				for(int j = 2 ; j > lineIndex+(2-i) ; j-- ){
+					
+					Set<Integer> set = tcardSort.getCardSort().get(j);				
+					List<Integer> temp = new ArrayList<>(set);
+					CardTools.rmAllValues(tcardSort, temp);
+				}
+				
+				tset = tcardSort.getCardSort().get(lineIndex);
+				
+				
+				for(int pai : tset){
+					if(pai > num){
 						List<Integer> list = new ArrayList<>(lineIndex + 1);
-						for (int j = 0; j < lineIndex + 1; j++)
+						for (int k = 0; k < lineIndex + 1; k++)
 							list.add(pai);
 						lists.add(list);
 					}
 				}
-				CardTools.rmAllValues(cardSort, temp);
-				recommandList.addAll(0, lists);
+				
+				
+				if(tset != null){
+					//tcardSort = cardSort.clone();
+					CardTools.rmAllValues(cardSort, new ArrayList<Integer>(tset));
+				}
+				
 			}
+			recommandList.addAll(recommandList.size(), lists);
 		}
 	}
 

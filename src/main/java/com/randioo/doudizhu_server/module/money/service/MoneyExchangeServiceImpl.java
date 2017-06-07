@@ -89,7 +89,12 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
     	System.out.println("URL"+url);
     	System.out.println("PRAM"+tpram);
     	HttpConnection conn = new HttpConnection(url,tpram);
-    	conn.connect();
+    	try {
+			conn.connect();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	System.out.println(conn.result+""+conn.result.getClass().getName()+(conn.result.charAt(0) == '1'));
     	if(conn.result.charAt(0) == '1'){
     		return true;

@@ -46,7 +46,7 @@ public interface FightService extends ObserveBaseServiceInterface {
 	 */
 	void callLandlord(Role role, int fen);
 
-	void recommandCardList(Role role);
+	GeneratedMessage recommandCardList(Role role);
 	
 	void mingPai(Role role);
 }

@@ -34,5 +34,12 @@ message SC{
 	optional SCFightPutOut SCFightPutOut = 22;//通知出牌
 	optional SCFightLandLord SCFightLandLord = 23;//通知地主牌
 	optional FightCallLandLordResponse FightCallLandLordResponse = 24;//叫地主
+	optional FightSendCardResponse FightSendCardResponse = 25;
+	optional SCFightPutOutPai SCFightPutOutPai = 26;
+	optional SCAgreeExitGame SCAgreeExitGame = 27;
+	optional SCFightMingPai SCFightMingPai = 28;
+	optional SCFightRoundOver SCFightRoundOver = 29;
+	optional FightRecommandResponse FightRecommandResponse = 30;
+	optional SCFightGameOver SCFightGameOver = 31;
 
-} // 24
+} // 31

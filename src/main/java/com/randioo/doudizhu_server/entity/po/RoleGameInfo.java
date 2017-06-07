@@ -11,4 +11,8 @@ public class RoleGameInfo {
 	public Boolean agreeLeave;
 	public List<Integer> cards = new ArrayList<>();
 	public int auto;
+	public int allMark;
+	public int currentMark;
+	public int farmerNum;
+	public int landLordNum;
 }

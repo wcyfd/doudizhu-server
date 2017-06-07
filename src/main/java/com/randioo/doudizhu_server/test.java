@@ -10,6 +10,7 @@ import com.randioo.doudizhu_server.entity.bo.Game;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.doudizhu_server.entity.po.RoleGameInfo;
 import com.randioo.doudizhu_server.module.fight.service.FightService;
+import com.randioo.doudizhu_server.module.match.service.MatchService;
 import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
 import com.randioo.doudizhu_server.protocol.Entity.GameState;
 import com.randioo.doudizhu_server.protocol.Entity.GameType;
@@ -19,12 +20,15 @@ import com.randioo.randioo_server_base.utils.SpringContext;
 public class test {
 	public static void test(){
 		final FightService fightService = SpringContext.getBean("fightService");
+		final MatchService matchService = SpringContext.getBean("matchService");
 		
 		
 		Role host = new Role();
 		host.setRoleId(111);
 		host.setAccount("111");
 		host.setName("111");
+		host.setHeadImgUrl("---");
+		host.setMoney(100);
 		
 		Game game = new Game();
 		GameConfig config = GameConfig.newBuilder().setDi(1).setMingpai(true).setMoguai(true).setRound(1).build();
@@ -122,12 +126,16 @@ public class test {
 				}
 				
 				if(i == 5){
+					/*matchService.matchAI(testhost);
+					fightService.readyGame(testhost);
+					fightService.exitGame(testhost);*/
 					/*fightService.exitGame(test2);
 					Game game = GameCache.getGameMap().get(test2.getGameId());
 					System.out.println(game == null?"null":"not null");
 					if(game != null){
 						System.out.println(game.getRoleIdMap().keySet());
 					}*/
+					
 					for (RoleGameInfo roleGameInfo : testGame.getRoleIdMap().values()) {
 						for(int i : roleGameInfo.cards)
 							System.out.print(Integer.toHexString(i)+",");
@@ -140,12 +148,12 @@ public class test {
 					List<Integer> card = GameCache.getGameMap().get(testhost.getGameId()).getRoleIdMap().get(GameCache.getGameMap().get(testhost.getGameId()).getGameId()+"_"+testhost.getRoleId()).cards;
 					list.add(card.get(0));
 					list.add(card.get(1));
-					list.add(card.get(2));
+					//list.add(card.get(2));
 					list.add(card.get(4));
 					list.add(card.get(5));
-					list.add(card.get(6));
-					list.add(card.get(3));
-					list.add(card.get(8));
+					//list.add(card.get(6));
+					//list.add(card.get(3));
+					//list.add(card.get(8));
 					fightService.sendCard(testhost, list);
 					Class<?> clazz =  GameCache.getGameMap().get(testhost.getGameId()).getLastCardList().getClass();
 					try {

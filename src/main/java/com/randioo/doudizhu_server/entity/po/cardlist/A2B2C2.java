@@ -1,6 +1,5 @@
 package com.randioo.doudizhu_server.entity.po.cardlist;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -27,7 +26,7 @@ public class A2B2C2 extends ABCDE {
 
 	@Override
 	public CardList pattern(CardSort cardSort, List<Integer> arr) throws CardListPatternException {
-		if (arr.size() < 6 && (arr.size() - 6) % 2 != 0)
+		if (arr.size() < 6 || (arr.size() - 6) % 2 != 0)
 			throw new CardListPatternException();
 		Set<Integer> set0 = cardSort.getCardSort().get(0);
 		Set<Integer> set1 = cardSort.getCardSort().get(1);

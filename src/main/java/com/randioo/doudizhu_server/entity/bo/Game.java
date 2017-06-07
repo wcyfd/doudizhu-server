@@ -52,7 +52,17 @@ public class Game {
 	// 出牌的时间戳
 	private int sendCardTime;
 	
-	private boolean mingPaiState;
+	private boolean mingPaiState = false;
+	
+	private boolean farmerSpring = true;
+	
+	private boolean LandLordSpring = true;
+	
+	private int bomb;
+	
+	private boolean moGuai;
+	
+	private int round;
 
 	public int getOnlineRoleCount() {
 		return onlineRoleCount;
@@ -208,6 +218,46 @@ public class Game {
 
 	public void setMingPaiState(boolean mingPaiState) {
 		this.mingPaiState = mingPaiState;
+	}
+
+	public boolean isFarmerSpring() {
+		return farmerSpring;
+	}
+
+	public void setFarmerSpring(boolean farmerSpring) {
+		this.farmerSpring = farmerSpring;
+	}
+
+	public boolean isLandLordSpring() {
+		return LandLordSpring;
+	}
+
+	public void setLandLordSpring(boolean landLordSpring) {
+		LandLordSpring = landLordSpring;
+	}
+
+	public int getBomb() {
+		return bomb;
+	}
+
+	public void setBomb(int bomb) {
+		this.bomb = bomb;
+	}
+
+	public boolean isMoGuai() {
+		return moGuai;
+	}
+
+	public void setMoGuai(boolean moGuai) {
+		this.moGuai = moGuai;
+	}
+
+	public int getRound() {
+		return round;
+	}
+
+	public void setRound(int round) {
+		this.round = round;
 	}
 	
 

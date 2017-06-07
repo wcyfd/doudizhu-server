@@ -2,13 +2,11 @@ package com.randioo.doudizhu_server.entity.po.cardlist;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import com.randioo.doudizhu_server.entity.po.CardSort;
 import com.randioo.doudizhu_server.error.CardListPatternException;
 import com.randioo.doudizhu_server.error.CardTypeComparableException;
 import com.randioo.doudizhu_server.util.CardTools;
-import com.randioo.randioo_server_base.template.Function;
 
 public class A1 extends CardList {
 	private int num;

@@ -60,10 +60,9 @@ public class A3B3 extends ABCDE {
 		if (arr.size() < 6 || cardSort.getCardSort().get(2).size() < 2)
 			return;
 
+		
 		if (lastCardList != null) {
-			if (lastCardList != null) {
-				CardTools.recommandStartNumAndLenCommonTemplate(recommandList, cardSort, lastCardList, arr, 1, 3);
-			}
-		}
+			CardTools.recommandStartNumAndLenCommonTemplate(recommandList, cardSort, lastCardList, arr, 1, 3);
+		}	
 	}
 }

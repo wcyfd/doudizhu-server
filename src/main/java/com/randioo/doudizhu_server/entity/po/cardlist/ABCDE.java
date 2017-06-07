@@ -39,7 +39,7 @@ public class ABCDE extends A1 {
 			throw new CardListPatternException();
 		Set<Integer> set1 = cardSort.getCardSort().get(1);
 		Set<Integer> set0 = cardSort.getCardSort().get(0);
-		if (set1.size() > 0 || set1.iterator().next() > CardTools.C_10)
+		if (set1.size() > 0 || (set1.iterator().hasNext() && set1.iterator().next() > CardTools.C_10))
 			throw new CardListPatternException();
 
 		int tmp = 0;
@@ -48,7 +48,7 @@ public class ABCDE extends A1 {
 			if (tmp == 0) {
 				first = value;
 				tmp = value;
-			} else if (value != (tmp + 1))
+			} else if (value != (tmp + 1) || value > CardTools.C_A)
 				throw new CardListPatternException();
 			else
 				tmp = value;

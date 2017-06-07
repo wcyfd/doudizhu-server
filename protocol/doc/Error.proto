@@ -39,4 +39,9 @@ enum ErrorCode{
 	GAME_NOT_EXIST = 22;//游戏不存在
 	GAME_EXITING = 23;//其他人正申请退出
 	APPLY_REJECT = 24;//拒绝解散房间
-} // 24
+	NOT_YOUR_TURN = 25;//没轮到你
+	
+	NOT_SAME_TYPE = 26;//牌型不符
+	SMALLER = 27;//牌比上家小
+	NULL_REJECT = 28;//不允许不出牌
+} // 28

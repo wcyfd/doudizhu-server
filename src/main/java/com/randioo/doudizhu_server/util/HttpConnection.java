@@ -17,33 +17,24 @@ public class HttpConnection /*extends TimerTask*/{
 	String pram = "";
 	public String result = "";
     StringBuffer sbf = new StringBuffer();
-    public String connect() {
+    public String connect() throws Exception{
 
     	result = "";
-        try {
-            URL url2 = new URL(url.concat(pram));
-            System.out.println("@@@"+url.concat(pram));
-            HttpURLConnection conn = (HttpURLConnection)url2.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setConnectTimeout(30000);
-            conn.connect();
-            InputStream is = conn.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-            String strRead = null;
-            while ((strRead = reader.readLine()) != null) {
-                sbf.append(strRead);
-                sbf.append("\r\n");
-            }
-            reader.close();
-            result = sbf.toString();
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        URL url2 = new URL(url.concat(pram));
+        System.out.println("@@@"+url.concat(pram));
+        HttpURLConnection conn = (HttpURLConnection)url2.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setConnectTimeout(30000);
+        conn.connect();
+        InputStream is = conn.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        String strRead = null;
+        while ((strRead = reader.readLine()) != null) {
+            sbf.append(strRead);
+            sbf.append("\r\n");
         }
+        reader.close();
+        result = sbf.toString();
         return result;
     }
     

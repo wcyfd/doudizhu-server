@@ -41,8 +41,10 @@ public class A3N2 extends A3N1 {
 	@Override
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
 			List<Integer> arr) {
-		// TODO Auto-generated method stub
-		super.recommand(recommandList, cardSort, lastCardList, arr);
+		/*if(lastCardList.getClass() == A3N2.class){
+			int lastnum = ((A3N2)lastCardList).getNum();
+		}*/
+
 	}
 
 }

@@ -144,13 +144,14 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 		/* "http://manager.app.randioo.com/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=" */
 		"http://10.0.51.6/APPadmin/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=",
 				role.getAccount());
-		connection.connect();
-		String result = connection.result;
-		System.out.println("json:" + result);
-		if (result == null)
-			throw new HttpConnectException();
+		
 
 		try {
+			connection.connect();
+			String result = connection.result;
+			System.out.println("json:" + result);
+			if (result == null)
+				throw new HttpConnectException();
 			JSONObject obj = new JSONObject(result);
 			money = obj.getInt("randioo_money");
 			if (money != -1) {
@@ -161,7 +162,7 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 				}
 			}
 
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			if (GlobleConfig.Boolean(GlobleEnum.DEBUG))
 				e.printStackTrace();
 			else

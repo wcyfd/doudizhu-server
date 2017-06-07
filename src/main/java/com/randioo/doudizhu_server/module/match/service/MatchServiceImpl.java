@@ -84,6 +84,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 				GameConfig config = GameConfig.newBuilder().setDi(3).setMingpai(true).setMoguai(true).setRound(1)
 						.build();
 				Game game = createGame(list.get(0).getRoleId(), config);
+				game.setGameType(GameType.GAME_TYPE_MATCH);
 
 				for (MatchRule matchRule : matchMap.values()) {
 					RoleMatchRule rule = (RoleMatchRule) matchRule;
@@ -159,6 +160,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 		this.addAccountRole(game, roleId);
 
 		game.setGameConfig(gameConfig);
+		game.setRound(gameConfig.getRound());
 
 		GameCache.getGameMap().put(gameId, game);
 		GameCache.getGameLockStringMap().put(game.getLockString(), gameId);

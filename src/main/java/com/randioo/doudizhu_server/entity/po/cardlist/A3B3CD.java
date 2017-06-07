@@ -91,7 +91,7 @@ public class A3B3CD extends A3B3 {
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
 			List<Integer> arr) {
 		// TODO Auto-generated method stub
-		super.recommand(recommandList, cardSort, lastCardList, arr);
+		//super.recommand(recommandList, cardSort, lastCardList, arr);
 	}
 
 

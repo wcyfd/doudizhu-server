@@ -43,6 +43,7 @@ public class A3N1 extends A1 {
 			A3N1 a = new A3N1();
 			a.setNum(num);
 			a.setAddNum(addNum);
+			return a;
 		}
 
 		throw new CardListPatternException();
@@ -61,7 +62,7 @@ public class A3N1 extends A1 {
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
 			List<Integer> arr) {
 		// TODO Auto-generated method stub
-		super.recommand(recommandList, cardSort, lastCardList, arr);
+		//super.recommand(recommandList, cardSort, lastCardList, arr);
 	}
 
 
