@@ -15,6 +15,7 @@ message MatchCreateGameResponse{
 	optional string id = 2;
 	optional bool moguai = 3;
 	optional GameRoleData gameRoleData = 4;
+	optional int32 roomType = 6;
 }
 
 
@@ -28,6 +29,7 @@ message MatchJoinGameResponse{
 	optional string id = 3;
 	optional bool moguai = 4;
 	optional int32 seated = 5;
+	optional int32 roomType = 6;
 }
 
 message SCMatchJoinGame{

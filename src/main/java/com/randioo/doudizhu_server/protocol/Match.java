@@ -862,6 +862,13 @@ public final class Match {
     public boolean hasGameRoleData() { return hasGameRoleData; }
     public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData() { return gameRoleData_; }
     
+    // optional int32 roomType = 6;
+    public static final int ROOMTYPE_FIELD_NUMBER = 6;
+    private boolean hasRoomType;
+    private int roomType_ = 0;
+    public boolean hasRoomType() { return hasRoomType; }
+    public int getRoomType() { return roomType_; }
+    
     private void initFields() {
       gameRoleData_ = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance();
     }
@@ -883,6 +890,9 @@ public final class Match {
       }
       if (hasGameRoleData()) {
         output.writeMessage(4, getGameRoleData());
+      }
+      if (hasRoomType()) {
+        output.writeInt32(6, getRoomType());
       }
       getUnknownFields().writeTo(output);
     }
@@ -908,6 +918,10 @@ public final class Match {
       if (hasGameRoleData()) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getGameRoleData());
+      }
+      if (hasRoomType()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, getRoomType());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1079,6 +1093,9 @@ public final class Match {
         if (other.hasGameRoleData()) {
           mergeGameRoleData(other.getGameRoleData());
         }
+        if (other.hasRoomType()) {
+          setRoomType(other.getRoomType());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1123,6 +1140,10 @@ public final class Match {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setGameRoleData(subBuilder.buildPartial());
+              break;
+            }
+            case 48: {
+              setRoomType(input.readInt32());
               break;
             }
           }
@@ -1221,6 +1242,24 @@ public final class Match {
       public Builder clearGameRoleData() {
         result.hasGameRoleData = false;
         result.gameRoleData_ = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance();
+        return this;
+      }
+      
+      // optional int32 roomType = 6;
+      public boolean hasRoomType() {
+        return result.hasRoomType();
+      }
+      public int getRoomType() {
+        return result.getRoomType();
+      }
+      public Builder setRoomType(int value) {
+        result.hasRoomType = true;
+        result.roomType_ = value;
+        return this;
+      }
+      public Builder clearRoomType() {
+        result.hasRoomType = false;
+        result.roomType_ = 0;
         return this;
       }
       
@@ -1590,6 +1629,13 @@ public final class Match {
     public boolean hasSeated() { return hasSeated; }
     public int getSeated() { return seated_; }
     
+    // optional int32 roomType = 6;
+    public static final int ROOMTYPE_FIELD_NUMBER = 6;
+    private boolean hasRoomType;
+    private int roomType_ = 0;
+    public boolean hasRoomType() { return hasRoomType; }
+    public int getRoomType() { return roomType_; }
+    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -1613,6 +1659,9 @@ public final class Match {
       }
       if (hasSeated()) {
         output.writeInt32(5, getSeated());
+      }
+      if (hasRoomType()) {
+        output.writeInt32(6, getRoomType());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1642,6 +1691,10 @@ public final class Match {
       if (hasSeated()) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, getSeated());
+      }
+      if (hasRoomType()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, getRoomType());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1823,6 +1876,9 @@ public final class Match {
         if (other.hasSeated()) {
           setSeated(other.getSeated());
         }
+        if (other.hasRoomType()) {
+          setRoomType(other.getRoomType());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1868,6 +1924,10 @@ public final class Match {
             }
             case 40: {
               setSeated(input.readInt32());
+              break;
+            }
+            case 48: {
+              setRoomType(input.readInt32());
               break;
             }
           }
@@ -1998,6 +2058,24 @@ public final class Match {
       public Builder clearSeated() {
         result.hasSeated = false;
         result.seated_ = 0;
+        return this;
+      }
+      
+      // optional int32 roomType = 6;
+      public boolean hasRoomType() {
+        return result.hasRoomType();
+      }
+      public int getRoomType() {
+        return result.getRoomType();
+      }
+      public Builder setRoomType(int value) {
+        result.hasRoomType = true;
+        result.roomType_ = value;
+        return this;
+      }
+      public Builder clearRoomType() {
+        result.hasRoomType = false;
+        result.roomType_ = 0;
         return this;
       }
       
@@ -2371,18 +2449,19 @@ public final class Match {
       "GameRequest\022D\n\ngameConfig\030\001 \001(\01320.com.ra" +
       "ndioo.doudizhu_server.protocol.GameConfi" +
       "g\"\020\n\016MatchAIRequest\"\022\n\020MatchRoleRequest\"" +
-      "\225\001\n\027MatchCreateGameResponse\022\024\n\terrorCode" +
+      "\247\001\n\027MatchCreateGameResponse\022\024\n\terrorCode" +
       "\030\001 \001(\005:\0011\022\n\n\002id\030\002 \001(\t\022\016\n\006moguai\030\003 \001(\010\022H\n" +
       "\014gameRoleData\030\004 \001(\01322.com.randioo.doudiz" +
-      "hu_server.protocol.GameRoleData\"*\n\024Match" +
-      "JoinGameRequest\022\022\n\nlockString\030\001 \001(\t\"\243\001\n\025",
-      "MatchJoinGameResponse\022\024\n\terrorCode\030\001 \001(\005" +
-      ":\0011\022H\n\014gameRoleData\030\002 \003(\01322.com.randioo." +
-      "doudizhu_server.protocol.GameRoleData\022\n\n" +
-      "\002id\030\003 \001(\t\022\016\n\006moguai\030\004 \001(\010\022\016\n\006seated\030\005 \001(" +
-      "\005\"[\n\017SCMatchJoinGame\022H\n\014gameRoleData\030\001 \001" +
-      "(\01322.com.randioo.doudizhu_server.protoco" +
-      "l.GameRoleData"
+      "hu_server.protocol.GameRoleData\022\020\n\010roomT" +
+      "ype\030\006 \001(\005\"*\n\024MatchJoinGameRequest\022\022\n\nloc",
+      "kString\030\001 \001(\t\"\265\001\n\025MatchJoinGameResponse\022" +
+      "\024\n\terrorCode\030\001 \001(\005:\0011\022H\n\014gameRoleData\030\002 " +
+      "\003(\01322.com.randioo.doudizhu_server.protoc" +
+      "ol.GameRoleData\022\n\n\002id\030\003 \001(\t\022\016\n\006moguai\030\004 " +
+      "\001(\010\022\016\n\006seated\030\005 \001(\005\022\020\n\010roomType\030\006 \001(\005\"[\n" +
+      "\017SCMatchJoinGame\022H\n\014gameRoleData\030\001 \001(\01322" +
+      ".com.randioo.doudizhu_server.protocol.Ga" +
+      "meRoleData"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2418,7 +2497,7 @@ public final class Match {
           internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", "Id", "Moguai", "GameRoleData", },
+              new java.lang.String[] { "ErrorCode", "Id", "Moguai", "GameRoleData", "RoomType", },
               com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.class,
               com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameRequest_descriptor =
@@ -2434,7 +2513,7 @@ public final class Match {
           internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", "GameRoleData", "Id", "Moguai", "Seated", },
+              new java.lang.String[] { "ErrorCode", "GameRoleData", "Id", "Moguai", "Seated", "RoomType", },
               com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse.class,
               com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGame_descriptor =

@@ -26,5 +26,6 @@ message LoginGetRoleDataResponse{
 	optional int32 errorCode=1 [default = 1];
 	optional int32 serverTime = 2;
 	optional RoleData roleData = 3;
+	optional string game = 4;
 }
 

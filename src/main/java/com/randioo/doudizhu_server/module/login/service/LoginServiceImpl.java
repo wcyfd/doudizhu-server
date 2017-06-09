@@ -149,7 +149,7 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 					.newBuilder()
 					.setLoginGetRoleDataResponse(
 							LoginGetRoleDataResponse.newBuilder().setServerTime(TimeUtils.getNowTime())
-									.setRoleData(getRoleData(role))).build();
+									.setRoleData(getRoleData(role)).setGame("doudizhu_"+GlobleConfig.Int(GlobleConfig.GlobleEnum.PORT)+"_")).build();
 		}
 
 		ErrorCode errorEnum = null;

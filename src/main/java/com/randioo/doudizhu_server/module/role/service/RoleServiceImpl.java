@@ -140,9 +140,7 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 		int money = -1;
 		String name = "";
 		String headImgUrl = "";
-		HttpConnection connection = new HttpConnection(
-		/* "http://manager.app.randioo.com/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=" */
-		"http://10.0.51.6/APPadmin/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=",
+		HttpConnection connection = new HttpConnection(GlobleConfig.String("URL")+"/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=",
 				role.getAccount());
 		
 

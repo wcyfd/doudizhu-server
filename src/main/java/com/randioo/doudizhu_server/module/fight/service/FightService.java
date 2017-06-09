@@ -49,4 +49,6 @@ public interface FightService extends ObserveBaseServiceInterface {
 	GeneratedMessage recommandCardList(Role role);
 	
 	void mingPai(Role role);
+
+	GeneratedMessage getLastRecord(int gameId);
 }

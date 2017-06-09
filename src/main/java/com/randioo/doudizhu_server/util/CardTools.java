@@ -176,31 +176,55 @@ public class CardTools {
 	}
 
 	public static void recommandStartNumAndLenCommonTemplate(List<List<Integer>> recommandList, CardSort cardSort,
-			CardList lastCardList, List<Integer> arr, int lineIndex, int loopAddCount) {
+			CardList lastCardList, List<Integer> arr, int lineIndex, Class<? extends A1> targetClass) {
 		if (lastCardList != null) {
-			ABCDE abcde = (ABCDE) lastCardList;
-
-			Set<Integer> set = cardSort.getCardSort().get(lineIndex);
-			// 如果理论的最后一个值大于A则返回
-			for (int startNum = abcde.getNum() + 1; /* 起始值 */(startNum < (startNum + abcde.getLength()))
-					&& (startNum + abcde.getLength()) < CardTools.C_A; startNum++) {
-				if (!set.contains(startNum))
-					continue;
-
-				NOT_HAVE: {
-					List<Integer> list = new ArrayList<>();
-					// 获得起始值
-					for (int value = startNum; value < abcde.getNum() + abcde.getLength(); value++) {
-						if (!set.contains(value))
-							break NOT_HAVE;
-
-						for (int loop = 0; loop < loopAddCount; loop++)
-							list.add(value);
-					}
-					recommandList.add(list);
-				}
+			if (lastCardList.getClass() != targetClass) {
+				return;
 			}
+			ABCDE a1 = (ABCDE) lastCardList;
+			int num = a1.getNum();
 
+			List<List<Integer>> lists = new ArrayList<>();
+			Set<Integer> tset = null;
+			for(int i = 2 ; i >= lineIndex ; i-- ){
+				CardSort tcardSort = cardSort.clone();
+				for(int j = 2 ; j > lineIndex+(2-i) ; j-- ){
+					
+					Set<Integer> set = tcardSort.getCardSort().get(j);				
+					List<Integer> temp = new ArrayList<>(set);
+					CardTools.rmAllValues(tcardSort, temp);
+				}
+				
+				tset = tcardSort.getCardSort().get(lineIndex);
+				
+				for(int pai : tset){
+					if(pai > num){
+						boolean flag = true;
+						for(int count = 0 ; count < a1.getLength() ; count ++){
+							if(!tset.contains(pai+count)){
+								flag = false;
+								break;
+							}
+						}
+						if(flag){
+							List<Integer> list = new ArrayList<>(lineIndex + 1);
+							for(int count = 0 ; count < a1.getLength() ; count ++){
+								for (int k = 0; k < lineIndex + 1; k++)
+									list.add(pai+count);
+							}
+							lists.add(list);
+						}
+					}
+				}
+				
+				
+				if(tset != null){
+					//tcardSort = cardSort.clone();
+					CardTools.rmAllValues(cardSort, new ArrayList<Integer>(tset));
+				}
+				
+			}
+			recommandList.addAll(recommandList.size(), lists);
 		}
 	}
 

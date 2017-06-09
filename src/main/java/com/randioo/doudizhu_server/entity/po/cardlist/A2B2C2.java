@@ -59,7 +59,7 @@ public class A2B2C2 extends ABCDE {
 			return;
 
 		if (lastCardList != null) {
-			CardTools.recommandStartNumAndLenCommonTemplate(recommandList, cardSort, lastCardList, arr, 1, 2);
+			CardTools.recommandStartNumAndLenCommonTemplate(recommandList, cardSort, lastCardList, arr, 1, getClass());
 		}
 	}
 

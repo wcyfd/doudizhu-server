@@ -1527,6 +1527,13 @@ public final class Login {
     public boolean hasRoleData() { return hasRoleData; }
     public com.randioo.doudizhu_server.protocol.Entity.RoleData getRoleData() { return roleData_; }
     
+    // optional string game = 4;
+    public static final int GAME_FIELD_NUMBER = 4;
+    private boolean hasGame;
+    private java.lang.String game_ = "";
+    public boolean hasGame() { return hasGame; }
+    public java.lang.String getGame() { return game_; }
+    
     private void initFields() {
       roleData_ = com.randioo.doudizhu_server.protocol.Entity.RoleData.getDefaultInstance();
     }
@@ -1545,6 +1552,9 @@ public final class Login {
       }
       if (hasRoleData()) {
         output.writeMessage(3, getRoleData());
+      }
+      if (hasGame()) {
+        output.writeString(4, getGame());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1566,6 +1576,10 @@ public final class Login {
       if (hasRoleData()) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getRoleData());
+      }
+      if (hasGame()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(4, getGame());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1734,6 +1748,9 @@ public final class Login {
         if (other.hasRoleData()) {
           mergeRoleData(other.getRoleData());
         }
+        if (other.hasGame()) {
+          setGame(other.getGame());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1774,6 +1791,10 @@ public final class Login {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setRoleData(subBuilder.buildPartial());
+              break;
+            }
+            case 34: {
+              setGame(input.readString());
               break;
             }
           }
@@ -1854,6 +1875,27 @@ public final class Login {
         return this;
       }
       
+      // optional string game = 4;
+      public boolean hasGame() {
+        return result.hasGame();
+      }
+      public java.lang.String getGame() {
+        return result.getGame();
+      }
+      public Builder setGame(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasGame = true;
+        result.game_ = value;
+        return this;
+      }
+      public Builder clearGame() {
+        result.hasGame = false;
+        result.game_ = getDefaultInstance().getGame();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.LoginGetRoleDataResponse)
     }
     
@@ -1912,11 +1954,11 @@ public final class Login {
       "1\"7\n\026LoginCreateRoleRequest\022\017\n\007account\030\001" +
       " \001(\t\022\014\n\004name\030\002 \001(\t\"/\n\027LoginCreateRoleRes" +
       "ponse\022\024\n\terrorCode\030\001 \001(\005:\0011\"*\n\027LoginGetR" +
-      "oleDataRequest\022\017\n\007account\030\001 \001(\t\"\206\001\n\030Logi" +
+      "oleDataRequest\022\017\n\007account\030\001 \001(\t\"\224\001\n\030Logi" +
       "nGetRoleDataResponse\022\024\n\terrorCode\030\001 \001(\005:" +
       "\0011\022\022\n\nserverTime\030\002 \001(\005\022@\n\010roleData\030\003 \001(\013",
       "2..com.randioo.doudizhu_server.protocol." +
-      "RoleData"
+      "RoleData\022\014\n\004game\030\004 \001(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1968,7 +2010,7 @@ public final class Login {
           internal_static_com_randioo_doudizhu_server_protocol_LoginGetRoleDataResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_LoginGetRoleDataResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", "ServerTime", "RoleData", },
+              new java.lang.String[] { "ErrorCode", "ServerTime", "RoleData", "Game", },
               com.randioo.doudizhu_server.protocol.Login.LoginGetRoleDataResponse.class,
               com.randioo.doudizhu_server.protocol.Login.LoginGetRoleDataResponse.Builder.class);
           return null;

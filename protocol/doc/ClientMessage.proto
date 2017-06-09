@@ -29,4 +29,5 @@ message CS{
 	optional FightSendCardRequest FightSendCardRequest = 16;
 	optional FightMingPaiRequest FightMingPaiRequest = 17;
 	optional FightRecommandRequest FightRecommandRequest = 18;
-} // 18
+	optional FightGetlastRoundRequest FightGetlastRoundRequest = 19;
+} // 19

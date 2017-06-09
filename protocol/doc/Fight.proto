@@ -19,6 +19,30 @@ message SCFightMingPai{
 }
 message FightMingPaiRequest{
 }
+message FightMingPaiResponse{
+	optional int32 errorCode = 1 [default = 1];
+}
+
+message FightGetlastRoundRequest{
+}
+message FightGetlastRoundResponse{
+	optional int32 errorCode = 1 [default = 1];
+	repeated Record records = 2;
+}
+message FightRejoinRequest{
+}
+message FightRejoinResponse{
+	repeated int32 pai = 1;
+	repeated int32 landLordPai = 2;
+	optional string roomId = 3;
+	optional bool moguai = 4;
+	optional int32 seated = 5;
+	message gameRolePlayData{
+		optional GameRoleData gameRoleData = 1;
+		optional int32 allScore = 2;
+		optional int32 paiNum = 3;
+	}
+}
 message FightRecommandRequest{
 }
 message FightRecommandResponse{
@@ -43,8 +67,12 @@ message SCFightRoundOver{
 	message Score{
 		optional string name = 1;
 		optional int32 score = 2;
+		optional int32 allScore = 3;
+		optional int32 seated = 4;
+		optional int32 money = 5;
 	}
 	repeated Score score = 6;
+	optional bool over = 7;
 }
 message SCFightGameOver{	
 	message GameOverData{
@@ -76,7 +104,8 @@ message SCFightPutOut{
 message SCFightPutOutPai{
 	optional int32 seated = 1;
 	repeated int32 putOutPai = 2;
-	optional int32 times = 3;	
+	optional int32 times = 3;
+	repeated PaiNum PaiNum = 4;	
 }
 message FightSendCardRequest{
 	repeated int32 pai = 1;	

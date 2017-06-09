@@ -10,6 +10,7 @@ import com.randioo.doudizhu_server.protocol.Error.ErrorCode;
 import com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeResponse;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.HttpConnection;
+import com.randioo.randioo_server_base.config.GlobleConfig;
 import com.randioo.randioo_server_base.service.ObserveBaseService;
 import com.randioo.randioo_server_base.utils.TimeUtils;
 
@@ -80,8 +81,7 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
 	}
 	
 	public  boolean exchangeMoney(Role role, int money, boolean add){
-		String url = /*"http://manager.app.randioo.com/gateway/MaJiang/changeMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=";*/
-				"http://10.0.51.6/APPadmin/gateway/MaJiang/changeMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=";
+		String url = GlobleConfig.String("URL")+"/gateway/MaJiang/changeMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=";
     	String tpram = "";
     	tpram = tpram.concat(role.getAccount());
     	tpram = tpram.concat("&&money_num="+money);

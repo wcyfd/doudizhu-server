@@ -41,5 +41,7 @@ message SC{
 	optional SCFightRoundOver SCFightRoundOver = 29;
 	optional FightRecommandResponse FightRecommandResponse = 30;
 	optional SCFightGameOver SCFightGameOver = 31;
+	optional FightMingPaiResponse FightMingPaiResponse = 32;
+	optional FightGetlastRoundResponse FightGetlastRoundResponse = 33;
 
-} // 31
+} // 33

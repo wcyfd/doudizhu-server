@@ -1,5 +1,6 @@
 package com.randioo.doudizhu_server.entity.po.cardlist;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -27,7 +28,20 @@ public class KQ extends CardList {
 	@Override
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
 			List<Integer> arr) {
+		if (arr.size() < 2 || cardSort.getCardSort().get(0).size() < 2)
+			return;
 		
+		cardSort = cardSort.clone();
+		List<List<Integer>> lists = new ArrayList<>();
+		Set<Integer> set = cardSort.getCardSort().get(0);				
+		if(set.contains(0xE) && set.contains(0xF)){
+			List<Integer> list = new ArrayList<>(2);
+			list.add(0xE);
+			list.add(0xF);
+			lists.add(list);
+		}
+		recommandList.addAll(recommandList.size(), lists);	
+
 	}
 
 

@@ -135,7 +135,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 		GameRoleData myGameRoleData = this.parseGameRoleData(roleGameInfo, game.getGameId());
 		return SC.newBuilder()
 				.setMatchCreateGameResponse(MatchCreateGameResponse.newBuilder().setId(game.getLockString())
-						.setGameRoleData(myGameRoleData).setMoguai(game.getGameConfig().getMoguai()))
+						.setGameRoleData(myGameRoleData).setMoguai(game.getGameConfig().getMoguai()).setRoomType(GameType.GAME_TYPE_FRIEND.getNumber()))
 				.build();
 	}
 
@@ -289,7 +289,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 			gameRoleDataList.add(gameRoleData);
 		}
 		return SC.newBuilder().setMatchJoinGameResponse(MatchJoinGameResponse.newBuilder()
-				.addAllGameRoleData(gameRoleDataList).setSeated(myGameRoleData.getSeated()).setId(lockString).setMoguai(game.getGameConfig().getMoguai()))
+				.addAllGameRoleData(gameRoleDataList).setSeated(myGameRoleData.getSeated()).setId(lockString).setMoguai(game.getGameConfig().getMoguai()).setRoomType(GameType.GAME_TYPE_FRIEND.getNumber()))
 				.build();
 	}
 
@@ -317,7 +317,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 						SC.newBuilder()
 								.setMatchCreateGameResponse(MatchCreateGameResponse.newBuilder()
 										.setId(game.getLockString()).setGameRoleData(myGameRoleData)
-										.setMoguai(game.getGameConfig().getMoguai()))
+										.setMoguai(game.getGameConfig().getMoguai()).setRoomType(GameType.GAME_TYPE_MATCH.getNumber()))
 								.build());
 		int maxCount = game.getMaxRoleCount();
 		for (int i = game.getRoleIdMap().size(); i < maxCount; i++) {
@@ -383,7 +383,7 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 
 	public boolean checkConfig(GameConfig gameConfig) {
 		int[] di = { 1, 2, 3, 5 };
-		int[] round = { 6, 12, 18, 24 };
+		int[] round = {2, 6, 12, 18, 24 };
 		if (Tool.indexOf(di, gameConfig.getDi()) == -1 || Tool.indexOf(round, gameConfig.getRound()) == -1) {
 			return false;
 		}

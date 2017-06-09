@@ -1,10 +1,12 @@
 package com.randioo.doudizhu_server.entity.bo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.randioo.doudizhu_server.entity.po.CardRecord;
 import com.randioo.doudizhu_server.entity.po.RoleGameInfo;
 import com.randioo.doudizhu_server.entity.po.cardlist.CardList;
 import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
@@ -63,6 +65,9 @@ public class Game {
 	private boolean moGuai;
 	
 	private int round;
+	
+	private List<List<List<CardRecord>>> records = new ArrayList<>();
+	
 
 	public int getOnlineRoleCount() {
 		return onlineRoleCount;
@@ -258,6 +263,10 @@ public class Game {
 
 	public void setRound(int round) {
 		this.round = round;
+	}
+
+	public List<List<List<CardRecord>>> getRecords() {
+		return records;
 	}
 	
 
