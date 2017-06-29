@@ -29,6 +29,7 @@ import com.randioo.randioo_server_base.sensitive.SensitiveWordDictionary;
 import com.randioo.randioo_server_base.service.ObserveBaseService;
 import com.randioo.randioo_server_base.template.Ref;
 import com.randioo.randioo_server_base.utils.StringUtils;
+import com.randioo.randioo_server_base.utils.TimeUtils;
 
 @Service("roleService")
 public class RoleServiceImpl extends ObserveBaseService implements RoleService {
@@ -90,6 +91,7 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 		role.setName("用户" + role.getRoleId());
 		role.setVolume(50);
 		role.setMusicVolume(50);
+		role.setMoney(1000);
 
 		initRoleDataFromHttp(role);
 	}
@@ -97,6 +99,7 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 	@Override
 	public void roleInit(Role role) {
 		initRoleDataFromHttp(role);
+		role.setHeartbeatTime(TimeUtils.getNowTime());
 	}
 
 	@Override
@@ -138,20 +141,22 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 
 	public void initRoleDataFromHttp(Role role) {
 		int money = -1;
+		int sex = 1;
 		String name = "";
 		String headImgUrl = "";
 		HttpConnection connection = new HttpConnection(GlobleConfig.String("URL")+"/gateway/MaJiang/getMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=",
 				role.getAccount());
 		
-
+		JSONObject obj = null;
 		try {
 			connection.connect();
 			String result = connection.result;
 			System.out.println("json:" + result);
 			if (result == null)
 				throw new HttpConnectException();
-			JSONObject obj = new JSONObject(result);
+			obj = new JSONObject(result);
 			money = obj.getInt("randioo_money");
+			
 			if (money != -1) {
 				name = obj.getString("nickname");
 				headImgUrl = obj.getString("headimgurl");
@@ -166,6 +171,12 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 			else
 				throw new HttpConnectException();
 		}
+		try {
+			if(obj.getInt("sex") == 2){
+				sex = 2;
+			}
+		} catch (JSONException e) {
+		}
 
 		if (money == -1)
 			money = 100;
@@ -174,6 +185,7 @@ public class RoleServiceImpl extends ObserveBaseService implements RoleService {
 		System.out.println("@@@" + headImgUrl + (headImgUrl == null));
 		role.setHeadImgUrl(StringUtils.isNullOrEmpty(headImgUrl) ? "ui://h24q1ml0x7tz13m" : headImgUrl);
 		role.setRandiooMoney(money);
+		role.setSex(sex);
 
 	}
 

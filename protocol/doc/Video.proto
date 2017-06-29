@@ -1,0 +1,30 @@
+package com.randioo.doudizhu_server.protocol;
+import "Entity.proto";
+
+
+message VideoGetRequest{
+}
+
+message VideoGetResponse{	
+	optional int32 errorCode = 1 [default = 1];
+	repeated videoWithId videoMsg = 2;
+}
+
+message VideoGetByIdRequest{
+	optional int32 id = 1;
+}
+
+message VideoGetByIdResponse{	
+	optional int32 errorCode = 1 [default = 1];
+	optional videoWithId videoMsg = 2;
+}
+
+message VideoGetByRoundRequest{
+	optional int32 id = 1;
+	optional int32 round = 2;
+}
+
+message VideoGetByRoundResponse{	
+	optional int32 errorCode = 1 [default = 1];
+	optional video videoMsg = 2;
+}

@@ -77,96 +77,159 @@ public final class ClientMessage {
     public boolean hasMatchJoinGameRequest() { return hasMatchJoinGameRequest; }
     public com.randioo.doudizhu_server.protocol.Match.MatchJoinGameRequest getMatchJoinGameRequest() { return matchJoinGameRequest_; }
     
-    // optional .com.randioo.doudizhu_server.protocol.FightReadyRequest FightReadyRequest = 7;
-    public static final int FIGHTREADYREQUEST_FIELD_NUMBER = 7;
-    private boolean hasFightReadyRequest;
-    private com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest fightReadyRequest_;
-    public boolean hasFightReadyRequest() { return hasFightReadyRequest; }
-    public com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest getFightReadyRequest() { return fightReadyRequest_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.FightExitGameRequest FightExitGameRequest = 8;
-    public static final int FIGHTEXITGAMEREQUEST_FIELD_NUMBER = 8;
-    private boolean hasFightExitGameRequest;
-    private com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest fightExitGameRequest_;
-    public boolean hasFightExitGameRequest() { return hasFightExitGameRequest; }
-    public com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest getFightExitGameRequest() { return fightExitGameRequest_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.FightAgreeExitGameRequest FightAgreeExitGameRequest = 9;
-    public static final int FIGHTAGREEEXITGAMEREQUEST_FIELD_NUMBER = 9;
-    private boolean hasFightAgreeExitGameRequest;
-    private com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest fightAgreeExitGameRequest_;
-    public boolean hasFightAgreeExitGameRequest() { return hasFightAgreeExitGameRequest; }
-    public com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest getFightAgreeExitGameRequest() { return fightAgreeExitGameRequest_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.MoneyExchangeRequest MoneyExchangeRequest = 10;
-    public static final int MONEYEXCHANGEREQUEST_FIELD_NUMBER = 10;
-    private boolean hasMoneyExchangeRequest;
-    private com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest moneyExchangeRequest_;
-    public boolean hasMoneyExchangeRequest() { return hasMoneyExchangeRequest; }
-    public com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest getMoneyExchangeRequest() { return moneyExchangeRequest_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.SettingsRequest SettingsRequest = 11;
-    public static final int SETTINGSREQUEST_FIELD_NUMBER = 11;
-    private boolean hasSettingsRequest;
-    private com.randioo.doudizhu_server.protocol.Settings.SettingsRequest settingsRequest_;
-    public boolean hasSettingsRequest() { return hasSettingsRequest; }
-    public com.randioo.doudizhu_server.protocol.Settings.SettingsRequest getSettingsRequest() { return settingsRequest_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.GetRoleDataRequest GetRoleDataRequest = 12;
-    public static final int GETROLEDATAREQUEST_FIELD_NUMBER = 12;
-    private boolean hasGetRoleDataRequest;
-    private com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest getRoleDataRequest_;
-    public boolean hasGetRoleDataRequest() { return hasGetRoleDataRequest; }
-    public com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest getGetRoleDataRequest() { return getRoleDataRequest_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.GetSettingsRequest GetSettingsRequest = 13;
-    public static final int GETSETTINGSREQUEST_FIELD_NUMBER = 13;
-    private boolean hasGetSettingsRequest;
-    private com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest getSettingsRequest_;
-    public boolean hasGetSettingsRequest() { return hasGetSettingsRequest; }
-    public com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest getGetSettingsRequest() { return getSettingsRequest_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.MatchAIRequest MatchAIRequest = 14;
-    public static final int MATCHAIREQUEST_FIELD_NUMBER = 14;
+    // optional .com.randioo.doudizhu_server.protocol.MatchAIRequest MatchAIRequest = 7;
+    public static final int MATCHAIREQUEST_FIELD_NUMBER = 7;
     private boolean hasMatchAIRequest;
     private com.randioo.doudizhu_server.protocol.Match.MatchAIRequest matchAIRequest_;
     public boolean hasMatchAIRequest() { return hasMatchAIRequest; }
     public com.randioo.doudizhu_server.protocol.Match.MatchAIRequest getMatchAIRequest() { return matchAIRequest_; }
     
-    // optional .com.randioo.doudizhu_server.protocol.FightCallLandLordRequest FightCallLandLordRequest = 15;
-    public static final int FIGHTCALLLANDLORDREQUEST_FIELD_NUMBER = 15;
+    // optional .com.randioo.doudizhu_server.protocol.MatchRoleRequest MatchRoleRequest = 8;
+    public static final int MATCHROLEREQUEST_FIELD_NUMBER = 8;
+    private boolean hasMatchRoleRequest;
+    private com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest matchRoleRequest_;
+    public boolean hasMatchRoleRequest() { return hasMatchRoleRequest; }
+    public com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest getMatchRoleRequest() { return matchRoleRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.MatchCancelRequest MatchCancelRequest = 9;
+    public static final int MATCHCANCELREQUEST_FIELD_NUMBER = 9;
+    private boolean hasMatchCancelRequest;
+    private com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest matchCancelRequest_;
+    public boolean hasMatchCancelRequest() { return hasMatchCancelRequest; }
+    public com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest getMatchCancelRequest() { return matchCancelRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.FightReadyRequest FightReadyRequest = 10;
+    public static final int FIGHTREADYREQUEST_FIELD_NUMBER = 10;
+    private boolean hasFightReadyRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest fightReadyRequest_;
+    public boolean hasFightReadyRequest() { return hasFightReadyRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest getFightReadyRequest() { return fightReadyRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.FightExitGameRequest FightExitGameRequest = 11;
+    public static final int FIGHTEXITGAMEREQUEST_FIELD_NUMBER = 11;
+    private boolean hasFightExitGameRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest fightExitGameRequest_;
+    public boolean hasFightExitGameRequest() { return hasFightExitGameRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest getFightExitGameRequest() { return fightExitGameRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.FightAgreeExitGameRequest FightAgreeExitGameRequest = 12;
+    public static final int FIGHTAGREEEXITGAMEREQUEST_FIELD_NUMBER = 12;
+    private boolean hasFightAgreeExitGameRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest fightAgreeExitGameRequest_;
+    public boolean hasFightAgreeExitGameRequest() { return hasFightAgreeExitGameRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest getFightAgreeExitGameRequest() { return fightAgreeExitGameRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.FightCallLandLordRequest FightCallLandLordRequest = 13;
+    public static final int FIGHTCALLLANDLORDREQUEST_FIELD_NUMBER = 13;
     private boolean hasFightCallLandLordRequest;
     private com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest fightCallLandLordRequest_;
     public boolean hasFightCallLandLordRequest() { return hasFightCallLandLordRequest; }
     public com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest getFightCallLandLordRequest() { return fightCallLandLordRequest_; }
     
-    // optional .com.randioo.doudizhu_server.protocol.FightSendCardRequest FightSendCardRequest = 16;
-    public static final int FIGHTSENDCARDREQUEST_FIELD_NUMBER = 16;
+    // optional .com.randioo.doudizhu_server.protocol.FightSendCardRequest FightSendCardRequest = 14;
+    public static final int FIGHTSENDCARDREQUEST_FIELD_NUMBER = 14;
     private boolean hasFightSendCardRequest;
     private com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest fightSendCardRequest_;
     public boolean hasFightSendCardRequest() { return hasFightSendCardRequest; }
     public com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest getFightSendCardRequest() { return fightSendCardRequest_; }
     
-    // optional .com.randioo.doudizhu_server.protocol.FightMingPaiRequest FightMingPaiRequest = 17;
-    public static final int FIGHTMINGPAIREQUEST_FIELD_NUMBER = 17;
+    // optional .com.randioo.doudizhu_server.protocol.FightMingPaiRequest FightMingPaiRequest = 15;
+    public static final int FIGHTMINGPAIREQUEST_FIELD_NUMBER = 15;
     private boolean hasFightMingPaiRequest;
     private com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest fightMingPaiRequest_;
     public boolean hasFightMingPaiRequest() { return hasFightMingPaiRequest; }
     public com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest getFightMingPaiRequest() { return fightMingPaiRequest_; }
     
-    // optional .com.randioo.doudizhu_server.protocol.FightRecommandRequest FightRecommandRequest = 18;
-    public static final int FIGHTRECOMMANDREQUEST_FIELD_NUMBER = 18;
+    // optional .com.randioo.doudizhu_server.protocol.FightRecommandRequest FightRecommandRequest = 16;
+    public static final int FIGHTRECOMMANDREQUEST_FIELD_NUMBER = 16;
     private boolean hasFightRecommandRequest;
     private com.randioo.doudizhu_server.protocol.Fight.FightRecommandRequest fightRecommandRequest_;
     public boolean hasFightRecommandRequest() { return hasFightRecommandRequest; }
     public com.randioo.doudizhu_server.protocol.Fight.FightRecommandRequest getFightRecommandRequest() { return fightRecommandRequest_; }
     
-    // optional .com.randioo.doudizhu_server.protocol.FightGetlastRoundRequest FightGetlastRoundRequest = 19;
-    public static final int FIGHTGETLASTROUNDREQUEST_FIELD_NUMBER = 19;
+    // optional .com.randioo.doudizhu_server.protocol.FightGetlastRoundRequest FightGetlastRoundRequest = 17;
+    public static final int FIGHTGETLASTROUNDREQUEST_FIELD_NUMBER = 17;
     private boolean hasFightGetlastRoundRequest;
     private com.randioo.doudizhu_server.protocol.Fight.FightGetlastRoundRequest fightGetlastRoundRequest_;
     public boolean hasFightGetlastRoundRequest() { return hasFightGetlastRoundRequest; }
     public com.randioo.doudizhu_server.protocol.Fight.FightGetlastRoundRequest getFightGetlastRoundRequest() { return fightGetlastRoundRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.FightRejoinRequest FightRejoinRequest = 18;
+    public static final int FIGHTREJOINREQUEST_FIELD_NUMBER = 18;
+    private boolean hasFightRejoinRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest fightRejoinRequest_;
+    public boolean hasFightRejoinRequest() { return hasFightRejoinRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest getFightRejoinRequest() { return fightRejoinRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.FightAutoRequest FightAutoRequest = 19;
+    public static final int FIGHTAUTOREQUEST_FIELD_NUMBER = 19;
+    private boolean hasFightAutoRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest fightAutoRequest_;
+    public boolean hasFightAutoRequest() { return hasFightAutoRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest getFightAutoRequest() { return fightAutoRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.FightApplyExitGameRequest FightApplyExitGameRequest = 20;
+    public static final int FIGHTAPPLYEXITGAMEREQUEST_FIELD_NUMBER = 20;
+    private boolean hasFightApplyExitGameRequest;
+    private com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest fightApplyExitGameRequest_;
+    public boolean hasFightApplyExitGameRequest() { return hasFightApplyExitGameRequest; }
+    public com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest getFightApplyExitGameRequest() { return fightApplyExitGameRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.MoneyExchangeRequest MoneyExchangeRequest = 21;
+    public static final int MONEYEXCHANGEREQUEST_FIELD_NUMBER = 21;
+    private boolean hasMoneyExchangeRequest;
+    private com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest moneyExchangeRequest_;
+    public boolean hasMoneyExchangeRequest() { return hasMoneyExchangeRequest; }
+    public com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest getMoneyExchangeRequest() { return moneyExchangeRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.SettingsRequest SettingsRequest = 22;
+    public static final int SETTINGSREQUEST_FIELD_NUMBER = 22;
+    private boolean hasSettingsRequest;
+    private com.randioo.doudizhu_server.protocol.Settings.SettingsRequest settingsRequest_;
+    public boolean hasSettingsRequest() { return hasSettingsRequest; }
+    public com.randioo.doudizhu_server.protocol.Settings.SettingsRequest getSettingsRequest() { return settingsRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.GetRoleDataRequest GetRoleDataRequest = 23;
+    public static final int GETROLEDATAREQUEST_FIELD_NUMBER = 23;
+    private boolean hasGetRoleDataRequest;
+    private com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest getRoleDataRequest_;
+    public boolean hasGetRoleDataRequest() { return hasGetRoleDataRequest; }
+    public com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest getGetRoleDataRequest() { return getRoleDataRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.GetSettingsRequest GetSettingsRequest = 24;
+    public static final int GETSETTINGSREQUEST_FIELD_NUMBER = 24;
+    private boolean hasGetSettingsRequest;
+    private com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest getSettingsRequest_;
+    public boolean hasGetSettingsRequest() { return hasGetSettingsRequest; }
+    public com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest getGetSettingsRequest() { return getSettingsRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.HeartbeatRequest HeartbeatRequest = 25;
+    public static final int HEARTBEATREQUEST_FIELD_NUMBER = 25;
+    private boolean hasHeartbeatRequest;
+    private com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest heartbeatRequest_;
+    public boolean hasHeartbeatRequest() { return hasHeartbeatRequest; }
+    public com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest getHeartbeatRequest() { return heartbeatRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.VideoGetRequest VideoGetRequest = 26;
+    public static final int VIDEOGETREQUEST_FIELD_NUMBER = 26;
+    private boolean hasVideoGetRequest;
+    private com.randioo.doudizhu_server.protocol.Video.VideoGetRequest videoGetRequest_;
+    public boolean hasVideoGetRequest() { return hasVideoGetRequest; }
+    public com.randioo.doudizhu_server.protocol.Video.VideoGetRequest getVideoGetRequest() { return videoGetRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.VideoGetByIdRequest VideoGetByIdRequest = 27;
+    public static final int VIDEOGETBYIDREQUEST_FIELD_NUMBER = 27;
+    private boolean hasVideoGetByIdRequest;
+    private com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest videoGetByIdRequest_;
+    public boolean hasVideoGetByIdRequest() { return hasVideoGetByIdRequest; }
+    public com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest getVideoGetByIdRequest() { return videoGetByIdRequest_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.VideoGetByRoundRequest VideoGetByRoundRequest = 28;
+    public static final int VIDEOGETBYROUNDREQUEST_FIELD_NUMBER = 28;
+    private boolean hasVideoGetByRoundRequest;
+    private com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest videoGetByRoundRequest_;
+    public boolean hasVideoGetByRoundRequest() { return hasVideoGetByRoundRequest; }
+    public com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest getVideoGetByRoundRequest() { return videoGetByRoundRequest_; }
     
     private void initFields() {
       loginCheckAccountRequest_ = com.randioo.doudizhu_server.protocol.Login.LoginCheckAccountRequest.getDefaultInstance();
@@ -175,19 +238,28 @@ public final class ClientMessage {
       roleRenameRequest_ = com.randioo.doudizhu_server.protocol.Role.RoleRenameRequest.getDefaultInstance();
       matchCreateGameRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchCreateGameRequest.getDefaultInstance();
       matchJoinGameRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchJoinGameRequest.getDefaultInstance();
+      matchAIRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchAIRequest.getDefaultInstance();
+      matchRoleRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.getDefaultInstance();
+      matchCancelRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.getDefaultInstance();
       fightReadyRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.getDefaultInstance();
       fightExitGameRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.getDefaultInstance();
       fightAgreeExitGameRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.getDefaultInstance();
-      moneyExchangeRequest_ = com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.getDefaultInstance();
-      settingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.getDefaultInstance();
-      getRoleDataRequest_ = com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.getDefaultInstance();
-      getSettingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance();
-      matchAIRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchAIRequest.getDefaultInstance();
       fightCallLandLordRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.getDefaultInstance();
       fightSendCardRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.getDefaultInstance();
       fightMingPaiRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.getDefaultInstance();
       fightRecommandRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightRecommandRequest.getDefaultInstance();
       fightGetlastRoundRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightGetlastRoundRequest.getDefaultInstance();
+      fightRejoinRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest.getDefaultInstance();
+      fightAutoRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest.getDefaultInstance();
+      fightApplyExitGameRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest.getDefaultInstance();
+      moneyExchangeRequest_ = com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.getDefaultInstance();
+      settingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.getDefaultInstance();
+      getRoleDataRequest_ = com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.getDefaultInstance();
+      getSettingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance();
+      heartbeatRequest_ = com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest.getDefaultInstance();
+      videoGetRequest_ = com.randioo.doudizhu_server.protocol.Video.VideoGetRequest.getDefaultInstance();
+      videoGetByIdRequest_ = com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest.getDefaultInstance();
+      videoGetByRoundRequest_ = com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -214,44 +286,71 @@ public final class ClientMessage {
       if (hasMatchJoinGameRequest()) {
         output.writeMessage(6, getMatchJoinGameRequest());
       }
+      if (hasMatchAIRequest()) {
+        output.writeMessage(7, getMatchAIRequest());
+      }
+      if (hasMatchRoleRequest()) {
+        output.writeMessage(8, getMatchRoleRequest());
+      }
+      if (hasMatchCancelRequest()) {
+        output.writeMessage(9, getMatchCancelRequest());
+      }
       if (hasFightReadyRequest()) {
-        output.writeMessage(7, getFightReadyRequest());
+        output.writeMessage(10, getFightReadyRequest());
       }
       if (hasFightExitGameRequest()) {
-        output.writeMessage(8, getFightExitGameRequest());
+        output.writeMessage(11, getFightExitGameRequest());
       }
       if (hasFightAgreeExitGameRequest()) {
-        output.writeMessage(9, getFightAgreeExitGameRequest());
-      }
-      if (hasMoneyExchangeRequest()) {
-        output.writeMessage(10, getMoneyExchangeRequest());
-      }
-      if (hasSettingsRequest()) {
-        output.writeMessage(11, getSettingsRequest());
-      }
-      if (hasGetRoleDataRequest()) {
-        output.writeMessage(12, getGetRoleDataRequest());
-      }
-      if (hasGetSettingsRequest()) {
-        output.writeMessage(13, getGetSettingsRequest());
-      }
-      if (hasMatchAIRequest()) {
-        output.writeMessage(14, getMatchAIRequest());
+        output.writeMessage(12, getFightAgreeExitGameRequest());
       }
       if (hasFightCallLandLordRequest()) {
-        output.writeMessage(15, getFightCallLandLordRequest());
+        output.writeMessage(13, getFightCallLandLordRequest());
       }
       if (hasFightSendCardRequest()) {
-        output.writeMessage(16, getFightSendCardRequest());
+        output.writeMessage(14, getFightSendCardRequest());
       }
       if (hasFightMingPaiRequest()) {
-        output.writeMessage(17, getFightMingPaiRequest());
+        output.writeMessage(15, getFightMingPaiRequest());
       }
       if (hasFightRecommandRequest()) {
-        output.writeMessage(18, getFightRecommandRequest());
+        output.writeMessage(16, getFightRecommandRequest());
       }
       if (hasFightGetlastRoundRequest()) {
-        output.writeMessage(19, getFightGetlastRoundRequest());
+        output.writeMessage(17, getFightGetlastRoundRequest());
+      }
+      if (hasFightRejoinRequest()) {
+        output.writeMessage(18, getFightRejoinRequest());
+      }
+      if (hasFightAutoRequest()) {
+        output.writeMessage(19, getFightAutoRequest());
+      }
+      if (hasFightApplyExitGameRequest()) {
+        output.writeMessage(20, getFightApplyExitGameRequest());
+      }
+      if (hasMoneyExchangeRequest()) {
+        output.writeMessage(21, getMoneyExchangeRequest());
+      }
+      if (hasSettingsRequest()) {
+        output.writeMessage(22, getSettingsRequest());
+      }
+      if (hasGetRoleDataRequest()) {
+        output.writeMessage(23, getGetRoleDataRequest());
+      }
+      if (hasGetSettingsRequest()) {
+        output.writeMessage(24, getGetSettingsRequest());
+      }
+      if (hasHeartbeatRequest()) {
+        output.writeMessage(25, getHeartbeatRequest());
+      }
+      if (hasVideoGetRequest()) {
+        output.writeMessage(26, getVideoGetRequest());
+      }
+      if (hasVideoGetByIdRequest()) {
+        output.writeMessage(27, getVideoGetByIdRequest());
+      }
+      if (hasVideoGetByRoundRequest()) {
+        output.writeMessage(28, getVideoGetByRoundRequest());
       }
       getUnknownFields().writeTo(output);
     }
@@ -286,57 +385,93 @@ public final class ClientMessage {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getMatchJoinGameRequest());
       }
+      if (hasMatchAIRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getMatchAIRequest());
+      }
+      if (hasMatchRoleRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getMatchRoleRequest());
+      }
+      if (hasMatchCancelRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getMatchCancelRequest());
+      }
       if (hasFightReadyRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, getFightReadyRequest());
+          .computeMessageSize(10, getFightReadyRequest());
       }
       if (hasFightExitGameRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, getFightExitGameRequest());
+          .computeMessageSize(11, getFightExitGameRequest());
       }
       if (hasFightAgreeExitGameRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, getFightAgreeExitGameRequest());
-      }
-      if (hasMoneyExchangeRequest()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, getMoneyExchangeRequest());
-      }
-      if (hasSettingsRequest()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, getSettingsRequest());
-      }
-      if (hasGetRoleDataRequest()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, getGetRoleDataRequest());
-      }
-      if (hasGetSettingsRequest()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(13, getGetSettingsRequest());
-      }
-      if (hasMatchAIRequest()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(14, getMatchAIRequest());
+          .computeMessageSize(12, getFightAgreeExitGameRequest());
       }
       if (hasFightCallLandLordRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(15, getFightCallLandLordRequest());
+          .computeMessageSize(13, getFightCallLandLordRequest());
       }
       if (hasFightSendCardRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(16, getFightSendCardRequest());
+          .computeMessageSize(14, getFightSendCardRequest());
       }
       if (hasFightMingPaiRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(17, getFightMingPaiRequest());
+          .computeMessageSize(15, getFightMingPaiRequest());
       }
       if (hasFightRecommandRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(18, getFightRecommandRequest());
+          .computeMessageSize(16, getFightRecommandRequest());
       }
       if (hasFightGetlastRoundRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(19, getFightGetlastRoundRequest());
+          .computeMessageSize(17, getFightGetlastRoundRequest());
+      }
+      if (hasFightRejoinRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getFightRejoinRequest());
+      }
+      if (hasFightAutoRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, getFightAutoRequest());
+      }
+      if (hasFightApplyExitGameRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, getFightApplyExitGameRequest());
+      }
+      if (hasMoneyExchangeRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, getMoneyExchangeRequest());
+      }
+      if (hasSettingsRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, getSettingsRequest());
+      }
+      if (hasGetRoleDataRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(23, getGetRoleDataRequest());
+      }
+      if (hasGetSettingsRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(24, getGetSettingsRequest());
+      }
+      if (hasHeartbeatRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(25, getHeartbeatRequest());
+      }
+      if (hasVideoGetRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(26, getVideoGetRequest());
+      }
+      if (hasVideoGetByIdRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(27, getVideoGetByIdRequest());
+      }
+      if (hasVideoGetByRoundRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(28, getVideoGetByRoundRequest());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -514,6 +649,15 @@ public final class ClientMessage {
         if (other.hasMatchJoinGameRequest()) {
           mergeMatchJoinGameRequest(other.getMatchJoinGameRequest());
         }
+        if (other.hasMatchAIRequest()) {
+          mergeMatchAIRequest(other.getMatchAIRequest());
+        }
+        if (other.hasMatchRoleRequest()) {
+          mergeMatchRoleRequest(other.getMatchRoleRequest());
+        }
+        if (other.hasMatchCancelRequest()) {
+          mergeMatchCancelRequest(other.getMatchCancelRequest());
+        }
         if (other.hasFightReadyRequest()) {
           mergeFightReadyRequest(other.getFightReadyRequest());
         }
@@ -522,21 +666,6 @@ public final class ClientMessage {
         }
         if (other.hasFightAgreeExitGameRequest()) {
           mergeFightAgreeExitGameRequest(other.getFightAgreeExitGameRequest());
-        }
-        if (other.hasMoneyExchangeRequest()) {
-          mergeMoneyExchangeRequest(other.getMoneyExchangeRequest());
-        }
-        if (other.hasSettingsRequest()) {
-          mergeSettingsRequest(other.getSettingsRequest());
-        }
-        if (other.hasGetRoleDataRequest()) {
-          mergeGetRoleDataRequest(other.getGetRoleDataRequest());
-        }
-        if (other.hasGetSettingsRequest()) {
-          mergeGetSettingsRequest(other.getGetSettingsRequest());
-        }
-        if (other.hasMatchAIRequest()) {
-          mergeMatchAIRequest(other.getMatchAIRequest());
         }
         if (other.hasFightCallLandLordRequest()) {
           mergeFightCallLandLordRequest(other.getFightCallLandLordRequest());
@@ -552,6 +681,39 @@ public final class ClientMessage {
         }
         if (other.hasFightGetlastRoundRequest()) {
           mergeFightGetlastRoundRequest(other.getFightGetlastRoundRequest());
+        }
+        if (other.hasFightRejoinRequest()) {
+          mergeFightRejoinRequest(other.getFightRejoinRequest());
+        }
+        if (other.hasFightAutoRequest()) {
+          mergeFightAutoRequest(other.getFightAutoRequest());
+        }
+        if (other.hasFightApplyExitGameRequest()) {
+          mergeFightApplyExitGameRequest(other.getFightApplyExitGameRequest());
+        }
+        if (other.hasMoneyExchangeRequest()) {
+          mergeMoneyExchangeRequest(other.getMoneyExchangeRequest());
+        }
+        if (other.hasSettingsRequest()) {
+          mergeSettingsRequest(other.getSettingsRequest());
+        }
+        if (other.hasGetRoleDataRequest()) {
+          mergeGetRoleDataRequest(other.getGetRoleDataRequest());
+        }
+        if (other.hasGetSettingsRequest()) {
+          mergeGetSettingsRequest(other.getGetSettingsRequest());
+        }
+        if (other.hasHeartbeatRequest()) {
+          mergeHeartbeatRequest(other.getHeartbeatRequest());
+        }
+        if (other.hasVideoGetRequest()) {
+          mergeVideoGetRequest(other.getVideoGetRequest());
+        }
+        if (other.hasVideoGetByIdRequest()) {
+          mergeVideoGetByIdRequest(other.getVideoGetByIdRequest());
+        }
+        if (other.hasVideoGetByRoundRequest()) {
+          mergeVideoGetByRoundRequest(other.getVideoGetByRoundRequest());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -633,69 +795,6 @@ public final class ClientMessage {
               break;
             }
             case 58: {
-              com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.newBuilder();
-              if (hasFightReadyRequest()) {
-                subBuilder.mergeFrom(getFightReadyRequest());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setFightReadyRequest(subBuilder.buildPartial());
-              break;
-            }
-            case 66: {
-              com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.newBuilder();
-              if (hasFightExitGameRequest()) {
-                subBuilder.mergeFrom(getFightExitGameRequest());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setFightExitGameRequest(subBuilder.buildPartial());
-              break;
-            }
-            case 74: {
-              com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.newBuilder();
-              if (hasFightAgreeExitGameRequest()) {
-                subBuilder.mergeFrom(getFightAgreeExitGameRequest());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setFightAgreeExitGameRequest(subBuilder.buildPartial());
-              break;
-            }
-            case 82: {
-              com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.newBuilder();
-              if (hasMoneyExchangeRequest()) {
-                subBuilder.mergeFrom(getMoneyExchangeRequest());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setMoneyExchangeRequest(subBuilder.buildPartial());
-              break;
-            }
-            case 90: {
-              com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.newBuilder();
-              if (hasSettingsRequest()) {
-                subBuilder.mergeFrom(getSettingsRequest());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setSettingsRequest(subBuilder.buildPartial());
-              break;
-            }
-            case 98: {
-              com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.newBuilder();
-              if (hasGetRoleDataRequest()) {
-                subBuilder.mergeFrom(getGetRoleDataRequest());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setGetRoleDataRequest(subBuilder.buildPartial());
-              break;
-            }
-            case 106: {
-              com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.newBuilder();
-              if (hasGetSettingsRequest()) {
-                subBuilder.mergeFrom(getGetSettingsRequest());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setGetSettingsRequest(subBuilder.buildPartial());
-              break;
-            }
-            case 114: {
               com.randioo.doudizhu_server.protocol.Match.MatchAIRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Match.MatchAIRequest.newBuilder();
               if (hasMatchAIRequest()) {
                 subBuilder.mergeFrom(getMatchAIRequest());
@@ -704,7 +803,52 @@ public final class ClientMessage {
               setMatchAIRequest(subBuilder.buildPartial());
               break;
             }
-            case 122: {
+            case 66: {
+              com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.newBuilder();
+              if (hasMatchRoleRequest()) {
+                subBuilder.mergeFrom(getMatchRoleRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setMatchRoleRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 74: {
+              com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.newBuilder();
+              if (hasMatchCancelRequest()) {
+                subBuilder.mergeFrom(getMatchCancelRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setMatchCancelRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 82: {
+              com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.newBuilder();
+              if (hasFightReadyRequest()) {
+                subBuilder.mergeFrom(getFightReadyRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightReadyRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 90: {
+              com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.newBuilder();
+              if (hasFightExitGameRequest()) {
+                subBuilder.mergeFrom(getFightExitGameRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightExitGameRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 98: {
+              com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.newBuilder();
+              if (hasFightAgreeExitGameRequest()) {
+                subBuilder.mergeFrom(getFightAgreeExitGameRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightAgreeExitGameRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 106: {
               com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightCallLandLordRequest.newBuilder();
               if (hasFightCallLandLordRequest()) {
                 subBuilder.mergeFrom(getFightCallLandLordRequest());
@@ -713,7 +857,7 @@ public final class ClientMessage {
               setFightCallLandLordRequest(subBuilder.buildPartial());
               break;
             }
-            case 130: {
+            case 114: {
               com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightSendCardRequest.newBuilder();
               if (hasFightSendCardRequest()) {
                 subBuilder.mergeFrom(getFightSendCardRequest());
@@ -722,7 +866,7 @@ public final class ClientMessage {
               setFightSendCardRequest(subBuilder.buildPartial());
               break;
             }
-            case 138: {
+            case 122: {
               com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightMingPaiRequest.newBuilder();
               if (hasFightMingPaiRequest()) {
                 subBuilder.mergeFrom(getFightMingPaiRequest());
@@ -731,7 +875,7 @@ public final class ClientMessage {
               setFightMingPaiRequest(subBuilder.buildPartial());
               break;
             }
-            case 146: {
+            case 130: {
               com.randioo.doudizhu_server.protocol.Fight.FightRecommandRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightRecommandRequest.newBuilder();
               if (hasFightRecommandRequest()) {
                 subBuilder.mergeFrom(getFightRecommandRequest());
@@ -740,13 +884,112 @@ public final class ClientMessage {
               setFightRecommandRequest(subBuilder.buildPartial());
               break;
             }
-            case 154: {
+            case 138: {
               com.randioo.doudizhu_server.protocol.Fight.FightGetlastRoundRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightGetlastRoundRequest.newBuilder();
               if (hasFightGetlastRoundRequest()) {
                 subBuilder.mergeFrom(getFightGetlastRoundRequest());
               }
               input.readMessage(subBuilder, extensionRegistry);
               setFightGetlastRoundRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 146: {
+              com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest.newBuilder();
+              if (hasFightRejoinRequest()) {
+                subBuilder.mergeFrom(getFightRejoinRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightRejoinRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 154: {
+              com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest.newBuilder();
+              if (hasFightAutoRequest()) {
+                subBuilder.mergeFrom(getFightAutoRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightAutoRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 162: {
+              com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest.newBuilder();
+              if (hasFightApplyExitGameRequest()) {
+                subBuilder.mergeFrom(getFightApplyExitGameRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightApplyExitGameRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 170: {
+              com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.newBuilder();
+              if (hasMoneyExchangeRequest()) {
+                subBuilder.mergeFrom(getMoneyExchangeRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setMoneyExchangeRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 178: {
+              com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.newBuilder();
+              if (hasSettingsRequest()) {
+                subBuilder.mergeFrom(getSettingsRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setSettingsRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 186: {
+              com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.newBuilder();
+              if (hasGetRoleDataRequest()) {
+                subBuilder.mergeFrom(getGetRoleDataRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setGetRoleDataRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 194: {
+              com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.newBuilder();
+              if (hasGetSettingsRequest()) {
+                subBuilder.mergeFrom(getGetSettingsRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setGetSettingsRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 202: {
+              com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest.newBuilder();
+              if (hasHeartbeatRequest()) {
+                subBuilder.mergeFrom(getHeartbeatRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setHeartbeatRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 210: {
+              com.randioo.doudizhu_server.protocol.Video.VideoGetRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Video.VideoGetRequest.newBuilder();
+              if (hasVideoGetRequest()) {
+                subBuilder.mergeFrom(getVideoGetRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setVideoGetRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 218: {
+              com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest.newBuilder();
+              if (hasVideoGetByIdRequest()) {
+                subBuilder.mergeFrom(getVideoGetByIdRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setVideoGetByIdRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 226: {
+              com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest.Builder subBuilder = com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest.newBuilder();
+              if (hasVideoGetByRoundRequest()) {
+                subBuilder.mergeFrom(getVideoGetByRoundRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setVideoGetByRoundRequest(subBuilder.buildPartial());
               break;
             }
           }
@@ -976,266 +1219,7 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.doudizhu_server.protocol.FightReadyRequest FightReadyRequest = 7;
-      public boolean hasFightReadyRequest() {
-        return result.hasFightReadyRequest();
-      }
-      public com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest getFightReadyRequest() {
-        return result.getFightReadyRequest();
-      }
-      public Builder setFightReadyRequest(com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasFightReadyRequest = true;
-        result.fightReadyRequest_ = value;
-        return this;
-      }
-      public Builder setFightReadyRequest(com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.Builder builderForValue) {
-        result.hasFightReadyRequest = true;
-        result.fightReadyRequest_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeFightReadyRequest(com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest value) {
-        if (result.hasFightReadyRequest() &&
-            result.fightReadyRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.getDefaultInstance()) {
-          result.fightReadyRequest_ =
-            com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.newBuilder(result.fightReadyRequest_).mergeFrom(value).buildPartial();
-        } else {
-          result.fightReadyRequest_ = value;
-        }
-        result.hasFightReadyRequest = true;
-        return this;
-      }
-      public Builder clearFightReadyRequest() {
-        result.hasFightReadyRequest = false;
-        result.fightReadyRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.getDefaultInstance();
-        return this;
-      }
-      
-      // optional .com.randioo.doudizhu_server.protocol.FightExitGameRequest FightExitGameRequest = 8;
-      public boolean hasFightExitGameRequest() {
-        return result.hasFightExitGameRequest();
-      }
-      public com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest getFightExitGameRequest() {
-        return result.getFightExitGameRequest();
-      }
-      public Builder setFightExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasFightExitGameRequest = true;
-        result.fightExitGameRequest_ = value;
-        return this;
-      }
-      public Builder setFightExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.Builder builderForValue) {
-        result.hasFightExitGameRequest = true;
-        result.fightExitGameRequest_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeFightExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest value) {
-        if (result.hasFightExitGameRequest() &&
-            result.fightExitGameRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.getDefaultInstance()) {
-          result.fightExitGameRequest_ =
-            com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.newBuilder(result.fightExitGameRequest_).mergeFrom(value).buildPartial();
-        } else {
-          result.fightExitGameRequest_ = value;
-        }
-        result.hasFightExitGameRequest = true;
-        return this;
-      }
-      public Builder clearFightExitGameRequest() {
-        result.hasFightExitGameRequest = false;
-        result.fightExitGameRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.getDefaultInstance();
-        return this;
-      }
-      
-      // optional .com.randioo.doudizhu_server.protocol.FightAgreeExitGameRequest FightAgreeExitGameRequest = 9;
-      public boolean hasFightAgreeExitGameRequest() {
-        return result.hasFightAgreeExitGameRequest();
-      }
-      public com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest getFightAgreeExitGameRequest() {
-        return result.getFightAgreeExitGameRequest();
-      }
-      public Builder setFightAgreeExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasFightAgreeExitGameRequest = true;
-        result.fightAgreeExitGameRequest_ = value;
-        return this;
-      }
-      public Builder setFightAgreeExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.Builder builderForValue) {
-        result.hasFightAgreeExitGameRequest = true;
-        result.fightAgreeExitGameRequest_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeFightAgreeExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest value) {
-        if (result.hasFightAgreeExitGameRequest() &&
-            result.fightAgreeExitGameRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.getDefaultInstance()) {
-          result.fightAgreeExitGameRequest_ =
-            com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.newBuilder(result.fightAgreeExitGameRequest_).mergeFrom(value).buildPartial();
-        } else {
-          result.fightAgreeExitGameRequest_ = value;
-        }
-        result.hasFightAgreeExitGameRequest = true;
-        return this;
-      }
-      public Builder clearFightAgreeExitGameRequest() {
-        result.hasFightAgreeExitGameRequest = false;
-        result.fightAgreeExitGameRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.getDefaultInstance();
-        return this;
-      }
-      
-      // optional .com.randioo.doudizhu_server.protocol.MoneyExchangeRequest MoneyExchangeRequest = 10;
-      public boolean hasMoneyExchangeRequest() {
-        return result.hasMoneyExchangeRequest();
-      }
-      public com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest getMoneyExchangeRequest() {
-        return result.getMoneyExchangeRequest();
-      }
-      public Builder setMoneyExchangeRequest(com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasMoneyExchangeRequest = true;
-        result.moneyExchangeRequest_ = value;
-        return this;
-      }
-      public Builder setMoneyExchangeRequest(com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.Builder builderForValue) {
-        result.hasMoneyExchangeRequest = true;
-        result.moneyExchangeRequest_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeMoneyExchangeRequest(com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest value) {
-        if (result.hasMoneyExchangeRequest() &&
-            result.moneyExchangeRequest_ != com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.getDefaultInstance()) {
-          result.moneyExchangeRequest_ =
-            com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.newBuilder(result.moneyExchangeRequest_).mergeFrom(value).buildPartial();
-        } else {
-          result.moneyExchangeRequest_ = value;
-        }
-        result.hasMoneyExchangeRequest = true;
-        return this;
-      }
-      public Builder clearMoneyExchangeRequest() {
-        result.hasMoneyExchangeRequest = false;
-        result.moneyExchangeRequest_ = com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.getDefaultInstance();
-        return this;
-      }
-      
-      // optional .com.randioo.doudizhu_server.protocol.SettingsRequest SettingsRequest = 11;
-      public boolean hasSettingsRequest() {
-        return result.hasSettingsRequest();
-      }
-      public com.randioo.doudizhu_server.protocol.Settings.SettingsRequest getSettingsRequest() {
-        return result.getSettingsRequest();
-      }
-      public Builder setSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.SettingsRequest value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasSettingsRequest = true;
-        result.settingsRequest_ = value;
-        return this;
-      }
-      public Builder setSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.Builder builderForValue) {
-        result.hasSettingsRequest = true;
-        result.settingsRequest_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.SettingsRequest value) {
-        if (result.hasSettingsRequest() &&
-            result.settingsRequest_ != com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.getDefaultInstance()) {
-          result.settingsRequest_ =
-            com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.newBuilder(result.settingsRequest_).mergeFrom(value).buildPartial();
-        } else {
-          result.settingsRequest_ = value;
-        }
-        result.hasSettingsRequest = true;
-        return this;
-      }
-      public Builder clearSettingsRequest() {
-        result.hasSettingsRequest = false;
-        result.settingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.getDefaultInstance();
-        return this;
-      }
-      
-      // optional .com.randioo.doudizhu_server.protocol.GetRoleDataRequest GetRoleDataRequest = 12;
-      public boolean hasGetRoleDataRequest() {
-        return result.hasGetRoleDataRequest();
-      }
-      public com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest getGetRoleDataRequest() {
-        return result.getGetRoleDataRequest();
-      }
-      public Builder setGetRoleDataRequest(com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasGetRoleDataRequest = true;
-        result.getRoleDataRequest_ = value;
-        return this;
-      }
-      public Builder setGetRoleDataRequest(com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.Builder builderForValue) {
-        result.hasGetRoleDataRequest = true;
-        result.getRoleDataRequest_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeGetRoleDataRequest(com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest value) {
-        if (result.hasGetRoleDataRequest() &&
-            result.getRoleDataRequest_ != com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.getDefaultInstance()) {
-          result.getRoleDataRequest_ =
-            com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.newBuilder(result.getRoleDataRequest_).mergeFrom(value).buildPartial();
-        } else {
-          result.getRoleDataRequest_ = value;
-        }
-        result.hasGetRoleDataRequest = true;
-        return this;
-      }
-      public Builder clearGetRoleDataRequest() {
-        result.hasGetRoleDataRequest = false;
-        result.getRoleDataRequest_ = com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.getDefaultInstance();
-        return this;
-      }
-      
-      // optional .com.randioo.doudizhu_server.protocol.GetSettingsRequest GetSettingsRequest = 13;
-      public boolean hasGetSettingsRequest() {
-        return result.hasGetSettingsRequest();
-      }
-      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest getGetSettingsRequest() {
-        return result.getGetSettingsRequest();
-      }
-      public Builder setGetSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasGetSettingsRequest = true;
-        result.getSettingsRequest_ = value;
-        return this;
-      }
-      public Builder setGetSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.Builder builderForValue) {
-        result.hasGetSettingsRequest = true;
-        result.getSettingsRequest_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeGetSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest value) {
-        if (result.hasGetSettingsRequest() &&
-            result.getSettingsRequest_ != com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance()) {
-          result.getSettingsRequest_ =
-            com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.newBuilder(result.getSettingsRequest_).mergeFrom(value).buildPartial();
-        } else {
-          result.getSettingsRequest_ = value;
-        }
-        result.hasGetSettingsRequest = true;
-        return this;
-      }
-      public Builder clearGetSettingsRequest() {
-        result.hasGetSettingsRequest = false;
-        result.getSettingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance();
-        return this;
-      }
-      
-      // optional .com.randioo.doudizhu_server.protocol.MatchAIRequest MatchAIRequest = 14;
+      // optional .com.randioo.doudizhu_server.protocol.MatchAIRequest MatchAIRequest = 7;
       public boolean hasMatchAIRequest() {
         return result.hasMatchAIRequest();
       }
@@ -1272,7 +1256,192 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.doudizhu_server.protocol.FightCallLandLordRequest FightCallLandLordRequest = 15;
+      // optional .com.randioo.doudizhu_server.protocol.MatchRoleRequest MatchRoleRequest = 8;
+      public boolean hasMatchRoleRequest() {
+        return result.hasMatchRoleRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest getMatchRoleRequest() {
+        return result.getMatchRoleRequest();
+      }
+      public Builder setMatchRoleRequest(com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasMatchRoleRequest = true;
+        result.matchRoleRequest_ = value;
+        return this;
+      }
+      public Builder setMatchRoleRequest(com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.Builder builderForValue) {
+        result.hasMatchRoleRequest = true;
+        result.matchRoleRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeMatchRoleRequest(com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest value) {
+        if (result.hasMatchRoleRequest() &&
+            result.matchRoleRequest_ != com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.getDefaultInstance()) {
+          result.matchRoleRequest_ =
+            com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.newBuilder(result.matchRoleRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.matchRoleRequest_ = value;
+        }
+        result.hasMatchRoleRequest = true;
+        return this;
+      }
+      public Builder clearMatchRoleRequest() {
+        result.hasMatchRoleRequest = false;
+        result.matchRoleRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.MatchCancelRequest MatchCancelRequest = 9;
+      public boolean hasMatchCancelRequest() {
+        return result.hasMatchCancelRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest getMatchCancelRequest() {
+        return result.getMatchCancelRequest();
+      }
+      public Builder setMatchCancelRequest(com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasMatchCancelRequest = true;
+        result.matchCancelRequest_ = value;
+        return this;
+      }
+      public Builder setMatchCancelRequest(com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.Builder builderForValue) {
+        result.hasMatchCancelRequest = true;
+        result.matchCancelRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeMatchCancelRequest(com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest value) {
+        if (result.hasMatchCancelRequest() &&
+            result.matchCancelRequest_ != com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.getDefaultInstance()) {
+          result.matchCancelRequest_ =
+            com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.newBuilder(result.matchCancelRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.matchCancelRequest_ = value;
+        }
+        result.hasMatchCancelRequest = true;
+        return this;
+      }
+      public Builder clearMatchCancelRequest() {
+        result.hasMatchCancelRequest = false;
+        result.matchCancelRequest_ = com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.FightReadyRequest FightReadyRequest = 10;
+      public boolean hasFightReadyRequest() {
+        return result.hasFightReadyRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest getFightReadyRequest() {
+        return result.getFightReadyRequest();
+      }
+      public Builder setFightReadyRequest(com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightReadyRequest = true;
+        result.fightReadyRequest_ = value;
+        return this;
+      }
+      public Builder setFightReadyRequest(com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.Builder builderForValue) {
+        result.hasFightReadyRequest = true;
+        result.fightReadyRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightReadyRequest(com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest value) {
+        if (result.hasFightReadyRequest() &&
+            result.fightReadyRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.getDefaultInstance()) {
+          result.fightReadyRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.newBuilder(result.fightReadyRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightReadyRequest_ = value;
+        }
+        result.hasFightReadyRequest = true;
+        return this;
+      }
+      public Builder clearFightReadyRequest() {
+        result.hasFightReadyRequest = false;
+        result.fightReadyRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightReadyRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.FightExitGameRequest FightExitGameRequest = 11;
+      public boolean hasFightExitGameRequest() {
+        return result.hasFightExitGameRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest getFightExitGameRequest() {
+        return result.getFightExitGameRequest();
+      }
+      public Builder setFightExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightExitGameRequest = true;
+        result.fightExitGameRequest_ = value;
+        return this;
+      }
+      public Builder setFightExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.Builder builderForValue) {
+        result.hasFightExitGameRequest = true;
+        result.fightExitGameRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest value) {
+        if (result.hasFightExitGameRequest() &&
+            result.fightExitGameRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.getDefaultInstance()) {
+          result.fightExitGameRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.newBuilder(result.fightExitGameRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightExitGameRequest_ = value;
+        }
+        result.hasFightExitGameRequest = true;
+        return this;
+      }
+      public Builder clearFightExitGameRequest() {
+        result.hasFightExitGameRequest = false;
+        result.fightExitGameRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightExitGameRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.FightAgreeExitGameRequest FightAgreeExitGameRequest = 12;
+      public boolean hasFightAgreeExitGameRequest() {
+        return result.hasFightAgreeExitGameRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest getFightAgreeExitGameRequest() {
+        return result.getFightAgreeExitGameRequest();
+      }
+      public Builder setFightAgreeExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightAgreeExitGameRequest = true;
+        result.fightAgreeExitGameRequest_ = value;
+        return this;
+      }
+      public Builder setFightAgreeExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.Builder builderForValue) {
+        result.hasFightAgreeExitGameRequest = true;
+        result.fightAgreeExitGameRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightAgreeExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest value) {
+        if (result.hasFightAgreeExitGameRequest() &&
+            result.fightAgreeExitGameRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.getDefaultInstance()) {
+          result.fightAgreeExitGameRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.newBuilder(result.fightAgreeExitGameRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightAgreeExitGameRequest_ = value;
+        }
+        result.hasFightAgreeExitGameRequest = true;
+        return this;
+      }
+      public Builder clearFightAgreeExitGameRequest() {
+        result.hasFightAgreeExitGameRequest = false;
+        result.fightAgreeExitGameRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightAgreeExitGameRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.FightCallLandLordRequest FightCallLandLordRequest = 13;
       public boolean hasFightCallLandLordRequest() {
         return result.hasFightCallLandLordRequest();
       }
@@ -1309,7 +1478,7 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.doudizhu_server.protocol.FightSendCardRequest FightSendCardRequest = 16;
+      // optional .com.randioo.doudizhu_server.protocol.FightSendCardRequest FightSendCardRequest = 14;
       public boolean hasFightSendCardRequest() {
         return result.hasFightSendCardRequest();
       }
@@ -1346,7 +1515,7 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.doudizhu_server.protocol.FightMingPaiRequest FightMingPaiRequest = 17;
+      // optional .com.randioo.doudizhu_server.protocol.FightMingPaiRequest FightMingPaiRequest = 15;
       public boolean hasFightMingPaiRequest() {
         return result.hasFightMingPaiRequest();
       }
@@ -1383,7 +1552,7 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.doudizhu_server.protocol.FightRecommandRequest FightRecommandRequest = 18;
+      // optional .com.randioo.doudizhu_server.protocol.FightRecommandRequest FightRecommandRequest = 16;
       public boolean hasFightRecommandRequest() {
         return result.hasFightRecommandRequest();
       }
@@ -1420,7 +1589,7 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.doudizhu_server.protocol.FightGetlastRoundRequest FightGetlastRoundRequest = 19;
+      // optional .com.randioo.doudizhu_server.protocol.FightGetlastRoundRequest FightGetlastRoundRequest = 17;
       public boolean hasFightGetlastRoundRequest() {
         return result.hasFightGetlastRoundRequest();
       }
@@ -1457,6 +1626,413 @@ public final class ClientMessage {
         return this;
       }
       
+      // optional .com.randioo.doudizhu_server.protocol.FightRejoinRequest FightRejoinRequest = 18;
+      public boolean hasFightRejoinRequest() {
+        return result.hasFightRejoinRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest getFightRejoinRequest() {
+        return result.getFightRejoinRequest();
+      }
+      public Builder setFightRejoinRequest(com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightRejoinRequest = true;
+        result.fightRejoinRequest_ = value;
+        return this;
+      }
+      public Builder setFightRejoinRequest(com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest.Builder builderForValue) {
+        result.hasFightRejoinRequest = true;
+        result.fightRejoinRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightRejoinRequest(com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest value) {
+        if (result.hasFightRejoinRequest() &&
+            result.fightRejoinRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest.getDefaultInstance()) {
+          result.fightRejoinRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest.newBuilder(result.fightRejoinRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightRejoinRequest_ = value;
+        }
+        result.hasFightRejoinRequest = true;
+        return this;
+      }
+      public Builder clearFightRejoinRequest() {
+        result.hasFightRejoinRequest = false;
+        result.fightRejoinRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightRejoinRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.FightAutoRequest FightAutoRequest = 19;
+      public boolean hasFightAutoRequest() {
+        return result.hasFightAutoRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest getFightAutoRequest() {
+        return result.getFightAutoRequest();
+      }
+      public Builder setFightAutoRequest(com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightAutoRequest = true;
+        result.fightAutoRequest_ = value;
+        return this;
+      }
+      public Builder setFightAutoRequest(com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest.Builder builderForValue) {
+        result.hasFightAutoRequest = true;
+        result.fightAutoRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightAutoRequest(com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest value) {
+        if (result.hasFightAutoRequest() &&
+            result.fightAutoRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest.getDefaultInstance()) {
+          result.fightAutoRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest.newBuilder(result.fightAutoRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightAutoRequest_ = value;
+        }
+        result.hasFightAutoRequest = true;
+        return this;
+      }
+      public Builder clearFightAutoRequest() {
+        result.hasFightAutoRequest = false;
+        result.fightAutoRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightAutoRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.FightApplyExitGameRequest FightApplyExitGameRequest = 20;
+      public boolean hasFightApplyExitGameRequest() {
+        return result.hasFightApplyExitGameRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest getFightApplyExitGameRequest() {
+        return result.getFightApplyExitGameRequest();
+      }
+      public Builder setFightApplyExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightApplyExitGameRequest = true;
+        result.fightApplyExitGameRequest_ = value;
+        return this;
+      }
+      public Builder setFightApplyExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest.Builder builderForValue) {
+        result.hasFightApplyExitGameRequest = true;
+        result.fightApplyExitGameRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightApplyExitGameRequest(com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest value) {
+        if (result.hasFightApplyExitGameRequest() &&
+            result.fightApplyExitGameRequest_ != com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest.getDefaultInstance()) {
+          result.fightApplyExitGameRequest_ =
+            com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest.newBuilder(result.fightApplyExitGameRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightApplyExitGameRequest_ = value;
+        }
+        result.hasFightApplyExitGameRequest = true;
+        return this;
+      }
+      public Builder clearFightApplyExitGameRequest() {
+        result.hasFightApplyExitGameRequest = false;
+        result.fightApplyExitGameRequest_ = com.randioo.doudizhu_server.protocol.Fight.FightApplyExitGameRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.MoneyExchangeRequest MoneyExchangeRequest = 21;
+      public boolean hasMoneyExchangeRequest() {
+        return result.hasMoneyExchangeRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest getMoneyExchangeRequest() {
+        return result.getMoneyExchangeRequest();
+      }
+      public Builder setMoneyExchangeRequest(com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasMoneyExchangeRequest = true;
+        result.moneyExchangeRequest_ = value;
+        return this;
+      }
+      public Builder setMoneyExchangeRequest(com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.Builder builderForValue) {
+        result.hasMoneyExchangeRequest = true;
+        result.moneyExchangeRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeMoneyExchangeRequest(com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest value) {
+        if (result.hasMoneyExchangeRequest() &&
+            result.moneyExchangeRequest_ != com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.getDefaultInstance()) {
+          result.moneyExchangeRequest_ =
+            com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.newBuilder(result.moneyExchangeRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.moneyExchangeRequest_ = value;
+        }
+        result.hasMoneyExchangeRequest = true;
+        return this;
+      }
+      public Builder clearMoneyExchangeRequest() {
+        result.hasMoneyExchangeRequest = false;
+        result.moneyExchangeRequest_ = com.randioo.doudizhu_server.protocol.MoneyExchange.MoneyExchangeRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.SettingsRequest SettingsRequest = 22;
+      public boolean hasSettingsRequest() {
+        return result.hasSettingsRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Settings.SettingsRequest getSettingsRequest() {
+        return result.getSettingsRequest();
+      }
+      public Builder setSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.SettingsRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasSettingsRequest = true;
+        result.settingsRequest_ = value;
+        return this;
+      }
+      public Builder setSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.Builder builderForValue) {
+        result.hasSettingsRequest = true;
+        result.settingsRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.SettingsRequest value) {
+        if (result.hasSettingsRequest() &&
+            result.settingsRequest_ != com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.getDefaultInstance()) {
+          result.settingsRequest_ =
+            com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.newBuilder(result.settingsRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.settingsRequest_ = value;
+        }
+        result.hasSettingsRequest = true;
+        return this;
+      }
+      public Builder clearSettingsRequest() {
+        result.hasSettingsRequest = false;
+        result.settingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.SettingsRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.GetRoleDataRequest GetRoleDataRequest = 23;
+      public boolean hasGetRoleDataRequest() {
+        return result.hasGetRoleDataRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest getGetRoleDataRequest() {
+        return result.getGetRoleDataRequest();
+      }
+      public Builder setGetRoleDataRequest(com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasGetRoleDataRequest = true;
+        result.getRoleDataRequest_ = value;
+        return this;
+      }
+      public Builder setGetRoleDataRequest(com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.Builder builderForValue) {
+        result.hasGetRoleDataRequest = true;
+        result.getRoleDataRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeGetRoleDataRequest(com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest value) {
+        if (result.hasGetRoleDataRequest() &&
+            result.getRoleDataRequest_ != com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.getDefaultInstance()) {
+          result.getRoleDataRequest_ =
+            com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.newBuilder(result.getRoleDataRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.getRoleDataRequest_ = value;
+        }
+        result.hasGetRoleDataRequest = true;
+        return this;
+      }
+      public Builder clearGetRoleDataRequest() {
+        result.hasGetRoleDataRequest = false;
+        result.getRoleDataRequest_ = com.randioo.doudizhu_server.protocol.Role.GetRoleDataRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.GetSettingsRequest GetSettingsRequest = 24;
+      public boolean hasGetSettingsRequest() {
+        return result.hasGetSettingsRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest getGetSettingsRequest() {
+        return result.getGetSettingsRequest();
+      }
+      public Builder setGetSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasGetSettingsRequest = true;
+        result.getSettingsRequest_ = value;
+        return this;
+      }
+      public Builder setGetSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.Builder builderForValue) {
+        result.hasGetSettingsRequest = true;
+        result.getSettingsRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeGetSettingsRequest(com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest value) {
+        if (result.hasGetSettingsRequest() &&
+            result.getSettingsRequest_ != com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance()) {
+          result.getSettingsRequest_ =
+            com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.newBuilder(result.getSettingsRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.getSettingsRequest_ = value;
+        }
+        result.hasGetSettingsRequest = true;
+        return this;
+      }
+      public Builder clearGetSettingsRequest() {
+        result.hasGetSettingsRequest = false;
+        result.getSettingsRequest_ = com.randioo.doudizhu_server.protocol.Settings.GetSettingsRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.HeartbeatRequest HeartbeatRequest = 25;
+      public boolean hasHeartbeatRequest() {
+        return result.hasHeartbeatRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest getHeartbeatRequest() {
+        return result.getHeartbeatRequest();
+      }
+      public Builder setHeartbeatRequest(com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasHeartbeatRequest = true;
+        result.heartbeatRequest_ = value;
+        return this;
+      }
+      public Builder setHeartbeatRequest(com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest.Builder builderForValue) {
+        result.hasHeartbeatRequest = true;
+        result.heartbeatRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeHeartbeatRequest(com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest value) {
+        if (result.hasHeartbeatRequest() &&
+            result.heartbeatRequest_ != com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest.getDefaultInstance()) {
+          result.heartbeatRequest_ =
+            com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest.newBuilder(result.heartbeatRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.heartbeatRequest_ = value;
+        }
+        result.hasHeartbeatRequest = true;
+        return this;
+      }
+      public Builder clearHeartbeatRequest() {
+        result.hasHeartbeatRequest = false;
+        result.heartbeatRequest_ = com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.VideoGetRequest VideoGetRequest = 26;
+      public boolean hasVideoGetRequest() {
+        return result.hasVideoGetRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Video.VideoGetRequest getVideoGetRequest() {
+        return result.getVideoGetRequest();
+      }
+      public Builder setVideoGetRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasVideoGetRequest = true;
+        result.videoGetRequest_ = value;
+        return this;
+      }
+      public Builder setVideoGetRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetRequest.Builder builderForValue) {
+        result.hasVideoGetRequest = true;
+        result.videoGetRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeVideoGetRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetRequest value) {
+        if (result.hasVideoGetRequest() &&
+            result.videoGetRequest_ != com.randioo.doudizhu_server.protocol.Video.VideoGetRequest.getDefaultInstance()) {
+          result.videoGetRequest_ =
+            com.randioo.doudizhu_server.protocol.Video.VideoGetRequest.newBuilder(result.videoGetRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.videoGetRequest_ = value;
+        }
+        result.hasVideoGetRequest = true;
+        return this;
+      }
+      public Builder clearVideoGetRequest() {
+        result.hasVideoGetRequest = false;
+        result.videoGetRequest_ = com.randioo.doudizhu_server.protocol.Video.VideoGetRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.VideoGetByIdRequest VideoGetByIdRequest = 27;
+      public boolean hasVideoGetByIdRequest() {
+        return result.hasVideoGetByIdRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest getVideoGetByIdRequest() {
+        return result.getVideoGetByIdRequest();
+      }
+      public Builder setVideoGetByIdRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasVideoGetByIdRequest = true;
+        result.videoGetByIdRequest_ = value;
+        return this;
+      }
+      public Builder setVideoGetByIdRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest.Builder builderForValue) {
+        result.hasVideoGetByIdRequest = true;
+        result.videoGetByIdRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeVideoGetByIdRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest value) {
+        if (result.hasVideoGetByIdRequest() &&
+            result.videoGetByIdRequest_ != com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest.getDefaultInstance()) {
+          result.videoGetByIdRequest_ =
+            com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest.newBuilder(result.videoGetByIdRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.videoGetByIdRequest_ = value;
+        }
+        result.hasVideoGetByIdRequest = true;
+        return this;
+      }
+      public Builder clearVideoGetByIdRequest() {
+        result.hasVideoGetByIdRequest = false;
+        result.videoGetByIdRequest_ = com.randioo.doudizhu_server.protocol.Video.VideoGetByIdRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.VideoGetByRoundRequest VideoGetByRoundRequest = 28;
+      public boolean hasVideoGetByRoundRequest() {
+        return result.hasVideoGetByRoundRequest();
+      }
+      public com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest getVideoGetByRoundRequest() {
+        return result.getVideoGetByRoundRequest();
+      }
+      public Builder setVideoGetByRoundRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasVideoGetByRoundRequest = true;
+        result.videoGetByRoundRequest_ = value;
+        return this;
+      }
+      public Builder setVideoGetByRoundRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest.Builder builderForValue) {
+        result.hasVideoGetByRoundRequest = true;
+        result.videoGetByRoundRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeVideoGetByRoundRequest(com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest value) {
+        if (result.hasVideoGetByRoundRequest() &&
+            result.videoGetByRoundRequest_ != com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest.getDefaultInstance()) {
+          result.videoGetByRoundRequest_ =
+            com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest.newBuilder(result.videoGetByRoundRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.videoGetByRoundRequest_ = value;
+        }
+        result.hasVideoGetByRoundRequest = true;
+        return this;
+      }
+      public Builder clearVideoGetByRoundRequest() {
+        result.hasVideoGetByRoundRequest = false;
+        result.videoGetByRoundRequest_ = com.randioo.doudizhu_server.protocol.Video.VideoGetByRoundRequest.getDefaultInstance();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.CS)
     }
     
@@ -1486,50 +2062,70 @@ public final class ClientMessage {
       "\n\023ClientMessage.proto\022$com.randioo.doudi" +
       "zhu_server.protocol\032\013Login.proto\032\nRole.p" +
       "roto\032\013Match.proto\032\013Fight.proto\032\023MoneyExc" +
-      "hange.proto\032\016Settings.proto\"\270\r\n\002CS\022`\n\030Lo" +
-      "ginCheckAccountRequest\030\001 \001(\0132>.com.randi" +
-      "oo.doudizhu_server.protocol.LoginCheckAc" +
-      "countRequest\022\\\n\026LoginCreateRoleRequest\030\002" +
-      " \001(\0132<.com.randioo.doudizhu_server.proto" +
-      "col.LoginCreateRoleRequest\022^\n\027LoginGetRo" +
-      "leDataRequest\030\003 \001(\0132=.com.randioo.doudiz",
-      "hu_server.protocol.LoginGetRoleDataReque" +
-      "st\022R\n\021RoleRenameRequest\030\004 \001(\01327.com.rand" +
-      "ioo.doudizhu_server.protocol.RoleRenameR" +
-      "equest\022\\\n\026MatchCreateGameRequest\030\005 \001(\0132<" +
-      ".com.randioo.doudizhu_server.protocol.Ma" +
-      "tchCreateGameRequest\022X\n\024MatchJoinGameReq" +
-      "uest\030\006 \001(\0132:.com.randioo.doudizhu_server" +
-      ".protocol.MatchJoinGameRequest\022R\n\021FightR" +
-      "eadyRequest\030\007 \001(\01327.com.randioo.doudizhu" +
-      "_server.protocol.FightReadyRequest\022X\n\024Fi",
-      "ghtExitGameRequest\030\010 \001(\0132:.com.randioo.d" +
-      "oudizhu_server.protocol.FightExitGameReq" +
-      "uest\022b\n\031FightAgreeExitGameRequest\030\t \001(\0132" +
-      "?.com.randioo.doudizhu_server.protocol.F" +
-      "ightAgreeExitGameRequest\022X\n\024MoneyExchang" +
-      "eRequest\030\n \001(\0132:.com.randioo.doudizhu_se" +
-      "rver.protocol.MoneyExchangeRequest\022N\n\017Se" +
-      "ttingsRequest\030\013 \001(\01325.com.randioo.doudiz" +
-      "hu_server.protocol.SettingsRequest\022T\n\022Ge" +
-      "tRoleDataRequest\030\014 \001(\01328.com.randioo.dou",
-      "dizhu_server.protocol.GetRoleDataRequest" +
-      "\022T\n\022GetSettingsRequest\030\r \001(\01328.com.randi" +
-      "oo.doudizhu_server.protocol.GetSettingsR" +
-      "equest\022L\n\016MatchAIRequest\030\016 \001(\01324.com.ran" +
-      "dioo.doudizhu_server.protocol.MatchAIReq" +
-      "uest\022`\n\030FightCallLandLordRequest\030\017 \001(\0132>" +
+      "hange.proto\032\016Settings.proto\032\017Heartbeat.p" +
+      "roto\032\013Video.proto\"\304\023\n\002CS\022`\n\030LoginCheckAc" +
+      "countRequest\030\001 \001(\0132>.com.randioo.doudizh" +
+      "u_server.protocol.LoginCheckAccountReque" +
+      "st\022\\\n\026LoginCreateRoleRequest\030\002 \001(\0132<.com" +
+      ".randioo.doudizhu_server.protocol.LoginC" +
+      "reateRoleRequest\022^\n\027LoginGetRoleDataRequ",
+      "est\030\003 \001(\0132=.com.randioo.doudizhu_server." +
+      "protocol.LoginGetRoleDataRequest\022R\n\021Role" +
+      "RenameRequest\030\004 \001(\01327.com.randioo.doudiz" +
+      "hu_server.protocol.RoleRenameRequest\022\\\n\026" +
+      "MatchCreateGameRequest\030\005 \001(\0132<.com.randi" +
+      "oo.doudizhu_server.protocol.MatchCreateG" +
+      "ameRequest\022X\n\024MatchJoinGameRequest\030\006 \001(\013" +
+      "2:.com.randioo.doudizhu_server.protocol." +
+      "MatchJoinGameRequest\022L\n\016MatchAIRequest\030\007" +
+      " \001(\01324.com.randioo.doudizhu_server.proto",
+      "col.MatchAIRequest\022P\n\020MatchRoleRequest\030\010" +
+      " \001(\01326.com.randioo.doudizhu_server.proto" +
+      "col.MatchRoleRequest\022T\n\022MatchCancelReque" +
+      "st\030\t \001(\01328.com.randioo.doudizhu_server.p" +
+      "rotocol.MatchCancelRequest\022R\n\021FightReady" +
+      "Request\030\n \001(\01327.com.randioo.doudizhu_ser" +
+      "ver.protocol.FightReadyRequest\022X\n\024FightE" +
+      "xitGameRequest\030\013 \001(\0132:.com.randioo.doudi" +
+      "zhu_server.protocol.FightExitGameRequest" +
+      "\022b\n\031FightAgreeExitGameRequest\030\014 \001(\0132?.co",
+      "m.randioo.doudizhu_server.protocol.Fight" +
+      "AgreeExitGameRequest\022`\n\030FightCallLandLor" +
+      "dRequest\030\r \001(\0132>.com.randioo.doudizhu_se" +
+      "rver.protocol.FightCallLandLordRequest\022X" +
+      "\n\024FightSendCardRequest\030\016 \001(\0132:.com.randi" +
+      "oo.doudizhu_server.protocol.FightSendCar" +
+      "dRequest\022V\n\023FightMingPaiRequest\030\017 \001(\01329." +
+      "com.randioo.doudizhu_server.protocol.Fig" +
+      "htMingPaiRequest\022Z\n\025FightRecommandReques" +
+      "t\030\020 \001(\0132;.com.randioo.doudizhu_server.pr",
+      "otocol.FightRecommandRequest\022`\n\030FightGet" +
+      "lastRoundRequest\030\021 \001(\0132>.com.randioo.dou" +
+      "dizhu_server.protocol.FightGetlastRoundR" +
+      "equest\022T\n\022FightRejoinRequest\030\022 \001(\01328.com" +
+      ".randioo.doudizhu_server.protocol.FightR" +
+      "ejoinRequest\022P\n\020FightAutoRequest\030\023 \001(\01326" +
       ".com.randioo.doudizhu_server.protocol.Fi" +
-      "ghtCallLandLordRequest\022X\n\024FightSendCardR" +
-      "equest\030\020 \001(\0132:.com.randioo.doudizhu_serv" +
-      "er.protocol.FightSendCardRequest\022V\n\023Figh",
-      "tMingPaiRequest\030\021 \001(\01329.com.randioo.doud" +
-      "izhu_server.protocol.FightMingPaiRequest" +
-      "\022Z\n\025FightRecommandRequest\030\022 \001(\0132;.com.ra" +
-      "ndioo.doudizhu_server.protocol.FightReco" +
-      "mmandRequest\022`\n\030FightGetlastRoundRequest" +
-      "\030\023 \001(\0132>.com.randioo.doudizhu_server.pro" +
-      "tocol.FightGetlastRoundRequest"
+      "ghtAutoRequest\022b\n\031FightApplyExitGameRequ" +
+      "est\030\024 \001(\0132?.com.randioo.doudizhu_server." +
+      "protocol.FightApplyExitGameRequest\022X\n\024Mo",
+      "neyExchangeRequest\030\025 \001(\0132:.com.randioo.d" +
+      "oudizhu_server.protocol.MoneyExchangeReq" +
+      "uest\022N\n\017SettingsRequest\030\026 \001(\01325.com.rand" +
+      "ioo.doudizhu_server.protocol.SettingsReq" +
+      "uest\022T\n\022GetRoleDataRequest\030\027 \001(\01328.com.r" +
+      "andioo.doudizhu_server.protocol.GetRoleD" +
+      "ataRequest\022T\n\022GetSettingsRequest\030\030 \001(\01328" +
+      ".com.randioo.doudizhu_server.protocol.Ge" +
+      "tSettingsRequest\022P\n\020HeartbeatRequest\030\031 \001" +
+      "(\01326.com.randioo.doudizhu_server.protoco",
+      "l.HeartbeatRequest\022N\n\017VideoGetRequest\030\032 " +
+      "\001(\01325.com.randioo.doudizhu_server.protoc" +
+      "ol.VideoGetRequest\022V\n\023VideoGetByIdReques" +
+      "t\030\033 \001(\01329.com.randioo.doudizhu_server.pr" +
+      "otocol.VideoGetByIdRequest\022\\\n\026VideoGetBy" +
+      "RoundRequest\030\034 \001(\0132<.com.randioo.doudizh" +
+      "u_server.protocol.VideoGetByRoundRequest"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1541,7 +2137,7 @@ public final class ClientMessage {
           internal_static_com_randioo_doudizhu_server_protocol_CS_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_CS_descriptor,
-              new java.lang.String[] { "LoginCheckAccountRequest", "LoginCreateRoleRequest", "LoginGetRoleDataRequest", "RoleRenameRequest", "MatchCreateGameRequest", "MatchJoinGameRequest", "FightReadyRequest", "FightExitGameRequest", "FightAgreeExitGameRequest", "MoneyExchangeRequest", "SettingsRequest", "GetRoleDataRequest", "GetSettingsRequest", "MatchAIRequest", "FightCallLandLordRequest", "FightSendCardRequest", "FightMingPaiRequest", "FightRecommandRequest", "FightGetlastRoundRequest", },
+              new java.lang.String[] { "LoginCheckAccountRequest", "LoginCreateRoleRequest", "LoginGetRoleDataRequest", "RoleRenameRequest", "MatchCreateGameRequest", "MatchJoinGameRequest", "MatchAIRequest", "MatchRoleRequest", "MatchCancelRequest", "FightReadyRequest", "FightExitGameRequest", "FightAgreeExitGameRequest", "FightCallLandLordRequest", "FightSendCardRequest", "FightMingPaiRequest", "FightRecommandRequest", "FightGetlastRoundRequest", "FightRejoinRequest", "FightAutoRequest", "FightApplyExitGameRequest", "MoneyExchangeRequest", "SettingsRequest", "GetRoleDataRequest", "GetSettingsRequest", "HeartbeatRequest", "VideoGetRequest", "VideoGetByIdRequest", "VideoGetByRoundRequest", },
               com.randioo.doudizhu_server.protocol.ClientMessage.CS.class,
               com.randioo.doudizhu_server.protocol.ClientMessage.CS.Builder.class);
           return null;
@@ -1556,6 +2152,8 @@ public final class ClientMessage {
           com.randioo.doudizhu_server.protocol.Fight.getDescriptor(),
           com.randioo.doudizhu_server.protocol.MoneyExchange.getDescriptor(),
           com.randioo.doudizhu_server.protocol.Settings.getDescriptor(),
+          com.randioo.doudizhu_server.protocol.Heartbeat.getDescriptor(),
+          com.randioo.doudizhu_server.protocol.Video.getDescriptor(),
         }, assigner);
   }
   

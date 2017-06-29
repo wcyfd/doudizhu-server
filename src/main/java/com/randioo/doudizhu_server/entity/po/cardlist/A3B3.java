@@ -32,8 +32,9 @@ public class A3B3 extends ABCDE {
 		Set<Integer> set0 = cardSort.getCardSort().get(0);
 		Set<Integer> set1 = cardSort.getCardSort().get(1);
 		Set<Integer> set2 = cardSort.getCardSort().get(2);
+		Set<Integer> set3 = cardSort.getCardSort().get(3);
 		if (set0.size() != set1.size() || set0.size() != set2.size() || set0.contains(13) || set0.contains(14)
-				|| set0.contains(15))
+				|| set0.contains(15) || set3.size() != 0)
 			throw new CardListPatternException();
 
 		int tmp = 0;

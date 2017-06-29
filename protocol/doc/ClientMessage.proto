@@ -5,6 +5,8 @@ import "Match.proto";
 import "Fight.proto";
 import "MoneyExchange.proto";
 import "Settings.proto";
+import "Heartbeat.proto";
+import "Video.proto";
 
 
 message CS{
@@ -16,18 +18,33 @@ message CS{
 
 	optional MatchCreateGameRequest MatchCreateGameRequest = 5;
 	optional MatchJoinGameRequest MatchJoinGameRequest = 6;
+	optional MatchAIRequest MatchAIRequest = 7;
+	optional MatchRoleRequest MatchRoleRequest = 8;
+	optional MatchCancelRequest MatchCancelRequest = 9;
 
-	optional FightReadyRequest FightReadyRequest = 7;
-	optional FightExitGameRequest FightExitGameRequest = 8;
-	optional FightAgreeExitGameRequest FightAgreeExitGameRequest = 9;
-	optional MoneyExchangeRequest MoneyExchangeRequest = 10;
-	optional SettingsRequest SettingsRequest = 11;
-	optional GetRoleDataRequest GetRoleDataRequest = 12;
-	optional GetSettingsRequest GetSettingsRequest = 13;
-	optional MatchAIRequest MatchAIRequest = 14;
-	optional FightCallLandLordRequest FightCallLandLordRequest = 15;
-	optional FightSendCardRequest FightSendCardRequest = 16;
-	optional FightMingPaiRequest FightMingPaiRequest = 17;
-	optional FightRecommandRequest FightRecommandRequest = 18;
-	optional FightGetlastRoundRequest FightGetlastRoundRequest = 19;
-} // 19
+	optional FightReadyRequest FightReadyRequest = 10;
+	optional FightExitGameRequest FightExitGameRequest = 11;
+	optional FightAgreeExitGameRequest FightAgreeExitGameRequest = 12;
+	optional FightCallLandLordRequest FightCallLandLordRequest = 13;
+	optional FightSendCardRequest FightSendCardRequest = 14;
+	optional FightMingPaiRequest FightMingPaiRequest = 15;
+	optional FightRecommandRequest FightRecommandRequest = 16;
+	optional FightGetlastRoundRequest FightGetlastRoundRequest = 17;
+	optional FightRejoinRequest FightRejoinRequest = 18;
+	optional FightAutoRequest FightAutoRequest = 19;
+	optional FightApplyExitGameRequest FightApplyExitGameRequest = 20;
+
+	optional MoneyExchangeRequest MoneyExchangeRequest = 21;
+
+	optional SettingsRequest SettingsRequest = 22;
+
+	optional GetRoleDataRequest GetRoleDataRequest = 23;
+	optional GetSettingsRequest GetSettingsRequest = 24;
+
+
+	optional HeartbeatRequest HeartbeatRequest = 25;
+
+	optional VideoGetRequest VideoGetRequest = 26;
+	optional VideoGetByIdRequest VideoGetByIdRequest = 27;
+	optional VideoGetByRoundRequest VideoGetByRoundRequest = 28;
+} // 28

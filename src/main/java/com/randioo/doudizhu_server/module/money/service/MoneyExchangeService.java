@@ -8,7 +8,7 @@ public interface MoneyExchangeService extends ObserveBaseServiceInterface {
 
 	GeneratedMessage moneyExchange(Role role, boolean add, int num);
 	
-	public  boolean exchangeMoney(Role role, int money, boolean add);
+	public  boolean exchangeMoney(Role role, double money, boolean add);
 
 	void newRoleInit(Role role);
 

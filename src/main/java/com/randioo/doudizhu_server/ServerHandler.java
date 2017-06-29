@@ -12,6 +12,7 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.doudizhu_server.protocol.ClientMessage.CS;
+import com.randioo.doudizhu_server.protocol.Heartbeat.HeartbeatResponse;
 import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.navigation.Navigation;
 import com.randioo.randioo_server_base.net.IoHandlerAdapter;
@@ -41,7 +42,7 @@ public class ServerHandler extends IoHandlerAdapter {
 				SessionCloseHandler.asynManipulate(role);
 			}
 		} catch (Exception e) {
-			logger.error("sessionClosed error:",e);
+			logger.error("sessionClosed error:", e);
 		} finally {
 			session.close(true);
 		}
@@ -100,7 +101,8 @@ public class ServerHandler extends IoHandlerAdapter {
 
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
-		if (!message.toString().contains("scFightKeyFrame") && !message.toString().contains("PingResponse")) {
+		if (!message.toString().contains("scFightKeyFrame")
+				&& !message.toString().contains(HeartbeatResponse.class.getSimpleName())) {
 			logger.info(getMessage(message, session));
 		}
 	}

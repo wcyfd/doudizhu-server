@@ -19,12 +19,12 @@ public class FightAgreeExitAction implements IActionSupport {
 
 	@Autowired
 	private FightService fightService;
-	
+
 	@Override
 	public void execute(Object data, IoSession session) {
 		FightAgreeExitGameRequest request = (FightAgreeExitGameRequest) data;
 		Role role = (Role) RoleCache.getRoleBySession(session);
-		GeneratedMessage sc = fightService.agreeExit(role, request.getAgree());
+		GeneratedMessage sc = fightService.agreeExit(role, request.getFightVoteApplyExit(), request.getApplyExitId());
 		SessionUtils.sc(role.getRoleId(), sc);
 	}
 

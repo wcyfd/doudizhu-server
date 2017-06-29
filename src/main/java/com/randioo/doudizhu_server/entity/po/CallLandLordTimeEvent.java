@@ -5,6 +5,7 @@ import com.randioo.randioo_server_base.scheduler.DefaultTimeEvent;
 public abstract class CallLandLordTimeEvent extends DefaultTimeEvent {
 	private int gameId;
 	private String gameRoleId;
+	private int score;
 	public int getGameId() {
 		return gameId;
 	}
@@ -19,6 +20,14 @@ public abstract class CallLandLordTimeEvent extends DefaultTimeEvent {
 
 	public void setGameRoleId(String gameRoleId) {
 		this.gameRoleId = gameRoleId;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 	
 	

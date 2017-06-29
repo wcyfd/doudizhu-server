@@ -41,6 +41,7 @@ public final class Error {
     NOT_LANDLORD(28, 29),
     MINGPAI_FORBIDDEN(29, 30),
     FIRST_ROUND(30, 31),
+    NO_VIDEO(31, 32),
     ;
     
     
@@ -79,6 +80,7 @@ public final class Error {
         case 29: return NOT_LANDLORD;
         case 30: return MINGPAI_FORBIDDEN;
         case 31: return FIRST_ROUND;
+        case 32: return NO_VIDEO;
         default: return null;
       }
     }
@@ -109,7 +111,7 @@ public final class Error {
     }
     
     private static final ErrorCode[] VALUES = {
-      OK, NO_STRING, NO_ROLE_ACCOUNT, EXIST_ROLE, CREATE_FAILED, REJECT_LOGIN, ACCOUNT_ILLEGEL, IN_LOGIN, NAME_SENSITIVE, NO_ROLE_DATA, NAME_REPEATED, NAME_TOO_LONG, NAME_SPECIAL_CHAR, NO_MONEY, CONNECT_ERROR, GAME_CREATE_ERROR, GAME_JOIN_ERROR, ROUND_ERROR, MONEY_NUM_ERROR, MATCH_ERROR_LOCK, MATCH_MAX_ROLE_COUNT, GAME_NOT_EXIST, GAME_EXITING, APPLY_REJECT, NOT_YOUR_TURN, NOT_SAME_TYPE, SMALLER, NULL_REJECT, NOT_LANDLORD, MINGPAI_FORBIDDEN, FIRST_ROUND, 
+      OK, NO_STRING, NO_ROLE_ACCOUNT, EXIST_ROLE, CREATE_FAILED, REJECT_LOGIN, ACCOUNT_ILLEGEL, IN_LOGIN, NAME_SENSITIVE, NO_ROLE_DATA, NAME_REPEATED, NAME_TOO_LONG, NAME_SPECIAL_CHAR, NO_MONEY, CONNECT_ERROR, GAME_CREATE_ERROR, GAME_JOIN_ERROR, ROUND_ERROR, MONEY_NUM_ERROR, MATCH_ERROR_LOCK, MATCH_MAX_ROLE_COUNT, GAME_NOT_EXIST, GAME_EXITING, APPLY_REJECT, NOT_YOUR_TURN, NOT_SAME_TYPE, SMALLER, NULL_REJECT, NOT_LANDLORD, MINGPAI_FORBIDDEN, FIRST_ROUND, NO_VIDEO, 
     };
     public static ErrorCode valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -143,7 +145,7 @@ public final class Error {
   static {
     java.lang.String[] descriptorData = {
       "\n\013Error.proto\022$com.randioo.doudizhu_serv" +
-      "er.protocol*\313\004\n\tErrorCode\022\006\n\002OK\020\001\022\r\n\tNO_" +
+      "er.protocol*\331\004\n\tErrorCode\022\006\n\002OK\020\001\022\r\n\tNO_" +
       "STRING\020\002\022\023\n\017NO_ROLE_ACCOUNT\020\003\022\016\n\nEXIST_R" +
       "OLE\020\004\022\021\n\rCREATE_FAILED\020\005\022\020\n\014REJECT_LOGIN" +
       "\020\006\022\023\n\017ACCOUNT_ILLEGEL\020\007\022\014\n\010IN_LOGIN\020\010\022\022\n" +
@@ -158,7 +160,7 @@ public final class Error {
       "OT_YOUR_TURN\020\031\022\021\n\rNOT_SAME_TYPE\020\032\022\013\n\007SMA" +
       "LLER\020\033\022\017\n\013NULL_REJECT\020\034\022\020\n\014NOT_LANDLORD\020" +
       "\035\022\025\n\021MINGPAI_FORBIDDEN\020\036\022\017\n\013FIRST_ROUND\020" +
-      "\037"
+      "\037\022\014\n\010NO_VIDEO\020 "
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

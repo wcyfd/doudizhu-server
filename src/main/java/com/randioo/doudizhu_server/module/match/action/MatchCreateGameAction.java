@@ -24,8 +24,7 @@ public class MatchCreateGameAction implements IActionSupport {
 	public void execute(Object data, IoSession session) {
 		MatchCreateGameRequest request = (MatchCreateGameRequest) data;
 		Role role = (Role) RoleCache.getRoleBySession(session);
-		GeneratedMessage sc = matchService.createRoom(role, request.getGameConfig());
-		SessionUtils.sc(session, sc);
+		matchService.createRoom(role, request.getGameConfig());
 	}
 
 }

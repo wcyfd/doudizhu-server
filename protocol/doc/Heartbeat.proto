@@ -1,0 +1,8 @@
+package com.randioo.doudizhu_server.protocol;
+
+message HeartbeatRequest{
+}
+
+message HeartbeatResponse{
+	optional int32 errorCode=1 [default = 1];
+}

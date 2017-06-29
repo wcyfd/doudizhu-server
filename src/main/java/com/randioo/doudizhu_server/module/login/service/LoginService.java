@@ -9,7 +9,7 @@ import com.randioo.randioo_server_base.service.ObserveBaseServiceInterface;
 
 public interface LoginService extends ObserveBaseServiceInterface {
 
-	GeneratedMessage getRoleData(String account, IoSession ioSession);
+	void getRoleData(String account, IoSession ioSession);
 
 	GeneratedMessage creatRole(String account);
 

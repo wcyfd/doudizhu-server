@@ -1,5 +1,6 @@
 package com.randioo.doudizhu_server.entity.bo;
 
+import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.randioo_server_base.entity.DefaultRole;
 
 public class Role extends DefaultRole {
@@ -13,6 +14,9 @@ public class Role extends DefaultRole {
 	private String headImgUrl;
 	private int randiooMoney;
 	private int moneyExchangeNum;
+	private String matchRuleId;
+	private int heartbeatTime;
+	private SC sc;
 
 	public int getRandiooMoney() {
 		return randiooMoney;
@@ -86,5 +90,30 @@ public class Role extends DefaultRole {
 	public void setMoneyExchangeNum(int moneyExchangeNum) {
 		this.moneyExchangeNum = moneyExchangeNum;
 	}
+
+	public String getMatchRuleId() {
+		return matchRuleId;
+	}
+
+	public void setMatchRuleId(String matchRuleId) {
+		this.matchRuleId = matchRuleId;
+	}
+
+	public int getHeartbeatTime() {
+		return heartbeatTime;
+	}
+
+	public void setHeartbeatTime(int heartbeatTime) {
+		this.heartbeatTime = heartbeatTime;
+	}
+
+	public SC getSc() {
+		return sc;
+	}
+
+	public void setSc(SC sc) {
+		this.sc = sc;
+	}
+	
 
 }

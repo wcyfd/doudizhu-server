@@ -32,13 +32,17 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
 		int max = role.getMoneyExchangeNum();
 		String today = TimeUtils.getCurrentTimeStr();
 		String time = role.getMoneyExchangeTimeStr();
-		int randiooMoney = num;
+		int addMoney = num;
+		double charge = 0;
 		if(num % 1000 != 0 || num * 0.001 < 1){
 			return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
 		}
 		
 		if(add){			
-			num *= 0.1;
+			charge = num * 0.01;
+			if(role.getRandiooMoney() < charge){
+				return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
+			}
 		}else{
 			//TODO 每天5W
 			
@@ -50,27 +54,29 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
 					if(max + num > 50000){
 						return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
 					}
-					else{
-						max += num;
-					}
+					max += num;
 				}
-				else{
-					max = num;
+				else{					
 					if(num > 50000){
 						return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
 					}
+					max = num;
 				}
 			}
 			
 			
-			num *= 0.085;
+			charge = num * 0.0085;
+			if(role.getMoney() < num){
+				return MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.MONEY_NUM_ERROR.getNumber()).build();
+			}
 			
 		}
-		if(exchangeMoney(role, num, add)){
-			role.setMoney(role.getMoney()+(add?1:-1)*randiooMoney);
+		if(exchangeMoney(role, charge, add)){
+			role.setMoney(role.getMoney()+(add?1:-1)*addMoney);
 			if(!add){
-				role.setMoneyExchangeTimeStr(time);
+				role.setMoneyExchangeTimeStr(today);
 				role.setMoneyExchangeNum(max);
+				System.out.println("@@@@"+today+"--"+max);
 			}
     		return SC.newBuilder().setMoneyExchangeResponse(MoneyExchangeResponse.newBuilder().setErrorCode(ErrorCode.OK.getNumber()).setRoleData(loginService.getRoleData(role))).build();
     	}else{
@@ -79,8 +85,8 @@ public class MoneyExchangeServiceImpl extends ObserveBaseService implements Mone
     	
 		
 	}
-	
-	public  boolean exchangeMoney(Role role, int money, boolean add){
+	@Override
+	public  boolean exchangeMoney(Role role, double money, boolean add){
 		String url = GlobleConfig.String("URL")+"/gateway/MaJiang/changeMoney.php?key=f4f3f65d6d804d138043fbbd1843d510&&id=";
     	String tpram = "";
     	tpram = tpram.concat(role.getAccount());

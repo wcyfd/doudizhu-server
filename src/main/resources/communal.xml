@@ -31,6 +31,16 @@
 					PRIMARY KEY (`roleId`)
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 				</value>
+				<value>
+					CREATE TABLE IF NOT EXISTS {database}.`video` (
+					`ID`  int(11) DEFAULT NULL AUTO_INCREMENT COMMENT '录像id',
+					`roleId`  int(11) DEFAULT NULL COMMENT '玩家id',
+					`gameId`  int(11) DEFAULT NULL COMMENT '游戏id',
+					`video`  blob DEFAULT NULL COMMENT '录像',
+					`time`  datetime DEFAULT NULL COMMENT '时间',
+					PRIMARY KEY (`ID`)
+					)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+				</value>
 			</list>
 		</property>
 	</bean>
@@ -53,6 +63,8 @@
 				<ref bean="settingService" />
 				<ref bean="matchService" />
 				<ref bean="fightService" />
+				<ref bean="heartbeatService" />	
+				<ref bean="videoService"/>			
 			</list>
 		</property>
 	</bean>

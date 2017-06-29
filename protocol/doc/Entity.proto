@@ -38,10 +38,34 @@ message GameRoleData{
 	optional bool ready = 4;
 	optional string headImgUrl = 5;
 	optional int32 money = 6;
+	optional int32 id = 7;
+	optional int32 sex = 8;
 }
 
 enum GameState{
 	GAME_STATE_PREPARE = 1;
 	GAME_START_START = 2;
 	GAME_START_END = 3;
+}
+
+message video{	
+	repeated bytes videoRecord = 1;
+	repeated int32 keyPoint = 2;
+	repeated bytes roundOver = 3;
+	optional bytes gameOver = 4;
+	repeated string startTime = 5;
+	optional int32 gameType = 6;
+	optional string roomId = 7;
+}
+
+message videoWithId{
+	optional video videoMsg = 1;
+	optional int32 videoId = 2;
+	optional int32 roleId = 3;
+}
+
+enum FightVoteApplyExit{
+	VOTE_IDLE = 0;
+	VOTE_AGREE = 1;
+	VOTE_REJECT = 2;
 }

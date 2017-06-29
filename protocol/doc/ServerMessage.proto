@@ -5,43 +5,70 @@ import "Match.proto";
 import "Fight.proto";
 import "MoneyExchange.proto";
 import "Settings.proto";
+import "Heartbeat.proto";
+import "Video.proto";
 
 message SC{
 	optional LoginCheckAccountResponse LoginCheckAccountResponse = 1;
 	optional LoginCreateRoleResponse LoginCreateRoleResponse = 2;
 	optional LoginGetRoleDataResponse LoginGetRoleDataResponse = 3;
+	optional SCLoginGetRoleData SCLoginGetRoleData = 4;
 
-	optional RoleRenameResponse RoleRenameResponse = 4;
+	optional RoleRenameResponse RoleRenameResponse = 5;
 
-	optional MatchCreateGameResponse MatchCreateGameResponse = 5;
-	optional MatchJoinGameResponse MatchJoinGameResponse = 6;
-	optional SCMatchJoinGame SCMatchJoinGame = 7;
+	optional MatchCreateGameResponse MatchCreateGameResponse = 6;
+	optional MatchJoinGameResponse MatchJoinGameResponse = 7;
+	optional SCMatchJoinGame SCMatchJoinGame = 8;
+	optional MatchRoleResponse MatchRoleResponse = 9;
+	optional SCMatchRole SCMatchRole = 10;
+	optional MatchCancelResponse MatchCancelResponse = 11;
+	optional SCMatchCreateGame SCMatchCreateGame = 12;
+	optional SCMatchAI SCMatchAI = 13;
+	optional SCMatchJoinGameData SCMatchJoinGameData = 14;
+	optional MatchAIResponse MatchAIResponse = 15;
+	optional SCMatchOutOfTime SCMatchOutOfTime = 16;
 
-	optional FightReadyResponse FightReadyResponse = 8;//准备(只有好友对战用)
-	optional SCFightReady SCFightReady = 9;//某玩家进行准备
-	optional SCFightStart SCFightStart = 10;//游戏开始
-	optional FightExitGameResponse FightExitGameResponse = 11;//游戏退出
-	optional SCFightExitGame SCFightExitGame = 12;//某玩家游戏退出
-	optional SCFightApplyExitGame SCFightApplyExitGame = 13;//某玩家申请游戏退出
-	optional FightAgreeExitGameResponse FightAgreeExitGameResponse = 14;//同意游戏退出
-	optional SCFightGameDismiss SCFightGameDismiss = 15;//游戏解散
-	optional SCFightLoadResource SCFightLoadResource = 16;//游戏资源加载(用于匹配)
-	optional MoneyExchangeResponse MoneyExchangeResponse = 17;//燃点币游戏币（欢乐豆）互换
-	optional SettingsResponse SettingsResponse = 18;//设置
-	optional GetRoleDataResponse GetRoleDataResponse = 19;
-	optional GetSettingsResponse GetSettingsResponse = 20;//设置
-	optional SCFightCallLandLord SCFightCallLandLord = 21;//通知叫地主
-	optional SCFightPutOut SCFightPutOut = 22;//通知出牌
-	optional SCFightLandLord SCFightLandLord = 23;//通知地主牌
-	optional FightCallLandLordResponse FightCallLandLordResponse = 24;//叫地主
-	optional FightSendCardResponse FightSendCardResponse = 25;
-	optional SCFightPutOutPai SCFightPutOutPai = 26;
-	optional SCAgreeExitGame SCAgreeExitGame = 27;
-	optional SCFightMingPai SCFightMingPai = 28;
-	optional SCFightRoundOver SCFightRoundOver = 29;
-	optional FightRecommandResponse FightRecommandResponse = 30;
-	optional SCFightGameOver SCFightGameOver = 31;
-	optional FightMingPaiResponse FightMingPaiResponse = 32;
-	optional FightGetlastRoundResponse FightGetlastRoundResponse = 33;
+	optional FightReadyResponse FightReadyResponse = 17;//准备(只有好友对战用)
+	optional SCFightReady SCFightReady = 18;//某玩家进行准备
+	optional SCFightStart SCFightStart = 19;//游戏开始
+	optional FightExitGameResponse FightExitGameResponse = 20;//游戏退出
+	optional SCFightExitGame SCFightExitGame = 21;//某玩家游戏退出
+	optional SCFightApplyExitGame SCFightApplyExitGame = 22;//某玩家申请游戏退出
+	optional FightAgreeExitGameResponse FightAgreeExitGameResponse = 23;//同意游戏退出
+	optional SCFightGameDismiss SCFightGameDismiss = 24;//游戏解散
+	optional SCFightLoadResource SCFightLoadResource = 25;//游戏资源加载(用于匹配)
+	optional SCFightCallLandLord SCFightCallLandLord = 26;//通知叫地主
+	optional SCFightPutOut SCFightPutOut = 27;//通知出牌
+	optional SCFightLandLord SCFightLandLord = 28;//通知地主牌
+	optional FightCallLandLordResponse FightCallLandLordResponse = 29;//叫地主
+	optional FightSendCardResponse FightSendCardResponse = 30;
+	optional SCFightPutOutPai SCFightPutOutPai = 31;
+	optional SCAgreeExitGame SCAgreeExitGame = 32;
+	optional SCFightMingPai SCFightMingPai = 33;
+	optional SCFightRoundOver SCFightRoundOver = 34;
+	optional FightRecommandResponse FightRecommandResponse = 35;
+	optional SCFightGameOver SCFightGameOver = 36;
+	optional FightMingPaiResponse FightMingPaiResponse = 37;
+	optional FightGetlastRoundResponse FightGetlastRoundResponse = 38;
+	optional SCFightLastRoundReady SCFightLastRoundReady = 39;
+	optional FightRejoinResponse FightRejoinResponse = 40;
+	optional SCFightDisconnect SCFightDisconnect = 41;
+	optional SCFightRejoin SCFightRejoin = 42;
+	optional SCFightAllAgreeExit SCFightAllAgreeExit = 43;
+	optional FightAutoResponse FightAutoResponse = 44;
+	optional SCFightAuto SCFightAuto = 45;
+	optional SCFightFinishRejoin SCFightFinishRejoin = 46;
+	optional FightApplyExitGameResponse FightApplyExitGameResponse = 47;//申请退出
 
-} // 33
+	optional MoneyExchangeResponse MoneyExchangeResponse = 48;//燃点币游戏币（欢乐豆）互换
+	optional SettingsResponse SettingsResponse = 49;//设置
+
+	optional GetRoleDataResponse GetRoleDataResponse = 50;
+	optional GetSettingsResponse GetSettingsResponse = 51;//设置
+	
+	optional HeartbeatResponse HeartbeatResponse = 52;
+
+	optional VideoGetResponse VideoGetResponse = 53;
+	optional VideoGetByIdResponse VideoGetByIdResponse = 54;
+	optional VideoGetByRoundResponse VideoGetByRoundResponse = 55;
+} // 55

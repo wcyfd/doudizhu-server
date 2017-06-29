@@ -4,14 +4,31 @@ import java.util.List;
 
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.entity.bo.Role;
+import com.randioo.doudizhu_server.protocol.Entity.FightVoteApplyExit;
 import com.randioo.randioo_server_base.service.ObserveBaseServiceInterface;
 
 public interface FightService extends ObserveBaseServiceInterface {
 	public void readyGame(Role role);
 
-	GeneratedMessage exitGame(Role role);
+	/**
+	 * 退出比赛
+	 * 
+	 * @param role
+	 * @return
+	 * @author wcy 2017年6月29日
+	 */
+	void exitGame(Role role);
 
-	GeneratedMessage agreeExit(Role role, boolean agree);
+	/**
+	 * 申请退出比赛
+	 * 
+	 * @param role
+	 * @return
+	 * @author wcy 2017年6月29日
+	 */
+	void applyExitGame(Role role);
+
+	GeneratedMessage agreeExit(Role role, FightVoteApplyExit vote, int voteId);
 
 	/**
 	 * 真实玩家出牌
@@ -47,8 +64,19 @@ public interface FightService extends ObserveBaseServiceInterface {
 	void callLandlord(Role role, int fen);
 
 	GeneratedMessage recommandCardList(Role role);
-	
+
 	void mingPai(Role role);
 
 	GeneratedMessage getLastRecord(int gameId);
+
+	void gameStart(int gameId);
+
+	void rejoin(Role role);
+
+	void callLandlord(int gameId, String gameRoleId, int callScore);
+
+	void disconnectTimeUp(int roleId);
+
+	GeneratedMessage auto(Role role);
+
 }

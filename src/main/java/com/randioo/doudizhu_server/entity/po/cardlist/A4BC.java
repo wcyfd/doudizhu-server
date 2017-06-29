@@ -63,7 +63,6 @@ public class A4BC extends A4 {
 	
 	@Override
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList, List<Integer> arr) {
-		
 	}
 
 }

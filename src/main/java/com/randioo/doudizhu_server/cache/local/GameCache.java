@@ -13,6 +13,7 @@ public class GameCache {
 	private static Map<String, Integer> gameLockMap = new LinkedHashMap<>();
 	private static Map<Class<? extends CardList>, CardList> cardLists = new LinkedHashMap<>();
 	private static Map<Class<? extends CardList>, CardList> recommendCardLists = new LinkedHashMap<>();
+	private static List<String> gameLocks = new ArrayList<>();
 
 	public static Map<Integer, Game> getGameMap() {
 		return gameMap;
@@ -34,6 +35,10 @@ public class GameCache {
 
 	public static Map<Class<? extends CardList>, CardList> getRecommendCardLists() {
 		return recommendCardLists;
+	}
+
+	public static List<String> getGameLocks() {
+		return gameLocks;
 	}
 	
 

@@ -317,6 +317,800 @@ public final class Match {
     // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchCreateGameRequest)
   }
   
+  public static final class MatchCreateGameResponse extends
+      com.google.protobuf.GeneratedMessage {
+    // Use MatchCreateGameResponse.newBuilder() to construct.
+    private MatchCreateGameResponse() {
+      initFields();
+    }
+    private MatchCreateGameResponse(boolean noInit) {}
+    
+    private static final MatchCreateGameResponse defaultInstance;
+    public static MatchCreateGameResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public MatchCreateGameResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_fieldAccessorTable;
+    }
+    
+    // optional int32 errorCode = 1 [default = 1];
+    public static final int ERRORCODE_FIELD_NUMBER = 1;
+    private boolean hasErrorCode;
+    private int errorCode_ = 1;
+    public boolean hasErrorCode() { return hasErrorCode; }
+    public int getErrorCode() { return errorCode_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasErrorCode()) {
+        output.writeInt32(1, getErrorCode());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasErrorCode()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, getErrorCode());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.getDefaultInstance()) return this;
+        if (other.hasErrorCode()) {
+          setErrorCode(other.getErrorCode());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              setErrorCode(input.readInt32());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional int32 errorCode = 1 [default = 1];
+      public boolean hasErrorCode() {
+        return result.hasErrorCode();
+      }
+      public int getErrorCode() {
+        return result.getErrorCode();
+      }
+      public Builder setErrorCode(int value) {
+        result.hasErrorCode = true;
+        result.errorCode_ = value;
+        return this;
+      }
+      public Builder clearErrorCode() {
+        result.hasErrorCode = false;
+        result.errorCode_ = 1;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.MatchCreateGameResponse)
+    }
+    
+    static {
+      defaultInstance = new MatchCreateGameResponse(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchCreateGameResponse)
+  }
+  
+  public static final class SCMatchCreateGame extends
+      com.google.protobuf.GeneratedMessage {
+    // Use SCMatchCreateGame.newBuilder() to construct.
+    private SCMatchCreateGame() {
+      initFields();
+    }
+    private SCMatchCreateGame(boolean noInit) {}
+    
+    private static final SCMatchCreateGame defaultInstance;
+    public static SCMatchCreateGame getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SCMatchCreateGame getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchCreateGame_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchCreateGame_fieldAccessorTable;
+    }
+    
+    // optional string id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private boolean hasId;
+    private java.lang.String id_ = "";
+    public boolean hasId() { return hasId; }
+    public java.lang.String getId() { return id_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 2;
+    public static final int GAMEROLEDATA_FIELD_NUMBER = 2;
+    private boolean hasGameRoleData;
+    private com.randioo.doudizhu_server.protocol.Entity.GameRoleData gameRoleData_;
+    public boolean hasGameRoleData() { return hasGameRoleData; }
+    public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData() { return gameRoleData_; }
+    
+    // optional string gameId = 3;
+    public static final int GAMEID_FIELD_NUMBER = 3;
+    private boolean hasGameId;
+    private java.lang.String gameId_ = "";
+    public boolean hasGameId() { return hasGameId; }
+    public java.lang.String getGameId() { return gameId_; }
+    
+    // optional int32 roomType = 4;
+    public static final int ROOMTYPE_FIELD_NUMBER = 4;
+    private boolean hasRoomType;
+    private int roomType_ = 0;
+    public boolean hasRoomType() { return hasRoomType; }
+    public int getRoomType() { return roomType_; }
+    
+    // optional bool mingpai = 5;
+    public static final int MINGPAI_FIELD_NUMBER = 5;
+    private boolean hasMingpai;
+    private boolean mingpai_ = false;
+    public boolean hasMingpai() { return hasMingpai; }
+    public boolean getMingpai() { return mingpai_; }
+    
+    // optional int32 roundNum = 6;
+    public static final int ROUNDNUM_FIELD_NUMBER = 6;
+    private boolean hasRoundNum;
+    private int roundNum_ = 0;
+    public boolean hasRoundNum() { return hasRoundNum; }
+    public int getRoundNum() { return roundNum_; }
+    
+    private void initFields() {
+      gameRoleData_ = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance();
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasId()) {
+        output.writeString(1, getId());
+      }
+      if (hasGameRoleData()) {
+        output.writeMessage(2, getGameRoleData());
+      }
+      if (hasGameId()) {
+        output.writeString(3, getGameId());
+      }
+      if (hasRoomType()) {
+        output.writeInt32(4, getRoomType());
+      }
+      if (hasMingpai()) {
+        output.writeBool(5, getMingpai());
+      }
+      if (hasRoundNum()) {
+        output.writeInt32(6, getRoundNum());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getId());
+      }
+      if (hasGameRoleData()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getGameRoleData());
+      }
+      if (hasGameId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(3, getGameId());
+      }
+      if (hasRoomType()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, getRoomType());
+      }
+      if (hasMingpai()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, getMingpai());
+      }
+      if (hasRoundNum()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, getRoundNum());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasGameRoleData()) {
+          mergeGameRoleData(other.getGameRoleData());
+        }
+        if (other.hasGameId()) {
+          setGameId(other.getGameId());
+        }
+        if (other.hasRoomType()) {
+          setRoomType(other.getRoomType());
+        }
+        if (other.hasMingpai()) {
+          setMingpai(other.getMingpai());
+        }
+        if (other.hasRoundNum()) {
+          setRoundNum(other.getRoundNum());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              setId(input.readString());
+              break;
+            }
+            case 18: {
+              com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder();
+              if (hasGameRoleData()) {
+                subBuilder.mergeFrom(getGameRoleData());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setGameRoleData(subBuilder.buildPartial());
+              break;
+            }
+            case 26: {
+              setGameId(input.readString());
+              break;
+            }
+            case 32: {
+              setRoomType(input.readInt32());
+              break;
+            }
+            case 40: {
+              setMingpai(input.readBool());
+              break;
+            }
+            case 48: {
+              setRoundNum(input.readInt32());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional string id = 1;
+      public boolean hasId() {
+        return result.hasId();
+      }
+      public java.lang.String getId() {
+        return result.getId();
+      }
+      public Builder setId(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasId = true;
+        result.id_ = value;
+        return this;
+      }
+      public Builder clearId() {
+        result.hasId = false;
+        result.id_ = getDefaultInstance().getId();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 2;
+      public boolean hasGameRoleData() {
+        return result.hasGameRoleData();
+      }
+      public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData() {
+        return result.getGameRoleData();
+      }
+      public Builder setGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasGameRoleData = true;
+        result.gameRoleData_ = value;
+        return this;
+      }
+      public Builder setGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder builderForValue) {
+        result.hasGameRoleData = true;
+        result.gameRoleData_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData value) {
+        if (result.hasGameRoleData() &&
+            result.gameRoleData_ != com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance()) {
+          result.gameRoleData_ =
+            com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder(result.gameRoleData_).mergeFrom(value).buildPartial();
+        } else {
+          result.gameRoleData_ = value;
+        }
+        result.hasGameRoleData = true;
+        return this;
+      }
+      public Builder clearGameRoleData() {
+        result.hasGameRoleData = false;
+        result.gameRoleData_ = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance();
+        return this;
+      }
+      
+      // optional string gameId = 3;
+      public boolean hasGameId() {
+        return result.hasGameId();
+      }
+      public java.lang.String getGameId() {
+        return result.getGameId();
+      }
+      public Builder setGameId(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasGameId = true;
+        result.gameId_ = value;
+        return this;
+      }
+      public Builder clearGameId() {
+        result.hasGameId = false;
+        result.gameId_ = getDefaultInstance().getGameId();
+        return this;
+      }
+      
+      // optional int32 roomType = 4;
+      public boolean hasRoomType() {
+        return result.hasRoomType();
+      }
+      public int getRoomType() {
+        return result.getRoomType();
+      }
+      public Builder setRoomType(int value) {
+        result.hasRoomType = true;
+        result.roomType_ = value;
+        return this;
+      }
+      public Builder clearRoomType() {
+        result.hasRoomType = false;
+        result.roomType_ = 0;
+        return this;
+      }
+      
+      // optional bool mingpai = 5;
+      public boolean hasMingpai() {
+        return result.hasMingpai();
+      }
+      public boolean getMingpai() {
+        return result.getMingpai();
+      }
+      public Builder setMingpai(boolean value) {
+        result.hasMingpai = true;
+        result.mingpai_ = value;
+        return this;
+      }
+      public Builder clearMingpai() {
+        result.hasMingpai = false;
+        result.mingpai_ = false;
+        return this;
+      }
+      
+      // optional int32 roundNum = 6;
+      public boolean hasRoundNum() {
+        return result.hasRoundNum();
+      }
+      public int getRoundNum() {
+        return result.getRoundNum();
+      }
+      public Builder setRoundNum(int value) {
+        result.hasRoundNum = true;
+        result.roundNum_ = value;
+        return this;
+      }
+      public Builder clearRoundNum() {
+        result.hasRoundNum = false;
+        result.roundNum_ = 0;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.SCMatchCreateGame)
+    }
+    
+    static {
+      defaultInstance = new SCMatchCreateGame(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.SCMatchCreateGame)
+  }
+  
   public static final class MatchAIRequest extends
       com.google.protobuf.GeneratedMessage {
     // Use MatchAIRequest.newBuilder() to construct.
@@ -560,6 +1354,761 @@ public final class Match {
     }
     
     // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchAIRequest)
+  }
+  
+  public static final class MatchAIResponse extends
+      com.google.protobuf.GeneratedMessage {
+    // Use MatchAIResponse.newBuilder() to construct.
+    private MatchAIResponse() {
+      initFields();
+    }
+    private MatchAIResponse(boolean noInit) {}
+    
+    private static final MatchAIResponse defaultInstance;
+    public static MatchAIResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public MatchAIResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchAIResponse_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchAIResponse_fieldAccessorTable;
+    }
+    
+    // optional int32 errorCode = 1 [default = 1];
+    public static final int ERRORCODE_FIELD_NUMBER = 1;
+    private boolean hasErrorCode;
+    private int errorCode_ = 1;
+    public boolean hasErrorCode() { return hasErrorCode; }
+    public int getErrorCode() { return errorCode_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasErrorCode()) {
+        output.writeInt32(1, getErrorCode());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasErrorCode()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, getErrorCode());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchAIResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.MatchAIResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.MatchAIResponse result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.MatchAIResponse.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.MatchAIResponse();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.MatchAIResponse internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.MatchAIResponse();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchAIResponse.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.MatchAIResponse getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchAIResponse.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.MatchAIResponse build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.MatchAIResponse buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.MatchAIResponse buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Match.MatchAIResponse returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.MatchAIResponse) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.MatchAIResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.MatchAIResponse other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.MatchAIResponse.getDefaultInstance()) return this;
+        if (other.hasErrorCode()) {
+          setErrorCode(other.getErrorCode());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              setErrorCode(input.readInt32());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional int32 errorCode = 1 [default = 1];
+      public boolean hasErrorCode() {
+        return result.hasErrorCode();
+      }
+      public int getErrorCode() {
+        return result.getErrorCode();
+      }
+      public Builder setErrorCode(int value) {
+        result.hasErrorCode = true;
+        result.errorCode_ = value;
+        return this;
+      }
+      public Builder clearErrorCode() {
+        result.hasErrorCode = false;
+        result.errorCode_ = 1;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.MatchAIResponse)
+    }
+    
+    static {
+      defaultInstance = new MatchAIResponse(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchAIResponse)
+  }
+  
+  public static final class SCMatchAI extends
+      com.google.protobuf.GeneratedMessage {
+    // Use SCMatchAI.newBuilder() to construct.
+    private SCMatchAI() {
+      initFields();
+    }
+    private SCMatchAI(boolean noInit) {}
+    
+    private static final SCMatchAI defaultInstance;
+    public static SCMatchAI getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SCMatchAI getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchAI_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchAI_fieldAccessorTable;
+    }
+    
+    // optional string id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private boolean hasId;
+    private java.lang.String id_ = "";
+    public boolean hasId() { return hasId; }
+    public java.lang.String getId() { return id_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 2;
+    public static final int GAMEROLEDATA_FIELD_NUMBER = 2;
+    private boolean hasGameRoleData;
+    private com.randioo.doudizhu_server.protocol.Entity.GameRoleData gameRoleData_;
+    public boolean hasGameRoleData() { return hasGameRoleData; }
+    public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData() { return gameRoleData_; }
+    
+    // optional string gameId = 3;
+    public static final int GAMEID_FIELD_NUMBER = 3;
+    private boolean hasGameId;
+    private java.lang.String gameId_ = "";
+    public boolean hasGameId() { return hasGameId; }
+    public java.lang.String getGameId() { return gameId_; }
+    
+    // optional int32 roomType = 4;
+    public static final int ROOMTYPE_FIELD_NUMBER = 4;
+    private boolean hasRoomType;
+    private int roomType_ = 0;
+    public boolean hasRoomType() { return hasRoomType; }
+    public int getRoomType() { return roomType_; }
+    
+    // optional bool mingpai = 5;
+    public static final int MINGPAI_FIELD_NUMBER = 5;
+    private boolean hasMingpai;
+    private boolean mingpai_ = false;
+    public boolean hasMingpai() { return hasMingpai; }
+    public boolean getMingpai() { return mingpai_; }
+    
+    private void initFields() {
+      gameRoleData_ = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance();
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasId()) {
+        output.writeString(1, getId());
+      }
+      if (hasGameRoleData()) {
+        output.writeMessage(2, getGameRoleData());
+      }
+      if (hasGameId()) {
+        output.writeString(3, getGameId());
+      }
+      if (hasRoomType()) {
+        output.writeInt32(4, getRoomType());
+      }
+      if (hasMingpai()) {
+        output.writeBool(5, getMingpai());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getId());
+      }
+      if (hasGameRoleData()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getGameRoleData());
+      }
+      if (hasGameId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(3, getGameId());
+      }
+      if (hasRoomType()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, getRoomType());
+      }
+      if (hasMingpai()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, getMingpai());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchAI parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.SCMatchAI prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchAI result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.SCMatchAI.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.SCMatchAI();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.SCMatchAI internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.SCMatchAI();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchAI.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchAI getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchAI.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchAI build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchAI buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchAI buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Match.SCMatchAI returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.SCMatchAI) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.SCMatchAI)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.SCMatchAI other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.SCMatchAI.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasGameRoleData()) {
+          mergeGameRoleData(other.getGameRoleData());
+        }
+        if (other.hasGameId()) {
+          setGameId(other.getGameId());
+        }
+        if (other.hasRoomType()) {
+          setRoomType(other.getRoomType());
+        }
+        if (other.hasMingpai()) {
+          setMingpai(other.getMingpai());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              setId(input.readString());
+              break;
+            }
+            case 18: {
+              com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder();
+              if (hasGameRoleData()) {
+                subBuilder.mergeFrom(getGameRoleData());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setGameRoleData(subBuilder.buildPartial());
+              break;
+            }
+            case 26: {
+              setGameId(input.readString());
+              break;
+            }
+            case 32: {
+              setRoomType(input.readInt32());
+              break;
+            }
+            case 40: {
+              setMingpai(input.readBool());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional string id = 1;
+      public boolean hasId() {
+        return result.hasId();
+      }
+      public java.lang.String getId() {
+        return result.getId();
+      }
+      public Builder setId(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasId = true;
+        result.id_ = value;
+        return this;
+      }
+      public Builder clearId() {
+        result.hasId = false;
+        result.id_ = getDefaultInstance().getId();
+        return this;
+      }
+      
+      // optional .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 2;
+      public boolean hasGameRoleData() {
+        return result.hasGameRoleData();
+      }
+      public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData() {
+        return result.getGameRoleData();
+      }
+      public Builder setGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasGameRoleData = true;
+        result.gameRoleData_ = value;
+        return this;
+      }
+      public Builder setGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder builderForValue) {
+        result.hasGameRoleData = true;
+        result.gameRoleData_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData value) {
+        if (result.hasGameRoleData() &&
+            result.gameRoleData_ != com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance()) {
+          result.gameRoleData_ =
+            com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder(result.gameRoleData_).mergeFrom(value).buildPartial();
+        } else {
+          result.gameRoleData_ = value;
+        }
+        result.hasGameRoleData = true;
+        return this;
+      }
+      public Builder clearGameRoleData() {
+        result.hasGameRoleData = false;
+        result.gameRoleData_ = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance();
+        return this;
+      }
+      
+      // optional string gameId = 3;
+      public boolean hasGameId() {
+        return result.hasGameId();
+      }
+      public java.lang.String getGameId() {
+        return result.getGameId();
+      }
+      public Builder setGameId(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasGameId = true;
+        result.gameId_ = value;
+        return this;
+      }
+      public Builder clearGameId() {
+        result.hasGameId = false;
+        result.gameId_ = getDefaultInstance().getGameId();
+        return this;
+      }
+      
+      // optional int32 roomType = 4;
+      public boolean hasRoomType() {
+        return result.hasRoomType();
+      }
+      public int getRoomType() {
+        return result.getRoomType();
+      }
+      public Builder setRoomType(int value) {
+        result.hasRoomType = true;
+        result.roomType_ = value;
+        return this;
+      }
+      public Builder clearRoomType() {
+        result.hasRoomType = false;
+        result.roomType_ = 0;
+        return this;
+      }
+      
+      // optional bool mingpai = 5;
+      public boolean hasMingpai() {
+        return result.hasMingpai();
+      }
+      public boolean getMingpai() {
+        return result.getMingpai();
+      }
+      public Builder setMingpai(boolean value) {
+        result.hasMingpai = true;
+        result.mingpai_ = value;
+        return this;
+      }
+      public Builder clearMingpai() {
+        result.hasMingpai = false;
+        result.mingpai_ = false;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.SCMatchAI)
+    }
+    
+    static {
+      defaultInstance = new SCMatchAI(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.SCMatchAI)
   }
   
   public static final class MatchRoleRequest extends
@@ -807,31 +2356,31 @@ public final class Match {
     // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchRoleRequest)
   }
   
-  public static final class MatchCreateGameResponse extends
+  public static final class MatchRoleResponse extends
       com.google.protobuf.GeneratedMessage {
-    // Use MatchCreateGameResponse.newBuilder() to construct.
-    private MatchCreateGameResponse() {
+    // Use MatchRoleResponse.newBuilder() to construct.
+    private MatchRoleResponse() {
       initFields();
     }
-    private MatchCreateGameResponse(boolean noInit) {}
+    private MatchRoleResponse(boolean noInit) {}
     
-    private static final MatchCreateGameResponse defaultInstance;
-    public static MatchCreateGameResponse getDefaultInstance() {
+    private static final MatchRoleResponse defaultInstance;
+    public static MatchRoleResponse getDefaultInstance() {
       return defaultInstance;
     }
     
-    public MatchCreateGameResponse getDefaultInstanceForType() {
+    public MatchRoleResponse getDefaultInstanceForType() {
       return defaultInstance;
     }
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor;
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchRoleResponse_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_fieldAccessorTable;
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchRoleResponse_fieldAccessorTable;
     }
     
     // optional int32 errorCode = 1 [default = 1];
@@ -841,36 +2390,14 @@ public final class Match {
     public boolean hasErrorCode() { return hasErrorCode; }
     public int getErrorCode() { return errorCode_; }
     
-    // optional string id = 2;
-    public static final int ID_FIELD_NUMBER = 2;
-    private boolean hasId;
-    private java.lang.String id_ = "";
-    public boolean hasId() { return hasId; }
-    public java.lang.String getId() { return id_; }
-    
-    // optional bool moguai = 3;
-    public static final int MOGUAI_FIELD_NUMBER = 3;
-    private boolean hasMoguai;
-    private boolean moguai_ = false;
-    public boolean hasMoguai() { return hasMoguai; }
-    public boolean getMoguai() { return moguai_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 4;
-    public static final int GAMEROLEDATA_FIELD_NUMBER = 4;
-    private boolean hasGameRoleData;
-    private com.randioo.doudizhu_server.protocol.Entity.GameRoleData gameRoleData_;
-    public boolean hasGameRoleData() { return hasGameRoleData; }
-    public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData() { return gameRoleData_; }
-    
-    // optional int32 roomType = 6;
-    public static final int ROOMTYPE_FIELD_NUMBER = 6;
-    private boolean hasRoomType;
-    private int roomType_ = 0;
-    public boolean hasRoomType() { return hasRoomType; }
-    public int getRoomType() { return roomType_; }
+    // optional int32 countdown = 2;
+    public static final int COUNTDOWN_FIELD_NUMBER = 2;
+    private boolean hasCountdown;
+    private int countdown_ = 0;
+    public boolean hasCountdown() { return hasCountdown; }
+    public int getCountdown() { return countdown_; }
     
     private void initFields() {
-      gameRoleData_ = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -882,17 +2409,8 @@ public final class Match {
       if (hasErrorCode()) {
         output.writeInt32(1, getErrorCode());
       }
-      if (hasId()) {
-        output.writeString(2, getId());
-      }
-      if (hasMoguai()) {
-        output.writeBool(3, getMoguai());
-      }
-      if (hasGameRoleData()) {
-        output.writeMessage(4, getGameRoleData());
-      }
-      if (hasRoomType()) {
-        output.writeInt32(6, getRoomType());
+      if (hasCountdown()) {
+        output.writeInt32(2, getCountdown());
       }
       getUnknownFields().writeTo(output);
     }
@@ -907,62 +2425,50 @@ public final class Match {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, getErrorCode());
       }
-      if (hasId()) {
+      if (hasCountdown()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(2, getId());
-      }
-      if (hasMoguai()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, getMoguai());
-      }
-      if (hasGameRoleData()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getGameRoleData());
-      }
-      if (hasRoomType()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, getRoomType());
+          .computeInt32Size(2, getCountdown());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
     
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(byte[] data)
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(java.io.InputStream input)
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseDelimitedFrom(java.io.InputStream input)
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -971,7 +2477,7 @@ public final class Match {
         return null;
       }
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseDelimitedFrom(
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -982,12 +2488,12 @@ public final class Match {
         return null;
       }
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse parseFrom(
+    public static com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -997,25 +2503,25 @@ public final class Match {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse prototype) {
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
     
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse result;
+      private com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse result;
       
-      // Construct using com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.newBuilder()
+      // Construct using com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse.newBuilder()
       private Builder() {}
       
       private static Builder create() {
         Builder builder = new Builder();
-        builder.result = new com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse();
         return builder;
       }
       
-      protected com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse internalGetResult() {
+      protected com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse internalGetResult() {
         return result;
       }
       
@@ -1024,7 +2530,7 @@ public final class Match {
           throw new IllegalStateException(
             "Cannot call clear() after build().");
         }
-        result = new com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse();
+        result = new com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse();
         return this;
       }
       
@@ -1034,24 +2540,24 @@ public final class Match {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.getDescriptor();
+        return com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse.getDescriptor();
       }
       
-      public com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse getDefaultInstanceForType() {
-        return com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.getDefaultInstance();
+      public com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse.getDefaultInstance();
       }
       
       public boolean isInitialized() {
         return result.isInitialized();
       }
-      public com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse build() {
+      public com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse build() {
         if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return buildPartial();
       }
       
-      private com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse buildParsed()
+      private com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
         if (!isInitialized()) {
           throw newUninitializedMessageException(
@@ -1060,41 +2566,32 @@ public final class Match {
         return buildPartial();
       }
       
-      public com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse buildPartial() {
+      public com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse buildPartial() {
         if (result == null) {
           throw new IllegalStateException(
             "build() has already been called on this Builder.");
         }
-        com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse returnMe = result;
+        com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse returnMe = result;
         result = null;
         return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse) {
-          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse)other);
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse other) {
-        if (other == com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse.getDefaultInstance()) return this;
         if (other.hasErrorCode()) {
           setErrorCode(other.getErrorCode());
         }
-        if (other.hasId()) {
-          setId(other.getId());
-        }
-        if (other.hasMoguai()) {
-          setMoguai(other.getMoguai());
-        }
-        if (other.hasGameRoleData()) {
-          mergeGameRoleData(other.getGameRoleData());
-        }
-        if (other.hasRoomType()) {
-          setRoomType(other.getRoomType());
+        if (other.hasCountdown()) {
+          setCountdown(other.getCountdown());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1125,25 +2622,8 @@ public final class Match {
               setErrorCode(input.readInt32());
               break;
             }
-            case 18: {
-              setId(input.readString());
-              break;
-            }
-            case 24: {
-              setMoguai(input.readBool());
-              break;
-            }
-            case 34: {
-              com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder();
-              if (hasGameRoleData()) {
-                subBuilder.mergeFrom(getGameRoleData());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setGameRoleData(subBuilder.buildPartial());
-              break;
-            }
-            case 48: {
-              setRoomType(input.readInt32());
+            case 16: {
+              setCountdown(input.readInt32());
               break;
             }
           }
@@ -1169,110 +2649,808 @@ public final class Match {
         return this;
       }
       
-      // optional string id = 2;
-      public boolean hasId() {
-        return result.hasId();
+      // optional int32 countdown = 2;
+      public boolean hasCountdown() {
+        return result.hasCountdown();
       }
-      public java.lang.String getId() {
-        return result.getId();
+      public int getCountdown() {
+        return result.getCountdown();
       }
-      public Builder setId(java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  result.hasId = true;
-        result.id_ = value;
+      public Builder setCountdown(int value) {
+        result.hasCountdown = true;
+        result.countdown_ = value;
         return this;
       }
-      public Builder clearId() {
-        result.hasId = false;
-        result.id_ = getDefaultInstance().getId();
+      public Builder clearCountdown() {
+        result.hasCountdown = false;
+        result.countdown_ = 0;
         return this;
       }
       
-      // optional bool moguai = 3;
-      public boolean hasMoguai() {
-        return result.hasMoguai();
-      }
-      public boolean getMoguai() {
-        return result.getMoguai();
-      }
-      public Builder setMoguai(boolean value) {
-        result.hasMoguai = true;
-        result.moguai_ = value;
-        return this;
-      }
-      public Builder clearMoguai() {
-        result.hasMoguai = false;
-        result.moguai_ = false;
-        return this;
-      }
-      
-      // optional .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 4;
-      public boolean hasGameRoleData() {
-        return result.hasGameRoleData();
-      }
-      public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData() {
-        return result.getGameRoleData();
-      }
-      public Builder setGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result.hasGameRoleData = true;
-        result.gameRoleData_ = value;
-        return this;
-      }
-      public Builder setGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder builderForValue) {
-        result.hasGameRoleData = true;
-        result.gameRoleData_ = builderForValue.build();
-        return this;
-      }
-      public Builder mergeGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData value) {
-        if (result.hasGameRoleData() &&
-            result.gameRoleData_ != com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance()) {
-          result.gameRoleData_ =
-            com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder(result.gameRoleData_).mergeFrom(value).buildPartial();
-        } else {
-          result.gameRoleData_ = value;
-        }
-        result.hasGameRoleData = true;
-        return this;
-      }
-      public Builder clearGameRoleData() {
-        result.hasGameRoleData = false;
-        result.gameRoleData_ = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.getDefaultInstance();
-        return this;
-      }
-      
-      // optional int32 roomType = 6;
-      public boolean hasRoomType() {
-        return result.hasRoomType();
-      }
-      public int getRoomType() {
-        return result.getRoomType();
-      }
-      public Builder setRoomType(int value) {
-        result.hasRoomType = true;
-        result.roomType_ = value;
-        return this;
-      }
-      public Builder clearRoomType() {
-        result.hasRoomType = false;
-        result.roomType_ = 0;
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.MatchCreateGameResponse)
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.MatchRoleResponse)
     }
     
     static {
-      defaultInstance = new MatchCreateGameResponse(true);
+      defaultInstance = new MatchRoleResponse(true);
       com.randioo.doudizhu_server.protocol.Match.internalForceInit();
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchCreateGameResponse)
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchRoleResponse)
+  }
+  
+  public static final class MatchCancelRequest extends
+      com.google.protobuf.GeneratedMessage {
+    // Use MatchCancelRequest.newBuilder() to construct.
+    private MatchCancelRequest() {
+      initFields();
+    }
+    private MatchCancelRequest(boolean noInit) {}
+    
+    private static final MatchCancelRequest defaultInstance;
+    public static MatchCancelRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public MatchCancelRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchCancelRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchCancelRequest_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.MatchCancelRequest)
+    }
+    
+    static {
+      defaultInstance = new MatchCancelRequest(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchCancelRequest)
+  }
+  
+  public static final class MatchCancelResponse extends
+      com.google.protobuf.GeneratedMessage {
+    // Use MatchCancelResponse.newBuilder() to construct.
+    private MatchCancelResponse() {
+      initFields();
+    }
+    private MatchCancelResponse(boolean noInit) {}
+    
+    private static final MatchCancelResponse defaultInstance;
+    public static MatchCancelResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public MatchCancelResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchCancelResponse_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_MatchCancelResponse_fieldAccessorTable;
+    }
+    
+    // optional int32 errorCode = 1 [default = 1];
+    public static final int ERRORCODE_FIELD_NUMBER = 1;
+    private boolean hasErrorCode;
+    private int errorCode_ = 1;
+    public boolean hasErrorCode() { return hasErrorCode; }
+    public int getErrorCode() { return errorCode_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasErrorCode()) {
+        output.writeInt32(1, getErrorCode());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasErrorCode()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, getErrorCode());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse.getDefaultInstance()) return this;
+        if (other.hasErrorCode()) {
+          setErrorCode(other.getErrorCode());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              setErrorCode(input.readInt32());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional int32 errorCode = 1 [default = 1];
+      public boolean hasErrorCode() {
+        return result.hasErrorCode();
+      }
+      public int getErrorCode() {
+        return result.getErrorCode();
+      }
+      public Builder setErrorCode(int value) {
+        result.hasErrorCode = true;
+        result.errorCode_ = value;
+        return this;
+      }
+      public Builder clearErrorCode() {
+        result.hasErrorCode = false;
+        result.errorCode_ = 1;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.MatchCancelResponse)
+    }
+    
+    static {
+      defaultInstance = new MatchCancelResponse(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchCancelResponse)
+  }
+  
+  public static final class SCMatchOutOfTime extends
+      com.google.protobuf.GeneratedMessage {
+    // Use SCMatchOutOfTime.newBuilder() to construct.
+    private SCMatchOutOfTime() {
+      initFields();
+    }
+    private SCMatchOutOfTime(boolean noInit) {}
+    
+    private static final SCMatchOutOfTime defaultInstance;
+    public static SCMatchOutOfTime getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SCMatchOutOfTime getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchOutOfTime_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchOutOfTime_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.SCMatchOutOfTime)
+    }
+    
+    static {
+      defaultInstance = new SCMatchOutOfTime(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.SCMatchOutOfTime)
   }
   
   public static final class MatchJoinGameRequest extends
@@ -1596,46 +3774,6 @@ public final class Match {
     public boolean hasErrorCode() { return hasErrorCode; }
     public int getErrorCode() { return errorCode_; }
     
-    // repeated .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 2;
-    public static final int GAMEROLEDATA_FIELD_NUMBER = 2;
-    private java.util.List<com.randioo.doudizhu_server.protocol.Entity.GameRoleData> gameRoleData_ =
-      java.util.Collections.emptyList();
-    public java.util.List<com.randioo.doudizhu_server.protocol.Entity.GameRoleData> getGameRoleDataList() {
-      return gameRoleData_;
-    }
-    public int getGameRoleDataCount() { return gameRoleData_.size(); }
-    public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData(int index) {
-      return gameRoleData_.get(index);
-    }
-    
-    // optional string id = 3;
-    public static final int ID_FIELD_NUMBER = 3;
-    private boolean hasId;
-    private java.lang.String id_ = "";
-    public boolean hasId() { return hasId; }
-    public java.lang.String getId() { return id_; }
-    
-    // optional bool moguai = 4;
-    public static final int MOGUAI_FIELD_NUMBER = 4;
-    private boolean hasMoguai;
-    private boolean moguai_ = false;
-    public boolean hasMoguai() { return hasMoguai; }
-    public boolean getMoguai() { return moguai_; }
-    
-    // optional int32 seated = 5;
-    public static final int SEATED_FIELD_NUMBER = 5;
-    private boolean hasSeated;
-    private int seated_ = 0;
-    public boolean hasSeated() { return hasSeated; }
-    public int getSeated() { return seated_; }
-    
-    // optional int32 roomType = 6;
-    public static final int ROOMTYPE_FIELD_NUMBER = 6;
-    private boolean hasRoomType;
-    private int roomType_ = 0;
-    public boolean hasRoomType() { return hasRoomType; }
-    public int getRoomType() { return roomType_; }
-    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -1647,21 +3785,6 @@ public final class Match {
       getSerializedSize();
       if (hasErrorCode()) {
         output.writeInt32(1, getErrorCode());
-      }
-      for (com.randioo.doudizhu_server.protocol.Entity.GameRoleData element : getGameRoleDataList()) {
-        output.writeMessage(2, element);
-      }
-      if (hasId()) {
-        output.writeString(3, getId());
-      }
-      if (hasMoguai()) {
-        output.writeBool(4, getMoguai());
-      }
-      if (hasSeated()) {
-        output.writeInt32(5, getSeated());
-      }
-      if (hasRoomType()) {
-        output.writeInt32(6, getRoomType());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1675,26 +3798,6 @@ public final class Match {
       if (hasErrorCode()) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, getErrorCode());
-      }
-      for (com.randioo.doudizhu_server.protocol.Entity.GameRoleData element : getGameRoleDataList()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, element);
-      }
-      if (hasId()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(3, getId());
-      }
-      if (hasMoguai()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, getMoguai());
-      }
-      if (hasSeated()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, getSeated());
-      }
-      if (hasRoomType()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, getRoomType());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1838,10 +3941,6 @@ public final class Match {
           throw new IllegalStateException(
             "build() has already been called on this Builder.");
         }
-        if (result.gameRoleData_ != java.util.Collections.EMPTY_LIST) {
-          result.gameRoleData_ =
-            java.util.Collections.unmodifiableList(result.gameRoleData_);
-        }
         com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse returnMe = result;
         result = null;
         return returnMe;
@@ -1860,24 +3959,6 @@ public final class Match {
         if (other == com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse.getDefaultInstance()) return this;
         if (other.hasErrorCode()) {
           setErrorCode(other.getErrorCode());
-        }
-        if (!other.gameRoleData_.isEmpty()) {
-          if (result.gameRoleData_.isEmpty()) {
-            result.gameRoleData_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.GameRoleData>();
-          }
-          result.gameRoleData_.addAll(other.gameRoleData_);
-        }
-        if (other.hasId()) {
-          setId(other.getId());
-        }
-        if (other.hasMoguai()) {
-          setMoguai(other.getMoguai());
-        }
-        if (other.hasSeated()) {
-          setSeated(other.getSeated());
-        }
-        if (other.hasRoomType()) {
-          setRoomType(other.getRoomType());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1908,28 +3989,6 @@ public final class Match {
               setErrorCode(input.readInt32());
               break;
             }
-            case 18: {
-              com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addGameRoleData(subBuilder.buildPartial());
-              break;
-            }
-            case 26: {
-              setId(input.readString());
-              break;
-            }
-            case 32: {
-              setMoguai(input.readBool());
-              break;
-            }
-            case 40: {
-              setSeated(input.readInt32());
-              break;
-            }
-            case 48: {
-              setRoomType(input.readInt32());
-              break;
-            }
           }
         }
       }
@@ -1953,7 +4012,413 @@ public final class Match {
         return this;
       }
       
-      // repeated .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 2;
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.MatchJoinGameResponse)
+    }
+    
+    static {
+      defaultInstance = new MatchJoinGameResponse(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchJoinGameResponse)
+  }
+  
+  public static final class SCMatchJoinGameData extends
+      com.google.protobuf.GeneratedMessage {
+    // Use SCMatchJoinGameData.newBuilder() to construct.
+    private SCMatchJoinGameData() {
+      initFields();
+    }
+    private SCMatchJoinGameData(boolean noInit) {}
+    
+    private static final SCMatchJoinGameData defaultInstance;
+    public static SCMatchJoinGameData getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SCMatchJoinGameData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGameData_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGameData_fieldAccessorTable;
+    }
+    
+    // repeated .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 1;
+    public static final int GAMEROLEDATA_FIELD_NUMBER = 1;
+    private java.util.List<com.randioo.doudizhu_server.protocol.Entity.GameRoleData> gameRoleData_ =
+      java.util.Collections.emptyList();
+    public java.util.List<com.randioo.doudizhu_server.protocol.Entity.GameRoleData> getGameRoleDataList() {
+      return gameRoleData_;
+    }
+    public int getGameRoleDataCount() { return gameRoleData_.size(); }
+    public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData(int index) {
+      return gameRoleData_.get(index);
+    }
+    
+    // optional string id = 2;
+    public static final int ID_FIELD_NUMBER = 2;
+    private boolean hasId;
+    private java.lang.String id_ = "";
+    public boolean hasId() { return hasId; }
+    public java.lang.String getId() { return id_; }
+    
+    // optional int32 seated = 3;
+    public static final int SEATED_FIELD_NUMBER = 3;
+    private boolean hasSeated;
+    private int seated_ = 0;
+    public boolean hasSeated() { return hasSeated; }
+    public int getSeated() { return seated_; }
+    
+    // optional int32 roomType = 4;
+    public static final int ROOMTYPE_FIELD_NUMBER = 4;
+    private boolean hasRoomType;
+    private int roomType_ = 0;
+    public boolean hasRoomType() { return hasRoomType; }
+    public int getRoomType() { return roomType_; }
+    
+    // optional string gameId = 5;
+    public static final int GAMEID_FIELD_NUMBER = 5;
+    private boolean hasGameId;
+    private java.lang.String gameId_ = "";
+    public boolean hasGameId() { return hasGameId; }
+    public java.lang.String getGameId() { return gameId_; }
+    
+    // optional bool mingpai = 6;
+    public static final int MINGPAI_FIELD_NUMBER = 6;
+    private boolean hasMingpai;
+    private boolean mingpai_ = false;
+    public boolean hasMingpai() { return hasMingpai; }
+    public boolean getMingpai() { return mingpai_; }
+    
+    // optional int32 roundNum = 7;
+    public static final int ROUNDNUM_FIELD_NUMBER = 7;
+    private boolean hasRoundNum;
+    private int roundNum_ = 0;
+    public boolean hasRoundNum() { return hasRoundNum; }
+    public int getRoundNum() { return roundNum_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (com.randioo.doudizhu_server.protocol.Entity.GameRoleData element : getGameRoleDataList()) {
+        output.writeMessage(1, element);
+      }
+      if (hasId()) {
+        output.writeString(2, getId());
+      }
+      if (hasSeated()) {
+        output.writeInt32(3, getSeated());
+      }
+      if (hasRoomType()) {
+        output.writeInt32(4, getRoomType());
+      }
+      if (hasGameId()) {
+        output.writeString(5, getGameId());
+      }
+      if (hasMingpai()) {
+        output.writeBool(6, getMingpai());
+      }
+      if (hasRoundNum()) {
+        output.writeInt32(7, getRoundNum());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      for (com.randioo.doudizhu_server.protocol.Entity.GameRoleData element : getGameRoleDataList()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, element);
+      }
+      if (hasId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getId());
+      }
+      if (hasSeated()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, getSeated());
+      }
+      if (hasRoomType()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, getRoomType());
+      }
+      if (hasGameId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(5, getGameId());
+      }
+      if (hasMingpai()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, getMingpai());
+      }
+      if (hasRoundNum()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, getRoundNum());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        if (result.gameRoleData_ != java.util.Collections.EMPTY_LIST) {
+          result.gameRoleData_ =
+            java.util.Collections.unmodifiableList(result.gameRoleData_);
+        }
+        com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData.getDefaultInstance()) return this;
+        if (!other.gameRoleData_.isEmpty()) {
+          if (result.gameRoleData_.isEmpty()) {
+            result.gameRoleData_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.GameRoleData>();
+          }
+          result.gameRoleData_.addAll(other.gameRoleData_);
+        }
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasSeated()) {
+          setSeated(other.getSeated());
+        }
+        if (other.hasRoomType()) {
+          setRoomType(other.getRoomType());
+        }
+        if (other.hasGameId()) {
+          setGameId(other.getGameId());
+        }
+        if (other.hasMingpai()) {
+          setMingpai(other.getMingpai());
+        }
+        if (other.hasRoundNum()) {
+          setRoundNum(other.getRoundNum());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addGameRoleData(subBuilder.buildPartial());
+              break;
+            }
+            case 18: {
+              setId(input.readString());
+              break;
+            }
+            case 24: {
+              setSeated(input.readInt32());
+              break;
+            }
+            case 32: {
+              setRoomType(input.readInt32());
+              break;
+            }
+            case 42: {
+              setGameId(input.readString());
+              break;
+            }
+            case 48: {
+              setMingpai(input.readBool());
+              break;
+            }
+            case 56: {
+              setRoundNum(input.readInt32());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // repeated .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 1;
       public java.util.List<com.randioo.doudizhu_server.protocol.Entity.GameRoleData> getGameRoleDataList() {
         return java.util.Collections.unmodifiableList(result.gameRoleData_);
       }
@@ -2004,7 +4469,7 @@ public final class Match {
         return this;
       }
       
-      // optional string id = 3;
+      // optional string id = 2;
       public boolean hasId() {
         return result.hasId();
       }
@@ -2025,25 +4490,7 @@ public final class Match {
         return this;
       }
       
-      // optional bool moguai = 4;
-      public boolean hasMoguai() {
-        return result.hasMoguai();
-      }
-      public boolean getMoguai() {
-        return result.getMoguai();
-      }
-      public Builder setMoguai(boolean value) {
-        result.hasMoguai = true;
-        result.moguai_ = value;
-        return this;
-      }
-      public Builder clearMoguai() {
-        result.hasMoguai = false;
-        result.moguai_ = false;
-        return this;
-      }
-      
-      // optional int32 seated = 5;
+      // optional int32 seated = 3;
       public boolean hasSeated() {
         return result.hasSeated();
       }
@@ -2061,7 +4508,7 @@ public final class Match {
         return this;
       }
       
-      // optional int32 roomType = 6;
+      // optional int32 roomType = 4;
       public boolean hasRoomType() {
         return result.hasRoomType();
       }
@@ -2079,16 +4526,605 @@ public final class Match {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.MatchJoinGameResponse)
+      // optional string gameId = 5;
+      public boolean hasGameId() {
+        return result.hasGameId();
+      }
+      public java.lang.String getGameId() {
+        return result.getGameId();
+      }
+      public Builder setGameId(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasGameId = true;
+        result.gameId_ = value;
+        return this;
+      }
+      public Builder clearGameId() {
+        result.hasGameId = false;
+        result.gameId_ = getDefaultInstance().getGameId();
+        return this;
+      }
+      
+      // optional bool mingpai = 6;
+      public boolean hasMingpai() {
+        return result.hasMingpai();
+      }
+      public boolean getMingpai() {
+        return result.getMingpai();
+      }
+      public Builder setMingpai(boolean value) {
+        result.hasMingpai = true;
+        result.mingpai_ = value;
+        return this;
+      }
+      public Builder clearMingpai() {
+        result.hasMingpai = false;
+        result.mingpai_ = false;
+        return this;
+      }
+      
+      // optional int32 roundNum = 7;
+      public boolean hasRoundNum() {
+        return result.hasRoundNum();
+      }
+      public int getRoundNum() {
+        return result.getRoundNum();
+      }
+      public Builder setRoundNum(int value) {
+        result.hasRoundNum = true;
+        result.roundNum_ = value;
+        return this;
+      }
+      public Builder clearRoundNum() {
+        result.hasRoundNum = false;
+        result.roundNum_ = 0;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.SCMatchJoinGameData)
     }
     
     static {
-      defaultInstance = new MatchJoinGameResponse(true);
+      defaultInstance = new SCMatchJoinGameData(true);
       com.randioo.doudizhu_server.protocol.Match.internalForceInit();
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.MatchJoinGameResponse)
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.SCMatchJoinGameData)
+  }
+  
+  public static final class SCMatchRole extends
+      com.google.protobuf.GeneratedMessage {
+    // Use SCMatchRole.newBuilder() to construct.
+    private SCMatchRole() {
+      initFields();
+    }
+    private SCMatchRole(boolean noInit) {}
+    
+    private static final SCMatchRole defaultInstance;
+    public static SCMatchRole getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SCMatchRole getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchRole_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Match.internal_static_com_randioo_doudizhu_server_protocol_SCMatchRole_fieldAccessorTable;
+    }
+    
+    // repeated .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 1;
+    public static final int GAMEROLEDATA_FIELD_NUMBER = 1;
+    private java.util.List<com.randioo.doudizhu_server.protocol.Entity.GameRoleData> gameRoleData_ =
+      java.util.Collections.emptyList();
+    public java.util.List<com.randioo.doudizhu_server.protocol.Entity.GameRoleData> getGameRoleDataList() {
+      return gameRoleData_;
+    }
+    public int getGameRoleDataCount() { return gameRoleData_.size(); }
+    public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData(int index) {
+      return gameRoleData_.get(index);
+    }
+    
+    // optional int32 seated = 2;
+    public static final int SEATED_FIELD_NUMBER = 2;
+    private boolean hasSeated;
+    private int seated_ = 0;
+    public boolean hasSeated() { return hasSeated; }
+    public int getSeated() { return seated_; }
+    
+    // optional int32 roomType = 3;
+    public static final int ROOMTYPE_FIELD_NUMBER = 3;
+    private boolean hasRoomType;
+    private int roomType_ = 0;
+    public boolean hasRoomType() { return hasRoomType; }
+    public int getRoomType() { return roomType_; }
+    
+    // optional string id = 4;
+    public static final int ID_FIELD_NUMBER = 4;
+    private boolean hasId;
+    private java.lang.String id_ = "";
+    public boolean hasId() { return hasId; }
+    public java.lang.String getId() { return id_; }
+    
+    // optional string gameId = 5;
+    public static final int GAMEID_FIELD_NUMBER = 5;
+    private boolean hasGameId;
+    private java.lang.String gameId_ = "";
+    public boolean hasGameId() { return hasGameId; }
+    public java.lang.String getGameId() { return gameId_; }
+    
+    // optional bool mingpai = 6;
+    public static final int MINGPAI_FIELD_NUMBER = 6;
+    private boolean hasMingpai;
+    private boolean mingpai_ = false;
+    public boolean hasMingpai() { return hasMingpai; }
+    public boolean getMingpai() { return mingpai_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (com.randioo.doudizhu_server.protocol.Entity.GameRoleData element : getGameRoleDataList()) {
+        output.writeMessage(1, element);
+      }
+      if (hasSeated()) {
+        output.writeInt32(2, getSeated());
+      }
+      if (hasRoomType()) {
+        output.writeInt32(3, getRoomType());
+      }
+      if (hasId()) {
+        output.writeString(4, getId());
+      }
+      if (hasGameId()) {
+        output.writeString(5, getGameId());
+      }
+      if (hasMingpai()) {
+        output.writeBool(6, getMingpai());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      for (com.randioo.doudizhu_server.protocol.Entity.GameRoleData element : getGameRoleDataList()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, element);
+      }
+      if (hasSeated()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, getSeated());
+      }
+      if (hasRoomType()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, getRoomType());
+      }
+      if (hasId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(4, getId());
+      }
+      if (hasGameId()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(5, getGameId());
+      }
+      if (hasMingpai()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, getMingpai());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Match.SCMatchRole parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Match.SCMatchRole prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchRole result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Match.SCMatchRole.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Match.SCMatchRole();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Match.SCMatchRole internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Match.SCMatchRole();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchRole.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchRole getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Match.SCMatchRole.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchRole build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Match.SCMatchRole buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Match.SCMatchRole buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        if (result.gameRoleData_ != java.util.Collections.EMPTY_LIST) {
+          result.gameRoleData_ =
+            java.util.Collections.unmodifiableList(result.gameRoleData_);
+        }
+        com.randioo.doudizhu_server.protocol.Match.SCMatchRole returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Match.SCMatchRole) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Match.SCMatchRole)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Match.SCMatchRole other) {
+        if (other == com.randioo.doudizhu_server.protocol.Match.SCMatchRole.getDefaultInstance()) return this;
+        if (!other.gameRoleData_.isEmpty()) {
+          if (result.gameRoleData_.isEmpty()) {
+            result.gameRoleData_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.GameRoleData>();
+          }
+          result.gameRoleData_.addAll(other.gameRoleData_);
+        }
+        if (other.hasSeated()) {
+          setSeated(other.getSeated());
+        }
+        if (other.hasRoomType()) {
+          setRoomType(other.getRoomType());
+        }
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasGameId()) {
+          setGameId(other.getGameId());
+        }
+        if (other.hasMingpai()) {
+          setMingpai(other.getMingpai());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.GameRoleData.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addGameRoleData(subBuilder.buildPartial());
+              break;
+            }
+            case 16: {
+              setSeated(input.readInt32());
+              break;
+            }
+            case 24: {
+              setRoomType(input.readInt32());
+              break;
+            }
+            case 34: {
+              setId(input.readString());
+              break;
+            }
+            case 42: {
+              setGameId(input.readString());
+              break;
+            }
+            case 48: {
+              setMingpai(input.readBool());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // repeated .com.randioo.doudizhu_server.protocol.GameRoleData gameRoleData = 1;
+      public java.util.List<com.randioo.doudizhu_server.protocol.Entity.GameRoleData> getGameRoleDataList() {
+        return java.util.Collections.unmodifiableList(result.gameRoleData_);
+      }
+      public int getGameRoleDataCount() {
+        return result.getGameRoleDataCount();
+      }
+      public com.randioo.doudizhu_server.protocol.Entity.GameRoleData getGameRoleData(int index) {
+        return result.getGameRoleData(index);
+      }
+      public Builder setGameRoleData(int index, com.randioo.doudizhu_server.protocol.Entity.GameRoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.gameRoleData_.set(index, value);
+        return this;
+      }
+      public Builder setGameRoleData(int index, com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder builderForValue) {
+        result.gameRoleData_.set(index, builderForValue.build());
+        return this;
+      }
+      public Builder addGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        if (result.gameRoleData_.isEmpty()) {
+          result.gameRoleData_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.GameRoleData>();
+        }
+        result.gameRoleData_.add(value);
+        return this;
+      }
+      public Builder addGameRoleData(com.randioo.doudizhu_server.protocol.Entity.GameRoleData.Builder builderForValue) {
+        if (result.gameRoleData_.isEmpty()) {
+          result.gameRoleData_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.GameRoleData>();
+        }
+        result.gameRoleData_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addAllGameRoleData(
+          java.lang.Iterable<? extends com.randioo.doudizhu_server.protocol.Entity.GameRoleData> values) {
+        if (result.gameRoleData_.isEmpty()) {
+          result.gameRoleData_ = new java.util.ArrayList<com.randioo.doudizhu_server.protocol.Entity.GameRoleData>();
+        }
+        super.addAll(values, result.gameRoleData_);
+        return this;
+      }
+      public Builder clearGameRoleData() {
+        result.gameRoleData_ = java.util.Collections.emptyList();
+        return this;
+      }
+      
+      // optional int32 seated = 2;
+      public boolean hasSeated() {
+        return result.hasSeated();
+      }
+      public int getSeated() {
+        return result.getSeated();
+      }
+      public Builder setSeated(int value) {
+        result.hasSeated = true;
+        result.seated_ = value;
+        return this;
+      }
+      public Builder clearSeated() {
+        result.hasSeated = false;
+        result.seated_ = 0;
+        return this;
+      }
+      
+      // optional int32 roomType = 3;
+      public boolean hasRoomType() {
+        return result.hasRoomType();
+      }
+      public int getRoomType() {
+        return result.getRoomType();
+      }
+      public Builder setRoomType(int value) {
+        result.hasRoomType = true;
+        result.roomType_ = value;
+        return this;
+      }
+      public Builder clearRoomType() {
+        result.hasRoomType = false;
+        result.roomType_ = 0;
+        return this;
+      }
+      
+      // optional string id = 4;
+      public boolean hasId() {
+        return result.hasId();
+      }
+      public java.lang.String getId() {
+        return result.getId();
+      }
+      public Builder setId(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasId = true;
+        result.id_ = value;
+        return this;
+      }
+      public Builder clearId() {
+        result.hasId = false;
+        result.id_ = getDefaultInstance().getId();
+        return this;
+      }
+      
+      // optional string gameId = 5;
+      public boolean hasGameId() {
+        return result.hasGameId();
+      }
+      public java.lang.String getGameId() {
+        return result.getGameId();
+      }
+      public Builder setGameId(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasGameId = true;
+        result.gameId_ = value;
+        return this;
+      }
+      public Builder clearGameId() {
+        result.hasGameId = false;
+        result.gameId_ = getDefaultInstance().getGameId();
+        return this;
+      }
+      
+      // optional bool mingpai = 6;
+      public boolean hasMingpai() {
+        return result.hasMingpai();
+      }
+      public boolean getMingpai() {
+        return result.getMingpai();
+      }
+      public Builder setMingpai(boolean value) {
+        result.hasMingpai = true;
+        result.mingpai_ = value;
+        return this;
+      }
+      public Builder clearMingpai() {
+        result.hasMingpai = false;
+        result.mingpai_ = false;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.SCMatchRole)
+    }
+    
+    static {
+      defaultInstance = new SCMatchRole(true);
+      com.randioo.doudizhu_server.protocol.Match.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.SCMatchRole)
   }
   
   public static final class SCMatchJoinGame extends
@@ -2406,20 +5442,55 @@ public final class Match {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameRequest_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_SCMatchCreateGame_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_SCMatchCreateGame_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_randioo_doudizhu_server_protocol_MatchAIRequest_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_doudizhu_server_protocol_MatchAIRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_MatchAIResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_MatchAIResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_SCMatchAI_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_SCMatchAI_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_randioo_doudizhu_server_protocol_MatchRoleRequest_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_doudizhu_server_protocol_MatchRoleRequest_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor;
+    internal_static_com_randioo_doudizhu_server_protocol_MatchRoleResponse_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_fieldAccessorTable;
+      internal_static_com_randioo_doudizhu_server_protocol_MatchRoleResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_MatchCancelRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_MatchCancelRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_MatchCancelResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_MatchCancelResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_SCMatchOutOfTime_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_SCMatchOutOfTime_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameRequest_descriptor;
   private static
@@ -2430,6 +5501,16 @@ public final class Match {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGameData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGameData_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_SCMatchRole_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_SCMatchRole_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGame_descriptor;
   private static
@@ -2448,20 +5529,35 @@ public final class Match {
       "er.protocol\032\014Entity.proto\"^\n\026MatchCreate" +
       "GameRequest\022D\n\ngameConfig\030\001 \001(\01320.com.ra" +
       "ndioo.doudizhu_server.protocol.GameConfi" +
-      "g\"\020\n\016MatchAIRequest\"\022\n\020MatchRoleRequest\"" +
-      "\247\001\n\027MatchCreateGameResponse\022\024\n\terrorCode" +
-      "\030\001 \001(\005:\0011\022\n\n\002id\030\002 \001(\t\022\016\n\006moguai\030\003 \001(\010\022H\n" +
-      "\014gameRoleData\030\004 \001(\01322.com.randioo.doudiz" +
-      "hu_server.protocol.GameRoleData\022\020\n\010roomT" +
-      "ype\030\006 \001(\005\"*\n\024MatchJoinGameRequest\022\022\n\nloc",
-      "kString\030\001 \001(\t\"\265\001\n\025MatchJoinGameResponse\022" +
-      "\024\n\terrorCode\030\001 \001(\005:\0011\022H\n\014gameRoleData\030\002 " +
-      "\003(\01322.com.randioo.doudizhu_server.protoc" +
-      "ol.GameRoleData\022\n\n\002id\030\003 \001(\t\022\016\n\006moguai\030\004 " +
-      "\001(\010\022\016\n\006seated\030\005 \001(\005\022\020\n\010roomType\030\006 \001(\005\"[\n" +
-      "\017SCMatchJoinGame\022H\n\014gameRoleData\030\001 \001(\01322" +
-      ".com.randioo.doudizhu_server.protocol.Ga" +
-      "meRoleData"
+      "g\"/\n\027MatchCreateGameResponse\022\024\n\terrorCod" +
+      "e\030\001 \001(\005:\0011\"\256\001\n\021SCMatchCreateGame\022\n\n\002id\030\001" +
+      " \001(\t\022H\n\014gameRoleData\030\002 \001(\01322.com.randioo" +
+      ".doudizhu_server.protocol.GameRoleData\022\016" +
+      "\n\006gameId\030\003 \001(\t\022\020\n\010roomType\030\004 \001(\005\022\017\n\007ming" +
+      "pai\030\005 \001(\010\022\020\n\010roundNum\030\006 \001(\005\"\020\n\016MatchAIRe",
+      "quest\"\'\n\017MatchAIResponse\022\024\n\terrorCode\030\001 " +
+      "\001(\005:\0011\"\224\001\n\tSCMatchAI\022\n\n\002id\030\001 \001(\t\022H\n\014game" +
+      "RoleData\030\002 \001(\01322.com.randioo.doudizhu_se" +
+      "rver.protocol.GameRoleData\022\016\n\006gameId\030\003 \001" +
+      "(\t\022\020\n\010roomType\030\004 \001(\005\022\017\n\007mingpai\030\005 \001(\010\"\022\n" +
+      "\020MatchRoleRequest\"<\n\021MatchRoleResponse\022\024" +
+      "\n\terrorCode\030\001 \001(\005:\0011\022\021\n\tcountdown\030\002 \001(\005\"" +
+      "\024\n\022MatchCancelRequest\"+\n\023MatchCancelResp" +
+      "onse\022\024\n\terrorCode\030\001 \001(\005:\0011\"\022\n\020SCMatchOut" +
+      "OfTime\"*\n\024MatchJoinGameRequest\022\022\n\nlockSt",
+      "ring\030\001 \001(\t\"-\n\025MatchJoinGameResponse\022\024\n\te" +
+      "rrorCode\030\001 \001(\005:\0011\"\300\001\n\023SCMatchJoinGameDat" +
+      "a\022H\n\014gameRoleData\030\001 \003(\01322.com.randioo.do" +
+      "udizhu_server.protocol.GameRoleData\022\n\n\002i" +
+      "d\030\002 \001(\t\022\016\n\006seated\030\003 \001(\005\022\020\n\010roomType\030\004 \001(" +
+      "\005\022\016\n\006gameId\030\005 \001(\t\022\017\n\007mingpai\030\006 \001(\010\022\020\n\010ro" +
+      "undNum\030\007 \001(\005\"\246\001\n\013SCMatchRole\022H\n\014gameRole" +
+      "Data\030\001 \003(\01322.com.randioo.doudizhu_server" +
+      ".protocol.GameRoleData\022\016\n\006seated\030\002 \001(\005\022\020" +
+      "\n\010roomType\030\003 \001(\005\022\n\n\002id\030\004 \001(\t\022\016\n\006gameId\030\005",
+      " \001(\t\022\017\n\007mingpai\030\006 \001(\010\"[\n\017SCMatchJoinGame" +
+      "\022H\n\014gameRoleData\030\001 \001(\01322.com.randioo.dou" +
+      "dizhu_server.protocol.GameRoleData"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2476,32 +5572,88 @@ public final class Match {
               new java.lang.String[] { "GameConfig", },
               com.randioo.doudizhu_server.protocol.Match.MatchCreateGameRequest.class,
               com.randioo.doudizhu_server.protocol.Match.MatchCreateGameRequest.Builder.class);
-          internal_static_com_randioo_doudizhu_server_protocol_MatchAIRequest_descriptor =
+          internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor,
+              new java.lang.String[] { "ErrorCode", },
+              com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.class,
+              com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchCreateGame_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchCreateGame_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_SCMatchCreateGame_descriptor,
+              new java.lang.String[] { "Id", "GameRoleData", "GameId", "RoomType", "Mingpai", "RoundNum", },
+              com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame.class,
+              com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchAIRequest_descriptor =
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_randioo_doudizhu_server_protocol_MatchAIRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MatchAIRequest_descriptor,
               new java.lang.String[] { },
               com.randioo.doudizhu_server.protocol.Match.MatchAIRequest.class,
               com.randioo.doudizhu_server.protocol.Match.MatchAIRequest.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchAIResponse_descriptor =
+            getDescriptor().getMessageTypes().get(4);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchAIResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_MatchAIResponse_descriptor,
+              new java.lang.String[] { "ErrorCode", },
+              com.randioo.doudizhu_server.protocol.Match.MatchAIResponse.class,
+              com.randioo.doudizhu_server.protocol.Match.MatchAIResponse.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchAI_descriptor =
+            getDescriptor().getMessageTypes().get(5);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchAI_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_SCMatchAI_descriptor,
+              new java.lang.String[] { "Id", "GameRoleData", "GameId", "RoomType", "Mingpai", },
+              com.randioo.doudizhu_server.protocol.Match.SCMatchAI.class,
+              com.randioo.doudizhu_server.protocol.Match.SCMatchAI.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_MatchRoleRequest_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_randioo_doudizhu_server_protocol_MatchRoleRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MatchRoleRequest_descriptor,
               new java.lang.String[] { },
               com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.class,
               com.randioo.doudizhu_server.protocol.Match.MatchRoleRequest.Builder.class);
-          internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor =
-            getDescriptor().getMessageTypes().get(3);
-          internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_fieldAccessorTable = new
+          internal_static_com_randioo_doudizhu_server_protocol_MatchRoleResponse_descriptor =
+            getDescriptor().getMessageTypes().get(7);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchRoleResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_randioo_doudizhu_server_protocol_MatchCreateGameResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", "Id", "Moguai", "GameRoleData", "RoomType", },
-              com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.class,
-              com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse.Builder.class);
+              internal_static_com_randioo_doudizhu_server_protocol_MatchRoleResponse_descriptor,
+              new java.lang.String[] { "ErrorCode", "Countdown", },
+              com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse.class,
+              com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchCancelRequest_descriptor =
+            getDescriptor().getMessageTypes().get(8);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchCancelRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_MatchCancelRequest_descriptor,
+              new java.lang.String[] { },
+              com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.class,
+              com.randioo.doudizhu_server.protocol.Match.MatchCancelRequest.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchCancelResponse_descriptor =
+            getDescriptor().getMessageTypes().get(9);
+          internal_static_com_randioo_doudizhu_server_protocol_MatchCancelResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_MatchCancelResponse_descriptor,
+              new java.lang.String[] { "ErrorCode", },
+              com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse.class,
+              com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchOutOfTime_descriptor =
+            getDescriptor().getMessageTypes().get(10);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchOutOfTime_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_SCMatchOutOfTime_descriptor,
+              new java.lang.String[] { },
+              com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime.class,
+              com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameRequest_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameRequest_descriptor,
@@ -2509,15 +5661,31 @@ public final class Match {
               com.randioo.doudizhu_server.protocol.Match.MatchJoinGameRequest.class,
               com.randioo.doudizhu_server.protocol.Match.MatchJoinGameRequest.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameResponse_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_MatchJoinGameResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", "GameRoleData", "Id", "Moguai", "Seated", "RoomType", },
+              new java.lang.String[] { "ErrorCode", },
               com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse.class,
               com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGameData_descriptor =
+            getDescriptor().getMessageTypes().get(13);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGameData_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGameData_descriptor,
+              new java.lang.String[] { "GameRoleData", "Id", "Seated", "RoomType", "GameId", "Mingpai", "RoundNum", },
+              com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData.class,
+              com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchRole_descriptor =
+            getDescriptor().getMessageTypes().get(14);
+          internal_static_com_randioo_doudizhu_server_protocol_SCMatchRole_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_SCMatchRole_descriptor,
+              new java.lang.String[] { "GameRoleData", "Seated", "RoomType", "Id", "GameId", "Mingpai", },
+              com.randioo.doudizhu_server.protocol.Match.SCMatchRole.class,
+              com.randioo.doudizhu_server.protocol.Match.SCMatchRole.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGame_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_SCMatchJoinGame_descriptor,

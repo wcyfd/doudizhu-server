@@ -47,4 +47,5 @@ enum ErrorCode{
 	NOT_LANDLORD = 29;//你不是地主
 	MINGPAI_FORBIDDEN = 30;//不能明牌
 	FIRST_ROUND = 31;//第一轮
-} // 31
+	NO_VIDEO = 32;//没有录像
+} // 32

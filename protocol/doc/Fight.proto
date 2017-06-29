@@ -11,7 +11,10 @@ message FightReadyResponse{
 
 message SCFightReady{
 	optional int32 seated = 1;
+	optional bool isFirst = 2;
 }
+
+
 
 message SCFightMingPai{
 	optional int32 seated = 1;
@@ -23,26 +26,54 @@ message FightMingPaiResponse{
 	optional int32 errorCode = 1 [default = 1];
 }
 
+
+
 message FightGetlastRoundRequest{
 }
 message FightGetlastRoundResponse{
 	optional int32 errorCode = 1 [default = 1];
 	repeated Record records = 2;
 }
+
+
+
 message FightRejoinRequest{
 }
 message FightRejoinResponse{
-	repeated int32 pai = 1;
-	repeated int32 landLordPai = 2;
-	optional string roomId = 3;
-	optional bool moguai = 4;
-	optional int32 seated = 5;
+	optional int32 errorCode = 1 [default = 1];
+	repeated int32 pai = 2;
+	repeated int32 landLordPai = 3;
+	optional string roomId = 4;
+	optional bool moguai = 5;
+	optional int32 seated = 6;
 	message gameRolePlayData{
 		optional GameRoleData gameRoleData = 1;
 		optional int32 allScore = 2;
 		optional int32 paiNum = 3;
+		optional int32 callLandlordScore = 4;
+		optional bool isFarmer = 5;
+		optional bool isAuto = 6;
+		optional bool isOnline = 7;
 	}
+	repeated gameRolePlayData rolePlayData = 7;
+	optional bool getLastRound = 8;
+	repeated Record records = 9;
+	optional string gameId = 10;
+	optional int32 times = 11;
+	optional int32 gameState = 12;
+	optional int32 gameType = 13;
+	optional bool landlordCalling = 14;
+	optional bool mingpai = 15;
 }
+message SCFightRejoin{
+	optional int32 seated = 1;
+}
+message SCFightFinishRejoin{
+}
+
+
+
+
 message FightRecommandRequest{
 }
 message FightRecommandResponse{
@@ -52,14 +83,21 @@ message FightRecommandResponse{
 	}
 	repeated RecommandPai recommandPai = 2;
 }
+
+
+
+
+
 message SCFightStart{
 	repeated int32 pai = 1;
 	optional int32 times = 2;	
+	optional bool moguai = 3;
 	repeated PaiNum PaiNum = 4; 
+	optional int32 roundNum = 5;
 	
 }
 message SCFightRoundOver{
-	optional int32 di = 1;
+	optional int32 dang = 1;
 	optional int32 bomb = 2;
 	optional bool spring = 3;
 	optional bool moguai = 4;
@@ -70,9 +108,11 @@ message SCFightRoundOver{
 		optional int32 allScore = 3;
 		optional int32 seated = 4;
 		optional int32 money = 5;
+		repeated int32 pai = 6;
 	}
 	repeated Score score = 6;
 	optional bool over = 7;
+	optional int32 all = 8;
 }
 message SCFightGameOver{	
 	message GameOverData{
@@ -80,6 +120,9 @@ message SCFightGameOver{
 		optional int32 landLordNum = 2;
 		optional int32 farmerNum = 3;
 		optional int32 score = 4;
+		optional int32 seated = 5;
+		optional string headImgUrl = 6;
+		optional int32 roleId = 7;
 	}
 	repeated GameOverData gameOverData = 1;
 }
@@ -96,6 +139,7 @@ message SCFightCallLandLord{
 	optional int32 fen = 4;
 	
 }
+
 message SCFightPutOut{
 	optional int32 seated = 1;
 	optional int32 countdown = 2;
@@ -106,19 +150,22 @@ message SCFightPutOutPai{
 	repeated int32 putOutPai = 2;
 	optional int32 times = 3;
 	repeated PaiNum PaiNum = 4;	
+	optional string type = 5;
 }
+
 message FightSendCardRequest{
 	repeated int32 pai = 1;	
 }
+
 message FightSendCardResponse{
 	optional int32 errorCode = 1 [default = 1];
 }
+
 message SCFightLandLord{
 	repeated int32 pai = 1;
 	repeated int32 landLordPai = 2;
 	optional int32 seated = 3;
 }
-
 
 message FightExitGameRequest{
 	
@@ -128,18 +175,27 @@ message FightExitGameResponse{
 	optional int32 errorCode = 1 [default = 1];
 }
 
-
 message SCFightExitGame{
-	optional string gameRoleId = 1;
+	optional int32 seated = 1;
+}
+
+message FightApplyExitGameRequest{
+	
+}
+
+message FightApplyExitGameResponse{
+	optional int32 errorCode = 1[default = 1];
 }
 
 message SCFightApplyExitGame{
-	optional string name = 1;
-	optional int32 countDown = 2;
+	optional string name = 1;//申请退出的玩家名
+	optional int32 applyExitId = 2;//该次申请的id
+	optional int32 countDown = 3;//倒计时
 }
 
 message FightAgreeExitGameRequest{
-	optional bool agree = 1[default = true];
+	optional FightVoteApplyExit fightVoteApplyExit = 1;
+	optional int32 applyExitId = 2;//申请的id
 }
 
 message FightAgreeExitGameResponse{
@@ -155,4 +211,20 @@ message SCFightGameDismiss{
 
 message SCFightLoadResource{
 	
+}
+message SCFightLastRoundReady{
+}
+message SCFightDisconnect{
+	optional int32 seated = 1;
+}
+message SCFightAllAgreeExit{
+}
+message FightAutoRequest{
+}
+message FightAutoResponse{
+	optional int32 errorCode = 1 [default = 1];
+}
+message SCFightAuto{
+	optional int32 seated = 1;
+	optional bool auto = 2;
 }

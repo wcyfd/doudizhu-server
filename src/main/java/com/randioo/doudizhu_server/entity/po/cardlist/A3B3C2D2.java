@@ -1,6 +1,7 @@
 package com.randioo.doudizhu_server.entity.po.cardlist;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -83,7 +84,7 @@ public class A3B3C2D2 extends A3B3 {
 
 		A3B3C2D2 a = new A3B3C2D2();
 		a.setNum(first);
-		a.setLength(set2.size());
+		a.setLength(len);
 		a.getAddNumList().addAll(set0);
 		a.getAddNumList().addAll(set1);
 
@@ -93,8 +94,61 @@ public class A3B3C2D2 extends A3B3 {
 	@Override
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
 			List<Integer> arr) {
-		// TODO Auto-generated method stub
-		//super.recommand(recommandList, cardSort, lastCardList, arr);
+		if (arr.size() < 10){
+			return;
+		}
+		if (lastCardList == null) {
+			return;
+		}
+		if (lastCardList.getClass() != getClass()) {
+			return;
+		}
+		A3B3C2D2 a1 =  (A3B3C2D2) lastCardList;
+		int num = a1.getNum();
+		List<List<Integer>> lists = new ArrayList<>();
+		Set<Integer> tset = null;
+		CardSort tcardSort = cardSort.clone();
+
+		Set<Integer> set = tcardSort.getCardSort().get(3);				
+		List<Integer> temp = new ArrayList<>(set);
+		CardTools.rmAllValues(tcardSort, temp);	
+		
+		set = tcardSort.getCardSort().get(2);				
+		temp = new ArrayList<>(set);
+		for (int value : temp) {
+			tcardSort.getCardSort().get(1).remove(value);
+		}		
+		List<Integer> extra = new ArrayList<>(tcardSort.getCardSort().get(1));
+		if(extra.size() < a1.getLength()){
+			return;
+		}
+		Collections.sort(extra);
+		tset = tcardSort.getCardSort().get(2); 		
+			
+		for(int pai : tset){
+			if(pai > num){
+				boolean flag = true;
+				for(int count = 0 ; count < a1.getLength() ; count ++){
+					if(!tset.contains(pai+count) || pai+count > CardTools.C_A){
+						flag = false;
+						break;
+					}
+				}
+				if(flag){						
+					List<Integer> list = new ArrayList<>();
+					for(int count = 0 ; count < a1.getLength() ; count ++){
+						for (int k = 0; k < 3; k++)
+							list.add(pai+count);
+					}
+					for(int count = 0 ; count < a1.getLength() ; count ++){
+						for (int k = 0; k < 2; k++)
+							list.add(extra.get(count));
+					}
+					lists.add(list);
+				}
+			}	
+		}
+		recommandList.addAll(recommandList.size(), lists);
 	}
 
 

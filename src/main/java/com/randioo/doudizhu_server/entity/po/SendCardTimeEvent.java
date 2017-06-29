@@ -5,14 +5,16 @@ import com.randioo.randioo_server_base.scheduler.DefaultTimeEvent;
 public abstract class SendCardTimeEvent extends DefaultTimeEvent {
 
 	private int gameId;
-	private int sendCardCount;
+	private int round;
+	private boolean first;
+	private boolean mustPutOut;
 
-	public int getSendCardCount() {
-		return sendCardCount;
+	public int getRound() {
+		return round;
 	}
 
-	public void setSendCardCount(int sendCardCount) {
-		this.sendCardCount = sendCardCount;
+	public void setRound(int round) {
+		this.round = round;
 	}
 
 	public int getGameId() {
@@ -22,4 +24,22 @@ public abstract class SendCardTimeEvent extends DefaultTimeEvent {
 	public void setGameId(int gameId) {
 		this.gameId = gameId;
 	}
+
+	public boolean isFirst() {
+		return first;
+	}
+
+	public void setFirst(boolean first) {
+		this.first = first;
+	}
+
+	public boolean isMustPutOut() {
+		return mustPutOut;
+	}
+
+	public void setMustPutOut(boolean mustPutOut) {
+		this.mustPutOut = mustPutOut;
+	}
+	
+	
 }

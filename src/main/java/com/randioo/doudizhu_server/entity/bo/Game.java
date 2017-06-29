@@ -9,9 +9,11 @@ import java.util.Map;
 import com.randioo.doudizhu_server.entity.po.CardRecord;
 import com.randioo.doudizhu_server.entity.po.RoleGameInfo;
 import com.randioo.doudizhu_server.entity.po.cardlist.CardList;
+import com.randioo.doudizhu_server.protocol.Entity.FightVoteApplyExit;
 import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
 import com.randioo.doudizhu_server.protocol.Entity.GameState;
 import com.randioo.doudizhu_server.protocol.Entity.GameType;
+import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 
 public class Game {
 	private int gameId;
@@ -53,21 +55,35 @@ public class Game {
 	private int sendCardCount;
 	// 出牌的时间戳
 	private int sendCardTime;
-	
+
 	private boolean mingPaiState = false;
-	
+
 	private boolean farmerSpring = true;
-	
+
 	private boolean LandLordSpring = true;
-	
+
 	private int bomb;
-	
+
 	private boolean moGuai;
-	
+
 	private int round;
-	
-	private List<List<List<CardRecord>>> records = new ArrayList<>();
-	
+
+	private SC currentStatusSC;
+
+	private List<List<CardRecord>> records = new ArrayList<>();
+
+	private int randiooMoney;
+
+	private List<SC> roundoverList = new ArrayList<>();
+
+	private List<String> startTime = new ArrayList<>();
+
+	/** 正在申请退出的玩家id */
+	private String applyExitGameRoleId;
+	/** 申请退出的次数 */
+	private int applyExitId;
+	/** 表决表 */
+	private Map<String, FightVoteApplyExit> voteMap = new HashMap<>();
 
 	public int getOnlineRoleCount() {
 		return onlineRoleCount;
@@ -265,9 +281,51 @@ public class Game {
 		this.round = round;
 	}
 
-	public List<List<List<CardRecord>>> getRecords() {
+	public List<List<CardRecord>> getRecords() {
 		return records;
 	}
-	
 
+	public SC getCurrentStatusSC() {
+		return currentStatusSC;
+	}
+
+	public void setCurrentStatusSC(SC currentStatusSC) {
+		this.currentStatusSC = currentStatusSC;
+	}
+
+	public int getRandiooMoney() {
+		return randiooMoney;
+	}
+
+	public void setRandiooMoney(int randiooMoney) {
+		this.randiooMoney = randiooMoney;
+	}
+
+	public List<SC> getRoundoverList() {
+		return roundoverList;
+	}
+
+	public List<String> getStartTime() {
+		return startTime;
+	}
+
+	public String getApplyExitGameRoleId() {
+		return applyExitGameRoleId;
+	}
+
+	public void setApplyExitGameRoleId(String applyExitGameRoleId) {
+		this.applyExitGameRoleId = applyExitGameRoleId;
+	}
+
+	public int getApplyExitId() {
+		return applyExitId;
+	}
+
+	public void setApplyExitId(int applyExitId) {
+		this.applyExitId = applyExitId;
+	}
+
+	public Map<String, FightVoteApplyExit> getVoteMap() {
+		return voteMap;
+	}
 }

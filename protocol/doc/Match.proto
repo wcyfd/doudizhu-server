@@ -6,17 +6,51 @@ message MatchCreateGameRequest{
 	optional GameConfig gameConfig = 1;
 }
 
-message MatchAIRequest{
-}
-message MatchRoleRequest{
-}
+
 message MatchCreateGameResponse{
 	optional int32 errorCode = 1[default = 1];
-	optional string id = 2;
-	optional bool moguai = 3;
-	optional GameRoleData gameRoleData = 4;
-	optional int32 roomType = 6;
 }
+message SCMatchCreateGame{
+	optional string id = 1;
+	optional GameRoleData gameRoleData = 2;
+	optional string gameId = 3;
+	optional int32 roomType = 4;
+	optional bool mingpai = 5;
+	optional int32 roundNum = 6;
+}
+
+message MatchAIRequest{
+}
+message MatchAIResponse{
+	optional int32 errorCode = 1[default = 1];
+}
+
+message SCMatchAI{
+	optional string id = 1;
+	optional GameRoleData gameRoleData = 2;
+	optional string gameId = 3;
+	optional int32 roomType = 4;
+	optional bool mingpai = 5;
+}
+
+
+message MatchRoleRequest{
+}
+message MatchRoleResponse{
+	optional int32 errorCode = 1[default = 1];
+	optional int32 countdown = 2;
+}
+
+
+message MatchCancelRequest{
+}
+message MatchCancelResponse{
+	optional int32 errorCode = 1[default = 1];
+}
+message SCMatchOutOfTime{
+}
+
+
 
 
 message MatchJoinGameRequest{
@@ -25,12 +59,28 @@ message MatchJoinGameRequest{
 
 message MatchJoinGameResponse{
 	optional int32 errorCode = 1[default = 1];
-	repeated GameRoleData gameRoleData = 2;
-	optional string id = 3;
-	optional bool moguai = 4;
-	optional int32 seated = 5;
-	optional int32 roomType = 6;
 }
+
+message SCMatchJoinGameData{
+	repeated GameRoleData gameRoleData = 1;
+	optional string id = 2;
+	optional int32 seated = 3;
+	optional int32 roomType = 4;
+	optional string gameId = 5;
+	optional bool mingpai = 6;
+	optional int32 roundNum = 7;
+}
+
+
+message SCMatchRole{
+	repeated GameRoleData gameRoleData = 1;
+	optional int32 seated = 2;
+	optional int32 roomType = 3;
+	optional string id = 4;
+	optional string gameId = 5;
+	optional bool mingpai = 6;
+}
+
 
 message SCMatchJoinGame{
 	optional GameRoleData gameRoleData = 1;

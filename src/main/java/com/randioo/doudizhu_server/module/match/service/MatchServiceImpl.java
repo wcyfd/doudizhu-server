@@ -10,21 +10,30 @@ import org.springframework.stereotype.Service;
 
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.doudizhu_server.cache.local.GameCache;
-import com.randioo.doudizhu_server.dao.RoleDao;
 import com.randioo.doudizhu_server.entity.bo.Game;
 import com.randioo.doudizhu_server.entity.bo.Role;
 import com.randioo.doudizhu_server.entity.po.RoleGameInfo;
 import com.randioo.doudizhu_server.entity.po.RoleMatchRule;
+import com.randioo.doudizhu_server.module.fight.service.FightService;
 import com.randioo.doudizhu_server.module.login.service.LoginService;
+import com.randioo.doudizhu_server.module.match.MatchConstant;
 import com.randioo.doudizhu_server.module.money.service.MoneyExchangeService;
 import com.randioo.doudizhu_server.protocol.Entity.GameConfig;
 import com.randioo.doudizhu_server.protocol.Entity.GameRoleData;
 import com.randioo.doudizhu_server.protocol.Entity.GameState;
 import com.randioo.doudizhu_server.protocol.Entity.GameType;
 import com.randioo.doudizhu_server.protocol.Error.ErrorCode;
+import com.randioo.doudizhu_server.protocol.Match.MatchAIResponse;
+import com.randioo.doudizhu_server.protocol.Match.MatchCancelResponse;
 import com.randioo.doudizhu_server.protocol.Match.MatchCreateGameResponse;
 import com.randioo.doudizhu_server.protocol.Match.MatchJoinGameResponse;
+import com.randioo.doudizhu_server.protocol.Match.MatchRoleResponse;
+import com.randioo.doudizhu_server.protocol.Match.SCMatchAI;
+import com.randioo.doudizhu_server.protocol.Match.SCMatchCreateGame;
 import com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGame;
+import com.randioo.doudizhu_server.protocol.Match.SCMatchJoinGameData;
+import com.randioo.doudizhu_server.protocol.Match.SCMatchOutOfTime;
+import com.randioo.doudizhu_server.protocol.Match.SCMatchRole;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
 import com.randioo.doudizhu_server.util.SessionUtils;
 import com.randioo.doudizhu_server.util.Tool;
@@ -34,6 +43,7 @@ import com.randioo.randioo_server_base.module.match.MatchHandler;
 import com.randioo.randioo_server_base.module.match.MatchModelService;
 import com.randioo.randioo_server_base.module.match.MatchRule;
 import com.randioo.randioo_server_base.service.ObserveBaseService;
+import com.randioo.randioo_server_base.utils.RandomUtils;
 import com.randioo.randioo_server_base.utils.TimeUtils;
 
 @Service("matchService")
@@ -50,14 +60,24 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 
 	@Autowired
 	private MoneyExchangeService moneyExchangeService;
-
+	
 	@Autowired
-	private RoleDao roleDao;
+	private FightService fightService;
+
+	
+	@Override
+	public void init() {
+		List<String> locks = GameCache.getGameLocks();
+		for(int i = 100000 ; i < 999999 ; i ++){
+			locks.add(String.valueOf(i));
+		}
+	}
 
 	@Override
 	public void initService() {
 		matchModelService.setMatchHandler(new MatchHandler() {
-
+			
+			
 			@Override
 			public void outOfTime(MatchRule matchRule) {
 				RoleMatchRule roleMatchRule = (RoleMatchRule) matchRule;
@@ -70,12 +90,14 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 				// addAIRole(game);
 				// }
 				// }
-
+				matchModelService.cancelMatch(matchRule.getId());
+				SessionUtils.sc(roleId, SC.newBuilder().setSCMatchOutOfTime(SCMatchOutOfTime.newBuilder()).build());
 				System.out.println(TimeUtils.getNowTime() + " out of Time");
 			}
 
 			@Override
 			public void matchSuccess(Map<String, MatchRule> matchMap) {
+				logger.debug("matchSuccess"+matchMap); 
 				List<RoleMatchRule> list = new ArrayList<>(matchMap.size());
 				for (MatchRule matchRule : matchMap.values())
 					list.add((RoleMatchRule) matchRule);
@@ -83,15 +105,32 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 				Collections.sort(list);
 				GameConfig config = GameConfig.newBuilder().setDi(3).setMingpai(true).setMoguai(true).setRound(1)
 						.build();
-				Game game = createGame(list.get(0).getRoleId(), config);
+				Game game = new Game();
+				int gameId = idClassCreator.getId(Game.class);
+				game.setGameId(gameId);
 				game.setGameType(GameType.GAME_TYPE_MATCH);
+				game.setGameState(GameState.GAME_STATE_PREPARE);
+				int masterId = list.get(0).getRoleId();
+				game.setMasterRoleId(masterId);
+				game.setLockString("");
+				game.setMaxRoleCount(3);
+
+				addAccountRole(game, masterId);
+
+				game.setGameConfig(config);
+				game.setRound(config.getRound());
+
+				GameCache.getGameMap().put(gameId, game);
 
 				for (MatchRule matchRule : matchMap.values()) {
+					if(matchRule == list.get(0)){
+						continue;
+					}
 					RoleMatchRule rule = (RoleMatchRule) matchRule;
 
 					addAccountRole(game, rule.getRoleId());
 				}
-
+				matchSucess(game.getGameId());
 			}
 
 			@Override
@@ -114,29 +153,43 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 	}
 
 	@Override
-	public GeneratedMessage createRoom(Role role, GameConfig gameConfig) {
+	public void createRoom(Role role, GameConfig gameConfig) {
 		if (!checkConfig(gameConfig)) {
-			return SC.newBuilder()
+			SessionUtils.sc(role.getRoleId(), SC.newBuilder()
 					.setMatchCreateGameResponse(
 							MatchCreateGameResponse.newBuilder().setErrorCode(ErrorCode.CREATE_FAILED.getNumber()))
-					.build();
+					.build());
+			return;
 		}
-		if (!moneyExchangeService.exchangeMoney(role, gameConfig.getRound() / 6 * 20, true)) {
-			if (role.getRandiooMoney() - gameConfig.getRound() / 6 * 20 < 0) {
-				return SC.newBuilder()
+		if (!moneyExchangeService.exchangeMoney(role, gameConfig.getRound() / 3, true)) {
+			if (role.getRandiooMoney() - gameConfig.getRound() / 3 * 10 < 0) {
+				SessionUtils.sc(role.getRoleId(), SC.newBuilder()
 						.setMatchCreateGameResponse(
 								MatchCreateGameResponse.newBuilder().setErrorCode(ErrorCode.NO_MONEY.getNumber()))
-						.build();
+						.build());
+				return;
+			}
+		}else{
+			if (role.getRandiooMoney() - gameConfig.getRound() / 3 * 10 >= 0){
+				role.setRandiooMoney(role.getRandiooMoney() - gameConfig.getRound() / 3 * 10);
 			}
 		}
 		Game game = this.createGame(role.getRoleId(), gameConfig);
+		game.setRandiooMoney(gameConfig.getRound() / 3 * 10);
 		RoleGameInfo roleGameInfo = game.getRoleIdMap().get(this.getGameRoleId(game.getGameId(), role.getRoleId()));
 
 		GameRoleData myGameRoleData = this.parseGameRoleData(roleGameInfo, game.getGameId());
-		return SC.newBuilder()
-				.setMatchCreateGameResponse(MatchCreateGameResponse.newBuilder().setId(game.getLockString())
-						.setGameRoleData(myGameRoleData).setMoguai(game.getGameConfig().getMoguai()).setRoomType(GameType.GAME_TYPE_FRIEND.getNumber()))
-				.build();
+		SessionUtils.sc(role.getRoleId(), SC.newBuilder()
+				.setMatchCreateGameResponse(MatchCreateGameResponse.newBuilder())
+				.build());
+		SessionUtils.sc(role.getRoleId(), SC.newBuilder()
+				.setSCMatchCreateGame(SCMatchCreateGame.newBuilder().setId(game.getLockString()).setGameId(String.valueOf(game.getGameId())).setMingpai(gameConfig.getMingpai())
+						.setGameRoleData(myGameRoleData).setRoomType(GameType.GAME_TYPE_FRIEND.getNumber()).setRoundNum(gameConfig.getRound()))
+				.build());
+		fightService.notifyObservers("RECORD", roleGameInfo, SC.newBuilder()
+				.setSCMatchCreateGame(SCMatchCreateGame.newBuilder().setId(game.getLockString()).setGameId(String.valueOf(game.getGameId())).setMingpai(gameConfig.getMingpai())
+						.setGameRoleData(myGameRoleData).setRoomType(GameType.GAME_TYPE_FRIEND.getNumber()).setRoundNum(gameConfig.getRound()))
+				.build());
 	}
 
 	/**
@@ -235,38 +288,42 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 	}
 
 	@Override
-	public GeneratedMessage joinGame(Role role, String lockString) {
+	public void joinGame(Role role, String lockString) {
 		Integer gameId = GameCache.getGameLockStringMap().get(lockString);
 		System.out.println("gameid:" + gameId);
 		if (gameId == null) {
-			return SC.newBuilder()
+			SessionUtils.sc(role.getRoleId(),  SC.newBuilder()
 					.setMatchJoinGameResponse(
 							MatchJoinGameResponse.newBuilder().setErrorCode(ErrorCode.GAME_JOIN_ERROR.getNumber()))
-					.build();
+					.build());
+			return;
 		}
 
 		Game game = GameCache.getGameMap().get(gameId);
 		System.out.println("game:" + game);
 		if (game == null) {
-			return SC.newBuilder()
+			SessionUtils.sc(role.getRoleId(), SC.newBuilder()
 					.setMatchJoinGameResponse(
 							MatchJoinGameResponse.newBuilder().setErrorCode(ErrorCode.GAME_JOIN_ERROR.getNumber()))
-					.build();
+					.build());
+			return;
 		}
 		String targetLock = game.getLockString();
 		// 如果锁相同则可以进
 		if (!targetLock.equals(lockString)) {
-			return SC.newBuilder()
+			SessionUtils.sc(role.getRoleId(), SC.newBuilder()
 					.setMatchJoinGameResponse(
 							MatchJoinGameResponse.newBuilder().setErrorCode(ErrorCode.MATCH_ERROR_LOCK.getNumber()))
-					.build();
+					.build());
+			return;
 		}
 
 		if (game.getRoleIdMap().size() >= game.getMaxRoleCount()) {
-			return SC.newBuilder()
+			SessionUtils.sc(role.getRoleId(), SC.newBuilder()
 					.setMatchJoinGameResponse(
 							MatchJoinGameResponse.newBuilder().setErrorCode(ErrorCode.MATCH_MAX_ROLE_COUNT.getNumber()))
-					.build();
+					.build());
+			return;
 		}
 
 		this.addAccountRole(game, role.getRoleId());
@@ -277,10 +334,14 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 		SC scJoinGame = SC.newBuilder().setSCMatchJoinGame(SCMatchJoinGame.newBuilder().setGameRoleData(myGameRoleData))
 				.build();
 		// 通知其他人加入房间
+		RoleGameInfo myInfo = null;
 		for (RoleGameInfo info : game.getRoleIdMap().values()) {
-			if (role.getRoleId() == info.roleId)
+			if (role.getRoleId() == info.roleId){
+				myInfo = info;
 				continue;
+			}
 			SessionUtils.sc(info.roleId, scJoinGame);
+			fightService.notifyObservers("RECORD", info, scJoinGame);
 		}
 
 		List<GameRoleData> gameRoleDataList = new ArrayList<>(game.getRoleIdMap().size());
@@ -288,20 +349,43 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 			GameRoleData gameRoleData = this.parseGameRoleData(info, game.getGameId());
 			gameRoleDataList.add(gameRoleData);
 		}
-		return SC.newBuilder().setMatchJoinGameResponse(MatchJoinGameResponse.newBuilder()
-				.addAllGameRoleData(gameRoleDataList).setSeated(myGameRoleData.getSeated()).setId(lockString).setMoguai(game.getGameConfig().getMoguai()).setRoomType(GameType.GAME_TYPE_FRIEND.getNumber()))
-				.build();
+		SessionUtils.sc(role.getRoleId(), SC.newBuilder()
+				.setMatchJoinGameResponse(MatchJoinGameResponse.newBuilder())
+				.build());
+		SessionUtils.sc(role.getRoleId(), SC.newBuilder().setSCMatchJoinGameData(SCMatchJoinGameData.newBuilder()
+				.setMingpai(game.getGameConfig().getMingpai())
+				.addAllGameRoleData(gameRoleDataList).setSeated(myGameRoleData.getSeated()).setId(lockString).setGameId(String.valueOf(game.getGameId())).setRoomType(GameType.GAME_TYPE_FRIEND.getNumber()).setRoundNum(game.getGameConfig().getRound()))
+				.build());
+		fightService.notifyObservers("RECORD", myInfo, SC.newBuilder().setSCMatchJoinGameData(SCMatchJoinGameData.newBuilder()
+				.setMingpai(game.getGameConfig().getMingpai())
+				.addAllGameRoleData(gameRoleDataList).setSeated(myGameRoleData.getSeated()).setId(lockString).setGameId(String.valueOf(game.getGameId())).setRoomType(GameType.GAME_TYPE_FRIEND.getNumber()).setRoundNum(game.getGameConfig().getRound()))
+				.build());
 	}
 
 	@Override
 	public GeneratedMessage match(Role role) {
+		if(role == null || role.getMoney() < 1000)
+			return SC.newBuilder().setMatchRoleResponse(MatchRoleResponse.newBuilder().setErrorCode(ErrorCode.NO_MONEY.getNumber())).build();
 		RoleMatchRule matchRule = new RoleMatchRule();
-		matchRule.setId(idClassCreator.getId(RoleMatchRule.class) + "_" + role.getRoleId());
-		matchRule.setWaitTime(60);
+		String matchRuleId = idClassCreator.getId(RoleMatchRule.class) + "_" + role.getRoleId();
+		role.setMatchRuleId(matchRuleId);
+		matchRule.setId(matchRuleId);
+		matchRule.setRoleId(role.getRoleId());
+		matchRule.setWaitTime(MatchConstant.MATCH_ROLE_COUNTDOWN);
 		matchRule.setAi(false);
+		matchRule.setMaxCount(3);
 		matchRule.setMatchTime(TimeUtils.getNowTime());
 		matchModelService.matchRole(matchRule);
-		return null;
+		return SC.newBuilder().setMatchRoleResponse(MatchRoleResponse.newBuilder().setCountdown(MatchConstant.MATCH_ROLE_COUNTDOWN)).build();
+	}
+	
+	@Override
+	public GeneratedMessage matchCancel(Role role) {
+		if(role.getMatchRuleId() != null){
+			matchModelService.cancelMatch(role.getMatchRuleId());
+			role.setMatchRuleId(null);
+		}
+		return SC.newBuilder().setMatchCancelResponse(MatchCancelResponse.newBuilder()).build();
 	}
 
 	@Override
@@ -309,16 +393,29 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 		int roleId = role.getRoleId();
 		GameConfig config = GameConfig.newBuilder().setDi(1).setMingpai(true).setMoguai(true).setRound(1).build();
 		Game game = createGame(roleId, config);
+		game.setGameType(GameType.GAME_TYPE_MATCH);
 		RoleGameInfo tRoleGameInfo = game.getRoleIdMap().get(this.getGameRoleId(game.getGameId(), role.getRoleId()));
 
 		GameRoleData myGameRoleData = this.parseGameRoleData(tRoleGameInfo, game.getGameId());
 		SessionUtils
 				.sc(role.getRoleId(),
 						SC.newBuilder()
-								.setMatchCreateGameResponse(MatchCreateGameResponse.newBuilder()
-										.setId(game.getLockString()).setGameRoleData(myGameRoleData)
-										.setMoguai(game.getGameConfig().getMoguai()).setRoomType(GameType.GAME_TYPE_MATCH.getNumber()))
+								.setMatchAIResponse(MatchAIResponse.newBuilder())
 								.build());
+		SessionUtils
+		.sc(role.getRoleId(),
+				SC.newBuilder()
+						.setSCMatchAI(SCMatchAI.newBuilder()
+								.setId(game.getLockString()).setGameRoleData(myGameRoleData)
+								.setMingpai(true)
+								.setRoomType(GameType.GAME_TYPE_MATCH.getNumber()))
+						.build());
+		fightService.notifyObservers("RECORD", tRoleGameInfo, SC.newBuilder()
+				.setSCMatchAI(SCMatchAI.newBuilder()
+						.setId(game.getLockString()).setGameRoleData(myGameRoleData)
+						.setMingpai(true)
+						.setRoomType(GameType.GAME_TYPE_MATCH.getNumber()))
+				.build());
 		int maxCount = game.getMaxRoleCount();
 		for (int i = game.getRoleIdMap().size(); i < maxCount; i++) {
 			String gameRoleId = addAIRole(game);
@@ -327,23 +424,24 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 			System.out.println(info);
 			int index = game.getRoleIdList().indexOf(gameRoleId);
 			GameRoleData AIGameRoleData = GameRoleData.newBuilder().setGameRoleId(info.gameRoleId).setReady(info.ready)
-					.setSeated(index).setName("ROBOT" + info.gameRoleId).build();
+					.setSeated(index).setName("ROBOT" + info.gameRoleId).setId(0).build();
 
 			SC scJoinGame = SC.newBuilder()
 					.setSCMatchJoinGame(SCMatchJoinGame.newBuilder().setGameRoleData(AIGameRoleData)).build();
 			SessionUtils.sc(role.getRoleId(), scJoinGame);
+			fightService.notifyObservers("RECORD", tRoleGameInfo, scJoinGame);
 		}
 
 	}
-
-	private GameRoleData parseGameRoleData(RoleGameInfo info, int gameId) {
+	@Override
+	public GameRoleData parseGameRoleData(RoleGameInfo info, int gameId) {
 		Role role = loginService.getRoleById(info.roleId);
 		String name = role != null ? role.getName() : "";
 
 		Game game = GameCache.getGameMap().get(gameId);
 		int index = game.getRoleIdList().indexOf(info.gameRoleId);
 		return GameRoleData.newBuilder().setGameRoleId(info.gameRoleId).setReady(info.ready).setSeated(index)
-				.setName(name).setHeadImgUrl(role.getHeadImgUrl()).setMoney(role.getMoney()).build();
+				.setName(name).setHeadImgUrl(role.getHeadImgUrl()).setMoney(role.getMoney()).setId(role.getRoleId()).setSex(role.getSex()).build();
 	}
 
 	/**
@@ -378,7 +476,9 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 	}
 
 	private String getLockString() {
-		return /* "1980" */"111111";
+		int size = GameCache.getGameLocks().size();
+		int random = RandomUtils.getRandomNum(size);
+		return GameCache.getGameLocks().remove(random);
 	}
 
 	public boolean checkConfig(GameConfig gameConfig) {
@@ -388,6 +488,39 @@ public class MatchServiceImpl extends ObserveBaseService implements MatchService
 			return false;
 		}
 		return true;
+	}
+	@Override
+	public void matchSucess(int gameId){
+		Game game = GameCache.getGameMap().get(gameId);
+		List<GameRoleData> gameRoleDataList = new ArrayList<>(game.getRoleIdMap().size());
+		for (RoleGameInfo info : game.getRoleIdMap().values()) {
+			info.ready = true;
+			Role role = (Role) RoleCache.getRoleById(info.roleId);
+			GameRoleData gameRoleData = GameRoleData.newBuilder().setGameRoleId(info.gameRoleId).setReady(info.ready).setSeated(game.getRoleIdList().indexOf(info.gameRoleId))
+					.setName(role.getName())
+					.setHeadImgUrl(role.getHeadImgUrl())
+					.setMoney(role.getMoney()).setId(info.roleId).setSex(role.getSex()).build();
+			gameRoleDataList.add(gameRoleData);
+		}
+		for (RoleGameInfo info : game.getRoleIdMap().values()) {
+			SessionUtils.sc(info.roleId, SC.newBuilder().setSCMatchRole(SCMatchRole.newBuilder()
+				.addAllGameRoleData(gameRoleDataList)
+				.setId("0")
+				.setMingpai(true)
+				.setSeated(game.getRoleIdList().indexOf(info.gameRoleId))
+				.setRoomType(GameType.GAME_TYPE_MATCH.getNumber())
+				.setGameId(String.valueOf(game.getGameId())))
+				.build());
+			fightService.notifyObservers("RECORD", info, SC.newBuilder().setSCMatchRole(SCMatchRole.newBuilder()
+					.addAllGameRoleData(gameRoleDataList)
+					.setId("0")
+					.setMingpai(true)
+					.setSeated(game.getRoleIdList().indexOf(info.gameRoleId))
+					.setRoomType(GameType.GAME_TYPE_MATCH.getNumber())
+					.setGameId(String.valueOf(game.getGameId())))
+					.build());
+		}
+		fightService.gameStart(game.getGameId());
 	}
 
 }

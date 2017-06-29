@@ -1,6 +1,8 @@
 package com.randioo.doudizhu_server.entity.po.cardlist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -55,20 +57,19 @@ public class A3B3CD extends A3B3 {
 		int len = 0;
 		for (int value : set2) {
 			if (tmp == 0) {
-				// 如果第三行数组中第一个数字是大于K则就没有可能了
 				if (value > CardTools.C_K)
 					throw new CardListPatternException();
-
 				first = value;
 				tmp = value;
-			} else {
-				if (value > CardTools.C_A)
-					break;
+				len ++;
+			} else if (value != (tmp + 1) || value > CardTools.C_A)
+				throw new CardListPatternException();
+			else{
+				tmp = value;
+				len ++;
 			}
-			len++;
 		}
-		if (len < 2)
-			throw new CardListPatternException();
+
 
 		for (int n = first; n < first+len; n++)
 			CardTools.rmValue(cardSort, n, 3);
@@ -80,7 +81,7 @@ public class A3B3CD extends A3B3 {
 
 		A3B3CD a = new A3B3CD();
 		a.setNum(first);
-		a.setLength(set2.size());
+		a.setLength(len);
 		a.getAddNumList().addAll(set0);
 		a.getAddNumList().addAll(set1);
 
@@ -90,8 +91,63 @@ public class A3B3CD extends A3B3 {
 	@Override
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList,
 			List<Integer> arr) {
-		// TODO Auto-generated method stub
-		//super.recommand(recommandList, cardSort, lastCardList, arr);
+		if (arr.size() < 8){
+			return;
+		}
+		if (lastCardList == null) {
+			return;
+		}
+		if (lastCardList.getClass() != getClass()) {
+			return;
+		}
+		A3B3CD a1 =  (A3B3CD) lastCardList;
+		int num = a1.getNum();
+		List<List<Integer>> lists = new ArrayList<>();
+		Set<Integer> tset = null;
+		CardSort tcardSort = cardSort.clone();
+
+		Set<Integer> set = tcardSort.getCardSort().get(3);				
+		List<Integer> temp = new ArrayList<>(set);
+		CardTools.rmAllValues(tcardSort, temp);	
+		
+		set = tcardSort.getCardSort().get(2);				
+		temp = new ArrayList<>(set);
+		for (int value : temp) {
+			tcardSort.getCardSort().get(0).remove(value);
+			tcardSort.getCardSort().get(1).remove(value);
+		}		
+		List<Integer> extra = new ArrayList<>(tcardSort.getCardSort().get(0));
+		extra.addAll(tcardSort.getCardSort().get(1));
+		Collections.sort(extra);
+		if(extra.size() < a1.getLength()){
+			return;
+		}
+
+		tset = tcardSort.getCardSort().get(2); 		
+			
+		for(int pai : tset){
+			if(pai > num){
+				boolean flag = true;
+				for(int count = 0 ; count < a1.getLength() ; count ++){
+					if(!tset.contains(pai+count) || pai+count > CardTools.C_A){
+						flag = false;
+						break;
+					}
+				}
+				if(flag){						
+					List<Integer> list = new ArrayList<>();
+					for(int count = 0 ; count < a1.getLength() ; count ++){
+						for (int k = 0; k < 3; k++)
+							list.add(pai+count);
+					}
+					for(int count = 0 ; count < a1.getLength() ; count ++){
+						list.add(extra.get(count));
+					}
+					lists.add(list);
+				}
+			}	
+		}
+		recommandList.addAll(recommandList.size(), lists);
 	}
 
 

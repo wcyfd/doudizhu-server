@@ -47,11 +47,95 @@ public class ScoreServiceImpl extends ObserveBaseService implements ScoreService
 		for(RoleGameInfo info : game.getRoleIdMap().values()){
 			info.currentMark = mark*(game.getLandlordGameRoleId().equals(info.gameRoleId) ? (landLordWin ? 2 : -2) : (landLordWin ? -1 : 1));
 			info.allMark += info.currentMark;
-			if(game.getGameType() == GameType.GAME_TYPE_MATCH){
+		}
+		if(game.getGameType() == GameType.GAME_TYPE_MATCH){			
+			int []fen = new int[3];
+			int i = 0;
+			int landlordIndex = 0;
+			for(RoleGameInfo info : game.getRoleIdMap().values()){	
+				if(info.gameRoleId.equals(game.getLandlordGameRoleId())){
+					landlordIndex = i;
+					Role role = (Role) RoleCache.getRoleMap().get(info.roleId);
+					if(role == null){
+						fen[i] = info.allMark;
+					}
+					if(role != null){
+						fen[i] = info.allMark * (landLordWin ? 1 : -1);
+						
+						if(role.getMoney() < fen[i]){
+							fen[i] = role.getMoney() ;
+						}
+						fen[i] *=(landLordWin ? 1 : -1);
+
+					}
+				}
+				else{
+					Role role = (Role) RoleCache.getRoleMap().get(info.roleId);
+					if(role == null){
+						fen[i] = info.allMark;
+					}
+					if(role != null){
+						fen[i] = info.allMark * (landLordWin ? -1 : 1);
+						
+						if(role.getMoney() < fen[i]){
+							fen[i] = role.getMoney();
+						}
+						fen[i] *=(landLordWin ? -1 : 1);
+					}
+				}
+				i++;
+			}
+			int cal = 0;
+			for(int temp : fen){
+				cal += temp;
+			}
+			if((cal <= 0 && fen[landlordIndex] < 0)||(cal > 0 && fen[landlordIndex] > 0)){
+				int all = 0;
+				for(int t = 0 ; t < fen.length ; t ++){
+					if(t != landlordIndex){
+						all += fen[t];
+					}
+				}
+				fen[landlordIndex] = all*(-1);
+			}else if(cal <= 0 && fen[landlordIndex] > 0){
+				if(fen[landlordIndex] % 2 == 1){
+					fen[landlordIndex] -= 1;
+				}
+				for(int t = 0 ; t < fen.length ; t ++){
+					if(t != landlordIndex){
+						fen[t] = fen[landlordIndex]/2*(-1) < fen[t] ? fen[t] : fen[landlordIndex]/2*(-1);
+					}
+				}
+				int all = 0;
+				for(int t = 0 ; t < fen.length ; t ++){
+					if(t != landlordIndex){
+						all += fen[t];
+					}
+				}
+				fen[landlordIndex] = all*(-1);				
+			}else if(cal > 0 && fen[landlordIndex] < 0){
+				if(fen[landlordIndex] % 2 == 1){
+					fen[landlordIndex] += 1;
+				}
+				for(int t = 0 ; t < fen.length ; t ++){
+					if(t != landlordIndex){
+						fen[t] = fen[landlordIndex]/2*(-1);
+					}
+				}				
+			}
+			System.out.print("@@@fen:");
+			for(int t :fen){
+				System.out.print(t+"--");
+			}
+			System.out.println("");
+			i = 0;
+			for(RoleGameInfo info : game.getRoleIdMap().values()){
 				Role role = (Role) RoleCache.getRoleMap().get(info.roleId);
 				if(role != null){
-					role.setMoney(role.getMoney() + info.currentMark);
-				}
+					role.setMoney(role.getMoney() + fen[i]);
+					info.allMark = info.currentMark = fen[i];
+				}				
+				i++;
 			}
 		}
 		

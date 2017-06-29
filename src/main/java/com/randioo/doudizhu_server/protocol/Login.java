@@ -613,13 +613,6 @@ public final class Login {
     public boolean hasAccount() { return hasAccount; }
     public java.lang.String getAccount() { return account_; }
     
-    // optional string name = 2;
-    public static final int NAME_FIELD_NUMBER = 2;
-    private boolean hasName;
-    private java.lang.String name_ = "";
-    public boolean hasName() { return hasName; }
-    public java.lang.String getName() { return name_; }
-    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -631,9 +624,6 @@ public final class Login {
       getSerializedSize();
       if (hasAccount()) {
         output.writeString(1, getAccount());
-      }
-      if (hasName()) {
-        output.writeString(2, getName());
       }
       getUnknownFields().writeTo(output);
     }
@@ -647,10 +637,6 @@ public final class Login {
       if (hasAccount()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(1, getAccount());
-      }
-      if (hasName()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(2, getName());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -813,9 +799,6 @@ public final class Login {
         if (other.hasAccount()) {
           setAccount(other.getAccount());
         }
-        if (other.hasName()) {
-          setName(other.getName());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -845,10 +828,6 @@ public final class Login {
               setAccount(input.readString());
               break;
             }
-            case 18: {
-              setName(input.readString());
-              break;
-            }
           }
         }
       }
@@ -872,27 +851,6 @@ public final class Login {
       public Builder clearAccount() {
         result.hasAccount = false;
         result.account_ = getDefaultInstance().getAccount();
-        return this;
-      }
-      
-      // optional string name = 2;
-      public boolean hasName() {
-        return result.hasName();
-      }
-      public java.lang.String getName() {
-        return result.getName();
-      }
-      public Builder setName(java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  result.hasName = true;
-        result.name_ = value;
-        return this;
-      }
-      public Builder clearName() {
-        result.hasName = false;
-        result.name_ = getDefaultInstance().getName();
         return this;
       }
       
@@ -1513,29 +1471,7 @@ public final class Login {
     public boolean hasErrorCode() { return hasErrorCode; }
     public int getErrorCode() { return errorCode_; }
     
-    // optional int32 serverTime = 2;
-    public static final int SERVERTIME_FIELD_NUMBER = 2;
-    private boolean hasServerTime;
-    private int serverTime_ = 0;
-    public boolean hasServerTime() { return hasServerTime; }
-    public int getServerTime() { return serverTime_; }
-    
-    // optional .com.randioo.doudizhu_server.protocol.RoleData roleData = 3;
-    public static final int ROLEDATA_FIELD_NUMBER = 3;
-    private boolean hasRoleData;
-    private com.randioo.doudizhu_server.protocol.Entity.RoleData roleData_;
-    public boolean hasRoleData() { return hasRoleData; }
-    public com.randioo.doudizhu_server.protocol.Entity.RoleData getRoleData() { return roleData_; }
-    
-    // optional string game = 4;
-    public static final int GAME_FIELD_NUMBER = 4;
-    private boolean hasGame;
-    private java.lang.String game_ = "";
-    public boolean hasGame() { return hasGame; }
-    public java.lang.String getGame() { return game_; }
-    
     private void initFields() {
-      roleData_ = com.randioo.doudizhu_server.protocol.Entity.RoleData.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -1546,15 +1482,6 @@ public final class Login {
       getSerializedSize();
       if (hasErrorCode()) {
         output.writeInt32(1, getErrorCode());
-      }
-      if (hasServerTime()) {
-        output.writeInt32(2, getServerTime());
-      }
-      if (hasRoleData()) {
-        output.writeMessage(3, getRoleData());
-      }
-      if (hasGame()) {
-        output.writeString(4, getGame());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1568,18 +1495,6 @@ public final class Login {
       if (hasErrorCode()) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, getErrorCode());
-      }
-      if (hasServerTime()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, getServerTime());
-      }
-      if (hasRoleData()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getRoleData());
-      }
-      if (hasGame()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(4, getGame());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1742,15 +1657,6 @@ public final class Login {
         if (other.hasErrorCode()) {
           setErrorCode(other.getErrorCode());
         }
-        if (other.hasServerTime()) {
-          setServerTime(other.getServerTime());
-        }
-        if (other.hasRoleData()) {
-          mergeRoleData(other.getRoleData());
-        }
-        if (other.hasGame()) {
-          setGame(other.getGame());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1780,23 +1686,6 @@ public final class Login {
               setErrorCode(input.readInt32());
               break;
             }
-            case 16: {
-              setServerTime(input.readInt32());
-              break;
-            }
-            case 26: {
-              com.randioo.doudizhu_server.protocol.Entity.RoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.RoleData.newBuilder();
-              if (hasRoleData()) {
-                subBuilder.mergeFrom(getRoleData());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setRoleData(subBuilder.buildPartial());
-              break;
-            }
-            case 34: {
-              setGame(input.readString());
-              break;
-            }
           }
         }
       }
@@ -1819,6 +1708,341 @@ public final class Login {
         result.errorCode_ = 1;
         return this;
       }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.LoginGetRoleDataResponse)
+    }
+    
+    static {
+      defaultInstance = new LoginGetRoleDataResponse(true);
+      com.randioo.doudizhu_server.protocol.Login.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.LoginGetRoleDataResponse)
+  }
+  
+  public static final class SCLoginGetRoleData extends
+      com.google.protobuf.GeneratedMessage {
+    // Use SCLoginGetRoleData.newBuilder() to construct.
+    private SCLoginGetRoleData() {
+      initFields();
+    }
+    private SCLoginGetRoleData(boolean noInit) {}
+    
+    private static final SCLoginGetRoleData defaultInstance;
+    public static SCLoginGetRoleData getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SCLoginGetRoleData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.doudizhu_server.protocol.Login.internal_static_com_randioo_doudizhu_server_protocol_SCLoginGetRoleData_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.doudizhu_server.protocol.Login.internal_static_com_randioo_doudizhu_server_protocol_SCLoginGetRoleData_fieldAccessorTable;
+    }
+    
+    // optional int32 serverTime = 2;
+    public static final int SERVERTIME_FIELD_NUMBER = 2;
+    private boolean hasServerTime;
+    private int serverTime_ = 0;
+    public boolean hasServerTime() { return hasServerTime; }
+    public int getServerTime() { return serverTime_; }
+    
+    // optional .com.randioo.doudizhu_server.protocol.RoleData roleData = 3;
+    public static final int ROLEDATA_FIELD_NUMBER = 3;
+    private boolean hasRoleData;
+    private com.randioo.doudizhu_server.protocol.Entity.RoleData roleData_;
+    public boolean hasRoleData() { return hasRoleData; }
+    public com.randioo.doudizhu_server.protocol.Entity.RoleData getRoleData() { return roleData_; }
+    
+    // optional string game = 4;
+    public static final int GAME_FIELD_NUMBER = 4;
+    private boolean hasGame;
+    private java.lang.String game_ = "";
+    public boolean hasGame() { return hasGame; }
+    public java.lang.String getGame() { return game_; }
+    
+    // optional bool isGaming = 5;
+    public static final int ISGAMING_FIELD_NUMBER = 5;
+    private boolean hasIsGaming;
+    private boolean isGaming_ = false;
+    public boolean hasIsGaming() { return hasIsGaming; }
+    public boolean getIsGaming() { return isGaming_; }
+    
+    private void initFields() {
+      roleData_ = com.randioo.doudizhu_server.protocol.Entity.RoleData.getDefaultInstance();
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasServerTime()) {
+        output.writeInt32(2, getServerTime());
+      }
+      if (hasRoleData()) {
+        output.writeMessage(3, getRoleData());
+      }
+      if (hasGame()) {
+        output.writeString(4, getGame());
+      }
+      if (hasIsGaming()) {
+        output.writeBool(5, getIsGaming());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasServerTime()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, getServerTime());
+      }
+      if (hasRoleData()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRoleData());
+      }
+      if (hasGame()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(4, getGame());
+      }
+      if (hasIsGaming()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, getIsGaming());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData result;
+      
+      // Construct using com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData();
+        return builder;
+      }
+      
+      protected com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData.getDescriptor();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData getDefaultInstanceForType() {
+        return com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData) {
+          return mergeFrom((com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData other) {
+        if (other == com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData.getDefaultInstance()) return this;
+        if (other.hasServerTime()) {
+          setServerTime(other.getServerTime());
+        }
+        if (other.hasRoleData()) {
+          mergeRoleData(other.getRoleData());
+        }
+        if (other.hasGame()) {
+          setGame(other.getGame());
+        }
+        if (other.hasIsGaming()) {
+          setIsGaming(other.getIsGaming());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 16: {
+              setServerTime(input.readInt32());
+              break;
+            }
+            case 26: {
+              com.randioo.doudizhu_server.protocol.Entity.RoleData.Builder subBuilder = com.randioo.doudizhu_server.protocol.Entity.RoleData.newBuilder();
+              if (hasRoleData()) {
+                subBuilder.mergeFrom(getRoleData());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setRoleData(subBuilder.buildPartial());
+              break;
+            }
+            case 34: {
+              setGame(input.readString());
+              break;
+            }
+            case 40: {
+              setIsGaming(input.readBool());
+              break;
+            }
+          }
+        }
+      }
+      
       
       // optional int32 serverTime = 2;
       public boolean hasServerTime() {
@@ -1896,16 +2120,34 @@ public final class Login {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.LoginGetRoleDataResponse)
+      // optional bool isGaming = 5;
+      public boolean hasIsGaming() {
+        return result.hasIsGaming();
+      }
+      public boolean getIsGaming() {
+        return result.getIsGaming();
+      }
+      public Builder setIsGaming(boolean value) {
+        result.hasIsGaming = true;
+        result.isGaming_ = value;
+        return this;
+      }
+      public Builder clearIsGaming() {
+        result.hasIsGaming = false;
+        result.isGaming_ = false;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.doudizhu_server.protocol.SCLoginGetRoleData)
     }
     
     static {
-      defaultInstance = new LoginGetRoleDataResponse(true);
+      defaultInstance = new SCLoginGetRoleData(true);
       com.randioo.doudizhu_server.protocol.Login.internalForceInit();
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.LoginGetRoleDataResponse)
+    // @@protoc_insertion_point(class_scope:com.randioo.doudizhu_server.protocol.SCLoginGetRoleData)
   }
   
   private static com.google.protobuf.Descriptors.Descriptor
@@ -1938,6 +2180,11 @@ public final class Login {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_doudizhu_server_protocol_LoginGetRoleDataResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_doudizhu_server_protocol_SCLoginGetRoleData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_doudizhu_server_protocol_SCLoginGetRoleData_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1951,14 +2198,15 @@ public final class Login {
       "er.protocol\032\014Entity.proto\"+\n\030LoginCheckA" +
       "ccountRequest\022\017\n\007account\030\001 \001(\t\"1\n\031LoginC" +
       "heckAccountResponse\022\024\n\terrorCode\030\001 \001(\005:\001" +
-      "1\"7\n\026LoginCreateRoleRequest\022\017\n\007account\030\001" +
-      " \001(\t\022\014\n\004name\030\002 \001(\t\"/\n\027LoginCreateRoleRes" +
-      "ponse\022\024\n\terrorCode\030\001 \001(\005:\0011\"*\n\027LoginGetR" +
-      "oleDataRequest\022\017\n\007account\030\001 \001(\t\"\224\001\n\030Logi" +
-      "nGetRoleDataResponse\022\024\n\terrorCode\030\001 \001(\005:" +
-      "\0011\022\022\n\nserverTime\030\002 \001(\005\022@\n\010roleData\030\003 \001(\013",
-      "2..com.randioo.doudizhu_server.protocol." +
-      "RoleData\022\014\n\004game\030\004 \001(\t"
+      "1\")\n\026LoginCreateRoleRequest\022\017\n\007account\030\001" +
+      " \001(\t\"/\n\027LoginCreateRoleResponse\022\024\n\terror" +
+      "Code\030\001 \001(\005:\0011\"*\n\027LoginGetRoleDataRequest" +
+      "\022\017\n\007account\030\001 \001(\t\"0\n\030LoginGetRoleDataRes" +
+      "ponse\022\024\n\terrorCode\030\001 \001(\005:\0011\"\212\001\n\022SCLoginG" +
+      "etRoleData\022\022\n\nserverTime\030\002 \001(\005\022@\n\010roleDa",
+      "ta\030\003 \001(\0132..com.randioo.doudizhu_server.p" +
+      "rotocol.RoleData\022\014\n\004game\030\004 \001(\t\022\020\n\010isGami" +
+      "ng\030\005 \001(\010"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1986,7 +2234,7 @@ public final class Login {
           internal_static_com_randioo_doudizhu_server_protocol_LoginCreateRoleRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_LoginCreateRoleRequest_descriptor,
-              new java.lang.String[] { "Account", "Name", },
+              new java.lang.String[] { "Account", },
               com.randioo.doudizhu_server.protocol.Login.LoginCreateRoleRequest.class,
               com.randioo.doudizhu_server.protocol.Login.LoginCreateRoleRequest.Builder.class);
           internal_static_com_randioo_doudizhu_server_protocol_LoginCreateRoleResponse_descriptor =
@@ -2010,9 +2258,17 @@ public final class Login {
           internal_static_com_randioo_doudizhu_server_protocol_LoginGetRoleDataResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_doudizhu_server_protocol_LoginGetRoleDataResponse_descriptor,
-              new java.lang.String[] { "ErrorCode", "ServerTime", "RoleData", "Game", },
+              new java.lang.String[] { "ErrorCode", },
               com.randioo.doudizhu_server.protocol.Login.LoginGetRoleDataResponse.class,
               com.randioo.doudizhu_server.protocol.Login.LoginGetRoleDataResponse.Builder.class);
+          internal_static_com_randioo_doudizhu_server_protocol_SCLoginGetRoleData_descriptor =
+            getDescriptor().getMessageTypes().get(6);
+          internal_static_com_randioo_doudizhu_server_protocol_SCLoginGetRoleData_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_doudizhu_server_protocol_SCLoginGetRoleData_descriptor,
+              new java.lang.String[] { "ServerTime", "RoleData", "Game", "IsGaming", },
+              com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData.class,
+              com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData.Builder.class);
           return null;
         }
       };

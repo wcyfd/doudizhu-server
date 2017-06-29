@@ -59,7 +59,6 @@
 			account=#{account},
 			name=#{name},
 			money=#{money},
-			gameId=#{gameId},
 			sex=#{sex},
 			loginTimeStr=#{loginTimeStr},
 			offlineTimeStr=#{offlineTimeStr},

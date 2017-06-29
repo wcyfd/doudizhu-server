@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.protobuf.GeneratedMessage;
+import com.randioo.doudizhu_server.cache.local.GameCache;
 import com.randioo.doudizhu_server.dao.RoleDao;
 import com.randioo.doudizhu_server.entity.bo.Role;
+import com.randioo.doudizhu_server.module.heartbeat.service.HeartbeatService;
 import com.randioo.doudizhu_server.module.login.LoginConstant;
 import com.randioo.doudizhu_server.module.money.service.MoneyExchangeService;
 import com.randioo.doudizhu_server.module.role.service.RoleService;
@@ -18,7 +20,9 @@ import com.randioo.doudizhu_server.protocol.Error.ErrorCode;
 import com.randioo.doudizhu_server.protocol.Login.LoginCheckAccountResponse;
 import com.randioo.doudizhu_server.protocol.Login.LoginCreateRoleResponse;
 import com.randioo.doudizhu_server.protocol.Login.LoginGetRoleDataResponse;
+import com.randioo.doudizhu_server.protocol.Login.SCLoginGetRoleData;
 import com.randioo.doudizhu_server.protocol.ServerMessage.SC;
+import com.randioo.doudizhu_server.util.SessionUtils;
 import com.randioo.doudizhu_server.util.Tool;
 import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.config.GlobleConfig;
@@ -46,7 +50,10 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 	private LoginModelService loginModelService;
 
 	@Autowired
-	private RoleService roleService;	
+	private RoleService roleService;
+	
+	@Autowired
+	private HeartbeatService heartbeatService;
 	
 	@Autowired
 	private MoneyExchangeService moneyExchangeService ;
@@ -127,14 +134,23 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 		public void loginRoleModuleDataInit(RoleInterface roleInterface) {
 			// 将数据库中的数据放入缓存中
 			Role role = (Role) roleInterface;
-
+			role = (Role) getRoleInterfaceFromDBById(role.getRoleId());
 			roleService.roleInit(role);
 		}
 
 	}
 
 	@Override
-	public GeneratedMessage getRoleData(String account, IoSession ioSession) {
+	public void getRoleData(String account, IoSession ioSession) {
+		try{
+			Integer.parseInt(account);
+		}catch(Exception e){
+			SC sc = SC.newBuilder()
+					.setLoginGetRoleDataResponse(LoginGetRoleDataResponse.newBuilder().setErrorCode(ErrorCode.ACCOUNT_ILLEGEL.getNumber()))
+					.build();
+			SessionUtils.sc(ioSession, sc);
+			return;
+		}
 		LoginInfo loginInfo = new LoginInfo();
 		loginInfo.setAccount(account);
 
@@ -144,12 +160,25 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 
 		if (roleInterface != null) {
 			Role role = (Role) roleInterface;
-
-			return SC
+			SessionUtils.sc(ioSession, SC
 					.newBuilder()
 					.setLoginGetRoleDataResponse(
-							LoginGetRoleDataResponse.newBuilder().setServerTime(TimeUtils.getNowTime())
-									.setRoleData(getRoleData(role)).setGame("doudizhu_"+GlobleConfig.Int(GlobleConfig.GlobleEnum.PORT)+"_")).build();
+							LoginGetRoleDataResponse.newBuilder()).build());
+			boolean isGaming = false;
+			if(role.getGameId() != 0 && GameCache.getGameMap().containsKey(role.getGameId())){
+				isGaming = true;
+			}
+			SessionUtils.sc(ioSession, SC
+					.newBuilder()
+					.setSCLoginGetRoleData(
+							SCLoginGetRoleData.newBuilder().setServerTime(TimeUtils.getNowTime())
+									.setRoleData(getRoleData(role)).setGame("doudizhu_"+GlobleConfig.Int(GlobleConfig.GlobleEnum.PORT)+"_")
+									.setIsGaming(isGaming)).build());
+			if(role.getSc() != null){
+				SessionUtils.sc(ioSession, role.getSc());
+				role.setSc(null);
+			}
+			return;
 		}
 
 		ErrorCode errorEnum = null;
@@ -164,8 +193,7 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 		SC sc = SC.newBuilder()
 				.setLoginGetRoleDataResponse(LoginGetRoleDataResponse.newBuilder().setErrorCode(errorEnum.getNumber()))
 				.build();
-
-		return sc;
+		SessionUtils.sc(ioSession, sc);
 	}
 
 	@Override
@@ -227,6 +255,8 @@ public class LoginServiceImpl extends ObserveBaseService implements LoginService
 	@Override
 	public RoleData getRoleData(Role role) {
 		roleService.roleInit(role);
+		//TODO 心跳
+		heartbeatService.heartInit(role);
 		RoleData.Builder roleDataBuilder = RoleData
 				.newBuilder()
 				.setRoleId(

@@ -61,49 +61,7 @@ public class A4B2C2 extends A4 {
 	
 	@Override
 	public void recommand(List<List<Integer>> recommandList, CardSort cardSort, CardList lastCardList, List<Integer> arr) {
-		/*Set<Integer> set3 = cardSort.getCardSort().get(3);
-		Set<Integer> set0 = cardSort.getCardSort().get(0);
-		if (arr.size() < 6 || set3.size() < 1)
-			return;
-
-		if (lastCardList == null) {
-			// 主动出牌
-			if
-			for (int i : set) {
-				List<Integer> list = new ArrayList<>(4);
-				list.add(i);
-				list.add(i);
-				list.add(i);
-				list.add(i);
-				recommandList.add(list);
-			}
-		} else {
-			// 被动出牌
-			if (lastCardList.getClass() != KQ.class) {
-				if(lastCardList.getClass() != A4.class){
-					for (int i : set) {
-						List<Integer> list = new ArrayList<>(4);
-						list.add(i);
-						list.add(i);
-						list.add(i);
-						list.add(i);
-						recommandList.add(list);
-					}
-				}
-				A4 a2 = (A4) lastCardList;
-				int num = a2.getNum();
-				for (int i = num + 1; i < 0xE; i++) {
-					if (set.contains(i)) {
-						List<Integer> list = new ArrayList<>(4);
-						list.add(i);
-						list.add(i);
-						list.add(i);
-						list.add(i);
-						recommandList.add(list);
-					}
-				}
-			}
-		}*/
+		
 	}
 
 }
